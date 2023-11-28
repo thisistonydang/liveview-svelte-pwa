@@ -25,7 +25,8 @@ config :live_view_svelte_offline_demo, LiveViewSvelteOfflineDemoWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "kSbe/XbQgeWCy0/dpdZUy9FO52fxrXzyN+WcKuaYnZsu0O3EeGy378Es+r5WcRXB",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
+    # esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 

@@ -35,3 +35,9 @@ live_view_svelte_offline_demo-*.tar
 npm-debug.log
 /assets/node_modules/
 
+
+# Ignore automatically generated Svelte files by the ~V sigil
+/assets/svelte/_build/
+
+# Ignore ssr build for svelte.
+/priv/svelte/
