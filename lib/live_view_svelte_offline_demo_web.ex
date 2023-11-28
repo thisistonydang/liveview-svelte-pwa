@@ -86,6 +86,8 @@ defmodule LiveViewSvelteOfflineDemoWeb do
       # Core UI components and translation
       import LiveViewSvelteOfflineDemoWeb.CoreComponents
       import LiveViewSvelteOfflineDemoWeb.Gettext
+      # Import LiveSvelte
+      import LiveSvelte
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
