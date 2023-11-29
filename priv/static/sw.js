@@ -1,4 +1,4 @@
-const VERSION = "2023-11-29v24";
+const VERSION = "2023-11-29v26";
 
 // Install _________________________________________________________________________________________
 
@@ -27,11 +27,10 @@ function handleActivate(event) {
  */
 async function deleteOldCaches() {
   const cacheNames = await caches.keys();
-  cacheNames.forEach((cacheName) => {
-    if (cacheName !== VERSION) {
-      console.log(`[Service Worker] Deleting Old Cache: VERSION ${cacheName}`);
-      caches.delete(cacheName);
-    }
+  const oldCacheNames = cacheNames.filter((cacheName) => cacheName !== VERSION);
+  oldCacheNames.forEach(async (cacheName) => {
+    console.log(`[Service Worker] Deleting Old Cache: VERSION ${cacheName}`);
+    await caches.delete(cacheName); // TODO: Is this await necessary?
   });
 }
 
@@ -60,7 +59,7 @@ function handleFetch(event) {
 async function fetchRequest(request) {
   try {
     const response = await fetch(request);
-    cacheResponse(request, response);
+    await cacheResponse(request, response); // TODO: Is this await necessary?
     return response;
   } catch (error) {
     return await getCachedResponse(request, error);
