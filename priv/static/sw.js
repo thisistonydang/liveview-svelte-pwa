@@ -1,4 +1,4 @@
-const VERSION = "2023-11-29v26";
+const VERSION = "2023-11-29v27";
 
 // Install _________________________________________________________________________________________
 
@@ -59,7 +59,7 @@ function handleFetch(event) {
 async function fetchRequest(request) {
   try {
     const response = await fetch(request);
-    await cacheResponse(request, response); // TODO: Is this await necessary?
+    await cacheResponse(request, response.clone()); // TODO: Is this await necessary?
     return response;
   } catch (error) {
     return await getCachedResponse(request, error);
@@ -74,9 +74,8 @@ async function fetchRequest(request) {
  * @returns {Promise<void>}
  */
 async function cacheResponse(request, response) {
-  const resClone = response.clone();
   const cache = await caches.open(VERSION);
-  cache.put(request, resClone);
+  cache.put(request, response);
   console.log(`[Service Worker] Cached ${request.url}`);
 }
 
