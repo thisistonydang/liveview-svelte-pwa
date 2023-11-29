@@ -23,6 +23,7 @@ import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
 import { getHooks } from "live_svelte";
 import * as Components from "../svelte/**/*.svelte";
+import "./registerServiceWorker";
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
