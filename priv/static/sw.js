@@ -1,4 +1,4 @@
-const VERSION = "2023-11-29v27";
+const VERSION = "2023-11-29v28";
 
 // Install _________________________________________________________________________________________
 
@@ -75,7 +75,8 @@ async function fetchRequest(request) {
  */
 async function cacheResponse(request, response) {
   const cache = await caches.open(VERSION);
-  cache.put(request, response);
+  // TODO: Store by request URL instead of request object?
+  await cache.put(request, response); // TODO: Is this await necessary?
   console.log(`[Service Worker] Cached ${request.url}`);
 }
 
@@ -91,4 +92,5 @@ async function getCachedResponse(request, error) {
   console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
   console.log("[Service Worker] Using cached response.", cachedResponse);
   return cachedResponse;
+  // TODO: If no cached response, return offline page.
 }
