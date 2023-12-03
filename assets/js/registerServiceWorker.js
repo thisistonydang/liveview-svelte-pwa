@@ -1,7 +1,9 @@
+const DEBUG = false;
+
 async function registerServiceWorker() {
   try {
     const registration = await navigator.serviceWorker.register("/sw.js");
-    console.log("[Service Worker] Registered.", registration);
+    DEBUG && console.log("[Service Worker] Registered.", registration);
   } catch (error) {
     console.error("[Service Worker] Registration Failed.", error);
   }
