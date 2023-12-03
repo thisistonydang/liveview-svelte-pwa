@@ -1,11 +1,12 @@
 const VERSION = "2023-11-29v28";
+const DEBUG = false;
 
 // Install _________________________________________________________________________________________
 
 self.addEventListener("install", handleInstall);
 
 function handleInstall() {
-  console.log("[Service Worker] Installed.");
+  DEBUG && console.log("[Service Worker] Installed.");
 }
 
 // Activate ________________________________________________________________________________________
@@ -18,7 +19,7 @@ self.addEventListener("activate", handleActivate);
  * @param {ExtendableEvent} event
  */
 function handleActivate(event) {
-  console.log("[Service Worker] Activated.");
+  DEBUG && console.log("[Service Worker] Activated.");
   event.waitUntil(deleteOldCaches());
 }
 
@@ -29,7 +30,8 @@ async function deleteOldCaches() {
   const cacheNames = await caches.keys();
   const oldCacheNames = cacheNames.filter((cacheName) => cacheName !== VERSION);
   oldCacheNames.forEach(async (cacheName) => {
-    console.log(`[Service Worker] Deleting Old Cache: VERSION ${cacheName}`);
+    DEBUG &&
+      console.log(`[Service Worker] Deleting Old Cache: VERSION ${cacheName}`);
     await caches.delete(cacheName); // TODO: Is this await necessary?
   });
 }
@@ -45,7 +47,7 @@ self.addEventListener("fetch", handleFetch);
  * @returns {Promise<Response>}
  */
 function handleFetch(event) {
-  console.log("[Service Worker] Handling fetch...");
+  DEBUG && console.log("[Service Worker] Handling fetch...");
   event.respondWith(fetchRequest(event.request));
 }
 
@@ -77,7 +79,7 @@ async function cacheResponse(request, response) {
   const cache = await caches.open(VERSION);
   // TODO: Store by request URL instead of request object?
   await cache.put(request, response); // TODO: Is this await necessary?
-  console.log(`[Service Worker] Cached ${request.url}`);
+  DEBUG && console.log(`[Service Worker] Cached ${request.url}`);
 }
 
 /**
@@ -90,7 +92,8 @@ async function cacheResponse(request, response) {
 async function getCachedResponse(request, error) {
   const cachedResponse = await caches.match(request);
   console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
-  console.log("[Service Worker] Using cached response.", cachedResponse);
+  DEBUG &&
+    console.log("[Service Worker] Using cached response.", cachedResponse);
   return cachedResponse;
   // TODO: If no cached response, return offline page.
 }
