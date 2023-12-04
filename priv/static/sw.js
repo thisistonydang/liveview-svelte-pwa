@@ -97,3 +97,65 @@ async function getCachedResponse(request, error) {
   return cachedResponse;
   // TODO: If no cached response, return offline page.
 }
+
+// Message _________________________________________________________________________________________
+
+self.addEventListener("message", handleMessage);
+
+/**
+ * Handle message event.
+ *
+ * @param {ExtendableMessageEvent} event
+ */
+async function handleMessage(event) {
+  DEBUG && console.log("[Service Worker] Handling message...", event.data);
+
+  switch (event.data.type) {
+    case "get_online_status":
+      await handleGetOnlineStatus(event);
+      break;
+
+    default:
+      console.error(
+        "[Service Worker] Unknown message type received.",
+        event.data
+      );
+  }
+}
+
+/**
+ * Reply with message to the client with the current online status.
+ *
+ * @param {ExtendableMessageEvent} event
+ */
+async function handleGetOnlineStatus(event) {
+  const message = {
+    type: event.data.type,
+    payload: {
+      isOnline: await isOnline(),
+    },
+  };
+
+  event.source.postMessage(message);
+}
+
+// Helpers _________________________________________________________________________________________
+
+/**
+ * Check if the client is online.
+ */
+async function isOnline() {
+  if (!self.navigator.onLine) {
+    return false;
+  }
+
+  try {
+    const url = new URL(self.location.origin); // Avoid CORS errors with request to your own origin.
+    url.searchParams.set("rand", Date.now().toString()); // Prevents cached responses.
+    const response = await fetch(url, { method: "HEAD" });
+
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
