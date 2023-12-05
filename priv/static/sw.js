@@ -86,16 +86,18 @@ async function cacheResponse(request, response) {
  * Return cached response if available.
  *
  * @param {Request} request
- * @param {Error} error
- * @returns {Promise<Response | undefined>}
  */
-async function getCachedResponse(request, error) {
+async function getCachedResponse(request) {
   const cachedResponse = await caches.match(request);
-  console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
-  DEBUG &&
-    console.log("[Service Worker] Using cached response.", cachedResponse);
-  return cachedResponse;
-  // TODO: If no cached response, return offline page.
+
+  if (cachedResponse) {
+    DEBUG && console.log("[Service Worker] Using cached response.", cachedResponse);
+    return cachedResponse;
+  }
+
+  DEBUG && console.log("[Service Worker] No cached response. Using fallback.");
+  // TODO: If no cached response, return fallback page.
+  return
 }
 
 // Message _________________________________________________________________________________________
