@@ -1,6 +1,15 @@
 const VERSION = "2023-11-29v28";
 const DEBUG = false;
 
+const assetsToCache = [
+  "/",
+  "/assets/app.css",
+  "/assets/app.js",
+  "/favicon.ico",
+  "/offline",
+  "/online"
+]
+
 // Install _________________________________________________________________________________________
 
 self.addEventListener("install", handleInstall);
