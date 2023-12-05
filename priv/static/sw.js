@@ -76,19 +76,20 @@ function handleFetch(event) {
 }
 
 /**
- * Try to fetch from network.
- * If successful, cache and return response. Else, use cached response if available.
+ * Try to fetch from network and refresh cache.
+ * If successful, return response. Else, return cached response.
  *
  * @param {Request} request
- * @returns {Promise<Response | undefined>}
  */
 async function fetchRequest(request) {
+  // TODO: Handle log out requests.
   try {
     const response = await fetch(request);
-    await cacheResponse(request, response.clone()); // TODO: Is this await necessary?
+    await cacheAssets() // TODO: Is this await necessary?
     return response;
   } catch (error) {
-    return await getCachedResponse(request, error);
+    DEBUG && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
+    return await getCachedResponse(request);
   }
 }
 
