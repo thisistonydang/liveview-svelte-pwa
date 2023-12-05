@@ -14,8 +14,23 @@ const assetsToCache = [
 
 self.addEventListener("install", handleInstall);
 
-function handleInstall() {
+/**
+ * Handle install event.
+ *
+ * @param {ExtendableEvent} event
+ */
+function handleInstall(event) {
   DEBUG && console.log("[Service Worker] Installed.");
+  event.waitUntil(cacheAssets());
+}
+
+/**
+ * Cache assets.
+ */
+async function cacheAssets() {
+  const cache = await caches.open(VERSION);
+  await cache.addAll(assetsToCache);
+  DEBUG && console.log("[Service Worker] Cached assets.");
 }
 
 // Activate ________________________________________________________________________________________
