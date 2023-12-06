@@ -4,8 +4,11 @@ import { createLocalStorageEntry } from "./createLocalStorageEntry";
  * Get parsed value from localStorage entry given key name and version. If entry
  * does not exist or if the entry version does not match the given version, a
  * fresh new entry is created.
+ *
+ * @param {string} key
+ * @param {string} version
  */
-export function getParsedValue(key: string, version: string) {
+export function getParsedValue(key, version) {
   const value = localStorage.getItem(key);
   let parsedValue;
 

@@ -3,15 +3,13 @@
  * the given name key is already present, that entry is deleted and a new entry
  * is created.
  *
- * @returns JSON parsed value of the created localStorage entry (an object with
- *          a version key).
+ * @param {string} key
+ * @param {string} version
+ *
+ * @returns {{version: string;}} JSON parsed value of the created localStorage entry (an object with
+ *                               a version key).
  */
-export function createLocalStorageEntry(
-  key: string,
-  version: string
-): {
-  version: string;
-} {
+export function createLocalStorageEntry(key, version) {
   // Remove any existing entry with given key name.
   localStorage.removeItem(key);
 
