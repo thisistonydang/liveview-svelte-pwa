@@ -1,20 +1,21 @@
 const DEBUG = false;
 
-async function registerServiceWorker() {
-  try {
-    const registration = await navigator.serviceWorker.register("/sw.js");
-    DEBUG && console.log("[Service Worker] Registered.", registration);
-  } catch (error) {
-    console.error("[Service Worker] Registration Failed.", error);
-  }
-}
-
-function main() {
+/**
+ * Register app service worker
+ *
+ * @param {string} serviceWorkerPath
+ */
+export function registerServiceWorker(serviceWorkerPath) {
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", registerServiceWorker);
+    window.addEventListener("load", async () => {
+      try {
+        const registration = await navigator.serviceWorker.register(serviceWorkerPath);
+        DEBUG && console.log("[Service Worker] Registered.", registration);
+      } catch (error) {
+        console.error("[Service Worker] Registration Failed.", error);
+      }
+    });
   } else {
     console.error("[Service Worker] Not Supported.");
   }
 }
-
-main();
