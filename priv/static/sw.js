@@ -138,8 +138,8 @@ async function handleMessage(event) {
   DEBUG && console.log("[Service Worker] Handling message...", event.data);
 
   switch (event.data.type) {
-    case "get_online_status":
-      await handleGetOnlineStatus(event);
+    case "request_online_status":
+      await handleRequestOnlineStatus(event); // TODO: Is this await necessary?
       break;
 
     default:
@@ -155,7 +155,7 @@ async function handleMessage(event) {
  *
  * @param {ExtendableMessageEvent} event
  */
-async function handleGetOnlineStatus(event) {
+async function handleRequestOnlineStatus(event) {
   const message = {
     type: event.data.type,
     payload: {
