@@ -23,7 +23,7 @@ import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
 import { getHooks } from "live_svelte";
 import * as Components from "../svelte/**/*.svelte";
-import "./registerServiceWorker";
+import { initOfflineSvelte } from "../lib/offline-svelte";
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {
@@ -44,3 +44,5 @@ liveSocket.connect();
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
+
+initOfflineSvelte(liveSocket);
