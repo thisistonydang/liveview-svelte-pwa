@@ -9,17 +9,17 @@ import { isSvelteMounted } from "./isSvelteMounted";
  * @param {{
  *   event: MessageEvent,
  *   liveViewPath: string,
- *   deadViewPath: string,
+ *   fallbackPath: string,
  * }} options
  */
-export function handleRequestOnlineStatusResponse({ event, liveViewPath, deadViewPath }) {
+export function handleRequestOnlineStatusResponse({ event, liveViewPath, fallbackPath }) {
   const currentPath = window.location.pathname;
   const svelteMounted = isSvelteMounted();
   isOnline.set(event.data.payload.isOnline);
 
   if (currentPath === liveViewPath && !get(isOnline) && !svelteMounted) {
-    window.location.replace(deadViewPath);
-  } else if (currentPath === deadViewPath && get(isOnline)) {
+    window.location.replace(fallbackPath);
+  } else if (currentPath === fallbackPath && get(isOnline)) {
     window.location.replace(liveViewPath);
   }
 }

@@ -7,7 +7,7 @@ import { requestOnlineStatus } from "./requestOnlineStatus";
  * @param {{
  *   liveSocket: * // TODO: Add type.
  *   liveViewPath: string,
- *   deadViewPath: string,
+ *   fallbackPath: string,
  * }} options
  */
 export function initViewSwapping({ liveSocket, ...options }) {

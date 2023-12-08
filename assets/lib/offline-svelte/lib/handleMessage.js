@@ -6,7 +6,7 @@ import { handleRequestOnlineStatusResponse } from "./handleRequestOnlineStatusRe
  * @param {{
  *   event: MessageEvent,
  *   liveViewPath: string,
- *   deadViewPath: string,
+ *   fallbackPath: string,
  * }} options
  */
 export function handleMessage({ event, ...options }) {

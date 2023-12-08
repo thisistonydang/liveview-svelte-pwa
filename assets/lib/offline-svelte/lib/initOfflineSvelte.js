@@ -8,24 +8,24 @@ import { requestOnlineStatus } from "./requestOnlineStatus";
  * @param {*} liveSocket // TODO: Add type.
  * @param {{
  *   liveViewPath: string,
- *   deadViewPath: string,
+ *   fallbackPath: string,
  *   serviceWorkerPath: string,
  * }} options
  *
  * Default options:
  *  - liveViewPath: "/online",
- *  - deadViewPath: "/offline",
+ *  - fallbackPath: "/offline",
  *  - serviceWorkerPath: "/sw.js"
  */
 export function initOfflineSvelte(liveSocket, options = {}) {
   const {
     liveViewPath = "/online",
-    deadViewPath = "/offline",
+    fallbackPath = "/offline",
     serviceWorkerPath = "/sw.js",
   } = options;
 
   registerServiceWorker(serviceWorkerPath);
-  initViewSwapping({ liveSocket, liveViewPath, deadViewPath });
+  initViewSwapping({ liveSocket, liveViewPath, fallbackPath });
 
   // Request online status from service worker on startup.
   requestOnlineStatus();
