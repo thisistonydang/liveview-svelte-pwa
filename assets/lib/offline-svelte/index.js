@@ -1,3 +1,3 @@
-export { initOfflineSvelte } from "./initOfflineSvelte";
-export { isOnline } from "./isOnline";
-export { requestOnlineStatus } from "./requestOnlineStatus";
+export { initOfflineSvelte } from "./lib/initOfflineSvelte";
+export { isOnline } from "./lib/isOnline";
+export { requestOnlineStatus } from "./lib/requestOnlineStatus";
