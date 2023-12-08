@@ -8,7 +8,6 @@ import { requestOnlineStatus } from "./requestOnlineStatus";
  *   liveSocket: * // TODO: Add type.
  *   liveViewPath: string,
  *   deadViewPath: string,
- *   scrollPositionKey: string,
  * }} options
  */
 export function initViewSwapping({ liveSocket, ...options }) {

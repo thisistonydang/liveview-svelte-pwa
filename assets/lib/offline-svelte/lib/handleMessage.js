@@ -7,7 +7,6 @@ import { handleRequestOnlineStatusResponse } from "./handleRequestOnlineStatusRe
  *   event: MessageEvent,
  *   liveViewPath: string,
  *   deadViewPath: string,
- *   scrollPositionKey: string,
  * }} options
  */
 export function handleMessage({ event, ...options }) {
