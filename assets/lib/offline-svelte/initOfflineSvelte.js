@@ -1,3 +1,4 @@
+import { SCROLL_POSITION_KEY } from "./constants";
 import { initViewSwapping } from "./initViewSwapping";
 import { registerServiceWorker } from "./registerServiceWorker";
 import { requestOnlineStatus } from "./requestOnlineStatus";
@@ -23,7 +24,7 @@ export function initOfflineSvelte(liveSocket, options = {}) {
   const {
     liveViewPath = "/online",
     deadViewPath = "/offline",
-    scrollPositionKey = "scrollPosition",
+    scrollPositionKey = SCROLL_POSITION_KEY,
     serviceWorkerPath = "/sw.js",
   } = options;
 
