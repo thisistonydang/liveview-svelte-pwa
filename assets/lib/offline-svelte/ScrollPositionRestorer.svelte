@@ -1,9 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  import { SCROLL_POSITION_KEY } from "./constants";
-
-  export let scrollPositionKey = SCROLL_POSITION_KEY;
+  export let scrollPositionKey;
 
   function restoreScrollPosition() {
     const scrollPosition = localStorage.getItem(scrollPositionKey);
