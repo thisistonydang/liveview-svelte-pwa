@@ -1,10 +1,10 @@
 <script>
   import { onMount } from "svelte";
 
-  import { OFFLINE_SVELTE_DIV_ID, SCROLL_POSITION_KEY } from "./lib/constants";
+  import { OFFLINE_SVELTE_DIV_ID } from "./lib/constants";
   import ScrollPositionRestorer from "./components/ScrollPositionRestorer.svelte";
 
-  export let scrollPositionKey = SCROLL_POSITION_KEY;
+  export let scrollPositionKey = "scrollPosition";
 
   let mounted;
 
