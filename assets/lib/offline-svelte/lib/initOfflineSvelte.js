@@ -10,26 +10,23 @@ import { requestOnlineStatus } from "./requestOnlineStatus";
  * @param {{
  *   liveViewPath: string,
  *   deadViewPath: string,
- *   scrollPositionKey: string,
  *   serviceWorkerPath: string,
  * }} options
  *
  * Default options:
  *  - liveViewPath: "/online",
  *  - deadViewPath: "/offline",
- *  - scrollPositionKey: "scrollPosition",
  *  - serviceWorkerPath: "/sw.js"
  */
 export function initOfflineSvelte(liveSocket, options = {}) {
   const {
     liveViewPath = "/online",
     deadViewPath = "/offline",
-    scrollPositionKey = SCROLL_POSITION_KEY,
     serviceWorkerPath = "/sw.js",
   } = options;
 
   registerServiceWorker(serviceWorkerPath);
-  initViewSwapping({ liveSocket, liveViewPath, deadViewPath, scrollPositionKey });
+  initViewSwapping({ liveSocket, liveViewPath, deadViewPath });
 
   // Request online status from service worker on startup.
   requestOnlineStatus();
