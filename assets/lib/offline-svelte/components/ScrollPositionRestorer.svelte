@@ -1,9 +1,9 @@
 <script>
-  import { onMount } from "svelte";
+  import { isClientStateRestored } from "../lib/isClientStateRestored";
 
   export let scrollPositionKey;
 
-  let mounted;
+  let scrollPositionRestored = false;
   let scrollX;
   let scrollY;
 
@@ -21,19 +21,16 @@
     }
   }
 
-  onMount(() => {
-    const timeoutId = setTimeout(() => {
+  // Restore scroll position AFTER client state is restored to avoid jumping scroll position.
+  $: if ($isClientStateRestored) {
+    setTimeout(() => {
       restoreScrollPosition();
-      mounted = true;
+      scrollPositionRestored = true;
     }, 0);
+  }
 
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  });
-
-  // Keep scroll position stored in localStorage.
-  $: if (mounted) {
+  // Keep scroll position stored in localStorage AFTER restoring scroll position.
+  $: if (scrollPositionRestored) {
     localStorage.setItem(scrollPositionKey, JSON.stringify({ x: scrollX, y: scrollY }));
   }
 </script>
