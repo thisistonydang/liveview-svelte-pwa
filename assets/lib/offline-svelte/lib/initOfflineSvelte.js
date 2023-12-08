@@ -1,4 +1,3 @@
-import { SCROLL_POSITION_KEY } from "./constants";
 import { initViewSwapping } from "./initViewSwapping";
 import { registerServiceWorker } from "./registerServiceWorker";
 import { requestOnlineStatus } from "./requestOnlineStatus";
