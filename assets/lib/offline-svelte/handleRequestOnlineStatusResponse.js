@@ -1,6 +1,7 @@
 import { get } from "svelte/store";
 
 import { isOnline } from "./isOnline";
+import { isSvelteMounted } from "./isSvelteMounted";
 import { rememberScrollPosition } from "./rememberScrollPosition";
 
 /**
@@ -20,9 +21,10 @@ export function handleRequestOnlineStatusResponse({
   scrollPositionKey,
 }) {
   const currentPath = window.location.pathname;
+  const svelteMounted = isSvelteMounted();
   isOnline.set(event.data.payload.isOnline);
 
-  if (currentPath === liveViewPath && !get(isOnline)) {
+  if (currentPath === liveViewPath && !get(isOnline) && !svelteMounted) {
     rememberScrollPosition(scrollPositionKey);
     window.location.replace(deadViewPath);
   } else if (currentPath === deadViewPath && get(isOnline)) {
