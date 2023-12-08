@@ -15,6 +15,7 @@ export function initViewSwapping({ liveSocket, ...options }) {
   // Request online status from service worker on connectivity changes.
   window.addEventListener("online", requestOnlineStatus);
   window.addEventListener("offline", requestOnlineStatus);
+  liveSocket.socket.onOpen(requestOnlineStatus);
   liveSocket.socket.onClose(requestOnlineStatus);
   liveSocket.socket.onError(requestOnlineStatus);
 
