@@ -1,6 +1,6 @@
-import { initViewSwapping } from "./initViewSwapping.js";
-import { registerServiceWorker } from "./registerServiceWorker.js";
-import { requestOnlineStatus } from "./requestOnlineStatus.js";
+import { initViewSwapping } from "./initViewSwapping";
+import { registerServiceWorker } from "./registerServiceWorker";
+import { requestOnlineStatus } from "./requestOnlineStatus";
 
 /**
  * Initialize offline Svelte functionality.
