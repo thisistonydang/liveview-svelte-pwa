@@ -3,11 +3,11 @@ const DEBUG = false;
 
 const assetsToCache = [
   "/",
+  "/app",
   "/assets/app.css",
   "/assets/app.js",
   "/fallback",
   "/favicon.ico",
-  "/online"
 ]
 
 // Install _________________________________________________________________________________________
