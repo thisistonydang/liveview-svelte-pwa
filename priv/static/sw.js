@@ -5,8 +5,8 @@ const assetsToCache = [
   "/",
   "/assets/app.css",
   "/assets/app.js",
+  "/fallback",
   "/favicon.ico",
-  "/offline",
   "/online"
 ]
 
