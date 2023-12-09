@@ -1,4 +1,4 @@
-defmodule LiveViewSvelteOfflineDemoWeb.OfflineController do
+defmodule LiveViewSvelteOfflineDemoWeb.FallbackController do
   use LiveViewSvelteOfflineDemoWeb, :controller
 
   def index(conn, _params) do
