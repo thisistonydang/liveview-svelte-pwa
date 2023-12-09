@@ -14,13 +14,13 @@ import { requestOnlineStatus } from "./requestOnlineStatus";
  *
  * Default options:
  *  - liveViewPath: "/online",
- *  - fallbackPath: "/offline",
+ *  - fallbackPath: "/fallback",
  *  - serviceWorkerPath: "/sw.js"
  */
 export function initOfflineSvelte(liveSocket, options = {}) {
   const {
     liveViewPath = "/online",
-    fallbackPath = "/offline",
+    fallbackPath = "/fallback",
     serviceWorkerPath = "/sw.js",
   } = options;
 
