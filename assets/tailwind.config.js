@@ -17,6 +17,36 @@ module.exports = {
       colors: {
         brand: "#FD4F00",
       },
+      keyframes: {
+        "fade-in": { from: { opacity: 0 }, to: { opacity: 1 } },
+        "fly-up": {
+          from: { transform: "translate3d(0, 50px, 0)" },
+          to: { transform: "translate3d(0, 0, 0)" },
+        },
+        "fly-down": {
+          from: { transform: "translate3d(0, -50px, 0)" },
+          to: { transform: "translate3d(0, 0, 0)" },
+        },
+        "fly-left": {
+          from: { transform: "translate3d(50px, 0, 0)" },
+          to: { transform: "translate3d(0, 0, 0)" },
+        },
+        "fly-right": {
+          from: { transform: "translate3d(-50px, 0, 0)" },
+          to: { transform: "translate3d(0, 0, 0)" },
+        },
+        shake: {
+          "10%, 90%": { transform: "translate3d(-1px, 0, 0)" },
+          "20%, 80%": { transform: "translate3d(2px, 0, 0)" },
+          "30%, 50%, 70%": { transform: "translate3d(-4px, 0, 0)" },
+          "40%, 60%": { transform: "translate3d(4px, 0, 0)" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(-15deg)" },
+          "75%": { transform: "rotate(15deg)" },
+        },
+      },
     },
   },
   plugins: [
