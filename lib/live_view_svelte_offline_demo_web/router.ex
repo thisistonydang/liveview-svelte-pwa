@@ -19,8 +19,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
 
   scope "/", LiveViewSvelteOfflineDemoWeb do
     pipe_through :browser
-
-    get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
@@ -58,6 +56,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
       live "/users/reset_password/:token", UserResetPasswordLive, :edit
     end
 
+    get "/", PageController, :home
     post "/users/log_in", UserSessionController, :create
   end
 
