@@ -8,6 +8,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
     <div class="hero my-6">
       <div class="hero-content">
         <div>
+          <.back navigate={~p"/app"}>Back</.back>
           <.header class="text-center">
             Account Settings
             <:subtitle>Manage your account email address and password settings</:subtitle>
