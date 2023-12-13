@@ -5,7 +5,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <div class="hero my-6">
+    <div class="hero">
       <div class="hero-content">
         <div>
           <.back navigate={~p"/app"}>Back</.back>
