@@ -2,6 +2,7 @@ import { get } from "svelte/store";
 
 import { isOnline } from "./isOnline";
 import { isSvelteMounted } from "./isSvelteMounted";
+import { pollIntervalId } from "./pollIntervalId";
 
 /**
  * Handle "request_online_status" response from service worker.
@@ -20,6 +21,12 @@ export function handleRequestOnlineStatusResponse({ event, liveViewPath, fallbac
   if (currentPath === liveViewPath && !get(isOnline) && !svelteMounted) {
     window.location.replace(fallbackPath);
   } else if (currentPath === fallbackPath && get(isOnline)) {
+    // Clear polling interval.
+    const intervalId = get(pollIntervalId);
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
     window.location.replace(liveViewPath);
   }
 }
