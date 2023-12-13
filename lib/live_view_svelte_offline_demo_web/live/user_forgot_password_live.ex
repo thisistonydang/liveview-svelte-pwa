@@ -5,24 +5,28 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserForgotPasswordLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
-        Forgot your password?
-        <:subtitle>We'll send a password reset link to your inbox</:subtitle>
-      </.header>
+    <div class="hero min-h-screen mx-auto max-w-sm">
+      <div class="hero-content">
+        <div>
+          <.header class="text-center">
+            Forgot your password?
+            <:subtitle>We'll send a password reset link to your inbox</:subtitle>
+          </.header>
 
-      <.simple_form for={@form} id="reset_password_form" phx-submit="send_email">
-        <.input field={@form[:email]} type="email" placeholder="Email" required />
-        <:actions>
-          <.button phx-disable-with="Sending..." class="w-full">
-            Send password reset instructions
-          </.button>
-        </:actions>
-      </.simple_form>
-      <p class="text-center text-sm mt-4">
-        <.link href={~p"/users/register"}>Register</.link>
-        | <.link href={~p"/users/log_in"}>Log in</.link>
-      </p>
+          <.simple_form for={@form} id="reset_password_form" phx-submit="send_email">
+            <.input field={@form[:email]} type="email" placeholder="Email" required />
+            <:actions>
+              <.button phx-disable-with="Sending..." class="w-full">
+                Send password reset instructions
+              </.button>
+            </:actions>
+          </.simple_form>
+          <p class="text-center text-sm mt-4">
+            <.link href={~p"/users/register"}>Register</.link>
+            | <.link href={~p"/users/log_in"}>Log in</.link>
+          </p>
+        </div>
+      </div>
     </div>
     """
   end
