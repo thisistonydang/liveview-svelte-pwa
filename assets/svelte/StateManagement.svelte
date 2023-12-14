@@ -91,7 +91,7 @@
   }
 
   onMount(() => {
-    live?.pushEvent("request_server_state");
+    live.pushEvent("request_server_state");
     mounted = true;
   });
 
