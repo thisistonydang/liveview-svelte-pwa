@@ -96,7 +96,7 @@
       <ul>
         {#each $completedItems as item (item.id)}
           <li
-            class="flex items-center justify-between px-2 text-lg hover:bg-base-200 rounded-lg"
+            class="flex items-center justify-between px-2 py-1.5 text-lg hover:bg-base-200 rounded-lg"
             animate:flip
             in:receive
             out:send
