@@ -45,14 +45,13 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserRegistrationLiveTest do
       render_submit(form)
       conn = follow_trigger_action(form, conn)
 
-      assert redirected_to(conn) == ~p"/"
+      assert redirected_to(conn) == ~p"/app"
 
       # Now do a logged in request and assert on the menu
-      conn = get(conn, "/")
+      conn = get(conn, "/app")
       response = html_response(conn, 200)
       assert response =~ email
-      assert response =~ "Settings"
-      assert response =~ "Log out"
+      assert response =~ ~p"/users/log_out"
     end
 
     test "renders errors for duplicated email", %{conn: conn} do
