@@ -108,7 +108,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserResetPasswordLiveTest do
 
       {:ok, conn} =
         lv
-        |> element(~s|main a:fl-contains("Register")|)
+        |> element(~s|.hero a:fl-contains("Register")|)
         |> render_click()
         |> follow_redirect(conn, ~p"/users/register")
 
