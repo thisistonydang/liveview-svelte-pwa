@@ -5,6 +5,7 @@ defmodule LiveViewSvelteOfflineDemo.Repo.Migrations.CreateUserStates do
     create table(:user_states) do
       add :user_id, references(:users, on_delete: :delete_all), null: false
       add :state, :map, null: false
+
       timestamps(type: :utc_datetime)
     end
 
