@@ -18,4 +18,6 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     |> foreign_key_constraint(:user_id)
     |> unique_constraint(:user_id)
   end
+
+  # TODO: add validation for state map
 end
