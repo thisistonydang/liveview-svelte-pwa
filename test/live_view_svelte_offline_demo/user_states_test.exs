@@ -1,6 +1,7 @@
 defmodule LiveViewSvelteOfflineDemo.UserStatesTest do
   use LiveViewSvelteOfflineDemo.DataCase
 
+  alias LiveViewSvelteOfflineDemo.Accounts
   alias LiveViewSvelteOfflineDemo.UserStates
 
   describe "user_states" do
@@ -21,10 +22,19 @@ defmodule LiveViewSvelteOfflineDemo.UserStatesTest do
     end
 
     test "create_user_state/1 with valid data creates a user_state" do
-      valid_attrs = %{state: %{}}
+      # GIVEN valid data
+      {:ok, user} =
+        Accounts.register_user(%{email: Faker.Internet.email(), password: "password1234"})
 
+      state = %{"timestamp" => 0, "value" => %{}}
+      valid_attrs = %{state: state, user_id: user.id}
+
+      # WHEN we create a UserState
       assert {:ok, %UserState{} = user_state} = UserStates.create_user_state(valid_attrs)
-      assert user_state.state == %{}
+
+      # THEN a UserState is created
+      assert user_state.user_id == user.id
+      assert user_state.state == state
     end
 
     test "create_user_state/1 with invalid data returns error changeset" do
