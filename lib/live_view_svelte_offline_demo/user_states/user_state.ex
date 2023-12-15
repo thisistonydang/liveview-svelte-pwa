@@ -12,7 +12,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
   @doc false
   def changeset(user_state, attrs) do
     user_state
-    |> cast(attrs, [:state])
-    |> validate_required([])
+    |> cast(attrs, [:state, :user_id])
+    |> validate_required([:state, :user_id])
   end
 end
