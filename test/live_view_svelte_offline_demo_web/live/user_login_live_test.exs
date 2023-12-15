@@ -18,7 +18,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserLoginLiveTest do
         conn
         |> log_in_user(user_fixture())
         |> live(~p"/users/log_in")
-        |> follow_redirect(conn, "/")
+        |> follow_redirect(conn, "/app")
 
       assert {:ok, _conn} = result
     end
