@@ -14,6 +14,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     user_state
     |> cast(attrs, [:state, :user_id])
     |> validate_required([:state, :user_id])
+    |> validate_length(:state, is: 2)
     |> foreign_key_constraint(:user_id)
     |> unique_constraint(:user_id)
   end
