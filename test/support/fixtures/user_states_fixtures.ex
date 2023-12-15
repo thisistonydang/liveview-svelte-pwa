@@ -4,16 +4,25 @@ defmodule LiveViewSvelteOfflineDemo.UserStatesFixtures do
   entities via the `LiveViewSvelteOfflineDemo.UserStates` context.
   """
 
+  alias LiveViewSvelteOfflineDemo.Accounts
+  alias LiveViewSvelteOfflineDemo.UserStates
+
   @doc """
   Generate a user_state.
   """
-  def user_state_fixture(attrs \\ %{}) do
-    {:ok, user_state} =
-      attrs
-      |> Enum.into(%{
-        state: %{}
+  def user_state_fixture(
+        state \\ %{
+          "timestamp" => System.os_time(:millisecond),
+          "value" => %{todo: [], completed: []}
+        }
+      ) do
+    {:ok, user} =
+      Accounts.register_user(%{
+        email: Faker.Internet.email(),
+        password: Faker.String.base64(16)
       })
-      |> LiveViewSvelteOfflineDemo.UserStates.create_user_state()
+
+    {:ok, user_state} = UserStates.create_user_state(%{state: state, user_id: user.id})
 
     user_state
   end
