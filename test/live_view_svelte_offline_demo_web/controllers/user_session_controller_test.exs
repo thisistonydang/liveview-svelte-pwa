@@ -36,7 +36,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSessionControllerTest do
         })
 
       assert conn.resp_cookies["_live_view_svelte_offline_demo_web_user_remember_me"]
-      assert redirected_to(conn) == ~p"/"
+      assert redirected_to(conn) == ~p"/app"
     end
 
     test "logs the user in with return to", %{conn: conn, user: user} do
