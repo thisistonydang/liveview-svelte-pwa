@@ -24,9 +24,13 @@ defmodule LiveViewSvelteOfflineDemo.UserStatesTest do
     test "create_user_state/1 with valid data creates a user_state" do
       # GIVEN valid data
       {:ok, user} =
-        Accounts.register_user(%{email: Faker.Internet.email(), password: "password1234"})
+        Accounts.register_user(%{email: Faker.Internet.email(), password: Faker.String.base64(16)})
 
-      state = %{"timestamp" => 0, "value" => %{}}
+      state = %{
+        "timestamp" => System.os_time(:millisecond),
+        "value" => %{"todo" => [], "completed" => []}
+      }
+
       valid_attrs = %{state: state, user_id: user.id}
 
       # WHEN we create a UserState
