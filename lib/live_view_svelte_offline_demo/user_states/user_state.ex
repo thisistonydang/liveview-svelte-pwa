@@ -4,7 +4,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
 
   schema "user_states" do
     field :state, :map
-    field :user_id, :id
+    belongs_to :user, LiveViewSvelteOfflineDemo.Accounts.User
 
     timestamps(type: :utc_datetime)
   end
