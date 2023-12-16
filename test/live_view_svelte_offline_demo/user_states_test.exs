@@ -47,12 +47,18 @@ defmodule LiveViewSvelteOfflineDemo.UserStatesTest do
 
     test "update_user_state/2 with valid data updates the user_state" do
       user_state = user_state_fixture()
-      update_attrs = %{state: %{}}
+
+      state = %{
+        "timestamp" => System.os_time(:millisecond),
+        "value" => %{"todo" => [], "completed" => []}
+      }
+
+      update_attrs = %{state: state}
 
       assert {:ok, %UserState{} = user_state} =
                UserStates.update_user_state(user_state, update_attrs)
 
-      assert user_state.state == %{}
+      assert user_state.state == state
     end
 
     test "update_user_state/2 with invalid data returns error changeset" do
