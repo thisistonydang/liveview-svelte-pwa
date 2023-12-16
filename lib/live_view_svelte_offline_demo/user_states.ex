@@ -22,20 +22,20 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
   end
 
   @doc """
-  Gets a single user_state.
+  Gets a single user_state by user_id.
 
   Raises `Ecto.NoResultsError` if the User state does not exist.
 
   ## Examples
 
-      iex> get_user_state!(123)
+      iex> get_user_state!(1)
       %UserState{}
 
       iex> get_user_state!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_user_state!(id), do: Repo.get!(UserState, id)
+  def get_user_state!(user_id), do: Repo.get_by!(UserState, user_id: user_id)
 
   @doc """
   Creates a user_state.
