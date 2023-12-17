@@ -1,7 +1,6 @@
 const VERSION = "2023-11-29v28";
 const DEBUG = false;
-
-const assetsToCache = [
+const ASSETS_TO_CACHE = [
   "/",
   "/app",
   "/assets/app.css",
@@ -29,7 +28,7 @@ function handleInstall(event) {
  */
 async function cacheAssets() {
   const cache = await caches.open(VERSION);
-  await cache.addAll(assetsToCache);
+  await cache.addAll(ASSETS_TO_CACHE);
   DEBUG && console.log("[Service Worker] Cached assets.");
 }
 
