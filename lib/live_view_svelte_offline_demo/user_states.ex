@@ -38,14 +38,14 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
   def get_user_state!(user_id), do: Repo.get_by!(UserState, user_id: user_id)
 
   @doc """
-  Creates a user_state.
+  Creates a user_state. A user_id is required.
 
   ## Examples
 
-      iex> create_user_state(%{field: value})
+      iex> create_user_state(%{state: value, user_id: 1})
       {:ok, %UserState{}}
 
-      iex> create_user_state(%{field: bad_value})
+      iex> create_user_state(%{state: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
