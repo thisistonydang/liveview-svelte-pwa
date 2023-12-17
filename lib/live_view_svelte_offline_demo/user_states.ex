@@ -56,14 +56,14 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
   end
 
   @doc """
-  Updates a user_state.
+  Updates a user_state and broadcasts the update to subscribers.
 
   ## Examples
 
-      iex> update_user_state(user_state, %{field: new_value})
+      iex> update_user_state(user_state, %{state: new_value})
       {:ok, %UserState{}}
 
-      iex> update_user_state(user_state, %{field: bad_value})
+      iex> update_user_state(user_state, %{state: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
@@ -71,6 +71,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
     user_state
     |> UserState.changeset(attrs)
     |> Repo.update()
+    |> broadcast(:user_state_updated)
   end
 
   @doc """
