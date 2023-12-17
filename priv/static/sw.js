@@ -1,4 +1,4 @@
-const VERSION = "2023-11-29v28";
+const CACHE_NAME = "2023-12-13v16";
 const DEBUG = false;
 const ASSETS_TO_CACHE = [
   "/",
@@ -27,7 +27,7 @@ function handleInstall(event) {
  * Cache assets.
  */
 async function cacheAssets() {
-  const cache = await caches.open(VERSION);
+  const cache = await caches.open(CACHE_NAME);
   await cache.addAll(ASSETS_TO_CACHE);
   DEBUG && console.log("[Service Worker] Cached assets.");
 }
@@ -51,7 +51,7 @@ function handleActivate(event) {
  */
 async function deleteOldCaches() {
   const cacheNames = await caches.keys();
-  const oldCacheNames = cacheNames.filter((cacheName) => cacheName !== VERSION);
+  const oldCacheNames = cacheNames.filter((cacheName) => cacheName !== CACHE_NAME);
   oldCacheNames.forEach(async (cacheName) => {
     DEBUG &&
       console.log(`[Service Worker] Deleting Old Cache: VERSION ${cacheName}`);
@@ -98,7 +98,7 @@ async function fetchRequest(request) {
  * @returns {Promise<void>}
  */
 async function cacheResponse(request, response) {
-  const cache = await caches.open(VERSION);
+  const cache = await caches.open(CACHE_NAME);
   // TODO: Store by request URL instead of request object?
   await cache.put(request, response); // TODO: Is this await necessary?
   DEBUG && console.log(`[Service Worker] Cached ${request.url}`);
