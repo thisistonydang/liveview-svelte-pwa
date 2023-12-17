@@ -84,9 +84,7 @@ function handleFetch(event) {
 async function fetchRequest(request) {
   // TODO: Handle log out requests.
   try {
-    const response = await fetch(request);
-    await cacheAssets() // TODO: Is this await necessary?
-    return response;
+    return await fetch(request);
   } catch (error) {
     DEBUG && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
     return await getCachedResponse(request);
