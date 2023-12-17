@@ -8,6 +8,33 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
 
   alias LiveViewSvelteOfflineDemo.UserStates.UserState
 
+  # PubSub _________________________________________________________________________________________
+
+  @doc """
+  Subscribe to user_state updates for a given user_id.
+  """
+  def subscribe(user_id) do
+    Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, "user_state:#{user_id}")
+  end
+
+  @doc """
+  Broadcast to subscribers of a user_state.
+  If an error is passed to broadcast/2, the error is returned.
+  """
+  def broadcast({:ok, user_state}, tag) do
+    Phoenix.PubSub.broadcast(
+      LiveViewSvelteOfflineDemo.PubSub,
+      "user_state:#{user_state.user_id}",
+      {tag, user_state}
+    )
+
+    {:ok, user_state}
+  end
+
+  def broadcast({:error, changeset}, _tag), do: {:error, changeset}
+
+  # CRUD ___________________________________________________________________________________________
+
   @doc """
   Returns the list of user_states.
 
