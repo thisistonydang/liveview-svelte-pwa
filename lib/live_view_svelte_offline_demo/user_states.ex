@@ -24,18 +24,39 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
   @doc """
   Gets a single user_state by user_id.
 
-  Raises `Ecto.NoResultsError` if the User state does not exist.
+  If user_state does not exist, creates and returns a new user_state.
 
   ## Examples
 
-      iex> get_user_state!(1)
-      %UserState{}
+      iex> get_user_state(1)
+      %UserState{
+        user_id: 1,
+        state: %{"timestamp" => 1_701_807_051_829, "value" => %{"todo" => [], "completed" => []}
+      }
 
-      iex> get_user_state!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_user_state(456)
+      %UserState{
+        user_id: 456,
+        state: %{"timestamp" => 0, "value" => %{"todo" => [], "completed" => []}
+      }
 
   """
-  def get_user_state!(user_id), do: Repo.get_by!(UserState, user_id: user_id)
+  def get_user_state(user_id) do
+    # Default state if user_state does not exist.
+    state = %{
+      "timestamp" => 0,
+      "value" => %{"todo" => [], "completed" => []}
+    }
+
+    {:ok, user_state} =
+      case Repo.get_by(UserState, user_id: user_id) do
+        # TODO: Handle case where create_user_state/1 returns {:error, changeset}?
+        nil -> create_user_state(%{state: state, user_id: user_id})
+        user_state -> {:ok, user_state}
+      end
+
+    user_state
+  end
 
   @doc """
   Creates a user_state. A user_id is required.
