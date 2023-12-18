@@ -26,6 +26,8 @@ function handleInstall(event) {
 
 /**
  * Cache assets.
+ * 
+ * @param {string[]} assets - Array of assets to cache.
  */
 async function cacheAssets() {
   const cache = await caches.open(CACHE_NAME);
