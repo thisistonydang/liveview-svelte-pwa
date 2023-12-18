@@ -166,7 +166,7 @@ async function handleRequestOnlineStatus(event) {
   const message = {
     type: event.data.type,
     payload: {
-      isOnline: await isOnline(),
+      isOnline: await checkOnlineStatus(),
     },
   };
 
@@ -178,7 +178,7 @@ async function handleRequestOnlineStatus(event) {
 /**
  * Check if the client is online.
  */
-async function isOnline() {
+async function checkOnlineStatus() {
   if (!self.navigator.onLine) {
     return false;
   }
