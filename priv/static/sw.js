@@ -82,7 +82,6 @@ function handleFetch(event) {
  * @param {Request} request
  */
 async function respond(request) {
-  // TODO: Handle log out requests.
   try {
     return await fetch(request);
   } catch (error) {
