@@ -69,6 +69,8 @@ self.addEventListener("fetch", handleFetch);
  * @returns {Promise<Response>}
  */
 function handleFetch(event) {
+  if (event.request.method !== 'GET') return; // Ignore non-GET requests.
+
   DEBUG && console.log("[Service Worker] Handling fetch...");
   event.respondWith(fetchRequest(event.request));
 }
