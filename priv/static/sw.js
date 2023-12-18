@@ -21,7 +21,7 @@ self.addEventListener("install", handleInstall);
  */
 function handleInstall(event) {
   DEBUG && console.log("[Service Worker] Installed.");
-  event.waitUntil(cacheAssets());
+  event.waitUntil(cacheAssets(PUBLIC_ASSETS));
 }
 
 /**
