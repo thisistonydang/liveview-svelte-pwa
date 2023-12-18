@@ -1,4 +1,4 @@
-const CACHE_NAME = "2023-12-13v16";
+const CACHE_NAME = "2023-12-13v18";
 const DEBUG = false;
 const ASSETS_TO_CACHE = [
   "/",
@@ -50,13 +50,12 @@ function handleActivate(event) {
  * Delete all caches except current version.
  */
 async function deleteOldCaches() {
-  const cacheNames = await caches.keys();
-  const oldCacheNames = cacheNames.filter((cacheName) => cacheName !== CACHE_NAME);
-  oldCacheNames.forEach(async (cacheName) => {
-    DEBUG &&
-      console.log(`[Service Worker] Deleting Old Cache: VERSION ${cacheName}`);
-    await caches.delete(cacheName);
-  });
+  for (const key of await caches.keys()) {
+    if (key !== CACHE_NAME) {
+      DEBUG && console.log(`[Service Worker] Deleting Old Cache: VERSION ${key}`);
+      await caches.delete(key);
+    } 
+  }
 }
 
 // Fetch ___________________________________________________________________________________________
