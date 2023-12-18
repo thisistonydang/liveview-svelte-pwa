@@ -25,10 +25,17 @@ function handleInstall(event) {
  * 
  * @param {string[]} assets - Array of assets to cache.
  */
-async function cacheAssets() {
-  const cache = await caches.open(CACHE_NAME);
-  await cache.addAll(ASSETS_TO_CACHE);
-  DEBUG && console.log("[Service Worker] Cached assets.");
+async function cacheAssets(assets) {
+  const isOnline = await checkOnlineStatus();
+  if (!isOnline) return; // Don't try caching if not online.
+
+  try {
+    const cache = await caches.open(CACHE_NAME);
+    await cache.addAll(assets);
+    DEBUG && console.log("[Service Worker] Cached assets.", assets);
+  } catch (error) {
+    console.error("[Service Worker] Unable to cache assets.", error);
+  }
 }
 
 // Activate ________________________________________________________________________________________
