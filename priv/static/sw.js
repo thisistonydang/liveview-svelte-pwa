@@ -55,7 +55,7 @@ async function deleteOldCaches() {
   oldCacheNames.forEach(async (cacheName) => {
     DEBUG &&
       console.log(`[Service Worker] Deleting Old Cache: VERSION ${cacheName}`);
-    await caches.delete(cacheName); // TODO: Is this await necessary?
+    await caches.delete(cacheName);
   });
 }
 
