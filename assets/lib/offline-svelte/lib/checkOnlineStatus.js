@@ -1,18 +1,20 @@
+import { isOnline } from "./isOnline";
+
 /**
- * Check if the client is online.
+ * Check if the client is online and set isOnline store.
  */
-async function isOnline() {
-  if (!self.navigator.onLine) {
-    return false;
+export async function checkOnlineStatus() {
+  if (!window.navigator.onLine) {
+    isOnline.set(false);
   }
 
   try {
-    const url = new URL(self.location.origin); // Avoid CORS errors with request to your own origin.
+    const url = new URL(window.location.origin); // Avoid CORS errors with request to your own origin.
     url.searchParams.set("rand", Date.now().toString()); // Prevents cached responses.
-    const response = await fetch(url, { method: "HEAD" });
+    const response = await fetch(url, { method: "HEAD" }); // HEAD request to avoid interception by service worker.
 
-    return response.ok;
+    isOnline.set(response.ok);
   } catch {
-    return false;
+    isOnline.set(false);
   }
 }
