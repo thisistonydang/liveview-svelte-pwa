@@ -72,7 +72,7 @@ function handleFetch(event) {
   if (event.request.method !== 'GET') return; // Ignore non-GET requests.
 
   DEBUG && console.log("[Service Worker] Handling fetch...");
-  event.respondWith(fetchRequest(event.request));
+  event.respondWith(respond(event.request));
 }
 
 /**
@@ -81,7 +81,7 @@ function handleFetch(event) {
  *
  * @param {Request} request
  */
-async function fetchRequest(request) {
+async function respond(request) {
   // TODO: Handle log out requests.
   try {
     return await fetch(request);
