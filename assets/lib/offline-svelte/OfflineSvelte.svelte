@@ -19,6 +19,8 @@
   });
 </script>
 
+<!-- isSvelteMounted checks for the data-mounted attribute in this div to
+determine if the Svelte app has mounted. -->
 <div id={OFFLINE_SVELTE_DIV_ID} data-mounted={mounted} />
 
 <ScrollPositionRestorer {scrollPositionKey} />
