@@ -5,10 +5,6 @@ const PUBLIC_ASSETS = [
   "/assets/app.js",
   "/favicon.ico",
 ]
-const PROTECTED_ASSETS = [
-  "/app",
-  "/fallback",
-]
 
 // Install _________________________________________________________________________________________
 
