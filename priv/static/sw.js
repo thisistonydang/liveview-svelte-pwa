@@ -76,14 +76,21 @@ function handleFetch(event) {
 }
 
 /**
- * Try to fetch from network and refresh cache.
- * If successful, return response. Else, return cached response.
+ * Try to fetch from network. If successful, return response. Else, return cached response.
  *
  * @param {Request} request
  */
 async function respond(request) {
   try {
-    return await fetch(request);
+    const response = await fetch(request);
+
+    // If offline, fetch can return a value that is not a Response instead of
+    // throwing and the non-Response can't be passed to respondWith.
+    if (!(response instanceof Response)) {
+      throw new Error('Invalid response from fetch.');
+    }
+
+    return response;
   } catch (error) {
     DEBUG && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
     return await getCachedResponse(request);
