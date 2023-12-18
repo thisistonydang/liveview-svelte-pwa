@@ -1,5 +1,6 @@
 <script>
-  import { isClientStateRestored } from "../lib/offline-svelte";
+  import { onMount } from "svelte";
+  import { isClientStateRestored, requestAssetCaching } from "../lib/offline-svelte";
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
@@ -17,6 +18,10 @@
       completed: [],
     },
   };
+
+  onMount(() => {
+    requestAssetCaching(["/app", "/fallback"]);
+  });
 </script>
 
 <StateManagement {live} {serverState} />
