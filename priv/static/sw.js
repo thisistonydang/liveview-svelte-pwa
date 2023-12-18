@@ -1,12 +1,13 @@
 const CACHE_NAME = "2023-12-13v18";
 const DEBUG = false;
-const ASSETS_TO_CACHE = [
-  "/",
-  "/app",
+const PUBLIC_ASSETS = [
   "/assets/app.css",
   "/assets/app.js",
-  "/fallback",
   "/favicon.ico",
+]
+const PROTECTED_ASSETS = [
+  "/app",
+  "/fallback",
 ]
 
 // Install _________________________________________________________________________________________
