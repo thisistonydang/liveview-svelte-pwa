@@ -1,4 +1,4 @@
-import { FALLBACK_PATH } from "./constants";
+import { FALLBACK_PATH, LIVE_VIEW_PATH } from "./constants";
 import { initViewSwapping } from "./initViewSwapping";
 import { registerServiceWorker } from "./registerServiceWorker";
 import { requestOnlineStatus } from "./requestOnlineStatus";
@@ -20,7 +20,7 @@ import { requestOnlineStatus } from "./requestOnlineStatus";
  */
 export function initOfflineSvelte(liveSocket, options = {}) {
   const {
-    liveViewPath = "/app",
+    liveViewPath = LIVE_VIEW_PATH,
     fallbackPath = FALLBACK_PATH,
     serviceWorkerPath = "/sw.js",
   } = options;
