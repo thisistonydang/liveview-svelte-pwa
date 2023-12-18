@@ -130,9 +130,9 @@ async function getCachedResponse(request) {
     return cachedResponse;
   }
 
+  // If no cached response, always return user to /fallback route.
   DEBUG && console.log("[Service Worker] No cached response. Using fallback.");
-  // TODO: If no cached response, return fallback page.
-  return
+  return await caches.match(new Request("/fallback"));
 }
 
 // Message _________________________________________________________________________________________
