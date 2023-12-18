@@ -141,12 +141,16 @@ self.addEventListener("message", handleMessage);
  *
  * @param {ExtendableMessageEvent} event
  */
-async function handleMessage(event) {
+function handleMessage(event) {
   DEBUG && console.log("[Service Worker] Handling message...", event.data);
 
   switch (event.data.type) {
     case "request_online_status":
-      await handleRequestOnlineStatus(event); // TODO: Is this await necessary?
+      event.waitUntil(handleRequestOnlineStatus(event));
+      break;
+
+    case "request_assets_caching":
+      event.waitUntil(cacheAssets(event.data.payload.assets));
       break;
 
     default:
