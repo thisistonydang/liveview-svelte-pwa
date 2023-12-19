@@ -16,6 +16,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
     socket =
       socket
+      |> assign(page_title: "App")
       |> assign(server_state: initial_server_state)
       |> assign(svelte_opts: %{ssr: false})
 
