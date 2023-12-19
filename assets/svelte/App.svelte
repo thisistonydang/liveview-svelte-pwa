@@ -7,6 +7,7 @@
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
   import TodoApp from "./TodoApp.svelte";
+  import UpdateAlert from "./UpdateAlert.svelte";
 
   export let live;
   export let currentUserEmail;
@@ -30,6 +31,7 @@
 <OfflineSvelte {isFallback} />
 
 {#if $isClientStateRestored}
+  <UpdateAlert />
   <Header {currentUserEmail} />
 
   <div class="max-w-2xl mx-auto px-2 md:p-0">
