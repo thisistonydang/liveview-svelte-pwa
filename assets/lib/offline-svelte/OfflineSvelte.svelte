@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  import { LIVE_VIEW_PATH, OFFLINE_SVELTE_DIV_ID } from "./lib/constants";
+  import { OFFLINE_SVELTE_DIV_ID } from "./lib/constants";
   import OnlineStatusPoller from "./components/OnlineStatusPoller.svelte";
   import ScrollPositionRestorer from "./components/ScrollPositionRestorer.svelte";
 
