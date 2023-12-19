@@ -15,6 +15,10 @@ export function handleMessage({ event, ...options }) {
       handleRequestOnlineStatusResponse({ event, ...options });
       break;
 
+    case "request_skip_waiting":
+      window.location.reload();
+      break;
+
     default:
       console.error("Unknown message type received from service worker.", event.data);
   }
