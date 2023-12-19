@@ -85,6 +85,10 @@ self.addEventListener("fetch", handleFetch);
  */
 function handleFetch(event) {
   if (event.request.method !== 'GET') return; // Ignore non-GET requests.
+  
+  // Ignore LiveReloader. Only requested in dev.
+  const url = new URL(event.request.url);
+  if (url.pathname === '/phoenix/live_reload/frame') return; 
 
   DEBUG && console.log("[Service Worker] Handling fetch...");
   event.respondWith(respond(event.request));
