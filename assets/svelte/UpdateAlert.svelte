@@ -37,7 +37,13 @@
       <div>
         <button class="btn btn-sm" on:click={() => (isDismissed = true)}>Later</button>
 
-        <button class="btn btn-sm btn-accent" on:click={() => ($isSWUpdateConfirmed = true)}>
+        <button
+          class="btn btn-sm btn-accent"
+          on:click={() => {
+            $isSWUpdateConfirmed = true;
+            isDismissed = true;
+          }}
+        >
           Update
         </button>
       </div>
