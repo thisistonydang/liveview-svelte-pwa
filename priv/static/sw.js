@@ -156,6 +156,10 @@ function handleMessage(event) {
       event.waitUntil(cacheAssets(event.data.payload.assets));
       break;
 
+    case "request_skip_waiting":
+      event.waitUntil(handleRequestSkipWaiting(event));
+      break;
+
     default:
       console.error(
         "[Service Worker] Unknown message type received.",
@@ -175,6 +179,21 @@ async function handleRequestOnlineStatus(event) {
     payload: {
       isOnline: await checkOnlineStatus(),
     },
+  };
+
+  event.source.postMessage(message);
+}
+
+/**
+ * Skip waiting and notify client to reload.
+ * 
+ * @param {ExtendableMessageEvent} event
+ */
+async function handleRequestSkipWaiting(event) {
+  self.skipWaiting();
+
+  const message = {
+    type: event.data.type,
   };
 
   event.source.postMessage(message);
