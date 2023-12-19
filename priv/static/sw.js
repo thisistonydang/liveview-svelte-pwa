@@ -1,4 +1,4 @@
-const CACHE_NAME = "2023-12-19v1";
+const CACHE_NAME = "2023-12-19v2";
 const DEBUG = false;
 const PUBLIC_ASSETS = [
   "/assets/app.css",
