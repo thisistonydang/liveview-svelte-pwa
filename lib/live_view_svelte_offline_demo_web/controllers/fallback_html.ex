@@ -3,7 +3,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.FallbackHTML do
 
   def index(assigns) do
     ~H"""
-    <.App currentUserEmail={@current_user.email} />
+    <.App currentUserEmail={@current_user.email} isFallback={true} />
     """
   end
 end

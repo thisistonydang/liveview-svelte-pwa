@@ -10,6 +10,7 @@
 
   export let live;
   export let currentUserEmail;
+  export let isFallback = false;
   export let serverState = {
     meta: { synced: false },
     timestamp: 0,
@@ -26,7 +27,7 @@
 
 <StateManagement {live} {serverState} />
 <ClientOnlyStateManagement />
-<OfflineSvelte />
+<OfflineSvelte {isFallback} />
 
 {#if $isClientStateRestored}
   <Header {currentUserEmail} />

@@ -5,7 +5,7 @@
   import OnlineStatusPoller from "./components/OnlineStatusPoller.svelte";
   import ScrollPositionRestorer from "./components/ScrollPositionRestorer.svelte";
 
-  export let liveViewPath = LIVE_VIEW_PATH;
+  export let isFallback;
   export let scrollPositionKey = "scrollPosition";
 
   let mounted;
@@ -24,4 +24,7 @@ determine if the Svelte app has mounted. -->
 <div id={OFFLINE_SVELTE_DIV_ID} data-mounted={mounted} />
 
 <ScrollPositionRestorer {scrollPositionKey} />
-<OnlineStatusPoller {liveViewPath} />
+
+{#if isFallback}
+  <OnlineStatusPoller />
+{/if}
