@@ -20,7 +20,7 @@ export function handleRequestOnlineStatusResponse({ event, liveViewPath, fallbac
 
   if (currentPath === liveViewPath && !get(isOnline) && !svelteMounted) {
     window.location.replace(fallbackPath);
-  } else if (currentPath !== liveViewPath && get(isOnline)) {
+  } else if (currentPath !== liveViewPath && get(isOnline) && svelteMounted) {
     // Clear polling interval.
     const intervalId = get(pollIntervalId);
     if (intervalId) {
