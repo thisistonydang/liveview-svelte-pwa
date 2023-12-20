@@ -8,15 +8,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
   def mount(_params, _session, socket) do
     if connected?(socket), do: UserStates.subscribe(socket.assigns.current_user.id)
 
-    initial_server_state = %{
-      "meta" => %{"synced" => false},
-      "timestamp" => 0,
-      "value" => %{"todo" => [], "completed" => []}
-    }
-
     socket =
       socket
-      |> assign(server_state: initial_server_state)
+      |> assign(server_state: UserStates.initial_server_state())
       |> assign(svelte_opts: %{ssr: false})
 
     {:ok, socket}
