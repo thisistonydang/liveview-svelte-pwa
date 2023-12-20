@@ -22,7 +22,7 @@ const PUBLIC_ASSETS = [
 
 // Install _________________________________________________________________________________________
 
-self.addEventListener("install", handleInstall);
+sw.addEventListener("install", handleInstall);
 
 /**
  * Handle install event.
@@ -54,7 +54,7 @@ async function cacheAssets(assets) {
 
 // Activate ________________________________________________________________________________________
 
-self.addEventListener("activate", handleActivate);
+sw.addEventListener("activate", handleActivate);
 
 /**
  * Handle activate event.
@@ -80,7 +80,7 @@ async function deleteOldCaches() {
 
 // Fetch ___________________________________________________________________________________________
 
-self.addEventListener("fetch", handleFetch);
+sw.addEventListener("fetch", handleFetch);
 
 /**
  * Handle fetch event.
@@ -154,7 +154,7 @@ async function getCachedResponse(request) {
 
 // Message _________________________________________________________________________________________
 
-self.addEventListener("message", handleMessage);
+sw.addEventListener("message", handleMessage);
 
 /**
  * Handle message event.
@@ -207,7 +207,7 @@ async function handleRequestOnlineStatus(event) {
  * @param {ExtendableMessageEvent} event
  */
 async function handleRequestSkipWaiting(event) {
-  self.skipWaiting();
+  sw.skipWaiting();
 
   const message = {
     type: event.data.type,
