@@ -25,7 +25,7 @@ import { getHooks } from "live_svelte";
 import * as Components from "../svelte/**/*.svelte";
 import { initOfflineSvelte } from "../lib/offline-svelte";
 
-let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+let csrfToken = document.querySelector("meta[name='csrf-token']")?.getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: getHooks(Components),
   params: { _csrf_token: csrfToken },
@@ -51,6 +51,7 @@ liveSocket.connect();
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
+// @ts-expect-error, adding liveSocket to window is accepted pattern.
 window.liveSocket = liveSocket;
 
 initOfflineSvelte(liveSocket);
