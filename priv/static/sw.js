@@ -1,4 +1,9 @@
-const CACHE_NAME = "2023-12-19v2";
+/// <reference no-default-lib="true"/>
+/// <reference lib="esnext" />
+/// <reference lib="webworker" />
+const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
+
+const CACHE_NAME = "2023-12-19v21";
 const DEBUG = false;
 const PUBLIC_ASSETS = [
   "/assets/app.css",
