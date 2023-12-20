@@ -150,4 +150,17 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
   def change_user_state(%UserState{} = user_state, attrs \\ %{}) do
     UserState.changeset(user_state, attrs)
   end
+
+  # Public Helpers _________________________________________________________________________________
+
+  @doc """
+  Returns a default server state for the initial server render.
+  """
+  def initial_server_state() do
+    %{
+      "meta" => %{"synced" => true},
+      "timestamp" => 0,
+      "value" => %{"todo" => [], "completed" => []}
+    }
+  end
 end
