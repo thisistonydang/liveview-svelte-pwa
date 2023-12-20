@@ -22,6 +22,7 @@ import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
 import { getHooks } from "live_svelte";
+// @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
 import { initOfflineSvelte } from "../lib/offline-svelte";
 
@@ -51,7 +52,7 @@ liveSocket.connect();
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
-// @ts-expect-error, adding liveSocket to window is accepted pattern.
+// @ts-expect-error; adding liveSocket to window is accepted pattern.
 window.liveSocket = liveSocket;
 
 initOfflineSvelte(liveSocket);
