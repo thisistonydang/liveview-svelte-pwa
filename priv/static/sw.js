@@ -81,7 +81,6 @@ self.addEventListener("fetch", handleFetch);
  * Handle fetch event.
  *
  * @param {FetchEvent} event
- * @returns {Promise<Response>}
  */
 function handleFetch(event) {
   if (event.request.method !== 'GET') return; // Ignore non-GET requests.
