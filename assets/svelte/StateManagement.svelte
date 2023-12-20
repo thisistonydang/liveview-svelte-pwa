@@ -19,6 +19,7 @@
 <script>
   import { onMount } from "svelte";
   import { completedItems, todoItems } from "../stores/crdtState";
+  import { syncState } from "../stores/syncState";
 
   export let live;
   export let serverState;
@@ -85,8 +86,11 @@
     $todoItems = latestState.value.todo;
     $completedItems = latestState.value.completed;
 
-    if (!latestState.meta.synced) {
+    if (latestState.meta.synced) {
+      $syncState = "Synced";
+    } else {
       live.pushEvent("client_state_updated", { clientState: latestState });
+      $syncState = "Not Synced";
     }
   }
 
