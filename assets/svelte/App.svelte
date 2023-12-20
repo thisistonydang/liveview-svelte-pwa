@@ -12,14 +12,7 @@
   export let live;
   export let currentUserEmail;
   export let isFallback = false;
-  export let serverState = {
-    meta: { synced: false },
-    timestamp: 0,
-    value: {
-      todo: [],
-      completed: [],
-    },
-  };
+  export let serverState;
 
   onMount(() => {
     requestAssetCaching(["/app", "/fallback"]);
