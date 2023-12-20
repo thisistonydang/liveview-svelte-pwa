@@ -1,3 +1,4 @@
+export { checkOnlineStatus } from "./lib/checkOnlineStatus";
 export { initOfflineSvelte } from "./lib/initOfflineSvelte";
 export { isClientStateRestored } from "./lib/isClientStateRestored";
 export { isOnline } from "./lib/isOnline";
