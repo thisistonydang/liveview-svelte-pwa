@@ -1,4 +1,6 @@
 <script context="module">
+  import { get } from "svelte/store";
+
   /** Save new state to localStorage and notify server. */
   export function syncClientToServer(todoItems, completedItems, live) {
     const newClientState = {
@@ -10,6 +12,16 @@
       },
     };
     localStorage.setItem(CLIENT_STATE_KEY, JSON.stringify(newClientState));
+
+    // Each time state is updated, let user know that sync to server is in
+    // progress. If the sync takes longer than 1 second, let user know that sync
+    // failed.
+    syncState.set("Syncing");
+    setTimeout(() => {
+      if (get(syncState) !== "Synced") {
+        syncState.set("Not Synced");
+      }
+    }, 1000);
 
     // Send new client state to server
     live.pushEvent("client_state_updated", { clientState: newClientState });
