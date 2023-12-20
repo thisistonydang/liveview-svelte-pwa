@@ -1,5 +1,4 @@
 <script>
-  import { fly } from "svelte/transition";
   import { isClientStateRestored, isOnline } from "../lib/offline-svelte";
 
   import { clickOutside } from "../hooks/clickOutside";
