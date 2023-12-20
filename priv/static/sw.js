@@ -222,12 +222,12 @@ async function handleRequestSkipWaiting(event) {
  * Check if the client is online.
  */
 async function checkOnlineStatus() {
-  if (!self.navigator.onLine) {
+  if (!sw.navigator.onLine) {
     return false;
   }
 
   try {
-    const url = new URL(self.location.origin); // Avoid CORS errors with request to your own origin.
+    const url = new URL(sw.location.origin); // Avoid CORS errors with request to your own origin.
     url.searchParams.set("rand", Date.now().toString()); // Prevents cached responses.
     const response = await fetch(url, { method: "HEAD" });
 
