@@ -2,7 +2,7 @@
   import { get } from "svelte/store";
 
   /** Save new state to localStorage and notify server. */
-  export function syncClientToServer(todoItems, completedItems, live) {
+  export function syncClientToServer(todoItems, completedItems, live, isFallback) {
     const newClientState = {
       meta: { synced: false },
       timestamp: Date.now(),
@@ -12,6 +12,9 @@
       },
     };
     localStorage.setItem(CLIENT_STATE_KEY, JSON.stringify(newClientState));
+
+    // Skip sync if websocket is not connected.
+    if (isFallback) return;
 
     // Each time state is updated, let user know that sync to server is in
     // progress. If the sync takes longer than 1 second, let user know that sync

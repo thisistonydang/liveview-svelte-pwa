@@ -28,7 +28,7 @@
   <Header {currentUserEmail} {live} />
 
   <div class="max-w-2xl mx-auto px-2 md:p-0">
-    <TodoApp {live} />
+    <TodoApp {live} {isFallback} />
   </div>
 {:else}
   <div class="hero min-h-screen">
