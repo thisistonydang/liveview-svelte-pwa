@@ -44,14 +44,6 @@
     <ul class="w-56">
       <li><button on:click={showSettings}>Settings</button></li>
       <li><button on:click={logOutUser}>Log out</button></li>
-      {:else}
-        <li class="w-full tooltip tooltip-bottom" data-tip="You must be online to view settings.">
-          <button class="w-full hover:cursor-not-allowed" disabled>Settings</button>
-        </li>
-        <li class="w-full tooltip tooltip-bottom" data-tip="You must be online to log out.">
-          <button class="w-full hover:cursor-not-allowed" disabled>Log out</button>
-        </li>
-      {/if}
     </ul>
   </div>
 </details>
