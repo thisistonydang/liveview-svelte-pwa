@@ -5,7 +5,7 @@
  */
 export function requestAssetCaching(assets) {
   navigator.serviceWorker?.controller?.postMessage({
-    type: "request_assets_caching",
+    type: "request_asset_caching",
     payload: {
       assets,
     },

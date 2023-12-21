@@ -169,7 +169,7 @@ function handleMessage(event) {
       event.waitUntil(handleRequestOnlineStatus(event));
       break;
 
-    case "request_assets_caching":
+    case "request_asset_caching":
       event.waitUntil(cacheAssets(event.data.payload.assets));
       break;
 
