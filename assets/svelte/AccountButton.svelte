@@ -42,9 +42,8 @@
     </p>
 
     <ul class="w-56">
-      {#if $connectionStatus === "Connected"}
-        <li><a href="/users/settings">Settings</a></li>
-        <li><button on:click={logOutUser}>Log out</button></li>
+      <li><button on:click={showSettings}>Settings</button></li>
+      <li><button on:click={logOutUser}>Log out</button></li>
       {:else}
         <li class="w-full tooltip tooltip-bottom" data-tip="You must be online to view settings.">
           <button class="w-full hover:cursor-not-allowed" disabled>Settings</button>
