@@ -117,6 +117,16 @@ function handleFetch(event) {
  * @param {Request} request
  */
 async function respond(request) {
+  // TODO: Investigate whether serving from cache first is needed for perf. Might not be needed.
+  // const url = new URL(request.url);
+  // const cache = await caches.open(CACHE_NAME);
+  // if ([...PUBLIC_ASSETS, "/app", "/fallback"].includes(url.pathname)) {
+  //   const response = await cache.match(url.pathname);
+  //   if (response) {
+  //     return response;
+  //   }
+  // }
+
   try {
     const response = await fetch(request, {
       signal: AbortSignal.timeout(500), // Timeout to prevent excessive wait time.
