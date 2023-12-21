@@ -1,11 +1,9 @@
 <script>
   import AccountButton from "./AccountButton.svelte";
-  import ConnectionStatusBadge from "./ConnectionStatusBadge.svelte";
   import SyncStatusBadge from "./SyncStatusBadge.svelte";
 
   export let currentUserEmail;
   export let live;
-  export let isFallback;
 
   let scrollY;
 </script>
@@ -17,10 +15,7 @@
   class:border-b={scrollY > 0}
 >
   <div class="max-w-2xl mx-auto px-2 md:p-0 flex justify-between items-center">
-    <div>
-      <ConnectionStatusBadge {isFallback} />
-      <SyncStatusBadge {live} />
-    </div>
+    <SyncStatusBadge {live} />
 
     <AccountButton {currentUserEmail} />
   </div>
