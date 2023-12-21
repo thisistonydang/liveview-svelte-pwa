@@ -1,5 +1,5 @@
 <script>
-  import { checkOnlineStatus, isOnline } from "lib/offline-svelte";
+  import { checkOnlineStatus, connectionStatus } from "lib/offline-svelte";
 
   import { todoItems, completedItems } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
@@ -15,7 +15,7 @@
     await checkOnlineStatus();
 
     // Handle clicks when online.
-    if ($isOnline) {
+    if ($connectionStatus === "Connected") {
       if ($syncState === "Synced") {
         // Delay checking so that the user knows that the click was registered.
         $syncState = "Syncing";
