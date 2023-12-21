@@ -1,7 +1,7 @@
 import { get } from "svelte/store";
 
-import { isOnline } from "./isOnline";
 import { isSvelteMounted } from "./isSvelteMounted";
+import { connectionStatus } from "./connectionStatus";
 import { pollIntervalId } from "./pollIntervalId";
 
 /**
@@ -16,11 +16,15 @@ import { pollIntervalId } from "./pollIntervalId";
 export function handleRequestOnlineStatusResponse({ event, liveViewPath, fallbackPath }) {
   const currentPath = window.location.pathname;
   const svelteMounted = isSvelteMounted();
-  isOnline.set(event.data.payload.isOnline);
+  connectionStatus.set(event.data.payload.isOnline ? "Connected" : "Disconnected");
 
-  if (currentPath === liveViewPath && !get(isOnline) && !svelteMounted) {
+  if (currentPath === liveViewPath && get(connectionStatus) === "Disconnected" && !svelteMounted) {
     window.location.replace(fallbackPath);
-  } else if (currentPath !== liveViewPath && get(isOnline) && svelteMounted) {
+  } else if (
+    currentPath !== liveViewPath &&
+    get(connectionStatus) === "Connected" &&
+    svelteMounted
+  ) {
     // Clear polling interval.
     const intervalId = get(pollIntervalId);
     if (intervalId) {
