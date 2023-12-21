@@ -13,7 +13,16 @@
 
   export let currentUserEmail;
 
-  function logOutUser() {
+  async function logOutUser() {
+    await checkOnlineStatus();
+
+    // TODO: Create alert component.
+    if ($connectionStatus !== "Connected") {
+      alert("You must be online to log out.");
+      return;
+    }
+
+    requestAssetDeletion(["/app", "/fallback"]); // Clear cached assets.
     $isClientStateRestored = false; // This stops client state from being saved to localStorage.
     localStorage.clear(); // Clear client state.
 
@@ -24,6 +33,19 @@
       console.error(error);
       alert("Error logging out. Please try again.");
     }
+  }
+
+  async function showSettings() {
+    await checkOnlineStatus();
+
+    // TODO: Create alert component.
+    if ($connectionStatus !== "Connected") {
+      alert("You must be online to view settings.");
+      return;
+    }
+
+    $isAccountMenuOpened = false;
+    window.location.href = "/users/settings";
   }
 </script>
 
