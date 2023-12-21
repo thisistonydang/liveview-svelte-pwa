@@ -35,6 +35,19 @@ function handleInstall(event) {
 }
 
 /**
+ * Delete cached assets.
+ * 
+ * @param {string[]} assets - Array of assets to delete from cache.
+ */
+async function deleteCacheAssets(assets) {
+  const cache = await caches.open(CACHE_NAME);
+  assets.forEach(async (urlPath) => {
+    await cache.delete(urlPath);
+  })
+  DEBUG && console.log("[Service Worker] Deleted cached assets.", assets);
+}
+
+/**
  * Cache assets.
  * 
  * @param {string[]} assets - Array of assets to cache.
