@@ -19,7 +19,7 @@
   <div class="max-w-2xl mx-auto px-2 md:p-0 flex justify-between items-center">
     <div>
       <ConnectionStatusBadge {isFallback} />
-      <SyncStatusBadge {live} {isFallback} />
+      <SyncStatusBadge {live} />
     </div>
 
     <AccountButton {currentUserEmail} />
