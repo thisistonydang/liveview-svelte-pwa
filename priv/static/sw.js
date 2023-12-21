@@ -215,7 +215,7 @@ async function handleRequestOnlineStatus(event) {
     },
   };
 
-  event.source.postMessage(message);
+  event.source?.postMessage(message);
 }
 
 /**
@@ -230,7 +230,7 @@ async function handleRequestSkipWaiting(event) {
     type: event.data.type,
   };
 
-  event.source.postMessage(message);
+  event.source?.postMessage(message);
 }
 
 // Helpers _________________________________________________________________________________________
