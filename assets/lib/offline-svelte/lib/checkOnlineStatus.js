@@ -1,7 +1,7 @@
 import { connectionStatus } from "./connectionStatus";
 
 /**
- * Check if the client is online and set isOnline store.
+ * Check if the client is online and set connectionStatus store.
  */
 export async function checkOnlineStatus() {
   if (!window.navigator.onLine) {
