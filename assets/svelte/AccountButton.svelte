@@ -1,5 +1,5 @@
 <script>
-  import { isClientStateRestored, isOnline } from "../lib/offline-svelte";
+  import { isClientStateRestored, connectionStatus } from "../lib/offline-svelte";
 
   import { clickOutside } from "../hooks/clickOutside";
   import { isAccountMenuOpened } from "../stores/clientOnlyState";
@@ -37,7 +37,7 @@
     </p>
 
     <ul class="w-56">
-      {#if $isOnline}
+      {#if $connectionStatus === "Connected"}
         <li><a href="/users/settings">Settings</a></li>
         <li><button on:click={logOutUser}>Log out</button></li>
       {:else}
