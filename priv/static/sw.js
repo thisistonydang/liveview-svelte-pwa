@@ -118,7 +118,9 @@ function handleFetch(event) {
  */
 async function respond(request) {
   try {
-    const response = await fetch(request);
+    const response = await fetch(request, {
+      signal: AbortSignal.timeout(500), // Timeout to prevent excessive wait time.
+    });
 
     // If offline, fetch can return a value that is not a Response instead of
     // throwing and the non-Response can't be passed to respondWith.
