@@ -1,5 +1,10 @@
 <script>
-  import { isClientStateRestored, connectionStatus } from "../lib/offline-svelte";
+  import {
+    connectionStatus,
+    checkOnlineStatus,
+    isClientStateRestored,
+    requestAssetDeletion,
+  } from "../lib/offline-svelte";
 
   import { clickOutside } from "../hooks/clickOutside";
   import { isAccountMenuOpened } from "../stores/clientOnlyState";
