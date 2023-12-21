@@ -165,16 +165,16 @@ function handleMessage(event) {
   DEBUG && console.log("[Service Worker] Handling message...", event.data);
 
   switch (event.data.type) {
-    case "request_online_status":
-      event.waitUntil(handleRequestOnlineStatus(event));
-      break;
-
     case "request_asset_caching":
       event.waitUntil(cacheAssets(event.data.payload.assets));
       break;
 
     case "request_asset_deletion":
       event.waitUntil(deleteCacheAssets(event.data.payload.assets));
+      break;
+
+    case "request_online_status":
+      event.waitUntil(handleRequestOnlineStatus(event));
       break;
 
     case "request_skip_waiting":
