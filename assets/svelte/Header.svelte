@@ -5,6 +5,7 @@
 
   export let currentUserEmail;
   export let live;
+  export let isFallback;
 
   let scrollY;
 </script>
@@ -17,8 +18,8 @@
 >
   <div class="max-w-2xl mx-auto px-2 md:p-0 flex justify-between items-center">
     <div>
-      <ConnectionStatusBadge />
-      <SyncStatusBadge {live} />
+      <ConnectionStatusBadge {isFallback} />
+      <SyncStatusBadge {live} {isFallback} />
     </div>
 
     <AccountButton {currentUserEmail} />
