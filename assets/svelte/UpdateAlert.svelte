@@ -1,12 +1,16 @@
 <script>
   import { fly } from "svelte/transition";
-  import { isOnline, isSWUpdateAvailable, isSWUpdateConfirmed } from "../lib/offline-svelte";
+  import {
+    connectionStatus,
+    isSWUpdateAvailable,
+    isSWUpdateConfirmed,
+  } from "../lib/offline-svelte";
 
   let isDismissed = false;
   let width;
 </script>
 
-{#if $isOnline && $isSWUpdateAvailable && !isDismissed}
+{#if $connectionStatus === "Connected" && $isSWUpdateAvailable && !isDismissed}
   <div
     transition:fly={{ y: -100, duration: 750 }}
     bind:clientWidth={width}
