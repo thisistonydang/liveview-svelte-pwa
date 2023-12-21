@@ -558,7 +558,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CoreComponents do
 
   def back(assigns) do
     ~H"""
-    <div class="mt-16">
+    <div class="mt-4">
       <.link navigate={@navigate} class="link link-accent no-underline text-sm font-semibold">
         <.icon name="hero-arrow-left-solid" class="h-3 w-3" />
         <%= render_slot(@inner_block) %>
