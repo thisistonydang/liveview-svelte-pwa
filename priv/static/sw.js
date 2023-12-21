@@ -173,6 +173,10 @@ function handleMessage(event) {
       event.waitUntil(cacheAssets(event.data.payload.assets));
       break;
 
+    case "request_asset_deletion":
+      event.waitUntil(deleteCacheAssets(event.data.payload.assets));
+      break;
+
     case "request_skip_waiting":
       event.waitUntil(handleRequestSkipWaiting(event));
       break;
