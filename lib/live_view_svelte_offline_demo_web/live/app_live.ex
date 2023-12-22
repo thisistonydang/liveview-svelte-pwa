@@ -69,7 +69,13 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
     {:noreply, socket}
   end
 
-  # Helpers ________________________________________________________________________________________
+  def handle_info(%{event: "presence_diff"}, socket) do
+    socket = socket |> assign(num_sessions: get_num_sessions(socket))
+
+    {:noreply, socket}
+  end
+
+  # State Syncing Helpers __________________________________________________________________________
 
   defp add_synced_timestamp(state) do
     Map.put(
