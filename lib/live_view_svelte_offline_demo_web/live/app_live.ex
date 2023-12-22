@@ -42,7 +42,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
   # Event Handlers _________________________________________________________________________________
 
-  # TODO: Do this on mount instead?
+  @doc """
+  Only allow the client to request the server state after socket is connected to
+  avoid caching user data in service worker cache.
+  """
   def handle_event("request_server_state", _params, socket) do
     socket = socket |> assign(server_state: get_server_state(socket))
 
