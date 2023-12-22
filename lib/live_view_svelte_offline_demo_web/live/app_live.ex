@@ -12,8 +12,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
       socket
       |> assign(server_state: UserStates.initial_server_state())
       |> assign(svelte_opts: %{ssr: false})
+      |> assign(hide_socket_flash_messages: true)
 
-    {:ok, socket}
+    {:ok, socket, layout: {LiveViewSvelteOfflineDemoWeb.Layouts, :spa}}
   end
 
   # Render Component _______________________________________________________________________________
