@@ -1,6 +1,7 @@
 defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
   use LiveViewSvelteOfflineDemoWeb, :live_view
 
+  alias LiveViewSvelteOfflineDemoWeb.Presence
   alias LiveViewSvelteOfflineDemo.UserStates
 
   # Load Data ______________________________________________________________________________________
