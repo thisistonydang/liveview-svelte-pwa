@@ -134,4 +134,12 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
   # Returns the presence topic for a given user_id.
   defp presence_topic(user_id), do: "presence:user_id:#{user_id}"
+
+  @doc """
+  Track the presence of the current user in the socket.
+  """
+  def track_user_presence(socket) do
+    %{id: user_id} = socket.assigns.current_user
+    Presence.track(self(), presence_topic(user_id), user_id, %{})
+  end
 end
