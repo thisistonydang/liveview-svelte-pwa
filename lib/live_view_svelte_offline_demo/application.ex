@@ -14,6 +14,7 @@ defmodule LiveViewSvelteOfflineDemo.Application do
       {DNSCluster,
        query: Application.get_env(:live_view_svelte_offline_demo, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: LiveViewSvelteOfflineDemo.PubSub},
+      LiveViewSvelteOfflineDemoWeb.Presence,
       # Start the Finch HTTP client for sending emails
       {Finch, name: LiveViewSvelteOfflineDemo.Finch},
       # Start a worker by calling: LiveViewSvelteOfflineDemo.Worker.start_link(arg)
