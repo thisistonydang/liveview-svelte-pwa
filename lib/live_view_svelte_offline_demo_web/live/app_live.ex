@@ -7,7 +7,16 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
   # Load Data ______________________________________________________________________________________
 
   def mount(_params, _session, socket) do
-    if connected?(socket), do: UserStates.subscribe(socket.assigns.current_user.id)
+    %{id: user_id} = socket.assigns.current_user
+
+    if connected?(socket) do
+      # Subscribe to user state updates.
+      UserStates.subscribe(user_id)
+
+      # Track and subscribe to presence updates for the user.
+      Presence.track(self(), presence_topic(user_id), user_id, %{})
+      Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, presence_topic(user_id))
+    end
 
     socket =
       socket
