@@ -1,9 +1,11 @@
 <script>
   import AccountButton from "./AccountButton.svelte";
+  import SessionsBadge from "./SessionsBadge.svelte";
   import SyncStatusBadge from "./SyncStatusBadge.svelte";
 
   export let currentUserEmail;
   export let live;
+  export let numSessions;
 
   let scrollY;
 </script>
@@ -15,7 +17,10 @@
   class:border-b={scrollY > 0}
 >
   <div class="max-w-2xl mx-auto px-2 md:p-0 flex justify-between items-center">
-    <SyncStatusBadge {live} />
+    <div>
+      <SyncStatusBadge {live} />
+      <SessionsBadge {numSessions} />
+    </div>
 
     <AccountButton {currentUserEmail} />
   </div>
