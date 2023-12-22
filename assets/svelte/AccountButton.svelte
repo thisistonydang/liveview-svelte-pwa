@@ -13,12 +13,17 @@
 
   export let currentUserEmail;
 
+  let isLogOutLoading = false;
+  let isSettingsLoading = false;
+
   async function logOutUser() {
+    isLogOutLoading = true;
     await checkOnlineStatus();
 
     // TODO: Create alert component.
     if ($connectionStatus !== "Connected") {
       alert("You must be online to log out.");
+      isLogOutLoading = false;
       return;
     }
 
@@ -36,11 +41,13 @@
   }
 
   async function showSettings() {
+    isSettingsLoading = true;
     await checkOnlineStatus();
 
     // TODO: Create alert component.
     if ($connectionStatus !== "Connected") {
       alert("You must be online to view settings.");
+      isSettingsLoading = false;
       return;
     }
 
@@ -64,8 +71,18 @@
     </p>
 
     <ul class="w-56">
-      <li><button on:click={showSettings}>Settings</button></li>
-      <li><button on:click={logOutUser}>Log out</button></li>
+      <li>
+        <button on:click={showSettings}>
+          Settings
+          <span class="loading loading-dots loading-xs" class:hidden={!isSettingsLoading}></span>
+        </button>
+      </li>
+      <li>
+        <button on:click={logOutUser}>
+          Log out
+          <span class="loading loading-dots loading-xs" class:hidden={!isLogOutLoading}></span>
+        </button>
+      </li>
     </ul>
   </div>
 </details>
