@@ -99,4 +99,25 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
       error -> error
     end
   end
+
+  # Presence Helpers _______________________________________________________________________________
+
+  # Returns the number of sessions for the current user in the socket.
+  defp get_num_sessions(socket) do
+    %{id: user_id} = socket.assigns.current_user
+    presences = Presence.list(presence_topic(user_id))
+    user_id_as_string = to_string(user_id)
+
+    case Map.has_key?(presences, user_id_as_string) do
+      true ->
+        %{^user_id_as_string => %{metas: metas}} = presences
+        length(metas)
+
+      _ ->
+        0
+    end
+  end
+
+  # Returns the presence topic for a given user_id.
+  defp presence_topic(user_id), do: "presence:user_id:#{user_id}"
 end
