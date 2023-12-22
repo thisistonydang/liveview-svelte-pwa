@@ -100,7 +100,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
     end
   end
 
-  # Presence Helpers _______________________________________________________________________________
+  # Session Tracking Helpers _______________________________________________________________________
 
   # Returns the number of sessions for the current user in the socket.
   defp get_num_sessions(socket) do
