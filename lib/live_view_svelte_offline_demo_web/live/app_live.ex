@@ -14,7 +14,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
       UserStates.subscribe(user_id)
 
       # Track and subscribe to presence updates for the user.
-      Presence.track(self(), presence_topic(user_id), user_id, %{})
+      track_user_presence(socket)
       Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, presence_topic(user_id))
     end
 
