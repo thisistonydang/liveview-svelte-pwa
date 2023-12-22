@@ -23,6 +23,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
       |> assign(server_state: UserStates.initial_server_state())
       |> assign(svelte_opts: %{ssr: false})
       |> assign(hide_socket_flash_messages: true)
+      |> assign(num_sessions: get_num_sessions(socket))
 
     {:ok, socket, layout: {LiveViewSvelteOfflineDemoWeb.Layouts, :spa}}
   end
@@ -31,7 +32,11 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
   def render(assigns) do
     ~H"""
-    <.App currentUserEmail={@current_user.email} serverState={@server_state} />
+    <.App
+      currentUserEmail={@current_user.email}
+      serverState={@server_state}
+      numSessions={@num_sessions}
+    />
     """
   end
 
