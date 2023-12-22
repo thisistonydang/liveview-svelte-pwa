@@ -102,7 +102,9 @@ defmodule LiveViewSvelteOfflineDemoWeb do
       # Core UI components and translation
       import LiveViewSvelteOfflineDemoWeb.CoreComponents
       import LiveViewSvelteOfflineDemoWeb.Gettext
-      # Include LiveSvelte Components
+      # Include custom components
+      import LiveViewSvelteOfflineDemoWeb.CustomComponents
+      # Include LiveSvelte components
       use LiveSvelte.Components
 
       # Shortcut for generating JS commands
