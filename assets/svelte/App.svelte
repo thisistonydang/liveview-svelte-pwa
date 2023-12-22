@@ -13,6 +13,7 @@
   export let currentUserEmail;
   export let isFallback = false;
   export let serverState;
+  export let numSessions = undefined;
 
   onMount(() => {
     requestAssetCaching(["/app", "/fallback"]);
@@ -25,7 +26,7 @@
 
 {#if $isClientStateRestored}
   <UpdateAlert />
-  <Header {currentUserEmail} {live} />
+  <Header {currentUserEmail} {live} {numSessions} />
 
   <div class="max-w-2xl mx-auto px-2 md:p-0">
     <TodoApp {live} />
