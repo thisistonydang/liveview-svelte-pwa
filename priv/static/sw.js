@@ -4,7 +4,7 @@
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
 
 import config from "./sw.config.js";
-const { cacheName, debug, privateAssets, publicAssets } = config; 
+const { cacheName, debug, dev, privateAssets, publicAssets } = config; 
 
 // Install _________________________________________________________________________________________
 
@@ -103,13 +103,15 @@ function handleFetch(event) {
  * @param {Request} request
  */
 async function respond(request) {
-  // Trying serving from cache first if available.
-  const url = new URL(request.url);
-  const cache = await caches.open(cacheName);
-  if ([...privateAssets, ...publicAssets].includes(url.pathname)) {
-    const response = await cache.match(url.pathname);
-    if (response) {
-      return response;
+  // When not in dev, try serving from cache first if available.
+  if (!dev) {
+    const url = new URL(request.url);
+    const cache = await caches.open(cacheName);
+    if ([...privateAssets, ...publicAssets].includes(url.pathname)) {
+      const response = await cache.match(url.pathname);
+      if (response) {
+        return response;
+      }
     }
   }
 
