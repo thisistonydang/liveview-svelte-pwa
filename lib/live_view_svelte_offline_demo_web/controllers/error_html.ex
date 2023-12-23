@@ -4,7 +4,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.ErrorHTML do
   def render("404.html", assigns) do
     ~H"""
     <.root_html>
-      <.error_layout title="404 - Whoops, page not found..." />
+      <.ErrorLayout title="404 - Whoops, page not found..." linkTo={~p"/"} linkText="Return home" />
     </.root_html>
     """
   end
@@ -12,7 +12,11 @@ defmodule LiveViewSvelteOfflineDemoWeb.ErrorHTML do
   def render("500.html", assigns) do
     ~H"""
     <.root_html>
-      <.error_layout title="500 - Whoops, an unknown error has occurred..." />
+      <.ErrorLayout
+        title="500 - Whoops, an unknown error has occurred..."
+        linkTo={~p"/"}
+        linkText="Return home"
+      />
     </.root_html>
     """
   end
@@ -22,21 +26,5 @@ defmodule LiveViewSvelteOfflineDemoWeb.ErrorHTML do
   # "Not Found".
   def render(template, _assigns) do
     Phoenix.Controller.status_message_from_template(template)
-  end
-
-  defp error_layout(assigns) do
-    ~H"""
-    <div class="hero min-h-screen">
-      <div class="hero-content text-center">
-        <div class="max-w-md">
-          <div class="my-20 text-8xl">(◑_◑)</div>
-          <h1 class="text-lg my-3"><%= @title %></h1>
-          <a class="link link-accent underline-offset-4 hover:no-underline" href="/">
-            &larr; Return home
-          </a>
-        </div>
-      </div>
-    </div>
-    """
   end
 end
