@@ -157,10 +157,15 @@ async function getCachedResponse(request) {
     debug && console.log("[Service Worker] Using cached response.", cachedResponse);
     return cachedResponse;
   }
-
-  // If no cached response, show /offline fallback if available else return 404 response.
-  debug && console.log("[Service Worker] No cached response. Using fallback.");
-  return await caches.match(new Request("/offline")) || new Response('You are currently offline.', { status: 404 });
+  
+  // If no cached response, show /offline fallback if available else return 503 response.
+  debug && console.log("[Service Worker] No cached response. Showing /offline page if available.");
+  return (
+    await caches.match(new Request("/offline")) || 
+    new Response("You are currently offline. Please try refreshing once you're connected again.", { 
+      status: 503 
+    })
+  );
 }
 
 // Message _________________________________________________________________________________________
