@@ -3,7 +3,7 @@
   import { isClientStateRestored, requestAssetCaching } from "../lib/offline-svelte";
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
-  import { PRIVATE_ASSETS } from "../constants";
+  import config from "../../priv/static/sw.config.js";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
@@ -17,7 +17,7 @@
   export let numSessions = undefined;
 
   onMount(() => {
-    requestAssetCaching(PRIVATE_ASSETS);
+    requestAssetCaching(config.privateAssets);
   });
 </script>
 

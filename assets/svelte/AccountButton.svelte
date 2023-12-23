@@ -6,7 +6,7 @@
     requestAssetDeletion,
   } from "../lib/offline-svelte";
 
-  import { PRIVATE_ASSETS } from "../constants";
+  import config from "../../priv/static/sw.config.js";
   import { clickOutside } from "../hooks/clickOutside";
   import { isAccountMenuOpened } from "../stores/clientOnlyState";
 
@@ -28,7 +28,7 @@
       return;
     }
 
-    requestAssetDeletion(PRIVATE_ASSETS); // Clear cached assets.
+    requestAssetDeletion(config.privateAssets); // Clear cached assets.
     $isClientStateRestored = false; // This stops client state from being saved to localStorage.
     localStorage.clear(); // Clear client state.
 
