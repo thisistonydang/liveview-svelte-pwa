@@ -53,7 +53,7 @@
     }
 
     $isAccountMenuOpened = false;
-    window.location.href = "/users/settings";
+    window.location.replace("/users/settings");
   }
 </script>
 
