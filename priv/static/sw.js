@@ -3,22 +3,8 @@
 /// <reference lib="webworker" />
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
 
-const CACHE_NAME = "2023-12-19v21";
-const DEBUG = false;
-const PUBLIC_ASSETS = [
-  "/assets/app.css",
-  "/assets/app.js",
-  "/favicon.ico",
-  "/android-chrome-192x192.png",
-  "/android-chrome-512x512.png",
-  "/apple-touch-icon.png",
-  "/browserconfig.xml",
-  "/favicon-16x16.png",
-  "/favicon-32x32.png",
-  "/mstile-150x150.png",
-  "/safari-pinned-tab.svg",
-  "/site.webmanifest",
-]
+import config from "./sw.config.js";
+const { cacheName, debug, privateAssets, publicAssets } = config; 
 
 // Install _________________________________________________________________________________________
 
@@ -30,8 +16,8 @@ sw.addEventListener("install", handleInstall);
  * @param {ExtendableEvent} event
  */
 function handleInstall(event) {
-  DEBUG && console.log("[Service Worker] Installed.");
-  event.waitUntil(cacheAssets(PUBLIC_ASSETS));
+  debug && console.log("[Service Worker] Installed.");
+  event.waitUntil(cacheAssets(publicAssets));
 }
 
 /**
@@ -40,11 +26,11 @@ function handleInstall(event) {
  * @param {string[]} assets - Array of assets to delete from cache.
  */
 async function deleteCacheAssets(assets) {
-  const cache = await caches.open(CACHE_NAME);
+  const cache = await caches.open(cacheName);
   assets.forEach(async (urlPath) => {
     await cache.delete(urlPath);
   })
-  DEBUG && console.log("[Service Worker] Deleted cached assets.", assets);
+  debug && console.log("[Service Worker] Deleted cached assets.", assets);
 }
 
 /**
@@ -57,9 +43,9 @@ async function cacheAssets(assets) {
   if (!isOnline) return; // Don't try caching if not online.
 
   try {
-    const cache = await caches.open(CACHE_NAME);
+    const cache = await caches.open(cacheName);
     await cache.addAll(assets);
-    DEBUG && console.log("[Service Worker] Cached assets.", assets);
+    debug && console.log("[Service Worker] Cached assets.", assets);
   } catch (error) {
     console.error("[Service Worker] Unable to cache assets.", error);
   }
@@ -75,7 +61,7 @@ sw.addEventListener("activate", handleActivate);
  * @param {ExtendableEvent} event
  */
 function handleActivate(event) {
-  DEBUG && console.log("[Service Worker] Activated.");
+  debug && console.log("[Service Worker] Activated.");
   event.waitUntil(deleteOldCaches());
 }
 
@@ -84,8 +70,8 @@ function handleActivate(event) {
  */
 async function deleteOldCaches() {
   for (const key of await caches.keys()) {
-    if (key !== CACHE_NAME) {
-      DEBUG && console.log(`[Service Worker] Deleting Old Cache: VERSION ${key}`);
+    if (key !== cacheName) {
+      debug && console.log(`[Service Worker] Deleting Old Cache: VERSION ${key}`);
       await caches.delete(key);
     } 
   }
@@ -107,7 +93,7 @@ function handleFetch(event) {
   const url = new URL(event.request.url);
   if (url.pathname === '/phoenix/live_reload/frame') return; 
 
-  DEBUG && console.log("[Service Worker] Handling fetch...");
+  debug && console.log("[Service Worker] Handling fetch...");
   event.respondWith(respond(event.request));
 }
 
@@ -119,8 +105,8 @@ function handleFetch(event) {
 async function respond(request) {
   // TODO: Investigate whether serving from cache first is needed for perf. Might not be needed.
   // const url = new URL(request.url);
-  // const cache = await caches.open(CACHE_NAME);
-  // if ([...PUBLIC_ASSETS, "/app", "/fallback"].includes(url.pathname)) {
+  // const cache = await caches.open(cacheName);
+  // if ([...publicAssets, ...privateAssets].includes(url.pathname)) {
   //   const response = await cache.match(url.pathname);
   //   if (response) {
   //     return response;
@@ -140,7 +126,7 @@ async function respond(request) {
 
     return response;
   } catch (error) {
-    DEBUG && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
+    debug && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
     return await getCachedResponse(request);
   }
 }
@@ -153,10 +139,10 @@ async function respond(request) {
  * @returns {Promise<void>}
  */
 async function cacheResponse(request, response) {
-  const cache = await caches.open(CACHE_NAME);
+  const cache = await caches.open(cacheName);
   // TODO: Store by request URL instead of request object?
   await cache.put(request, response); // TODO: Is this await necessary?
-  DEBUG && console.log(`[Service Worker] Cached ${request.url}`);
+  debug && console.log(`[Service Worker] Cached ${request.url}`);
 }
 
 /**
@@ -168,13 +154,13 @@ async function getCachedResponse(request) {
   const cachedResponse = await caches.match(request);
 
   if (cachedResponse) {
-    DEBUG && console.log("[Service Worker] Using cached response.", cachedResponse);
+    debug && console.log("[Service Worker] Using cached response.", cachedResponse);
     return cachedResponse;
   }
 
-  // If no cached response, always return user to /fallback route.
-  DEBUG && console.log("[Service Worker] No cached response. Using fallback.");
-  return await caches.match(new Request("/fallback"));
+  // If no cached response, show /offline fallback if available else return 404 response.
+  debug && console.log("[Service Worker] No cached response. Using fallback.");
+  return await caches.match(new Request("/offline")) || new Response('You are currently offline.', { status: 404 });
 }
 
 // Message _________________________________________________________________________________________
@@ -187,7 +173,7 @@ sw.addEventListener("message", handleMessage);
  * @param {ExtendableMessageEvent} event
  */
 function handleMessage(event) {
-  DEBUG && console.log("[Service Worker] Handling message...", event.data);
+  debug && console.log("[Service Worker] Handling message...", event.data);
 
   switch (event.data.type) {
     case "request_asset_caching":
