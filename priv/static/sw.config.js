@@ -1,5 +1,5 @@
 export default {
-  cacheName: "2023-12-20v24",
+  cacheName: "2023-12-20v26",
   debug: false,
   serveFromCacheFirst: true,
   privateAssets: [
