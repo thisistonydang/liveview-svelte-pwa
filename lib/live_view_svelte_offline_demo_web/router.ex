@@ -71,6 +71,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
     end
 
     get "/fallback", FallbackController, :index
+    get "/offline", OfflineController, :index
   end
 
   scope "/", LiveViewSvelteOfflineDemoWeb do
