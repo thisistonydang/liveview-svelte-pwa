@@ -7,28 +7,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
     router: LiveViewSvelteOfflineDemoWeb.Router,
     statics: LiveViewSvelteOfflineDemoWeb.static_paths()
 
-  attr :title, :string, required: true
-  slot :inner_block, default: ""
-  attr :link_to, :string, required: true
-  attr :link_text, :string, required: true
-
-  def error_layout(assigns) do
-    ~H"""
-    <div class="hero min-h-screen">
-      <div class="hero-content text-center">
-        <div class="max-w-md">
-          <div class="my-20 text-8xl">(◑_◑)</div>
-          <h1 class="text-xl font-bold my-3"><%= @title %></h1>
-          <%= render_slot(@inner_block) %>
-          <.link href={@link_to} class="btn btn-accent my-2 uppercase">
-            <%= @link_text %>
-          </.link>
-        </div>
-      </div>
-    </div>
-    """
-  end
-
   slot :inner_block, required: true
 
   def root_html(assigns) do
