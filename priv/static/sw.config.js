@@ -1,6 +1,7 @@
 export default {
-  cacheName: "2023-12-20v20",
+  cacheName: "2023-12-20v24",
   debug: false,
+  dev: false,
   privateAssets: [
     "/app", 
     "/fallback"
