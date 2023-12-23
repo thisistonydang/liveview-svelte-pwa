@@ -19,6 +19,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
 
   scope "/", LiveViewSvelteOfflineDemoWeb do
     pipe_through :browser
+    get "/offline", OfflineController, :index
   end
 
   # Other scopes may use custom stacks.
@@ -71,7 +72,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
     end
 
     get "/fallback", FallbackController, :index
-    get "/offline", OfflineController, :index
   end
 
   scope "/", LiveViewSvelteOfflineDemoWeb do
