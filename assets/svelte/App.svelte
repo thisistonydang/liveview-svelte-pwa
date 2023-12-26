@@ -12,7 +12,6 @@
 
   export let live;
   export let currentUserEmail;
-  export let isFallback = false;
   export let serverState;
   export let numSessions = undefined;
 
@@ -23,7 +22,7 @@
 
 <StateManagement {live} {serverState} />
 <ClientOnlyStateManagement />
-<OfflineSvelte {isFallback} />
+<OfflineSvelte />
 
 {#if $isClientStateRestored}
   <UpdateAlert />
