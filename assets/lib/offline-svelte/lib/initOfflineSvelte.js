@@ -23,7 +23,4 @@ export function initOfflineSvelte(
 ) {
   registerServiceWorker(serviceWorkerPath);
   initViewSwapping({ liveSocket, liveViewPath, fallbackPath });
-
-  // Request online status from service worker on startup.
-  requestOnlineStatus();
 }
