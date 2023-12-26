@@ -4,10 +4,9 @@
 
   import { isCompletedOpened, isTodoOpened } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";
+  import { liveView } from "../stores/liveView";
 
   import { syncClientToServer } from "./StateManagement.svelte";
-
-  export let live;
 
   const [send, receive] = crossfade({ fallback: scale });
   let error = "";
@@ -22,24 +21,24 @@
     }
     $todoItems = [{ id: crypto.randomUUID(), name: newTodo }, ...$todoItems];
     newTodo = "";
-    syncClientToServer($todoItems, $completedItems, live);
+    syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
   function deleteItem(item) {
     $completedItems = $completedItems.filter((i) => i.id !== item.id);
-    syncClientToServer($todoItems, $completedItems, live);
+    syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
   function checkItem(item) {
     $todoItems = $todoItems.filter((i) => i.id !== item.id);
     $completedItems = [item, ...$completedItems];
-    syncClientToServer($todoItems, $completedItems, live);
+    syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
   function uncheckItem(item) {
     $completedItems = $completedItems.filter((i) => i.id !== item.id);
     $todoItems = [item, ...$todoItems];
-    syncClientToServer($todoItems, $completedItems, live);
+    syncClientToServer($todoItems, $completedItems, $liveView);
   }
 </script>
 
