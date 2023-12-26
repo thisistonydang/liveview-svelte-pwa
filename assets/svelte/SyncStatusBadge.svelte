@@ -2,14 +2,13 @@
   import { checkOnlineStatus, connectionStatus } from "lib/offline-svelte";
 
   import { todoItems, completedItems } from "../stores/crdtState";
+  import { liveView } from "../stores/liveView";
   import { syncState } from "../stores/syncState";
 
   import { syncClientToServer } from "./StateManagement.svelte";
   import RefreshingSvgIcon from "./RefreshingSvgIcon.svelte";
   import SuccessSvgIcon from "./SuccessSvgIcon.svelte";
   import WarningSvgIcon from "./WarningSvgIcon.svelte";
-
-  export let live;
 
   async function checkIfSynced() {
     await checkOnlineStatus();
@@ -19,9 +18,9 @@
       if ($syncState === "Synced") {
         // Delay checking so that the user knows that the click was registered.
         $syncState = "Syncing";
-        setTimeout(() => syncClientToServer($todoItems, $completedItems, live), 250);
+        setTimeout(() => syncClientToServer($todoItems, $completedItems, $liveView), 250);
       } else {
-        syncClientToServer($todoItems, $completedItems, live);
+        syncClientToServer($todoItems, $completedItems, $liveView);
       }
       return;
     }
@@ -32,7 +31,7 @@
       $syncState = "Syncing";
       setTimeout(() => ($syncState = "Synced"), 250);
     } else {
-      syncClientToServer($todoItems, $completedItems, live);
+      syncClientToServer($todoItems, $completedItems, $liveView);
     }
   }
 </script>
