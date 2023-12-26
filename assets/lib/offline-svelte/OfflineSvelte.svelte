@@ -2,11 +2,9 @@
   import { onMount } from "svelte";
 
   import { OFFLINE_SVELTE_DIV_ID } from "./lib/constants";
-  import OnlineStatusPoller from "./components/OnlineStatusPoller.svelte";
   import ScrollPositionRestorer from "./components/ScrollPositionRestorer.svelte";
   import ServiceWorkerUpdater from "./components/ServiceWorkerUpdater.svelte";
 
-  export let isFallback;
   export let scrollPositionKey = "scrollPosition";
 
   let mounted;
@@ -26,7 +24,3 @@ determine if the Svelte app has mounted. -->
 
 <ScrollPositionRestorer {scrollPositionKey} />
 <ServiceWorkerUpdater />
-
-{#if isFallback}
-  <OnlineStatusPoller />
-{/if}
