@@ -19,7 +19,5 @@ export function initViewSwapping({ liveSocket, ...options }) {
   liveSocket.socket.onError(requestOnlineStatus);
 
   // Listen for messages from service worker.
-  navigator.serviceWorker?.addEventListener("message", (event) =>
-    handleMessage({ event, ...options }),
-  );
+  navigator.serviceWorker?.addEventListener("message", handleMessage);
 }
