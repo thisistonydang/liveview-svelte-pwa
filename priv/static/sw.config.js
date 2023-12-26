@@ -4,7 +4,6 @@ export default {
   serveFromCacheFirst: true,
   privateAssets: [
     "/app", 
-    "/fallback"
   ],
   publicAssets: [
     "/assets/app.css",
