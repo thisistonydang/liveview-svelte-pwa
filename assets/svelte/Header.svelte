@@ -4,7 +4,6 @@
   import SyncStatusBadge from "./SyncStatusBadge.svelte";
 
   export let currentUserEmail;
-  export let live;
 
   let scrollY;
 </script>
@@ -17,7 +16,7 @@
 >
   <div class="max-w-2xl mx-auto px-2 md:p-0 flex justify-between items-center">
     <div>
-      <SyncStatusBadge {live} />
+      <SyncStatusBadge />
       <SessionsBadge />
     </div>
 
