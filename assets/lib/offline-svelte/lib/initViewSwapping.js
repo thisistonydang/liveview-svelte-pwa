@@ -6,11 +6,9 @@ import { requestOnlineStatus } from "./requestOnlineStatus";
  *
  * @param {{
  *   liveSocket: * // TODO: Add type.
- *   liveViewPath: string,
- *   fallbackPath: string,
  * }} options
  */
-export function initViewSwapping({ liveSocket, ...options }) {
+export function initViewSwapping({ liveSocket }) {
   // Request online status from service worker on connectivity changes.
   window.addEventListener("online", requestOnlineStatus);
   window.addEventListener("offline", requestOnlineStatus);
