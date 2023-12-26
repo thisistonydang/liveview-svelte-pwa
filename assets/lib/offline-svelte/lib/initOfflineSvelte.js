@@ -2,7 +2,6 @@ import { LiveSocket } from "phoenix_live_view";
 
 import { initViewSwapping } from "./initViewSwapping";
 import { registerServiceWorker } from "./registerServiceWorker";
-import { requestOnlineStatus } from "./requestOnlineStatus";
 
 /**
  * Initialize offline Svelte functionality.
