@@ -1,18 +1,14 @@
-import { handleRequestOnlineStatusResponse } from "./handleRequestOnlineStatusResponse";
+import { connectionStatus } from "./connectionStatus";
 
 /**
  * Handle "message" events from service worker.
  *
- * @param {{
- *   event: MessageEvent,
- *   liveViewPath: string,
- *   fallbackPath: string,
- * }} options
+ * @param {MessageEvent} event
  */
-export function handleMessage({ event, ...options }) {
+export function handleMessage(event) {
   switch (event.data.type) {
     case "request_online_status":
-      handleRequestOnlineStatusResponse({ event, ...options });
+      connectionStatus.set(event.data.payload.isOnline ? "Connected" : "Disconnected");
       break;
 
     case "request_skip_waiting":
