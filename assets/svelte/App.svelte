@@ -13,7 +13,6 @@
   export let live;
   export let currentUserEmail;
   export let serverState;
-  export let numSessions = undefined;
 
   onMount(() => {
     requestAssetCaching(config.privateAssets);
@@ -26,7 +25,7 @@
 
 {#if $isClientStateRestored}
   <UpdateAlert />
-  <Header {currentUserEmail} {live} {numSessions} />
+  <Header {currentUserEmail} {live} />
 
   <div class="max-w-2xl mx-auto px-2 md:p-0">
     <TodoApp {live} />
