@@ -5,7 +5,6 @@
 
   export let currentUserEmail;
   export let live;
-  export let numSessions;
 
   let scrollY;
 </script>
@@ -19,7 +18,7 @@
   <div class="max-w-2xl mx-auto px-2 md:p-0 flex justify-between items-center">
     <div>
       <SyncStatusBadge {live} />
-      <SessionsBadge {numSessions} />
+      <SessionsBadge />
     </div>
 
     <AccountButton {currentUserEmail} />
