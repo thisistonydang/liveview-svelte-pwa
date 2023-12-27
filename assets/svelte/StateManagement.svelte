@@ -93,16 +93,18 @@
     if (latestState.meta.synced) {
       $syncState = "Synced";
     } else {
-      live.pushEvent("client_state_updated", { clientState: latestState });
+      $liveView?.pushEvent("client_state_updated", { clientState: latestState });
       $syncState = "Not Synced";
     }
   }
 
   onMount(() => {
-    live.pushEvent("request_server_state");
     mounted = true;
   });
 
+  // Request latest server state when LiveView socket is mounted.
+  $: if ($isSocketMounted) $liveView.pushEvent("request_server_state");
+
   // Sync state whenever new server state is received.
-  $: if (mounted) syncServerToClient(serverState, CLIENT_STATE_KEY);
+  $: if (mounted) syncServerToClient($serverState, CLIENT_STATE_KEY);
 </script>
