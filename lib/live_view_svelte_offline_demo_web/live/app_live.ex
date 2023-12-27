@@ -32,7 +32,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
   def render(assigns) do
     ~H"""
-    <.Socket server_state={@server_state} session_count={@session_count} />
+    <.LiveViewSocket server_state={@server_state} session_count={@session_count} />
     """
   end
 
