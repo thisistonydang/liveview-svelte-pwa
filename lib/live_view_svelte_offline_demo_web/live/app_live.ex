@@ -6,6 +6,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
   # Load Data ______________________________________________________________________________________
 
+  on_mount {LiveViewSvelteOfflineDemoWeb.UserAuth, :ensure_authenticated}
+
   def mount(_params, _session, socket) do
     %{id: user_id} = socket.assigns.current_user
 
