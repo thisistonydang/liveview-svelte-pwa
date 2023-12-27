@@ -191,10 +191,6 @@ function handleMessage(event) {
       event.waitUntil(deleteCacheAssets(event.data.payload.assets));
       break;
 
-    case "request_online_status":
-      event.waitUntil(handleRequestOnlineStatus(event));
-      break;
-
     case "request_skip_waiting":
       event.waitUntil(handleRequestSkipWaiting(event));
       break;
@@ -205,22 +201,6 @@ function handleMessage(event) {
         event.data
       );
   }
-}
-
-/**
- * Reply with message to the client with the current online status.
- *
- * @param {ExtendableMessageEvent} event
- */
-async function handleRequestOnlineStatus(event) {
-  const message = {
-    type: event.data.type,
-    payload: {
-      isOnline: await checkOnlineStatus(),
-    },
-  };
-
-  event.source?.postMessage(message);
 }
 
 /**
