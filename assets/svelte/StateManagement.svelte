@@ -21,7 +21,7 @@
     }, 1000);
 
     // Send new client state to server
-    live.pushEvent("client_state_updated", { clientState: newClientState });
+    live?.pushEvent("client_state_updated", { clientState: newClientState });
   }
 </script>
 
