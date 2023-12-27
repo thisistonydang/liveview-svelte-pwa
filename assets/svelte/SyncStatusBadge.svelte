@@ -2,7 +2,7 @@
   import { checkOnlineStatus, connectionStatus } from "lib/offline-svelte";
 
   import { todoItems, completedItems } from "../stores/crdtState";
-  import { liveView } from "../stores/liveView";
+  import { liveView } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
   import { syncClientToServer } from "./StateManagement.svelte";
