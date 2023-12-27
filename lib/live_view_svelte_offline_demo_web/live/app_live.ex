@@ -23,7 +23,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
       |> assign(server_state: UserStates.initial_server_state())
       |> assign(svelte_opts: %{ssr: false})
       |> assign(hide_socket_flash_messages: true)
-      |> assign(num_sessions: get_num_sessions(socket))
+      |> assign(session_count: get_session_count(socket))
 
     {:ok, socket, layout: {LiveViewSvelteOfflineDemoWeb.Layouts, :spa}}
   end
@@ -32,11 +32,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
   def render(assigns) do
     ~H"""
-    <.App
-      currentUserEmail={@current_user.email}
-      serverState={@server_state}
-      numSessions={@num_sessions}
-    />
+    <.Socket server_state={@server_state} session_count={@session_count} />
     """
   end
 
@@ -73,7 +69,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
   end
 
   def handle_info(%{event: "presence_diff"}, socket) do
-    socket = socket |> assign(num_sessions: get_num_sessions(socket))
+    socket = socket |> assign(session_count: get_session_count(socket))
 
     {:noreply, socket}
   end
@@ -116,8 +112,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
   # Session Tracking Helpers _______________________________________________________________________
 
-  # Returns the number of sessions for the current user in the socket.
-  defp get_num_sessions(socket) do
+  # Return count of sessions for the current user in the socket.
+  defp get_session_count(socket) do
     %{id: user_id} = socket.assigns.current_user
     presences = Presence.list(presence_topic(user_id))
     user_id_as_string = to_string(user_id)
