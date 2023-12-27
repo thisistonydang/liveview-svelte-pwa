@@ -28,6 +28,7 @@
 <script>
   import { onMount } from "svelte";
   import { completedItems, todoItems } from "../stores/crdtState";
+  import { isSocketMounted, liveView, serverState } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
   const CLIENT_STATE_KEY = "clientState";
