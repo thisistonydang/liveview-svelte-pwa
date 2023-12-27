@@ -4,7 +4,7 @@
 
   import { isCompletedOpened, isTodoOpened } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";
-  import { liveView } from "../stores/liveView";
+  import { liveView } from "../stores/liveViewSocket";
 
   import { syncClientToServer } from "./StateManagement.svelte";
 
