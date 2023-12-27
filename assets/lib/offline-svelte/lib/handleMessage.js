@@ -1,5 +1,3 @@
-import { connectionStatus } from "./connectionStatus";
-
 /**
  * Handle "message" events from service worker.
  *
@@ -7,10 +5,6 @@ import { connectionStatus } from "./connectionStatus";
  */
 export function handleMessage(event) {
   switch (event.data.type) {
-    case "request_online_status":
-      connectionStatus.set(event.data.payload.isOnline ? "Connected" : "Disconnected");
-      break;
-
     case "request_skip_waiting":
       window.location.reload();
       break;
