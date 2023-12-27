@@ -6,10 +6,7 @@
     const newClientState = {
       meta: { synced: false },
       timestamp: Date.now(),
-      value: {
-        todo: todoItems,
-        completed: completedItems,
-      },
+      value: { todo: todoItems, completed: completedItems },
     };
     localStorage.setItem(CLIENT_STATE_KEY, JSON.stringify(newClientState));
 
@@ -43,10 +40,7 @@
     const clientState = {
       meta: { synced: false },
       timestamp: 0,
-      value: {
-        todo: [],
-        completed: [],
-      },
+      value: { todo: [], completed: [] },
     };
     localStorage.setItem(key, JSON.stringify(clientState));
 
