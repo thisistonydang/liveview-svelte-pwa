@@ -1,11 +1,10 @@
 <script>
   import { connectionStatus } from "../lib/offline-svelte";
-
-  export let numSessions;
+  import { sessionCount } from "../stores/socketAssigns";
 </script>
 
-{#if numSessions && $connectionStatus === "Connected"}
+{#if $sessionCount && $connectionStatus === "Connected"}
   <div class="badge badge-xs">
-    {numSessions} Session{numSessions > 1 ? "s" : ""}
+    {$sessionCount} Session{$sessionCount > 1 ? "s" : ""}
   </div>
 {/if}
