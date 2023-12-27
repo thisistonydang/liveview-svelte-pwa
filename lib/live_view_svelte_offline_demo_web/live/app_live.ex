@@ -20,9 +20,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
 
     socket =
       socket
-      |> assign(server_state: UserStates.initial_server_state())
-      |> assign(svelte_opts: %{ssr: false})
       |> assign(hide_socket_flash_messages: true)
+      |> assign(svelte_opts: %{ssr: false})
+      |> assign(server_state: UserStates.initial_server_state())
       |> assign(session_count: get_session_count(socket))
 
     {:ok, socket, layout: {LiveViewSvelteOfflineDemoWeb.Layouts, :spa}}
