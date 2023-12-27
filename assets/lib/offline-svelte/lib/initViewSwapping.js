@@ -1,5 +1,4 @@
 import { checkOnlineStatus } from "./checkOnlineStatus";
-import { handleMessage } from "./handleMessage";
 
 /**
  * Initialize view swapping between live-view and dead-view.
@@ -15,7 +14,4 @@ export function initViewSwapping({ liveSocket }) {
   liveSocket.socket.onOpen(() => checkOnlineStatus());
   liveSocket.socket.onClose(() => checkOnlineStatus());
   liveSocket.socket.onError(() => checkOnlineStatus());
-
-  // Listen for messages from service worker.
-  navigator.serviceWorker?.addEventListener("message", handleMessage);
 }
