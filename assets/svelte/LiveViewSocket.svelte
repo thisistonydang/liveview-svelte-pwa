@@ -5,7 +5,7 @@
 
   // Store 'live' object from live_svelte in a Svelte store.
   export let live;
-  $: $liveView = live;
+  $liveView = live;
 
   // Receive socket assigns from LiveView.
   export let server_state;
