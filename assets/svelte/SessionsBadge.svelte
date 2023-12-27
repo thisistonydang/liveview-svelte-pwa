@@ -1,6 +1,6 @@
 <script>
   import { connectionStatus } from "../lib/offline-svelte";
-  import { sessionCount } from "../stores/socketAssigns";
+  import { sessionCount } from "../stores/liveViewSocket";
 </script>
 
 {#if $sessionCount && $connectionStatus === "Connected"}
