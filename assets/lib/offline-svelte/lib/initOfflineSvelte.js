@@ -1,12 +1,10 @@
-import { LiveSocket } from "phoenix_live_view";
-
-import { initViewSwapping } from "./initViewSwapping";
+import { checkOnlineStatus } from "./checkOnlineStatus";
 import { registerServiceWorker } from "./registerServiceWorker";
 
 /**
  * Initialize offline Svelte functionality.
  *
- * @param {LiveSocket} liveSocket
+ * @param {*} liveSocket // TODO: Add type.
  * @param {Object} options
  * @param {string} options.serviceWorkerPath - Default: "/sw.js"
  */
@@ -17,5 +15,11 @@ export function initOfflineSvelte(
   },
 ) {
   registerServiceWorker(serviceWorkerPath);
-  initViewSwapping({ liveSocket });
+
+  // Check online status on connectivity changes.
+  window.addEventListener("online", () => checkOnlineStatus());
+  window.addEventListener("offline", () => checkOnlineStatus());
+  liveSocket.socket.onOpen(() => checkOnlineStatus());
+  liveSocket.socket.onClose(() => checkOnlineStatus());
+  liveSocket.socket.onError(() => checkOnlineStatus());
 }
