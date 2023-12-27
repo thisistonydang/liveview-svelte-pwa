@@ -4,6 +4,7 @@
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
+  import { serverState } from "../stores/liveViewSocket";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
@@ -11,15 +12,23 @@
   import UpdateAlert from "./UpdateAlert.svelte";
 
   export let live;
+  live;
+
   export let currentUserEmail;
-  export let serverState;
+  export let server_state;
+
+  // Setting $serverState here is required so that an initial state is available
+  // when offline. This allows the initial syncServerToClient call to set the
+  // initial app state ($todoItems, $completedItems, and $syncState stores) even
+  // when offline.
+  $serverState = server_state;
 
   onMount(() => {
     requestAssetCaching(config.privateAssets);
   });
 </script>
 
-<StateManagement {live} {serverState} />
+<StateManagement />
 <ClientOnlyStateManagement />
 <OfflineSvelte />
 
