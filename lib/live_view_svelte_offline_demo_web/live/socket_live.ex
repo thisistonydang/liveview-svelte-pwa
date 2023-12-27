@@ -1,4 +1,4 @@
-defmodule LiveViewSvelteOfflineDemoWeb.AppLive do
+defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   use LiveViewSvelteOfflineDemoWeb, :live_view
 
   alias LiveViewSvelteOfflineDemoWeb.Presence
