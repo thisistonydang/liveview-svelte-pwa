@@ -30,9 +30,6 @@
   import { completedItems, todoItems } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
 
-  export let live;
-  export let serverState;
-
   const CLIENT_STATE_KEY = "clientState";
   let mounted = false;
 
