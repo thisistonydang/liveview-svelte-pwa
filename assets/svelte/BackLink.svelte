@@ -8,7 +8,7 @@
   export let linkText;
 </script>
 
-<div class="mt-4">
+<div class="my-4">
   <a
     class="link link-accent no-underline text-sm font-semibold flex items-center gap-1"
     href={linkTo}

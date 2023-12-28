@@ -9,6 +9,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserRegistrationLive do
     <div class="hero min-h-screen mx-auto max-w-sm">
       <div class="hero-content">
         <div>
+          <.BackLink linkTo={~p"/"} linkText="Back" />
           <.header class="text-center">
             Register for an account
             <:subtitle>

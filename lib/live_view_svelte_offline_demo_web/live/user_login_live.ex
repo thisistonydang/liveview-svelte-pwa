@@ -6,6 +6,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserLoginLive do
     <div class="hero min-h-screen mx-auto max-w-md">
       <div class="hero-content">
         <div>
+          <.BackLink linkTo={~p"/"} linkText="Back" />
           <.header class="text-center">
             Sign in to account
             <:subtitle>
