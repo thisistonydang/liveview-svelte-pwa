@@ -106,13 +106,11 @@ async function respond(request) {
 
   // When not in dev, try serving from cache first if available.
   if (serveFromCacheFirst) {
-    const url = new URL(request.url);
-    const cache = await caches.open(cacheName);
-    if ([...privateAssets, ...publicAssets].includes(url.pathname)) {
-      const response = await cache.match(url.pathname);
-      if (response) {
-        return response;
-      }
+    const cachedResponse = await cache.match(request);
+
+    if (cachedResponse) {
+      debug && console.log("[Service Worker] Found cached response.", cachedResponse);
+      return cachedResponse;
     }
   }
 
