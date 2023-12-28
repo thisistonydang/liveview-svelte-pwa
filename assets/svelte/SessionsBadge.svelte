@@ -4,7 +4,7 @@
 </script>
 
 {#if $sessionCount && $connectionStatus === "Connected"}
-  <div class="badge badge-xs">
+  <div class="badge badge-xs p-2">
     {$sessionCount} Session{$sessionCount > 1 ? "s" : ""}
   </div>
 {/if}
