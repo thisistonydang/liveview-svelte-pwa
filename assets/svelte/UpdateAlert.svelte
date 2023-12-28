@@ -1,19 +1,23 @@
 <script>
   import { fly } from "svelte/transition";
 
-  import {
-    connectionStatus,
-    isSWUpdateAvailable,
-    isSWUpdateConfirmed,
-  } from "../lib/offline-svelte";
+  import { isConnected, isSWUpdateAvailable, isSWUpdateConfirmed } from "../lib/offline-svelte";
 
   import InfoSvgIcon from "./InfoSvgIcon.svelte";
 
-  let isDismissed = false;
+  let showAlert = false;
   let width;
+
+  $: if ($isSWUpdateAvailable) {
+    isConnected().then((connected) => {
+      if (connected) {
+        showAlert = true;
+      }
+    });
+  }
 </script>
 
-{#if $connectionStatus === "Connected" && $isSWUpdateAvailable && !isDismissed}
+{#if showAlert}
   <div
     transition:fly={{ y: -100, duration: 750 }}
     bind:clientWidth={width}
@@ -30,13 +34,13 @@
       </div>
 
       <div>
-        <button class="btn btn-sm" on:click={() => (isDismissed = true)}>Later</button>
+        <button class="btn btn-sm" on:click={() => (showAlert = false)}>Later</button>
 
         <button
           class="btn btn-sm btn-accent"
           on:click={() => {
             $isSWUpdateConfirmed = true;
-            isDismissed = true;
+            showAlert = false;
           }}
         >
           Update
