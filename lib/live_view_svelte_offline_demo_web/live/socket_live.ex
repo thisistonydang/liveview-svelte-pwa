@@ -142,4 +142,13 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     %{id: user_id} = socket.assigns.current_user
     Presence.track(self(), presence_topic(user_id), user_id, %{})
   end
+
+  @doc """
+  Untrack user presence. For use when LiveView is terminated to prevent
+  inaccurate session counts.
+  """
+  def untrack_user_presence(socket) do
+    %{id: user_id} = socket.assigns.current_user
+    Presence.untrack(self(), presence_topic(user_id), user_id)
+  end
 end
