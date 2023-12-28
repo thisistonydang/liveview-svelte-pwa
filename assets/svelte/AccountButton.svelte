@@ -1,10 +1,5 @@
 <script>
-  import {
-    connectionStatus,
-    checkOnlineStatus,
-    isClientStateRestored,
-    requestAssetDeletion,
-  } from "../lib/offline-svelte";
+  import { isConnected, isClientStateRestored, requestAssetDeletion } from "../lib/offline-svelte";
 
   import config from "../../priv/static/sw.config.js";
   import { clickOutside } from "../hooks/clickOutside";
@@ -19,10 +14,9 @@
 
   async function logOutUser() {
     isLogOutLoading = true;
-    await checkOnlineStatus();
 
     // TODO: Create alert component.
-    if ($connectionStatus !== "Connected") {
+    if (!(await isConnected())) {
       alert("You must be online to log out.");
       isLogOutLoading = false;
       return;
@@ -43,10 +37,9 @@
 
   async function showSettings() {
     isSettingsLoading = true;
-    await checkOnlineStatus();
 
     // TODO: Create alert component.
-    if ($connectionStatus !== "Connected") {
+    if (!(await isConnected())) {
       alert("You must be online to view settings.");
       isSettingsLoading = false;
       return;
