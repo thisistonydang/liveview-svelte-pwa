@@ -1,5 +1,5 @@
 <script>
-  import { checkOnlineStatus, connectionStatus } from "lib/offline-svelte";
+  import { isConnected } from "lib/offline-svelte";
 
   import { todoItems, completedItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
@@ -11,10 +11,8 @@
   import WarningSvgIcon from "./WarningSvgIcon.svelte";
 
   async function checkIfSynced() {
-    await checkOnlineStatus();
-
     // Handle clicks when online.
-    if ($connectionStatus === "Connected") {
+    if (await isConnected({ timeout: 500 })) {
       if ($syncState === "Synced") {
         // Delay checking so that the user knows that the click was registered.
         $syncState = "Syncing";
