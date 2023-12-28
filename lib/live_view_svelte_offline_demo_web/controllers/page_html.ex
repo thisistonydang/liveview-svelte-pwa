@@ -20,7 +20,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.PageHTML do
             </h2>
 
             <ul class="list-disc pl-4">
-              <li>Phoenix LiveView and PubSub</li>
+              <li>Phoenix LiveView, Presence, and PubSub</li>
               <li>Ecto/PostgreSQL</li>
               <li>Svelte (via live_svelte)</li>
               <li>Service Workers</li>
