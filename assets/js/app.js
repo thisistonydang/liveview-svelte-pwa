@@ -24,7 +24,9 @@ import topbar from "../vendor/topbar";
 import { getHooks } from "live_svelte";
 // @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
-import { initOfflineSvelte } from "../lib/offline-svelte";
+import { registerServiceWorker } from "../lib/offline-svelte";
+
+registerServiceWorker("/sw.js");
 
 let csrfToken = document.querySelector("meta[name='csrf-token']")?.getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {
@@ -54,5 +56,3 @@ liveSocket.connect();
 // >> liveSocket.disableLatencySim()
 // @ts-expect-error; adding liveSocket to window is accepted pattern.
 window.liveSocket = liveSocket;
-
-initOfflineSvelte(liveSocket);
