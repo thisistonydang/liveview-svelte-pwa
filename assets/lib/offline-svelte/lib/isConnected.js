@@ -3,11 +3,11 @@
  *
  * @param {Object} options
  * @param {string} options.pathname - URL path to try to send fetch request. Default: "/"
- * @param {number} options.timeout - Default: 500 milliseconds
+ * @param {number} options.timeout - Default: 2000 milliseconds
  *
  * @returns {Promise<boolean>}
  */
-export async function isConnected({ pathname, timeout } = { pathname: "/", timeout: 500 }) {
+export async function isConnected({ pathname, timeout } = { pathname: "/", timeout: 2000 }) {
   if (!window.navigator.onLine) {
     return false;
   }
