@@ -102,6 +102,8 @@ function handleFetch(event) {
  * @returns {Promise<Response>}
  */
 async function respond(request) {
+  const cache = await caches.open(cacheName);
+
   // When not in dev, try serving from cache first if available.
   if (serveFromCacheFirst) {
     const url = new URL(request.url);
