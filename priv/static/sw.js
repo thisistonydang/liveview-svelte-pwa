@@ -95,9 +95,11 @@ function handleFetch(event) {
 }
 
 /**
- * Try to fetch from network. If successful, return response. Else, return cached response.
- *
+ * Respond to fetch request.
+ * 
  * @param {Request} request
+ * 
+ * @returns {Promise<Response>}
  */
 async function respond(request) {
   // When not in dev, try serving from cache first if available.
@@ -112,6 +114,7 @@ async function respond(request) {
     }
   }
 
+  // Try to fetch from network. If successful, return response. Else, return cached response.
   try {
     const response = await fetch(request, {
       signal: AbortSignal.timeout(2000), // Timeout to prevent excessive wait time.
