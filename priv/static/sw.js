@@ -4,7 +4,7 @@
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
 
 import config from "./sw.config.js";
-const { cacheName, debug, serveFromCacheFirst, privateAssets, publicAssets } = config; 
+const { cacheName, debug, publicAssets } = config; 
 
 // Install _________________________________________________________________________________________
 
@@ -104,18 +104,8 @@ function handleFetch(event) {
 async function respond(request) {
   const cache = await caches.open(cacheName);
 
-  // In production, always try serving from cache first if available.
-  if (serveFromCacheFirst) {
-    const cachedResponse = await cache.match(request);
-
-    if (cachedResponse) {
-      debug && console.log("[Service Worker] Found cached response.", cachedResponse);
-      return cachedResponse;
-    }
-  }
-
-  // If not in cache, try to fetch from network. If successful, return response.
-  // Else, return a fallback response.
+  // Try to fetch from network first. If successful, return response. Else, return a
+  // fallback response.
   try {
     const response = await fetch(request, {
       signal: AbortSignal.timeout(2000), // Timeout to prevent excessive wait time.
@@ -131,14 +121,11 @@ async function respond(request) {
   } catch (error) {
     debug && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
     
-    // In development, check if cached response is available after trying the network first.
-    if (!serveFromCacheFirst) {
-      const cachedResponse = await cache.match(request);
-
-      if (cachedResponse) {
-        debug && console.log("[Service Worker] Found cached response.", cachedResponse);
-        return cachedResponse;
-      }
+    // Check if cached response is available after trying the network first.
+    const cachedResponse = await cache.match(request);
+    if (cachedResponse) {
+      debug && console.log("[Service Worker] Found cached response.", cachedResponse);
+      return cachedResponse;
     }
 
     // If network is down and no cache response for the request, use a fallback response.

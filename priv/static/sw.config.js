@@ -1,7 +1,6 @@
 export default {
-  cacheName: "2023-12-28v1",
+  cacheName: "2023-12-28v3",
   debug: false,
-  serveFromCacheFirst: true, // Set to true in production for better performance.
   privateAssets: [
     "/app", 
 
