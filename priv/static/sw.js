@@ -114,7 +114,8 @@ async function respond(request) {
     }
   }
 
-  // Try to fetch from network. If successful, return response. Else, return cached response.
+  // If not in cache, try to fetch from network. If successful, return response.
+  // Else, return a fallback response.
   try {
     const response = await fetch(request, {
       signal: AbortSignal.timeout(2000), // Timeout to prevent excessive wait time.
