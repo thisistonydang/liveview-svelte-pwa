@@ -24,7 +24,7 @@
   $serverState = server_state;
 
   onMount(() => {
-    requestAssetCaching(config.privateAssets);
+    requestAssetCaching([...config.privateAssets, ...config.publicAssets]);
   });
 </script>
 
