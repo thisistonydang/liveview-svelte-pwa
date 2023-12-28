@@ -37,7 +37,7 @@
 </script>
 
 <button
-  class="badge w-28"
+  class="badge w-28 border border-neutral"
   class:badge-accent={$syncState === "Synced"}
   class:badge-primary={$syncState === "Syncing"}
   class:badge-secondary={$syncState === "Not Synced"}
