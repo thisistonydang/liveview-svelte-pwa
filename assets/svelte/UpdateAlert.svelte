@@ -9,7 +9,7 @@
   let width;
 
   $: if ($isSWUpdateAvailable) {
-    isConnected().then((connected) => {
+    isConnected({ timeout: 10000 }).then((connected) => {
       if (connected) {
         showAlert = true;
       }
