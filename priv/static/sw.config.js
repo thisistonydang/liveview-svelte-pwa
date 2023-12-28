@@ -4,6 +4,10 @@ export default {
   serveFromCacheFirst: true,
   privateAssets: [
     "/app", 
+
+    // /offline is a public route but should only be cached after login so that
+    // DataClearer does not run while offline.
+    "/offline", 
   ],
   publicAssets: [
     "/assets/app.css",
@@ -18,6 +22,5 @@ export default {
     "/mstile-150x150.png",
     "/safari-pinned-tab.svg",
     "/site.webmanifest",
-    "/offline"
   ]
 }
