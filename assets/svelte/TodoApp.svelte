@@ -51,7 +51,7 @@
     bind:value={newTodo}
     on:input={() => (error = "")}
   />
-  <button class="btn btn-accent join-item">Add</button>
+  <button class="btn btn-accent join-item border border-neutral">Add</button>
 </form>
 {#if error}
   <p class="text-error" in:fly={{ y: -10 }}>{error}</p>
