@@ -104,7 +104,7 @@ function handleFetch(event) {
 async function respond(request) {
   const cache = await caches.open(cacheName);
 
-  // When not in dev, try serving from cache first if available.
+  // In production, try serving from cache first if available.
   if (serveFromCacheFirst) {
     const cachedResponse = await cache.match(request);
 
