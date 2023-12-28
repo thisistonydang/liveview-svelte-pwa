@@ -1,8 +1,10 @@
 <.root_html>
   <%= if @current_user do %>
-    <.link id="log-out-link" class="hidden" href={~p"/users/log_out"} method="delete">
-      Log out
-    </.link>
+    <div style="display: none;">
+      <.link id="log-out-link" href={~p"/users/log_out"} method="delete">
+        Log out
+      </.link>
+    </div>
   <% else %>
     <.DataClearer />
   <% end %>
