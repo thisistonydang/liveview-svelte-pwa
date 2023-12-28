@@ -3,6 +3,8 @@
     <.link id="log-out-link" class="hidden" href={~p"/users/log_out"} method="delete">
       Log out
     </.link>
+  <% else %>
+    <.DataClearer />
   <% end %>
   <%= @inner_content %>
 </.root_html>
