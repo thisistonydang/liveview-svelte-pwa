@@ -39,9 +39,6 @@ async function deleteCacheAssets(assets) {
  * @param {string[]} assets - Array of assets to cache.
  */
 async function cacheAssets(assets) {
-  const isOnline = await checkOnlineStatus();
-  if (!isOnline) return; // Don't try caching if not online.
-
   try {
     const cache = await caches.open(cacheName);
     await cache.addAll(assets);
