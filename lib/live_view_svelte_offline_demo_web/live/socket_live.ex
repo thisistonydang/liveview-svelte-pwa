@@ -78,6 +78,12 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
+  # Clean Up _______________________________________________________________________________________
+
+  def terminate(_reason, socket) do
+    untrack_user_presence(socket)
+  end
+
   # State Syncing Helpers __________________________________________________________________________
 
   defp add_synced_timestamp(state) do

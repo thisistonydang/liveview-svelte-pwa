@@ -181,4 +181,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
         {:noreply, assign(socket, password_form: to_form(changeset))}
     end
   end
+
+  # Clean Up _______________________________________________________________________________________
+
+  def terminate(_reason, socket) do
+    LiveViewSvelteOfflineDemoWeb.SocketLive.untrack_user_presence(socket)
+  end
 end
