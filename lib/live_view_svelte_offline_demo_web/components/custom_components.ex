@@ -14,7 +14,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
     <!DOCTYPE html>
     <html lang="en" class="[scrollbar-gutter:stable]">
       <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Favicons -->
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
