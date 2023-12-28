@@ -217,30 +217,3 @@ async function handleRequestSkipWaiting(event) {
 
   event.source?.postMessage(message);
 }
-
-// Helpers _________________________________________________________________________________________
-
-/**
- * Check if the client is online.
- *
- * @param {Object} options
- * @param {number} options.timeout - Default: 500
- */
-async function checkOnlineStatus({ timeout } = { timeout: 500 }) {
-  if (!sw.navigator.onLine) {
-    return false;
-  }
-
-  try {
-    const url = new URL(sw.location.origin); // Avoid CORS errors with request to your own origin.
-    url.searchParams.set("rand", Date.now().toString()); // Prevents cached responses.
-    const response = await fetch(url, { 
-      method: "HEAD", // HEAD request to speed up response.
-      signal: AbortSignal.timeout(timeout), // Timeout to prevent excessive wait time.
-    });
-
-    return response.ok;
-  } catch {
-    return false;
-  }
-}
