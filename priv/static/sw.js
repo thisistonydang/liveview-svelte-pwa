@@ -130,7 +130,49 @@ async function respond(request) {
     return response;
   } catch (error) {
     debug && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
-    return await getCachedResponse(request);
+    
+    // In development, check if cached response is available after trying the network first.
+    if (!serveFromCacheFirst) {
+      const cachedResponse = await cache.match(request);
+
+      if (cachedResponse) {
+        debug && console.log("[Service Worker] Found cached response.", cachedResponse);
+        return cachedResponse;
+      }
+    }
+
+    // If network is down and no cache response for the request, use a fallback response.
+    debug && console.log("[Service Worker] No cached response. Using fallback response.");
+
+    const fallbackResponse = (
+      await cache.match(new Request("/offline")) ||
+      new Response(`
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>ToDo · Offline-Enabled LiveView Svelte Demo</title>
+          </head>
+          <body>
+            <h1>Whoops, you're currently offline...</h1>
+            <p>Please try refreshing once you're connected again.</p>  
+            <a href="/app">Refresh</a>
+          </body>
+        </html>
+      `, {
+        status: 503,
+        headers: { "Content-Type": "text/html" }, 
+      })
+    )
+    
+    // If request is for root path, return cached /app route if available.
+    const url = new URL(request.url);
+    if (url.pathname === "/") {
+      return await cache.match(new Request("/app")) || fallbackResponse;
+    }
+
+    return fallbackResponse
   }
 }
 
