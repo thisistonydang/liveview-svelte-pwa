@@ -34,6 +34,11 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   def render(assigns) do
     ~H"""
     <.LiveViewSocket server_state={@server_state} session_count={@session_count} />
+    <!-- Toggle visibility of the sessions badge when the socket is connected/disconnected. -->
+    <div
+      phx-connected={JS.remove_class("hidden", to: "#sessions-badge")}
+      phx-disconnected={JS.add_class("hidden", to: "#sessions-badge")}
+    />
     """
   end
 

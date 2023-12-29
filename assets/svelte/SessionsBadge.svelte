@@ -3,7 +3,7 @@
 </script>
 
 {#if $sessionCount}
-  <div class="badge badge-xs transition-none p-2">
+  <div id="sessions-badge" class="badge badge-xs transition-none p-2">
     {$sessionCount} Session{$sessionCount > 1 ? "s" : ""}
   </div>
 {/if}
