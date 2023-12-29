@@ -34,10 +34,15 @@
       </div>
 
       <div>
-        <button class="btn btn-sm" on:click={() => (showAlert = false)}>Later</button>
+        <button
+          class="btn btn-sm border border-neutral transition-none"
+          on:click={() => (showAlert = false)}
+        >
+          Later
+        </button>
 
         <button
-          class="btn btn-sm btn-accent"
+          class="btn btn-sm btn-accent border border-neutral"
           on:click={() => {
             $isSWUpdateConfirmed = true;
             showAlert = false;
