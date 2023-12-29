@@ -8,7 +8,7 @@
  * @returns {Promise<boolean>}
  */
 export async function isConnected(
-  { pathname = "/", timeout = 2000 } = { pathname: "/", timeout: 2000 },
+  { pathname = "/", timeout = 5000 } = { pathname: "/", timeout: 5000 },
 ) {
   if (!window.navigator.onLine) {
     return false;
