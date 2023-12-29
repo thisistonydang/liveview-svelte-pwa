@@ -1,8 +1,8 @@
 defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   use LiveViewSvelteOfflineDemoWeb, :live_view
 
-  alias LiveViewSvelteOfflineDemoWeb.Presence
   alias LiveViewSvelteOfflineDemo.UserStates
+  alias LiveViewSvelteOfflineDemoWeb.Presence
 
   # Load Data ______________________________________________________________________________________
 
