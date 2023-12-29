@@ -227,7 +227,7 @@ function handleMessage(event) {
  * @param {ExtendableMessageEvent} event
  */
 async function handleRequestSkipWaiting(event) {
-  sw.skipWaiting();
+  await sw.skipWaiting();
 
   const message = {
     type: event.data.type,
