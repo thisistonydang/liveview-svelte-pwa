@@ -6,3 +6,4 @@ export { registerServiceWorker } from "./lib/registerServiceWorker";
 export { requestAssetCaching } from "./lib/requestAssetCaching";
 export { requestAssetDeletion } from "./lib/requestAssetDeletion";
 export { requestServiceWorkerVersion } from "./lib/requestServiceWorkerVersion";
+export { serviceWorkerVersion } from "./lib/serviceWorkerVersion";
