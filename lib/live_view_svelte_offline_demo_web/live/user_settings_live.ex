@@ -2,6 +2,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
   use LiveViewSvelteOfflineDemoWeb, :live_view
 
   alias LiveViewSvelteOfflineDemo.Accounts
+  alias LiveViewSvelteOfflineDemoWeb.Presence
 
   def render(assigns) do
     ~H"""
@@ -103,7 +104,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
   def mount(_params, _session, socket) do
     # Track user presence.
     if connected?(socket) do
-      LiveViewSvelteOfflineDemoWeb.SocketLive.track_user_presence(socket)
+      Presence.track_user_presence(socket)
     end
 
     user = socket.assigns.current_user
@@ -185,15 +186,15 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
   end
 
   def handle_event("before_unload", _params, socket) do
-    LiveViewSvelteOfflineDemoWeb.SocketLive.untrack_user_presence(socket)
+    Presence.untrack_user_presence(socket)
 
     {:noreply, socket}
   end
 
   def handle_event("visibility_change", %{"visibilityState" => visibility_state}, socket) do
     case visibility_state do
-      "visible" -> LiveViewSvelteOfflineDemoWeb.SocketLive.track_user_presence(socket)
-      _ -> LiveViewSvelteOfflineDemoWeb.SocketLive.untrack_user_presence(socket)
+      "visible" -> Presence.track_user_presence(socket)
+      _ -> Presence.untrack_user_presence(socket)
     end
 
     {:noreply, socket}
@@ -202,6 +203,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
   # Clean Up _______________________________________________________________________________________
 
   def terminate(_reason, socket) do
-    LiveViewSvelteOfflineDemoWeb.SocketLive.untrack_user_presence(socket)
+    Presence.untrack_user_presence(socket)
   end
 end
