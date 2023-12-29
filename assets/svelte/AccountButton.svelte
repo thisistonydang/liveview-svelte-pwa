@@ -1,5 +1,10 @@
 <script>
-  import { isConnected, isClientStateRestored, requestAssetDeletion } from "../lib/offline-svelte";
+  import {
+    isConnected,
+    isClientStateRestored,
+    requestAssetDeletion,
+    serviceWorkerVersion,
+  } from "../lib/offline-svelte";
 
   import config from "../../priv/static/sw.config.js";
   import { clickOutside } from "../hooks/clickOutside";
@@ -62,6 +67,9 @@
   <div class="dropdown-content menu bg-base-200 border border-neutral rounded-box">
     <p class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
       {currentUserEmail}
+      {#if $serviceWorkerVersion}
+        <span class="text-xs font-normal">{$serviceWorkerVersion}</span>
+      {/if}
     </p>
 
     <ul class="w-56">
