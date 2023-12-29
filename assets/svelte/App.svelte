@@ -1,6 +1,10 @@
 <script>
   import { onMount } from "svelte";
-  import { isClientStateRestored, requestAssetCaching } from "../lib/offline-svelte";
+  import {
+    isClientStateRestored,
+    requestAssetCaching,
+    requestServiceWorkerVersion,
+  } from "../lib/offline-svelte";
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
@@ -25,6 +29,7 @@
 
   onMount(() => {
     requestAssetCaching([...config.privateAssets, ...config.publicAssets]);
+    requestServiceWorkerVersion();
 
     // Change URL to "/app" if it's not already. This is for the case where the service worker
     // serves the cached "/app" route when the client requests the root "/" route.
