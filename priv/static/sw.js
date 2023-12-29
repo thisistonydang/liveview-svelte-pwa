@@ -202,6 +202,17 @@ function handleMessage(event) {
       event.waitUntil(handleRequestSkipWaiting(event));
       break;
 
+    case "request_service_worker_version":
+      const message = {
+        type: event.data.type,
+        payload: {
+          serviceWorkerVersion: cacheName,
+        },
+      };
+
+      event.source?.postMessage(message);
+      break;
+
     default:
       console.error(
         "[Service Worker] Unknown message type received.",
