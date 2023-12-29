@@ -2,7 +2,7 @@
   import { flip } from "svelte/animate";
   import { crossfade, fade, fly, scale } from "svelte/transition";
 
-  import { isCompletedOpened, isTodoOpened } from "../stores/clientOnlyState";
+  import { isCompletedOpened, isTodoOpened, newTodo } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
@@ -10,17 +10,16 @@
 
   const [send, receive] = crossfade({ fallback: scale });
   let error = "";
-  let newTodo = "";
 
   function addItem() {
     for (const item of $todoItems) {
-      if (item.name === newTodo) {
+      if (item.name === $newTodo) {
         error = "Item already exists!";
         return;
       }
     }
-    $todoItems = [{ id: crypto.randomUUID(), name: newTodo }, ...$todoItems];
-    newTodo = "";
+    $todoItems = [{ id: crypto.randomUUID(), name: $newTodo }, ...$todoItems];
+    $newTodo = "";
     syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
@@ -48,7 +47,7 @@
     placeholder="Type here"
     class="input input-bordered border-neutral w-full join-item"
     required
-    bind:value={newTodo}
+    bind:value={$newTodo}
     on:input={() => (error = "")}
   />
   <button class="btn btn-accent join-item border border-neutral">Add</button>
