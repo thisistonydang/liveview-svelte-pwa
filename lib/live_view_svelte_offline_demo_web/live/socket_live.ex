@@ -16,8 +16,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
       UserStates.subscribe(user_id)
 
       # Track and subscribe to presence updates for the user.
-      track_user_presence(socket)
-      Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, presence_topic(user_id))
+      Presence.track_user_presence(socket)
+      Presence.subscribe(user_id)
     end
 
     socket =
@@ -65,15 +65,15 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   end
 
   def handle_event("before_unload", _params, socket) do
-    untrack_user_presence(socket)
+    Presence.untrack_user_presence(socket)
 
     {:noreply, socket}
   end
 
   def handle_event("visibility_change", %{"visibilityState" => visibility_state}, socket) do
     case visibility_state do
-      "visible" -> track_user_presence(socket)
-      _ -> untrack_user_presence(socket)
+      "visible" -> Presence.track_user_presence(socket)
+      _ -> Presence.untrack_user_presence(socket)
     end
 
     {:noreply, socket}
@@ -101,7 +101,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   # Clean Up _______________________________________________________________________________________
 
   def terminate(_reason, socket) do
-    untrack_user_presence(socket)
+    Presence.untrack_user_presence(socket)
   end
 
   # State Syncing Helpers __________________________________________________________________________
@@ -138,43 +138,5 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
       # TODO: Handle this error.
       error -> error
     end
-  end
-
-  # Session Tracking Helpers _______________________________________________________________________
-
-  # Return count of sessions for the current user in the socket.
-  defp get_session_count(socket) do
-    %{id: user_id} = socket.assigns.current_user
-    presences = Presence.list(presence_topic(user_id))
-    user_id_as_string = to_string(user_id)
-
-    case Map.has_key?(presences, user_id_as_string) do
-      true ->
-        %{^user_id_as_string => %{metas: metas}} = presences
-        length(metas)
-
-      _ ->
-        0
-    end
-  end
-
-  # Returns the presence topic for a given user_id.
-  defp presence_topic(user_id), do: "presence:user_id:#{user_id}"
-
-  @doc """
-  Track the presence of the current user in the socket.
-  """
-  def track_user_presence(socket) do
-    %{id: user_id} = socket.assigns.current_user
-    Presence.track(self(), presence_topic(user_id), user_id, %{})
-  end
-
-  @doc """
-  Untrack user presence. For use when LiveView is terminated to prevent
-  inaccurate session counts.
-  """
-  def untrack_user_presence(socket) do
-    %{id: user_id} = socket.assigns.current_user
-    Presence.untrack(self(), presence_topic(user_id), user_id)
   end
 end
