@@ -5,6 +5,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
+    <!-- Send page lifecycle events to server. -->
+    <.PageLifeCycleEvents />
     <div class="hero">
       <div class="hero-content">
         <div>
@@ -180,6 +182,21 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
       {:error, changeset} ->
         {:noreply, assign(socket, password_form: to_form(changeset))}
     end
+  end
+
+  def handle_event("before_unload", _params, socket) do
+    LiveViewSvelteOfflineDemoWeb.SocketLive.untrack_user_presence(socket)
+
+    {:noreply, socket}
+  end
+
+  def handle_event("visibility_change", %{"visibilityState" => visibility_state}, socket) do
+    case visibility_state do
+      "visible" -> LiveViewSvelteOfflineDemoWeb.SocketLive.track_user_presence(socket)
+      _ -> LiveViewSvelteOfflineDemoWeb.SocketLive.untrack_user_presence(socket)
+    end
+
+    {:noreply, socket}
   end
 
   # Clean Up _______________________________________________________________________________________
