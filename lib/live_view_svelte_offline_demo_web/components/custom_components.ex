@@ -35,6 +35,18 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
         <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
         <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
         </script>
+        <script>
+          // Set theme in head to avoid FOUC.
+          if (
+            localStorage.theme === 'dark' ||
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ) {
+            document.documentElement.classList.add('dark')
+            document.documentElement.dataset.theme = 'dark'
+          } else {
+            document.documentElement.dataset.theme = 'light'
+          }
+        </script>
       </head>
       <body class="antialiased">
         <%= render_slot(@inner_block) %>
