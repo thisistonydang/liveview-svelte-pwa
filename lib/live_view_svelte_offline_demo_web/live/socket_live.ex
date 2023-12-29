@@ -24,7 +24,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
       socket
       |> assign(svelte_opts: %{ssr: false})
       |> assign(server_state: UserStates.initial_server_state())
-      |> assign(session_count: get_session_count(socket))
+      |> assign(session_count: Presence.get_session_count(socket))
 
     {:ok, socket, layout: false}
   end
@@ -93,7 +93,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   Get and assign the latest session count to the socket whenever a 'presence diff' event is broadcasted.
   """
   def handle_info(%{event: "presence_diff"}, socket) do
-    socket = socket |> assign(session_count: get_session_count(socket))
+    socket = socket |> assign(session_count: Presence.get_session_count(socket))
 
     {:noreply, socket}
   end
