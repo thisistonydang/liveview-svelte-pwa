@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import { isSocketMounted, liveView, serverState, sessionCount } from "../stores/liveViewSocket";
+  import PageLifeCycleEvents from "./PageLifeCycleEvents.svelte";
 
   // Store 'live' object from live_svelte in a Svelte store.
   export let live;
@@ -19,3 +20,5 @@
     $isSocketMounted = true;
   });
 </script>
+
+<PageLifeCycleEvents {live} />

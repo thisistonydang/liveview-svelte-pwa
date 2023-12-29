@@ -64,6 +64,21 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
+  def handle_event("before_unload", _params, socket) do
+    untrack_user_presence(socket)
+
+    {:noreply, socket}
+  end
+
+  def handle_event("visibility_change", %{"visibilityState" => visibility_state}, socket) do
+    case visibility_state do
+      "visible" -> track_user_presence(socket)
+      _ -> untrack_user_presence(socket)
+    end
+
+    {:noreply, socket}
+  end
+
   # Message Handlers _______________________________________________________________________________
 
   def handle_info({:user_state_updated, user_state}, socket) do
