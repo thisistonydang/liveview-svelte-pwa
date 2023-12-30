@@ -1,8 +1,9 @@
 <script>
+  import ThemeController from "../lib/theme-controller/ThemeController.svelte";
+
   import AccountButton from "./AccountButton.svelte";
   import SessionsBadge from "./SessionsBadge.svelte";
   import SyncStatusBadge from "./SyncStatusBadge.svelte";
-  import ThemeController from "./ThemeController.svelte";
 
   export let currentUserEmail;
 
