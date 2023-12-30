@@ -8,10 +8,11 @@ const path = require("path");
 module.exports = {
   darkMode: "class",
   content: [
-    "./js/**/*.js",
+    "./js/**/*.{js,ts,svelte}",
+    "./lib/**/*.{js,ts,svelte}",
+    "./svelte/**/*.{js,ts,svelte}",
     "../lib/live_view_svelte_offline_demo_web.ex",
     "../lib/live_view_svelte_offline_demo_web/**/*.*ex",
-    "./svelte/**/*.svelte",
   ],
   theme: {
     extend: {
