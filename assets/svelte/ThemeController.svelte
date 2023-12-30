@@ -12,6 +12,13 @@
   /** @type {HTMLDivElement} */
   let lightThemeToggleContainer;
 
+  /** @type {HTMLButtonElement} Button element. */
+  let themeToggle;
+  /** @type {HTMLButtonElement} Button element. */
+  let darkThemeToggle;
+  /** @type {HTMLButtonElement} Button element. */
+  let lightThemeToggle;
+
   onMount(() => {
     theme = document.documentElement.dataset.theme;
 
@@ -19,9 +26,11 @@
     if (theme === "dark") {
       darkThemeToggleContainer.className = "";
       lightThemeToggleContainer.className = "hidden";
+      themeToggle = darkThemeToggle;
     } else {
       darkThemeToggleContainer.className = "hidden";
       lightThemeToggleContainer.className = "";
+      themeToggle = lightThemeToggle;
     }
 
     mounted = true;
@@ -56,10 +65,19 @@
 
 <!-- Show checked toggle if theme is dark. -->
 <div bind:this={darkThemeToggleContainer} class="hidden dark:block">
-  <ThemeToggle checked {onThemeToggle} />
+  <ThemeToggle checked {onThemeToggle} bind:themeToggle={darkThemeToggle} />
 </div>
 
 <!-- Show unchecked toggle if theme is light. -->
 <div bind:this={lightThemeToggleContainer} class="dark:hidden">
-  <ThemeToggle checked={false} {onThemeToggle} />
+  <ThemeToggle checked={false} {onThemeToggle} bind:themeToggle={lightThemeToggle} />
 </div>
+
+<!-- Keep theme synced across different windows and tabs. -->
+<svelte:window
+  on:storage={() => {
+    if (theme !== localStorage.theme) {
+      themeToggle.click();
+    }
+  }}
+/>

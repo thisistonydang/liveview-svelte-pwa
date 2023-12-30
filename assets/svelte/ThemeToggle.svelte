@@ -5,12 +5,20 @@
   /** @type {(checkbox: HTMLInputElement) => void} Callback to handle theme toggle. */
   export let onThemeToggle;
 
+  /** @type {HTMLButtonElement} Button element. */
+  export let themeToggle;
+
   /** @type {HTMLInputElement} Checkbox element. */
   let checkbox;
 </script>
 
 <label class="swap swap-rotate">
-  <button on:click={() => onThemeToggle(checkbox)} aria-label="theme-toggle"></button>
+  <button
+    bind:this={themeToggle}
+    on:click={() => onThemeToggle(checkbox)}
+    aria-label="theme-toggle"
+  >
+  </button>
   <input bind:this={checkbox} type="checkbox" {checked} class="hidden" />
 
   <!-- Sun icon -->
