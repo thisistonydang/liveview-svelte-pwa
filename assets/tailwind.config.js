@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
+  darkMode: "class",
   content: [
     "./js/**/*.js",
     "../lib/live_view_svelte_offline_demo_web.ex",
