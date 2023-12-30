@@ -2,6 +2,7 @@
   import AccountButton from "./AccountButton.svelte";
   import SessionsBadge from "./SessionsBadge.svelte";
   import SyncStatusBadge from "./SyncStatusBadge.svelte";
+  import ThemeController from "./ThemeController.svelte";
 
   export let currentUserEmail;
 
@@ -20,6 +21,9 @@
       <SessionsBadge />
     </div>
 
-    <AccountButton {currentUserEmail} />
+    <div class="flex items-center gap-3">
+      <ThemeController />
+      <AccountButton {currentUserEmail} />
+    </div>
   </div>
 </div>
