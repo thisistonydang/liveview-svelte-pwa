@@ -1,5 +1,5 @@
 <script>
-  import ThemeController from "../lib/theme-controller/ThemeController.svelte";
+  import ThemeSelector from "lib/theme-selector/ThemeSelector.svelte";
 
   import AccountButton from "./AccountButton.svelte";
   import SessionsBadge from "./SessionsBadge.svelte";
@@ -23,7 +23,7 @@
     </div>
 
     <div class="flex items-center gap-3">
-      <ThemeController />
+      <ThemeSelector />
       <AccountButton {currentUserEmail} />
     </div>
   </div>
