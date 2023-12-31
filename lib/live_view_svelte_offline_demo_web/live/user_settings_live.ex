@@ -6,6 +6,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
+    <!-- Keep theme synced when theme is changed in another tab or window of the same browser. -->
+    <.AppThemeSyncManager />
     <!-- Send page lifecycle events to server. -->
     <.PageLifeCycleEvents />
     <div class="hero">
