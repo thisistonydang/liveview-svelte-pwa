@@ -238,7 +238,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CoreComponents do
     <button
       type={@type}
       class={[
-        "phx-submit-loading:opacity-75 btn btn-accent",
+        "phx-submit-loading:opacity-75 btn btn-accent border border-neutral",
         @class
       ]}
       {@rest}
