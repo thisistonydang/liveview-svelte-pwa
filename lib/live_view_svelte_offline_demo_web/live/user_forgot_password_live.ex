@@ -8,6 +8,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserForgotPasswordLive do
     <div class="hero min-h-screen mx-auto max-w-sm">
       <div class="hero-content">
         <div>
+          <.BackLink linkTo={~p"/users/log_in"} linkText="Back" />
           <.header class="text-center">
             Forgot your password?
             <:subtitle>We'll send a password reset link to your inbox</:subtitle>
@@ -21,10 +22,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserForgotPasswordLive do
               </.button>
             </:actions>
           </.simple_form>
-          <p class="text-center text-sm mt-4">
-            <.link href={~p"/users/register"}>Register</.link>
-            | <.link href={~p"/users/log_in"}>Log in</.link>
-          </p>
         </div>
       </div>
     </div>
