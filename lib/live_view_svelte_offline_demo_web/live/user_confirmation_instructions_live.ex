@@ -5,25 +5,26 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationInstructionsLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
-        No confirmation instructions received?
-        <:subtitle>We'll send a new confirmation link to your inbox</:subtitle>
-      </.header>
+    <div class="hero min-h-screen mx-auto max-w-md">
+      <div class="hero-content">
+        <div>
+          <.BackLink linkTo={~p"/"} linkText="Back" />
 
-      <.simple_form for={@form} id="resend_confirmation_form" phx-submit="send_instructions">
-        <.input field={@form[:email]} type="email" placeholder="Email" required />
-        <:actions>
-          <.button phx-disable-with="Sending..." class="w-full">
-            Resend confirmation instructions
-          </.button>
-        </:actions>
-      </.simple_form>
+          <.header class="text-center">
+            No confirmation instructions received?
+            <:subtitle>We'll send a new confirmation link to your inbox</:subtitle>
+          </.header>
 
-      <p class="text-center mt-4">
-        <.link href={~p"/users/register"}>Register</.link>
-        | <.link href={~p"/users/log_in"}>Log in</.link>
-      </p>
+          <.simple_form for={@form} id="resend_confirmation_form" phx-submit="send_instructions">
+            <.input field={@form[:email]} type="email" placeholder="Email" required />
+            <:actions>
+              <.button phx-disable-with="Sending..." class="w-full">
+                Resend confirmation instructions
+              </.button>
+            </:actions>
+          </.simple_form>
+        </div>
+      </div>
     </div>
     """
   end
