@@ -9,6 +9,8 @@
 
   import config from "../../priv/static/sw.config.js";
   import { serverState } from "../stores/liveViewSocket";
+
+  import AppSkeleton from "./AppSkeleton.svelte";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
@@ -51,9 +53,5 @@
     <TodoApp />
   </div>
 {:else}
-  <div class="hero min-h-screen">
-    <div class="hero-content">
-      <span class="loading loading-dots loading-lg"></span>
-    </div>
-  </div>
+  <AppSkeleton />
 {/if}
