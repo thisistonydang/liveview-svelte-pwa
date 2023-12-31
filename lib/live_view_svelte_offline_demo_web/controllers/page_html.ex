@@ -6,7 +6,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.PageHTML do
     <div class="hero min-h-screen">
       <div class="hero-content">
         <div class="max-w-md">
-          <h1 class="text-5xl font-black text-accent my-5">Offline-Enabled LiveView Svelte Demo</h1>
+          <h1 class="text-5xl font-black my-5">Offline-Enabled LiveView Svelte Demo</h1>
           <p>
             This is a demo of a Phoenix LiveView
             <abbr class="underline-offset-4" title="Progressive WebApp">PWA</abbr>
@@ -33,8 +33,12 @@ defmodule LiveViewSvelteOfflineDemoWeb.PageHTML do
           </h2>
 
           <ul class="flex gap-2">
-            <li><a href={~p"/users/register"} class="btn btn-accent">Register</a></li>
-            <li><a href={~p"/users/log_in"} class="btn btn-accent">Log in</a></li>
+            <li>
+              <a href={~p"/users/register"} class="btn btn-accent border border-neutral">Register</a>
+            </li>
+            <li>
+              <a href={~p"/users/log_in"} class="btn btn-accent border border-neutral">Log in</a>
+            </li>
           </ul>
         </div>
       </div>
