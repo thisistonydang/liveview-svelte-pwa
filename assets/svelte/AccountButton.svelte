@@ -1,13 +1,13 @@
 <script>
+  import { clickOutside } from "lib/hooks/clickOutside";
   import {
     isConnected,
     isClientStateRestored,
     requestAssetDeletion,
     serviceWorkerVersion,
-  } from "../lib/offline-svelte";
+  } from "lib/offline-svelte";
 
   import config from "../../priv/static/sw.config.js";
-  import { clickOutside } from "../hooks/clickOutside";
   import { isAccountMenuOpened } from "../stores/clientOnlyState";
 
   import UserSvgIcon from "./UserSvgIcon.svelte";
