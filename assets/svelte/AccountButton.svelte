@@ -17,6 +17,11 @@
   let isLogOutLoading = false;
   let isSettingsLoading = false;
 
+  function showAbout() {
+    $isAccountMenuOpened = false;
+    window.location.href = "/about";
+  }
+
   async function logOutUser() {
     isLogOutLoading = true;
 
@@ -73,6 +78,9 @@
     </div>
 
     <ul>
+      <li>
+        <button on:click={showAbout}>About</button>
+      </li>
       <li>
         <button on:click={showSettings}>
           Settings
