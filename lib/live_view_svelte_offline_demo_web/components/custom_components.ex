@@ -55,11 +55,16 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
     """
   end
 
+  slot :pre_info, default: ""
+  slot :post_info, default: ""
+
   def app_info(assigns) do
     ~H"""
     <div class="hero min-h-screen">
       <div class="hero-content">
         <div class="max-w-md">
+          <%= render_slot(@pre_info) %>
+
           <h1 class="text-5xl font-black my-5">Offline-Enabled LiveView Svelte Demo</h1>
           <p>
             This is a demo of a Phoenix LiveView
@@ -82,18 +87,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
             </ul>
           </div>
 
-          <h2 class="text-3xl font-bold my-3">
-            Register or log in to try it out
-          </h2>
-
-          <ul class="flex gap-2">
-            <li>
-              <a href={~p"/users/register"} class="btn btn-accent border border-neutral">Register</a>
-            </li>
-            <li>
-              <a href={~p"/users/log_in"} class="btn btn-accent border border-neutral">Log in</a>
-            </li>
-          </ul>
+          <%= render_slot(@post_info) %>
         </div>
       </div>
     </div>
