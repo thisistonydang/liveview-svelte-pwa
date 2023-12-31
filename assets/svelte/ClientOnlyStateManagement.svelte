@@ -1,12 +1,17 @@
 <script>
   import { onMount } from "svelte";
-  import { isClientStateRestored } from "../lib/offline-svelte";
+
+  import { isClientStateRestored } from "lib/offline-svelte";
+  import { isThemeMenuOpened } from "lib/theme-selector";
+
   import {
     isAccountMenuOpened,
     isCompletedOpened,
     isTodoOpened,
     newTodo,
   } from "../stores/clientOnlyState";
+  import { completedItems, todoItems } from "../stores/crdtState";
+  import { syncState } from "../stores/syncState";
 
   /**
    * Get parsed value from localStorage.
@@ -31,9 +36,11 @@
   onMount(() => {
     // Sync client state stores with localStorage on startup.
     $isAccountMenuOpened = getParseValue("isAccountMenuOpened", "boolean", $isAccountMenuOpened);
+    $isThemeMenuOpened = getParseValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
     $isTodoOpened = getParseValue("isTodoOpened", "boolean", $isTodoOpened);
     $isCompletedOpened = getParseValue("isCompletedOpened", "boolean", $isCompletedOpened);
     $newTodo = getParseValue("newTodo", "string", $newTodo);
+    // $syncState is not set here because it is set in StateManagement
 
     // Let offline-svelte know that the client state has been restored in order
     // to restore scroll position.
@@ -43,8 +50,10 @@
   // Keep localStorage in sync with client state stores.
   $: if ($isClientStateRestored) {
     localStorage.setItem("isAccountMenuOpened", JSON.stringify($isAccountMenuOpened));
+    localStorage.setItem("isThemeMenuOpened", JSON.stringify($isThemeMenuOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
     localStorage.setItem("isCompletedOpened", JSON.stringify($isCompletedOpened));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
+    localStorage.setItem("syncState", JSON.stringify($syncState));
   }
 </script>
