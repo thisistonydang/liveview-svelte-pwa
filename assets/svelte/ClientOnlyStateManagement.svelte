@@ -57,3 +57,40 @@
     localStorage.setItem("syncState", JSON.stringify($syncState));
   }
 </script>
+
+<!-- Keep client state synced across different windows and tabs of the same browser. -->
+<svelte:window
+  on:storage={({ key, newValue }) => {
+    switch (key) {
+      case "isAccountMenuOpened":
+        $isAccountMenuOpened = JSON.parse(newValue);
+        break;
+
+      case "isThemeMenuOpened":
+        $isThemeMenuOpened = JSON.parse(newValue);
+        break;
+
+      case "isTodoOpened":
+        $isTodoOpened = JSON.parse(newValue);
+        break;
+
+      case "isCompletedOpened":
+        $isCompletedOpened = JSON.parse(newValue);
+        break;
+
+      case "newTodo":
+        $newTodo = JSON.parse(newValue);
+        break;
+
+      case "syncState":
+        $syncState = JSON.parse(newValue);
+        break;
+
+      case "clientState":
+        const clientState = JSON.parse(newValue);
+        $todoItems = clientState.value.todo;
+        $completedItems = clientState.value.completed;
+        break;
+    }
+  }}
+/>
