@@ -72,7 +72,7 @@
       {/if}
     </p>
 
-    <ul class="w-56">
+    <ul>
       <li>
         <button on:click={showSettings}>
           Settings
