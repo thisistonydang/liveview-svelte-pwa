@@ -1,11 +1,12 @@
 export default {
-  cacheName: "v2023.12.31.2",
+  cacheName: "v2023.12.31.3",
   debug: false,
   privateAssets: [
     "/app", 
 
-    // /offline is a public route but should only be cached after login so that
+    // These are public routes but should only be cached after login so that
     // DataClearer does not run while offline.
+    "/about",
     "/offline", 
   ],
   publicAssets: [
