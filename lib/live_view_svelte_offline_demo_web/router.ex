@@ -20,6 +20,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
   scope "/", LiveViewSvelteOfflineDemoWeb do
     pipe_through :browser
 
+    get "/about", AboutController, :index
     get "/offline", OfflineController, :index
   end
 
