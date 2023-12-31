@@ -65,12 +65,12 @@
   </summary>
 
   <div class="dropdown-content menu bg-base-200 border border-neutral rounded-box">
-    <p class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
+    <div class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
       {currentUserEmail}
-      {#if $serviceWorkerVersion}
-        <span class="text-xs font-normal">{$serviceWorkerVersion}</span>
-      {/if}
-    </p>
+      <div class="text-xs font-normal h-4" class:skeleton={!$serviceWorkerVersion}>
+        {$serviceWorkerVersion}
+      </div>
+    </div>
 
     <ul>
       <li>
