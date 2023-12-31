@@ -37,14 +37,14 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
         </script>
         <script>
           // Set theme in head to avoid FOUC.
-          if (
-            localStorage.theme === 'dark' ||
-            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-          ) {
-            document.documentElement.classList.add('dark')
-            document.documentElement.dataset.theme = 'dark'
-          } else {
-            document.documentElement.dataset.theme = 'light'
+          try {
+            const theme = JSON.parse(localStorage.getItem("theme"))
+            if (["light", "dark"].includes(theme)) {
+              document.documentElement.dataset.theme = theme
+            }
+          } catch (error) {
+            console.error("Invalid value for 'theme' key in localStorage.", error)
+            localStorage.removeItem("theme")
           }
         </script>
       </head>
