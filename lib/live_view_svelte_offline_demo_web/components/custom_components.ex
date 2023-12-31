@@ -40,7 +40,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
           try {
             const theme = JSON.parse(localStorage.getItem("theme"))
             if (["light", "dark"].includes(theme)) {
-              document.documentElement.dataset.theme = theme
+              document.documentElement.setAttribute("data-theme", theme)
             }
           } catch (error) {
             console.error("Invalid value for 'theme' key in localStorage.", error)
