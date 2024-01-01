@@ -6,6 +6,7 @@
     requestAssetDeletion,
     serviceWorkerVersion,
   } from "lib/offline-svelte";
+  import { showTopBar, hideTopBar } from "lib/topbar";
 
   import config from "../../priv/static/sw.config.js";
   import { isAccountMenuOpened } from "../stores/clientOnlyState";
@@ -16,6 +17,7 @@
 
   let isLogOutLoading = false;
   let isSettingsLoading = false;
+  let disabled = false;
 
   function showAbout() {
     $isAccountMenuOpened = false;
@@ -23,12 +25,16 @@
   }
 
   async function logOutUser() {
+    disabled = true;
     isLogOutLoading = true;
+    showTopBar();
 
     // TODO: Create alert component.
     if (!(await isConnected())) {
-      alert("You must be online to log out.");
+      alert("Whoops, you may be offline. Please check your connection and try again.");
+      hideTopBar();
       isLogOutLoading = false;
+      disabled = false;
       return;
     }
 
@@ -46,12 +52,16 @@
   }
 
   async function showSettings() {
+    disabled = true;
     isSettingsLoading = true;
+    showTopBar();
 
     // TODO: Create alert component.
     if (!(await isConnected())) {
-      alert("You must be online to view settings.");
+      alert("Whoops, you may be offline. Please check your connection and try again.");
+      hideTopBar();
       isSettingsLoading = false;
+      disabled = false;
       return;
     }
 
@@ -82,13 +92,13 @@
         <button on:click={showAbout}>About</button>
       </li>
       <li>
-        <button on:click={showSettings}>
+        <button on:click={showSettings} {disabled}>
           Settings
           <span class="loading loading-dots loading-xs" class:hidden={!isSettingsLoading}></span>
         </button>
       </li>
       <li>
-        <button on:click={logOutUser}>
+        <button on:click={logOutUser} {disabled}>
           Log out
           <span class="loading loading-dots loading-xs" class:hidden={!isLogOutLoading}></span>
         </button>
