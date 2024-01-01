@@ -3,11 +3,11 @@ defmodule LiveViewSvelteOfflineDemoWeb.AboutHTML do
 
   def index(assigns) do
     ~H"""
-    <.app_info>
-      <:pre_info>
-        <.BackLink linkTo={~p"/app"} linkText="Back" />
-      </:pre_info>
-    </.app_info>
+    <.sticky_header>
+      <.BackLink linkTo={~p"/app"} />
+    </.sticky_header>
+
+    <.app_info></.app_info>
     """
   end
 end
