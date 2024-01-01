@@ -5,36 +5,35 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserResetPasswordLive do
 
   def render(assigns) do
     ~H"""
-    <div class="hero min-h-screen mx-auto max-w-sm">
-      <div class="hero-content">
-        <div>
-          <.BackLink linkTo={~p"/"} linkText="Back" />
-          <.header class="text-center">Reset Password</.header>
+    <.sticky_header>
+      <.BackLink linkTo={~p"/"} />
+    </.sticky_header>
 
-          <.simple_form
-            for={@form}
-            id="reset_password_form"
-            phx-submit="reset_password"
-            phx-change="validate"
-          >
-            <.error :if={@form.errors != []}>
-              Oops, something went wrong! Please check the errors below.
-            </.error>
+    <.user_auth_layout>
+      <.header class="text-center">Reset Password</.header>
 
-            <.input field={@form[:password]} type="password" label="New password" required />
-            <.input
-              field={@form[:password_confirmation]}
-              type="password"
-              label="Confirm new password"
-              required
-            />
-            <:actions>
-              <.button phx-disable-with="Resetting..." class="w-full">Reset Password</.button>
-            </:actions>
-          </.simple_form>
-        </div>
-      </div>
-    </div>
+      <.simple_form
+        for={@form}
+        id="reset_password_form"
+        phx-submit="reset_password"
+        phx-change="validate"
+      >
+        <.error :if={@form.errors != []}>
+          Oops, something went wrong! Please check the errors below.
+        </.error>
+
+        <.input field={@form[:password]} type="password" label="New password" required />
+        <.input
+          field={@form[:password_confirmation]}
+          type="password"
+          label="Confirm new password"
+          required
+        />
+        <:actions>
+          <.button phx-disable-with="Resetting..." class="w-full">Reset Password</.button>
+        </:actions>
+      </.simple_form>
+    </.user_auth_layout>
     """
   end
 
