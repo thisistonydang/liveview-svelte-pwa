@@ -8,8 +8,10 @@
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
+  import { isAboutPageOpened } from "../stores/clientOnlyState";
   import { serverState } from "../stores/liveViewSocket";
 
+  import AboutPage from "./AboutPage.svelte";
   import AppSkeleton from "./AppSkeleton.svelte";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
@@ -46,12 +48,16 @@
 <OfflineSvelte />
 
 {#if $isClientStateRestored}
-  <UpdateAlert />
-  <Header {currentUserEmail} />
+  {#if $isAboutPageOpened}
+    <AboutPage />
+  {:else}
+    <UpdateAlert />
+    <Header {currentUserEmail} />
 
-  <div class="max-w-2xl mx-auto px-2 md:p-0">
-    <TodoApp />
-  </div>
+    <div class="max-w-2xl mx-auto px-2 md:p-0">
+      <TodoApp />
+    </div>
+  {/if}
 {:else}
   <AppSkeleton />
 {/if}
