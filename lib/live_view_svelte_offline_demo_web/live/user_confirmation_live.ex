@@ -6,7 +6,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationLive do
   def render(%{live_action: :edit} = assigns) do
     ~H"""
     <.sticky_header>
-      <.BackLink linkTo={~p"/app"} />
+      <.BackLink linkTo={~p"/"} />
     </.sticky_header>
 
     <div class="max-w-sm mx-auto px-2 md:p-0 mt-10">
