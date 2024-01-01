@@ -24,8 +24,10 @@ import { getHooks } from "live_svelte";
 // @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
 import { registerServiceWorker } from "../lib/offline-svelte";
+import { initTopBar } from "../lib/topbar/initTopBar";
 
 registerServiceWorker("/sw.js");
+initTopBar();
 
 let csrfToken = document.querySelector("meta[name='csrf-token']")?.getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {
