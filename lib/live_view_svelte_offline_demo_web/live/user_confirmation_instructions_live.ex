@@ -5,26 +5,24 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationInstructionsLive do
 
   def render(assigns) do
     ~H"""
-    <div class="hero min-h-screen mx-auto max-w-md">
-      <div class="hero-content">
-        <div>
-          <.BackLink linkTo={~p"/"} linkText="Back" />
+    <.sticky_header>
+      <.BackLink linkTo={~p"/"} />
+    </.sticky_header>
 
-          <.header class="text-center">
-            No confirmation instructions received?
-            <:subtitle>We'll send a new confirmation link to your inbox</:subtitle>
-          </.header>
+    <div class="max-w-sm mx-auto px-2 md:p-0 mt-10">
+      <.header class="text-center">
+        No confirmation instructions received?
+        <:subtitle>We'll send a new confirmation link to your inbox</:subtitle>
+      </.header>
 
-          <.simple_form for={@form} id="resend_confirmation_form" phx-submit="send_instructions">
-            <.input field={@form[:email]} type="email" placeholder="Email" required />
-            <:actions>
-              <.button phx-disable-with="Sending..." class="w-full">
-                Resend confirmation instructions
-              </.button>
-            </:actions>
-          </.simple_form>
-        </div>
-      </div>
+      <.simple_form for={@form} id="resend_confirmation_form" phx-submit="send_instructions">
+        <.input field={@form[:email]} type="email" placeholder="Email" required />
+        <:actions>
+          <.button phx-disable-with="Sending..." class="w-full">
+            Resend confirmation instructions
+          </.button>
+        </:actions>
+      </.simple_form>
     </div>
     """
   end
