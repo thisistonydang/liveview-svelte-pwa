@@ -55,41 +55,34 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
     """
   end
 
-  slot :pre_info, default: ""
-  slot :post_info, default: ""
+  slot :inner_block, default: ""
 
   def app_info(assigns) do
     ~H"""
-    <div class="hero min-h-screen">
-      <div class="hero-content">
-        <div class="max-w-md">
-          <%= render_slot(@pre_info) %>
+    <div class="max-w-md mx-auto px-6 md:p-0 mt-10">
+      <h1 class="text-5xl font-black my-5">Offline-Enabled LiveView Svelte Demo</h1>
+      <p>
+        This is a demo of a Phoenix LiveView
+        <abbr class="underline-offset-4" title="Progressive WebApp">PWA</abbr>
+        that can sync realtime across multiple devices while
+        also being able to fallback to working offline.
+      </p>
 
-          <h1 class="text-5xl font-black my-5">Offline-Enabled LiveView Svelte Demo</h1>
-          <p>
-            This is a demo of a Phoenix LiveView
-            <abbr class="underline-offset-4" title="Progressive WebApp">PWA</abbr>
-            that can sync realtime across multiple devices while
-            also being able to fallback to working offline.
-          </p>
+      <div class="my-6">
+        <h2 class="text-3xl font-bold my-3">
+          It utilizes the following technologies
+        </h2>
 
-          <div class="my-6">
-            <h2 class="text-3xl font-bold my-3">
-              It utilizes the following technologies
-            </h2>
-
-            <ul class="list-disc pl-4">
-              <li>Phoenix LiveView, Presence, and PubSub</li>
-              <li>Ecto/PostgreSQL</li>
-              <li>Svelte (via live_svelte)</li>
-              <li>Service Workers</li>
-              <li>LocalStorage</li>
-            </ul>
-          </div>
-
-          <%= render_slot(@post_info) %>
-        </div>
+        <ul class="list-disc pl-4">
+          <li>Phoenix LiveView, Presence, and PubSub</li>
+          <li>Ecto/PostgreSQL</li>
+          <li>Svelte (via live_svelte)</li>
+          <li>Service Workers</li>
+          <li>LocalStorage</li>
+        </ul>
       </div>
+
+      <%= render_slot(@inner_block) %>
     </div>
     """
   end
