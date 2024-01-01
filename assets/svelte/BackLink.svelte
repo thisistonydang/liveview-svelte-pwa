@@ -5,21 +5,16 @@
   live;
 
   export let linkTo;
-  export let linkText;
+  export let ariaLabel = "Back";
 </script>
 
-<div class="my-4">
-  <a
-    class="link no-underline text-sm font-semibold flex items-center gap-1"
-    href={linkTo}
-    on:click|preventDefault={() => {
-      window.location.replace(linkTo);
-    }}
-  >
-    <span class="h-3 w-3">
-      <ArrowLeftSvgIcon />
-    </span>
-
-    {linkText}
-  </a>
-</div>
+<a
+  class="flex h-10 w-10"
+  href={linkTo}
+  aria-label={ariaLabel}
+  on:click|preventDefault={() => {
+    window.location.replace(linkTo);
+  }}
+>
+  <ArrowLeftSvgIcon />
+</a>
