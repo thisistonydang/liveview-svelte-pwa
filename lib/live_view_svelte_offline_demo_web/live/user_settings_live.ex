@@ -15,7 +15,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
       <.BackLink linkTo={~p"/app"} />
     </.sticky_header>
 
-    <div class="max-w-sm mx-auto px-2 md:p-0 mt-10">
+    <.user_auth_layout>
       <.header class="text-center">
         Account Settings
         <:subtitle>Manage your account email address and password settings</:subtitle>
@@ -81,7 +81,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
           </.simple_form>
         </div>
       </div>
-    </div>
+    </.user_auth_layout>
     """
   end
 
