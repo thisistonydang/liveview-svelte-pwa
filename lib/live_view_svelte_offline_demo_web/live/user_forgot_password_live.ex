@@ -9,7 +9,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserForgotPasswordLive do
       <.BackLink linkTo={~p"/"} />
     </.sticky_header>
 
-    <div class="max-w-sm mx-auto px-2 md:p-0 mt-10">
+    <.user_auth_layout>
       <.header class="text-center">
         Forgot your password?
         <:subtitle>We'll send a password reset link to your inbox</:subtitle>
@@ -23,7 +23,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserForgotPasswordLive do
           </.button>
         </:actions>
       </.simple_form>
-    </div>
+    </.user_auth_layout>
     """
   end
 
