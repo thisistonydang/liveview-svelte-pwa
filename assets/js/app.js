@@ -20,7 +20,6 @@ import "phoenix_html";
 // Establish Phoenix Socket and LiveView configuration.
 import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
-import topbar from "../vendor/topbar";
 import { getHooks } from "live_svelte";
 // @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
@@ -33,19 +32,6 @@ let liveSocket = new LiveSocket("/live", Socket, {
   hooks: getHooks(Components),
   params: { _csrf_token: csrfToken },
 });
-
-// Show progress bar on live navigation and form submits
-topbar.config({ barColors: { 0: "#00c7b5" }, shadowColor: "rgba(0, 0, 0, .3)" });
-window.addEventListener("phx:page-loading-start", (info) => {
-  const { to, kind } = info.detail;
-  const url = new URL(to);
-
-  // Don't show topbar on /app route on websocket error.
-  if (url.pathname === "/app" && kind === "error") return;
-
-  topbar.show(300);
-});
-window.addEventListener("phx:page-loading-stop", (_info) => topbar.hide());
 
 // connect if there are any LiveViews on the page
 liveSocket.connect();
