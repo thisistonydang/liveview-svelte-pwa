@@ -24,6 +24,24 @@
     $isAccountMenuOpened = false;
   }
 
+  async function showSettings() {
+    disabled = true;
+    isSettingsLoading = true;
+    showTopBar();
+
+    // TODO: Create alert component.
+    if (!(await isConnected())) {
+      alert("Whoops, you may be offline. Please check your connection and try again.");
+      hideTopBar();
+      isSettingsLoading = false;
+      disabled = false;
+      return;
+    }
+
+    $isAccountMenuOpened = false;
+    window.location.href = "/users/settings";
+  }
+
   async function logOutUser() {
     disabled = true;
     isLogOutLoading = true;
@@ -49,24 +67,6 @@
       console.error(error);
       alert("Error logging out. Please try again.");
     }
-  }
-
-  async function showSettings() {
-    disabled = true;
-    isSettingsLoading = true;
-    showTopBar();
-
-    // TODO: Create alert component.
-    if (!(await isConnected())) {
-      alert("Whoops, you may be offline. Please check your connection and try again.");
-      hideTopBar();
-      isSettingsLoading = false;
-      disabled = false;
-      return;
-    }
-
-    $isAccountMenuOpened = false;
-    window.location.href = "/users/settings";
   }
 </script>
 
