@@ -9,7 +9,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationLive do
       <.BackLink linkTo={~p"/"} />
     </.sticky_header>
 
-    <div class="max-w-sm mx-auto px-2 md:p-0 mt-10">
+    <.user_auth_layout>
       <.header class="text-center">Confirm Account</.header>
 
       <.simple_form for={@form} id="confirmation_form" phx-submit="confirm_account">
@@ -18,7 +18,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationLive do
           <.button phx-disable-with="Confirming..." class="w-full">Confirm my account</.button>
         </:actions>
       </.simple_form>
-    </div>
+    </.user_auth_layout>
     """
   end
 
