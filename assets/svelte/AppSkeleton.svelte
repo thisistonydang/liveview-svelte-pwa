@@ -1,4 +1,4 @@
-<div class="w-screen h-screen max-w-2xl mx-auto flex flex-col">
+<div class="w-screen h-screen max-w-2xl mx-auto flex flex-col px-2 md:p-0">
   <div class="flex justify-between mt-3 mb-2">
     <div class="skeleton w-1/3 h-12"></div>
     <div class="flex gap-2">
