@@ -9,7 +9,7 @@
   import { showTopBar, hideTopBar } from "lib/topbar";
 
   import config from "../../priv/static/sw.config.js";
-  import { isAccountMenuOpened } from "../stores/clientOnlyState";
+  import { isAboutPageOpened, isAccountMenuOpened } from "../stores/clientOnlyState";
 
   import UserSvgIcon from "./UserSvgIcon.svelte";
 
@@ -20,8 +20,8 @@
   let disabled = false;
 
   function showAbout() {
+    $isAboutPageOpened = true;
     $isAccountMenuOpened = false;
-    window.location.href = "/about";
   }
 
   async function logOutUser() {
