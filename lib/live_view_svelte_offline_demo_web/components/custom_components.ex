@@ -98,4 +98,14 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
     </div>
     """
   end
+
+  slot :inner_block, required: true
+
+  def user_auth_layout(assigns) do
+    ~H"""
+    <div class="max-w-sm mx-auto px-2 md:p-0 mt-10">
+      <%= render_slot(@inner_block) %>
+    </div>
+    """
+  end
 end
