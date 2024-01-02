@@ -104,8 +104,8 @@
               <input class="checkbox" type="checkbox" checked on:change={() => uncheckItem(item)} />
               <span class="line-through">{item.name}</span>
             </label>
-            <button class="h-6 w-6" aria-label="Delete item." on:click={() => deleteItem(item)}>
-              <XMarkSvgIcon />
+            <button aria-label="Delete item." on:click={() => deleteItem(item)}>
+              <XMarkSvgIcon className="w-6 h-6" />
             </button>
           </li>
         {/each}

@@ -42,7 +42,7 @@
         };
       }}
     >
-      <div class="h-5 w-5"><XMarkSvgIcon /></div>
+      <XMarkSvgIcon className="w-5 h-5" />
     </button>
   </label>
 {/if}
