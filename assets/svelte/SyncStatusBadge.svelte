@@ -29,7 +29,7 @@
 >
   <div class="flex gap-1 items-center">
     {#if $syncState === "Synced"}
-      <SuccessSvgIcon />
+      <SuccessSvgIcon className="w-3 h-3" />
     {:else if $syncState === "Syncing"}
       <RefreshingSvgIcon className="w-3 h-3 animate-spin" />
     {:else}

@@ -1,9 +1,13 @@
+<script>
+  export let className;
+</script>
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 16 16"
   fill="currentColor"
   data-slot="icon"
-  class="w-3 h-3"
+  class={className}
 >
   <path
     fill-rule="evenodd"
