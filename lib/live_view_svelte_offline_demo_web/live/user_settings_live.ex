@@ -12,7 +12,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
     <.PageLifeCycleEvents />
 
     <.sticky_header>
-      <.BackLink linkTo={~p"/app"} />
+      <.Back />
     </.sticky_header>
 
     <.user_auth_layout>
