@@ -13,9 +13,7 @@
 <div class="hero min-h-screen">
   <div class="hero-content text-center">
     <div class="max-w-md">
-      <div class="mx-auto w-40 h-40">
-        <FrownSvgIcon />
-      </div>
+      <FrownSvgIcon className="mx-auto h-40 w-40" />
       <h1 class="text-xl font-bold my-3">{title}</h1>
 
       {#if subtitle}
