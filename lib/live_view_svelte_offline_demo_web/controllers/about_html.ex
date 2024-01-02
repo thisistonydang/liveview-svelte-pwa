@@ -4,7 +4,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AboutHTML do
   def index(assigns) do
     ~H"""
     <.sticky_header>
-      <.BackLink linkTo={~p"/app"} />
+      <.Back />
     </.sticky_header>
 
     <.AppInfo />
