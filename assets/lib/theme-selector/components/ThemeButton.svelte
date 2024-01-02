@@ -12,7 +12,7 @@
   use:clickOutside={() => ($isThemeMenuOpened = false)}
 >
   <summary class="my-1 btn btn-circle btn-neutral" aria-label="Theme Selector">
-    <SwatchSvgIcon />
+    <SwatchSvgIcon className="h-6 w-6" />
   </summary>
 
   <div class="dropdown-content menu bg-base-200 border border-neutral rounded-box">

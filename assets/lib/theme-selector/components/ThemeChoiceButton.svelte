@@ -13,9 +13,7 @@
     <span class="first-letter:capitalize">{theme}</span>
 
     {#if theme === $currentTheme}
-      <span class="w-3 h-3">
-        <CheckSvgIcon />
-      </span>
+      <CheckSvgIcon className="h-3 w-3" />
     {/if}
   </button>
 </li>
