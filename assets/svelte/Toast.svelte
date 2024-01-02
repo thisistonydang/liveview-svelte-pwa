@@ -20,7 +20,7 @@
   >
     <p class="flex items-center gap-1.5 text-sm font-semibold leading-6">
       {#if $toast.kind === "info"}
-        <span class="h-4 w-4"><InfoSvgIcon /></span>
+        <InfoSvgIcon className="h-6 w-6" />
       {:else if $toast.kind === "error"}
         <span class="h-4 w-4"><WarningSvgIcon /></span>
       {/if}

@@ -1,8 +1,12 @@
+<script>
+  export let className;
+</script>
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
   fill="none"
   viewBox="0 0 24 24"
-  class="stroke-current shrink-0"
+  class="stroke-current shrink-0 {className}"
 >
   <path
     stroke-linecap="round"

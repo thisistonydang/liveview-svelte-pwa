@@ -26,7 +26,7 @@
     class="fixed left-1/2 w-full sm:max-w-sm z-40"
   >
     <div class="alert shadow-lg border border-neutral m-2" style:width={`${width - 16}px`}>
-      <span class="h-6 w-6"><InfoSvgIcon /></span>
+      <InfoSvgIcon className="h-6 w-6" />
 
       <div>
         <h3 class="font-bold">Update Available</h3>
