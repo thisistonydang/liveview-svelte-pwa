@@ -9,12 +9,11 @@
 </script>
 
 <a
-  class="flex h-10 w-10"
   href={linkTo}
   aria-label={ariaLabel}
   on:click|preventDefault={() => {
     window.location.replace(linkTo);
   }}
 >
-  <ArrowLeftSvgIcon />
+  <ArrowLeftSvgIcon className="h-10 w-10" />
 </a>
