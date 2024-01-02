@@ -10,6 +10,7 @@
 
   import config from "../../priv/static/sw.config.js";
   import { isAboutPageOpened, isAccountMenuOpened } from "../stores/clientOnlyState";
+  import { toast } from "../stores/toast";
 
   import UserSvgIcon from "./UserSvgIcon.svelte";
 
@@ -29,9 +30,13 @@
     isSettingsLoading = true;
     showTopBar();
 
-    // TODO: Create alert component.
     if (!(await isConnected())) {
-      alert("Whoops, you may be offline. Please check your connection and try again.");
+      $toast = {
+        show: true,
+        kind: "error",
+        title: "Whoops, you may be offline.",
+        msg: "Please check your connection and try again.",
+      };
       hideTopBar();
       isSettingsLoading = false;
       disabled = false;
@@ -47,9 +52,13 @@
     isLogOutLoading = true;
     showTopBar();
 
-    // TODO: Create alert component.
     if (!(await isConnected())) {
-      alert("Whoops, you may be offline. Please check your connection and try again.");
+      $toast = {
+        show: true,
+        kind: "error",
+        title: "Whoops, you may be offline.",
+        msg: "Please check your connection and try again.",
+      };
       hideTopBar();
       isLogOutLoading = false;
       disabled = false;
