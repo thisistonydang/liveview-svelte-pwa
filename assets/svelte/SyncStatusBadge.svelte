@@ -33,7 +33,7 @@
     {:else if $syncState === "Syncing"}
       <RefreshingSvgIcon className="w-3 h-3 animate-spin" />
     {:else}
-      <span class="w-3 h-3"><WarningSvgIcon /></span>
+      <WarningSvgIcon className="w-3 h-3" />
     {/if}
 
     {$syncState}

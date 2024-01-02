@@ -22,7 +22,7 @@
       {#if $toast.kind === "info"}
         <InfoSvgIcon className="h-6 w-6" />
       {:else if $toast.kind === "error"}
-        <span class="h-4 w-4"><WarningSvgIcon /></span>
+        <WarningSvgIcon className="h-4 w-4" />
       {/if}
 
       {$toast.title}
