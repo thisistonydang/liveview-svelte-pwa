@@ -35,7 +35,7 @@
         show: true,
         kind: "error",
         title: "Whoops, you may be offline.",
-        msg: "Please check your connection and try again.",
+        msg: "You must be online to view settings. Please check your connection and try again.",
       };
       hideTopBar();
       isSettingsLoading = false;
@@ -57,7 +57,7 @@
         show: true,
         kind: "error",
         title: "Whoops, you may be offline.",
-        msg: "Please check your connection and try again.",
+        msg: "You must be online to logout. Please check your connection and try again.",
       };
       hideTopBar();
       isLogOutLoading = false;
