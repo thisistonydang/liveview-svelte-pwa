@@ -6,7 +6,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationInstructionsLive do
   def render(assigns) do
     ~H"""
     <.sticky_header>
-      <.BackLink linkTo={~p"/"} />
+      <.Back linkTo={~p"/"} />
     </.sticky_header>
 
     <.user_auth_layout>
