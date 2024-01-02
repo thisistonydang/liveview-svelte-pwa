@@ -16,6 +16,7 @@
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
+  import Toast from "./Toast.svelte";
   import TodoApp from "./TodoApp.svelte";
   import UpdateAlert from "./UpdateAlert.svelte";
 
@@ -48,6 +49,7 @@
 <OfflineSvelte />
 
 {#if $isClientStateRestored}
+  <Toast />
   {#if $isAboutPageOpened}
     <AboutPage />
   {:else}
