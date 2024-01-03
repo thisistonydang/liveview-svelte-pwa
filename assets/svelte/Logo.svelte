@@ -1,5 +1,5 @@
 <script>
-  import CheckSvgIconMicro from "lib/heroicons/CheckSvgIconMicro.svelte";
+  import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
   export let live = undefined;
   live;
