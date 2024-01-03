@@ -28,9 +28,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
         <meta name="theme-color" content="#1d232a" />
         <!-- End Favicons -->
         <meta name="csrf-token" content={Phoenix.Controller.get_csrf_token()} />
-        <.live_title suffix=" · Offline-Enabled LiveView Svelte Demo">
-          ToDo
-        </.live_title>
+        <.live_title>ToDo</.live_title>
         <meta name="description" content="Offline-Enabled LiveView Svelte Demo App" />
         <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
         <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
