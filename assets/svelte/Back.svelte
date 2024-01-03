@@ -1,5 +1,5 @@
 <script>
-  import ArrowLeftSvgIcon from "lib/heroicons/ArrowLeftSvgIcon.svelte";
+  import ArrowLeftSvgIcon from "lib/svg-icons/ArrowLeftSvgIcon.svelte";
 
   export let live;
   live;
