@@ -1,9 +1,8 @@
 <script>
   import { fly } from "svelte/transition";
 
-  import { isConnected, isSWUpdateAvailable, isSWUpdateConfirmed } from "../lib/offline-svelte";
-
-  import InfoSvgIcon from "./InfoSvgIcon.svelte";
+  import InfoSvgIcon from "lib/heroicons/InfoSvgIcon.svelte";
+  import { isConnected, isSWUpdateAvailable, isSWUpdateConfirmed } from "lib/offline-svelte";
 
   let showAlert = false;
   let width;
