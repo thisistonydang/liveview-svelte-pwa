@@ -1,6 +1,14 @@
 {
     "name": "ToDo",
     "short_name": "ToDo",
+    "description": "A simple to-do app.",
+    "id": "/",
+    "scope": "/",
+    "start_url": "/",
+    "theme_color": "#1d232a",
+    "background_color": "#1d232a",
+    "orientation": "any",
+    "display": "standalone",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,11 +21,5 @@
             "type": "image/png",
             "purpose": "maskable"
         }
-    ],
-    "theme_color": "#1d232a",
-    "background_color": "#1d232a",
-    "id": "/",
-    "start_url": "/",
-    "scope": "/",
-    "display": "standalone"
+    ]
 }
