@@ -1,5 +1,8 @@
 <script>
   import CheckSvgIconMicro from "lib/heroicons/CheckSvgIconMicro.svelte";
+
+  export let live = undefined;
+  live;
 </script>
 
 <div class="h-screen w-screen bg-accent flex justify-center items-center">
