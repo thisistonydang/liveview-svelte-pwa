@@ -1,5 +1,4 @@
 <script>
-  import UserSvgIcon from "lib/heroicons/UserSvgIcon.svelte";
   import { clickOutside } from "lib/hooks/clickOutside";
   import {
     isConnected,
@@ -7,6 +6,7 @@
     requestAssetDeletion,
     serviceWorkerVersion,
   } from "lib/offline-svelte";
+  import UserSvgIcon from "lib/svg-icons/UserSvgIcon.svelte";
   import { showTopBar, hideTopBar } from "lib/topbar";
 
   import config from "../../priv/static/sw.config.js";
