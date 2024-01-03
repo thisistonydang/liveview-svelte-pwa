@@ -1,25 +1,25 @@
 {
-    "name": "ToDo",
-    "short_name": "ToDo",
-    "description": "A simple to-do app.",
-    "id": "/",
-    "scope": "/",
-    "start_url": "/",
-    "theme_color": "#1d232a",
-    "background_color": "#1d232a",
-    "orientation": "any",
-    "display": "standalone",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-        }
-    ]
+  "name": "ToDo",
+  "short_name": "ToDo",
+  "description": "A simple to-do app.",
+  "id": "/",
+  "scope": "/",
+  "start_url": "/",
+  "theme_color": "#1d232a",
+  "background_color": "#1d232a",
+  "orientation": "any",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }
