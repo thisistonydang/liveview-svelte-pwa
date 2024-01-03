@@ -1,5 +1,5 @@
 <script>
-  import FrownSvgIcon from "./FrownSvgIcon.svelte";
+  import FrownSvgIcon from "lib/heroicons/FrownSvgIcon.svelte";
 
   export let live;
   live;
