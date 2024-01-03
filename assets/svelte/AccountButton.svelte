@@ -1,4 +1,5 @@
 <script>
+  import UserSvgIcon from "lib/heroicons/UserSvgIcon.svelte";
   import { clickOutside } from "lib/hooks/clickOutside";
   import {
     isConnected,
@@ -11,8 +12,6 @@
   import config from "../../priv/static/sw.config.js";
   import { isAccountMenuOpened } from "../stores/clientOnlyState";
   import { toast } from "../stores/toast";
-
-  import UserSvgIcon from "./UserSvgIcon.svelte";
 
   export let currentUserEmail;
 
