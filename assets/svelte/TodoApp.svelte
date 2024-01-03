@@ -2,7 +2,7 @@
   import { flip } from "svelte/animate";
   import { crossfade, fade, fly, scale } from "svelte/transition";
 
-  import XMarkSvgIcon from "lib/heroicons/XMarkSvgIcon.svelte";
+  import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
 
   import { isCompletedOpened, isTodoOpened, newTodo } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";

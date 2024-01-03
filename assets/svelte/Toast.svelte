@@ -1,9 +1,9 @@
 <script>
   import { fly } from "svelte/transition";
 
-  import InfoSvgIcon from "lib/heroicons/InfoSvgIcon.svelte";
-  import WarningSvgIcon from "lib/heroicons/WarningSvgIcon.svelte";
-  import XMarkSvgIcon from "lib/heroicons/XMarkSvgIcon.svelte";
+  import InfoSvgIcon from "lib/svg-icons/InfoSvgIcon.svelte";
+  import WarningSvgIcon from "lib/svg-icons/WarningSvgIcon.svelte";
+  import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
 
   import { toast } from "../stores/toast";
 </script>
