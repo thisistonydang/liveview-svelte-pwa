@@ -1,4 +1,4 @@
-defmodule LiveViewSvelteOfflineDemoWeb.PageHTML do
+defmodule LiveViewSvelteOfflineDemoWeb.HomeHTML do
   use LiveViewSvelteOfflineDemoWeb, :html
 
   def home(assigns) do

@@ -1,4 +1,4 @@
-defmodule LiveViewSvelteOfflineDemoWeb.PageController do
+defmodule LiveViewSvelteOfflineDemoWeb.HomeController do
   use LiveViewSvelteOfflineDemoWeb, :controller
 
   def home(conn, _params) do

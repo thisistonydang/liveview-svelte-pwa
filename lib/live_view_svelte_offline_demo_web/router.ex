@@ -62,7 +62,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
       live "/users/reset_password/:token", UserResetPasswordLive, :edit
     end
 
-    get "/", PageController, :home
+    get "/", HomeController, :home
     post "/users/log_in", UserSessionController, :create
   end
 
