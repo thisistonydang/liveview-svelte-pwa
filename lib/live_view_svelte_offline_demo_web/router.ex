@@ -20,6 +20,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
   scope "/", LiveViewSvelteOfflineDemoWeb do
     pipe_through :browser
 
+    # This route is just for creating the logo image in development.
+    # get "/logo", LogoController, :index
+
     get "/about", AboutController, :index
     get "/offline", OfflineController, :index
   end
