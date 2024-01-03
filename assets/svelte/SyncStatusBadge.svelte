@@ -1,10 +1,11 @@
 <script>
+  import RefreshingSvgIcon from "lib/heroicons/RefreshingSvgIcon.svelte";
+
   import { todoItems, completedItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
   import { syncClientToServer } from "./StateManagement.svelte";
-  import RefreshingSvgIcon from "./RefreshingSvgIcon.svelte";
   import SuccessSvgIcon from "./SuccessSvgIcon.svelte";
   import WarningSvgIcon from "./WarningSvgIcon.svelte";
 
