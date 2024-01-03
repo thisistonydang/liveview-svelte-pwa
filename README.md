@@ -1,18 +1,21 @@
-# LiveViewSvelteOfflineDemo
+# Offline-Enabled LiveView Svelte Demo
 
-To start your Phoenix server:
+This is a demo of an installable [Phoenix](https://www.phoenixframework.org/) PWA 
+([Progressive WebApp](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)) that
+can sync real-time across multiple devices while also being able to fallback to working offline.
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## It utilizes the following technologies
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+- Phoenix [LiveView](https://github.com/phoenixframework/phoenix_live_view),
+  [PubSub](https://hexdocs.pm/phoenix/channels.html#pubsub), and
+  [Ecto](https://github.com/elixir-ecto/ecto/tree/v3.11.1)/[PostgreSQL](https://www.postgresql.org/)
+  for real-time syncing across multiple devices and data persistence.
+- [Svelte](https://svelte.dev/) (via [live_svelte](https://github.com/woutdp/live_svelte),
+  [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API), 
+  and [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 
+  for offline support.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Contact
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Created by [Tony Dang](https://tonydang.blog). Please feel free send any questions or feedback to
+[tony@tonydang.blog](mailto:tony@tonydang.blog).
