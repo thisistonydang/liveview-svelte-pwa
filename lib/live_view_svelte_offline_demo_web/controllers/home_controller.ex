@@ -1,7 +1,7 @@
 defmodule LiveViewSvelteOfflineDemoWeb.HomeController do
   use LiveViewSvelteOfflineDemoWeb, :controller
 
-  def home(conn, _params) do
-    render(conn, :home)
+  def index(conn, _params) do
+    render(conn, :index)
   end
 end
