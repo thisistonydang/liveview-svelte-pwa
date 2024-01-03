@@ -1,8 +1,8 @@
 <script>
+  import CheckSvgIconMicro from "lib/heroicons/CheckSvgIconMicro.svelte";
+
   import { currentTheme } from "../lib/currentTheme";
   import { setTheme } from "../lib/setTheme";
-
-  import CheckSvgIcon from "./CheckSvgIcon.svelte";
 
   /** @type {"system" | "light" | "dark"} */
   export let theme;
@@ -13,7 +13,7 @@
     <span class="first-letter:capitalize">{theme}</span>
 
     {#if theme === $currentTheme}
-      <CheckSvgIcon className="h-3 w-3" />
+      <CheckSvgIconMicro className="h-4 w-4" />
     {/if}
   </button>
 </li>
