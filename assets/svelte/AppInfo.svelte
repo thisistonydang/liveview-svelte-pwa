@@ -18,11 +18,28 @@
     <h2 class="text-3xl font-bold my-3">It utilizes the following technologies</h2>
 
     <ul class="list-disc pl-4">
-      <li>Phoenix LiveView, Presence, and PubSub</li>
-      <li>Ecto/PostgreSQL</li>
-      <li>Svelte (via live_svelte)</li>
-      <li>Service Workers</li>
-      <li>LocalStorage</li>
+      <li>
+        Phoenix
+        <Link href="https://github.com/phoenixframework/phoenix_live_view" external>LiveView</Link>,
+        <Link href="https://hexdocs.pm/phoenix/channels.html#pubsub" external>PubSub</Link>, and
+        <Link href="https://github.com/elixir-ecto/ecto/tree/v3.11.1" external>Ecto</Link>/<Link
+          href="https://www.postgresql.org/"
+          external
+        >
+          PostgreSQL
+        </Link> for real-time syncing across multiple devices and data persistence.
+      </li>
+
+      <li>
+        <Link href="https://svelte.dev/" external>Svelte</Link>
+        (via <Link href="https://github.com/woutdp/live_svelte" external>live_svelte</Link>),
+        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" external
+          >Service Workers</Link
+        >, and
+        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" external>
+          localStorage
+        </Link> for offline support.
+      </li>
     </ul>
   </div>
 
