@@ -2,13 +2,13 @@
   import { flip } from "svelte/animate";
   import { crossfade, fade, fly, scale } from "svelte/transition";
 
+  import XMarkSvgIcon from "lib/heroicons/XMarkSvgIcon.svelte";
+
   import { isCompletedOpened, isTodoOpened, newTodo } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
   import { syncClientToServer } from "./StateManagement.svelte";
-  import XMarkSvgIcon from "./XMarkSvgIcon.svelte";
-
   const [send, receive] = crossfade({ fallback: scale });
   let error = "";
 

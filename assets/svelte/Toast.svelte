@@ -3,10 +3,9 @@
 
   import InfoSvgIcon from "lib/heroicons/InfoSvgIcon.svelte";
   import WarningSvgIcon from "lib/heroicons/WarningSvgIcon.svelte";
+  import XMarkSvgIcon from "lib/heroicons/XMarkSvgIcon.svelte";
 
   import { toast } from "../stores/toast";
-
-  import XMarkSvgIcon from "./XMarkSvgIcon.svelte";
 </script>
 
 {#if $toast.show}
