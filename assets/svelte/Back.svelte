@@ -4,12 +4,12 @@
   export let live;
   live;
 
-  export let linkTo = undefined;
+  export let href = undefined;
   export let ariaLabel = "Back";
 </script>
 
-{#if linkTo}
-  <a href={linkTo} aria-label={ariaLabel}>
+{#if href}
+  <a {href} aria-label={ariaLabel}>
     <ArrowLeftSvgIcon className="h-10 w-10" />
   </a>
 {:else}
