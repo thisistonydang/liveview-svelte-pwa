@@ -20,6 +20,7 @@ export default {
     "/favicon-16x16.png",
     "/favicon-32x32.png",
     "/mstile-150x150.png",
+    "/og.png",
     "/safari-pinned-tab.svg",
     "/screenshot-narrow-light.png",
     "/screenshot-narrow-dark.png",
