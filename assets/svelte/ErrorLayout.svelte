@@ -6,7 +6,7 @@
 
   export let title;
   export let subtitle = undefined;
-  export let linkTo;
+  export let href;
   export let linkText;
 </script>
 
@@ -22,9 +22,9 @@
 
       <a
         class="btn btn-accent my-2"
-        href={linkTo}
+        {href}
         on:click|preventDefault={() => {
-          window.location.replace(linkTo);
+          window.location.replace(href);
         }}
       >
         {linkText}

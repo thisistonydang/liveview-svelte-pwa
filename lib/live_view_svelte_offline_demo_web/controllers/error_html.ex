@@ -4,7 +4,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.ErrorHTML do
   def render("404.html", assigns) do
     ~H"""
     <.root_html>
-      <.ErrorLayout title="404 - Whoops, page not found..." linkTo={~p"/"} linkText="Return home" />
+      <.ErrorLayout title="404 - Whoops, page not found..." href={~p"/"} linkText="Return home" />
     </.root_html>
     """
   end
@@ -14,7 +14,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.ErrorHTML do
     <.root_html>
       <.ErrorLayout
         title="500 - Whoops, an unknown error has occurred..."
-        linkTo={~p"/"}
+        href={~p"/"}
         linkText="Return home"
       />
     </.root_html>

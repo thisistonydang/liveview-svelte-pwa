@@ -6,7 +6,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.OfflineHTML do
     <.ErrorLayout
       title="Whoops, you may be offline..."
       subtitle="Please check your connection or try refreshing."
-      linkTo={~p"/app"}
+      href={~p"/app"}
       linkText="Refresh"
     />
     """
