@@ -13,7 +13,7 @@
     <ArrowLeftSvgIcon className="h-10 w-10" />
   </a>
 {:else}
-  <button aria-label={ariaLabel} on:click={() => history.back()}>
+  <button aria-label={ariaLabel} class="flex" on:click={() => history.back()}>
     <ArrowLeftSvgIcon className="h-10 w-10" />
   </button>
 {/if}
