@@ -1,13 +1,13 @@
 <script>
   import RefreshingSvgIcon from "lib/heroicons/RefreshingSvgIcon.svelte";
   import SuccessSvgIcon from "lib/heroicons/SuccessSvgIcon.svelte";
+  import WarningSvgIcon from "lib/heroicons/WarningSvgIcon.svelte";
 
   import { todoItems, completedItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
   import { syncClientToServer } from "./StateManagement.svelte";
-  import WarningSvgIcon from "./WarningSvgIcon.svelte";
 
   async function checkIfSynced() {
     if ($syncState === "Synced") {
