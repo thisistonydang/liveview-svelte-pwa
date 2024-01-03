@@ -1,6 +1,6 @@
 <script>
-  import SwatchSvgIcon from "lib/heroicons/SwatchSvgIcon.svelte";
   import { clickOutside } from "lib/hooks/clickOutside";
+  import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
   import { isThemeMenuOpened } from "../lib/isThemeMenuOpened";
   import ThemeChoiceButton from "./ThemeChoiceButton.svelte";
