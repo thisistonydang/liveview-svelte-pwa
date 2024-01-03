@@ -1,5 +1,5 @@
 <script>
-  import CheckSvgIconMicro from "lib/heroicons/CheckSvgIconMicro.svelte";
+  import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
   import { currentTheme } from "../lib/currentTheme";
   import { setTheme } from "../lib/setTheme";
