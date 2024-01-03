@@ -6,9 +6,12 @@
   <h1 class="text-5xl font-black my-5">Offline-Enabled LiveView Svelte Demo</h1>
 
   <p>
-    This is a demo of a Phoenix LiveView
-    <abbr class="underline-offset-4" title="Progressive WebApp">PWA</abbr>
-    that can sync realtime across multiple devices while also being able to fallback to working offline.
+    This is a demo of an installable
+    <Link href="https://www.phoenixframework.org/" external>Phoenix</Link>
+    PWA (<Link href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" external>
+      Progressive Web App</Link
+    >) that can sync real-time across multiple devices while also being able to fallback to working
+    offline.
   </p>
 
   <div class="my-6">
