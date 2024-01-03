@@ -33,6 +33,10 @@ defmodule LiveViewSvelteOfflineDemoWeb do
     favicon-32x32.png
     mstile-150x150.png
     safari-pinned-tab.svg
+    screenshot-narrow-light.png
+    screenshot-narrow-dark.png
+    screenshot-wide-light.png
+    screenshot-wide-dark.png
     site.webmanifest
   )
 
