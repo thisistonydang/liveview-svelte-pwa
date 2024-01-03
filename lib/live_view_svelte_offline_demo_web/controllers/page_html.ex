@@ -3,10 +3,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.PageHTML do
 
   def home(assigns) do
     ~H"""
-    <!-- This div is a spacer -->
-    <div class="h-14" />
-
-    <.AppInfo showAuthLinks />
+    <div class="sm:my-20">
+      <.AppInfo showAuthLinks />
+    </div>
     """
   end
 end
