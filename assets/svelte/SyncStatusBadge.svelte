@@ -1,7 +1,7 @@
 <script>
-  import RefreshingSvgIcon from "lib/heroicons/RefreshingSvgIcon.svelte";
-  import SuccessSvgIcon from "lib/heroicons/SuccessSvgIcon.svelte";
-  import WarningSvgIcon from "lib/heroicons/WarningSvgIcon.svelte";
+  import RefreshingSvgIcon from "lib/svg-icons/RefreshingSvgIcon.svelte";
+  import SuccessSvgIcon from "lib/svg-icons/SuccessSvgIcon.svelte";
+  import WarningSvgIcon from "lib/svg-icons/WarningSvgIcon.svelte";
 
   import { todoItems, completedItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
