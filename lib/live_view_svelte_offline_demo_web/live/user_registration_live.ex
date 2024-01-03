@@ -7,7 +7,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserRegistrationLive do
   def render(assigns) do
     ~H"""
     <.sticky_header>
-      <.Back linkTo={~p"/"} />
+      <.Back href={~p"/"} />
     </.sticky_header>
 
     <.user_auth_layout>

@@ -6,7 +6,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationLive do
   def render(%{live_action: :edit} = assigns) do
     ~H"""
     <.sticky_header>
-      <.Back linkTo={~p"/"} />
+      <.Back href={~p"/"} />
     </.sticky_header>
 
     <.user_auth_layout>
