@@ -1,5 +1,4 @@
 <script>
-  import { flip } from "svelte/animate";
   import { crossfade, fade, fly, scale } from "svelte/transition";
 
   import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
