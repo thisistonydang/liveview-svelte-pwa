@@ -7,6 +7,8 @@
   import { liveView } from "../stores/liveViewSocket";
 
   import { syncClientToServer } from "./StateManagement.svelte";
+  import TodoItemsContainer from "./TodoItemsContainer.svelte";
+
   const [send, receive] = crossfade({ fallback: scale });
   let error = "";
 
