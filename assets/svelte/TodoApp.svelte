@@ -1,5 +1,5 @@
 <script>
-  import { crossfade, fade, fly, scale } from "svelte/transition";
+  import { fly } from "svelte/transition";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
   import { isCompletedOpened, isTodoOpened, newTodo } from "../stores/clientOnlyState";
@@ -9,7 +9,6 @@
   import { syncClientToServer } from "./StateManagement.svelte";
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
-  const [send, receive] = crossfade({ fallback: scale });
   let error = "";
 
   function addItem() {
