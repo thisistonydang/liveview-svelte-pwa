@@ -10,6 +10,7 @@
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
   let error = "";
+  let dragDisabled = false;
 
   function addItem() {
     for (const item of $todoItems) {
