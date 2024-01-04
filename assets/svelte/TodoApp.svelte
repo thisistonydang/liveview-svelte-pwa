@@ -1,5 +1,6 @@
 <script>
   import { crossfade, fade, fly, scale } from "svelte/transition";
+  import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
   import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
 
