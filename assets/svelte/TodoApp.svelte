@@ -9,6 +9,12 @@
   import { syncClientToServer } from "./StateManagement.svelte";
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
+  /**
+   * @typedef {Object} TodoItem
+   * @property {string} id
+   * @property {string} name
+   */
+
   let error = "";
   let dragDisabled = false;
 
