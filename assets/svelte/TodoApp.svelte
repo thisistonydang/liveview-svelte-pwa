@@ -16,7 +16,7 @@
    */
 
   let error = "";
-  let dragDisabled = false;
+  let dragDisabled = true;
 
   function addItem() {
     for (const item of $todoItems) {
