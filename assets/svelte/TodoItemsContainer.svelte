@@ -64,6 +64,7 @@
         items,
         flipDurationMs,
         dragDisabled: !items.length || dragDisabled,
+        morphDisabled: true,
         dropTargetStyle: {},
         dropTargetClasses: ["border-2", "border-dashed", "rounded-lg", "border-accent"],
       }}
