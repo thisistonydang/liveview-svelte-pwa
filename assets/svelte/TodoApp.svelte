@@ -31,6 +31,7 @@
   }
 
   function deleteItem(item) {
+    $todoItems = $todoItems.filter((i) => i.id !== item.id);
     $completedItems = $completedItems.filter((i) => i.id !== item.id);
     syncClientToServer($todoItems, $completedItems, $liveView);
   }
