@@ -108,7 +108,7 @@
           </div>
         </li>
       {:else}
-        <p in:fade={{ delay: 250 }}>{noItemsMessage}</p>
+        <p class="flex items-center h-10" in:fade={{ delay: 250 }}>{noItemsMessage}</p>
       {/each}
     </ul>
   </div>
