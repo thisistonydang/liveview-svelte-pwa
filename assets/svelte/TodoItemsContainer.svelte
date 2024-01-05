@@ -17,6 +17,7 @@
   export let items;
   export let itemsStore;
   export let checkHandler;
+  export let updateItem;
   export let deleteItem;
   export let handleConsider;
   export let handleFinalize;
