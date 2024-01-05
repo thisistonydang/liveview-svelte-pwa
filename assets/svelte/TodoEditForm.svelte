@@ -2,6 +2,7 @@
   import { get } from "svelte/store";
   import { fly } from "svelte/transition";
 
+  import { clickOutside } from "lib/actions/clickOutside";
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
   export let item;
@@ -60,18 +61,21 @@
   }
 </script>
 
-<form class="w-full" on:submit|preventDefault={handleSubmit}>
+<form class="w-full" on:submit|preventDefault={handleSubmit} use:clickOutside={handleSubmit}>
   <div class="w-full join">
     <input
       use:focus
       type="text"
-      class="input input-bordered border-neutral w-full join-item"
+      class="input input-bordered border-neutral w-full sm:join-item"
       bind:value={newName}
       on:input={handleInput}
       on:keydown={handleKeyDown}
     />
 
-    <button class="btn btn-accent join-item border border-neutral" aria-label="Update item.">
+    <button
+      class="btn btn-accent join-item border border-neutral hidden sm:block"
+      aria-label="Update item."
+    >
       <CheckSvgIconMicro className="w-5 h-5" />
     </button>
   </div>
