@@ -5,9 +5,10 @@
 
   import { clickOutside } from "lib/hooks/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
-  import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
   import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
+
+  import TodoOptionsMenu from "./TodoOptionsMenu.svelte";
 
   export let title;
   export let isDropdownOpened;
@@ -89,9 +90,7 @@
           </span>
 
           <div class="flex gap-1">
-            <button aria-label="Delete item." on:click={() => deleteItem(item)}>
-              <XMarkSvgIcon className="w-6 h-6" />
-            </button>
+            <TodoOptionsMenu {item} {deleteItem} />
 
             <!-- Drag Handle. -->
             <button
