@@ -10,6 +10,7 @@
   import { isThemeMenuOpened } from "lib/theme-selector";
 
   import { isAccountMenuOpened } from "../stores/clientOnlyState";
+  import TodoEditForm from "./TodoEditForm.svelte";
   import TodoOptionsMenu from "./TodoOptionsMenu.svelte";
 
   export let title;
