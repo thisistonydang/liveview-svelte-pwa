@@ -20,12 +20,24 @@
   let dragDisabled = true;
 
   function addItem() {
+    // Trim whitespace.
+    $newTodo = $newTodo.replace(/\s+/g, " ");
+    $newTodo = $newTodo === " " ? "" : $newTodo;
+
+    // Check if empty string.
+    if ($newTodo === "") {
+      error = "Item cannot be empty!";
+      return;
+    }
+
+    // Check if item already exists.
     for (const item of $todoItems) {
-      if (item.name === $newTodo) {
+      if (item.name.toLowerCase() === $newTodo.toLowerCase()) {
         error = "Item already exists!";
         return;
       }
     }
+
     $todoItems = [{ id: crypto.randomUUID(), name: $newTodo }, ...$todoItems];
     $newTodo = "";
     syncClientToServer($todoItems, $completedItems, $liveView);
