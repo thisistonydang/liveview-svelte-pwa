@@ -87,33 +87,33 @@
           {#if item.isEditing}
             <TodoEditForm {item} {itemsStore} {updateItem} />
           {:else}
-          <span class="flex items-center gap-3">
-            <input
-              class="checkbox"
-              type="checkbox"
-              checked={title === "Completed"}
-              on:change={() => checkHandler(item)}
-            />
+            <span class="flex items-center gap-3">
+              <input
+                class="checkbox"
+                type="checkbox"
+                checked={title === "Completed"}
+                on:change={() => checkHandler(item)}
+              />
 
-            <span class:line-through={title === "Completed"}>{item.name}</span>
-          </span>
+              <span class:line-through={title === "Completed"}>{item.name}</span>
+            </span>
 
-          <div class="flex gap-1">
-            <TodoOptionsMenu {item} {deleteItem} />
+            <div class="flex gap-1">
+              <TodoOptionsMenu {item} {itemsStore} {updateItem} {deleteItem} />
 
-            <!-- Drag Handle. -->
-            <button
-              aria-label="drag-handle"
-              class:cursor-grab={dragDisabled}
-              class:cursor-grabbing={!dragDisabled}
-              on:mousedown={startDrag}
-              on:touchstart={startDrag}
-              on:keydown={handleKeyDown}
-              use:clickOutside={() => (dragDisabled = true)}
-            >
-              <Bars3SvgIcon className="w-6 h-6" />
-            </button>
-          </div>
+              <!-- Drag Handle. -->
+              <button
+                aria-label="drag-handle"
+                class:cursor-grab={dragDisabled}
+                class:cursor-grabbing={!dragDisabled}
+                on:mousedown={startDrag}
+                on:touchstart={startDrag}
+                on:keydown={handleKeyDown}
+                use:clickOutside={() => (dragDisabled = true)}
+              >
+                <Bars3SvgIcon className="w-6 h-6" />
+              </button>
+            </div>
           {/if}
         </li>
       {:else}
