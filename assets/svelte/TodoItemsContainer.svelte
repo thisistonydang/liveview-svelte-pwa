@@ -84,6 +84,9 @@
           aria-label={item.name}
           animate:flip={{ duration: flipDurationMs }}
         >
+          {#if item.isEditing}
+            <TodoEditForm {item} {itemsStore} {updateItem} />
+          {:else}
           <span class="flex items-center gap-3">
             <input
               class="checkbox"
@@ -111,6 +114,7 @@
               <Bars3SvgIcon className="w-6 h-6" />
             </button>
           </div>
+          {/if}
         </li>
       {:else}
         <p class="flex items-center h-10" in:fade={{ delay: 250 }}>{noItemsMessage}</p>
