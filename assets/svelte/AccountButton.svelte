@@ -21,6 +21,7 @@
 
   function showAbout() {
     $isAccountMenuOpened = false;
+    showTopBar();
     window.location.href = "/about";
   }
 
@@ -97,7 +98,7 @@
 
     <ul>
       <li>
-        <button on:click={showAbout}>About</button>
+        <a href="/about" on:click|preventDefault={showAbout}>About</a>
       </li>
       <li>
         <button on:click={showSettings} {disabled}>
