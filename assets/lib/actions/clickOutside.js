@@ -5,7 +5,9 @@ export function clickOutside(element, callbackFunction) {
     }
   }
 
-  document.body.addEventListener("click", onClick);
+  setTimeout(() => {
+    document.body.addEventListener("click", onClick);
+  }, 0);
 
   return {
     update(newCallbackFunction) {
