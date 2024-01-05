@@ -74,7 +74,7 @@
     >
       {#each items as item (item.id)}
         <li
-          class="flex items-center justify-between px-2 py-1.5 text-lg hover:bg-base-200 rounded-lg"
+          class="flex items-center justify-between px-2 py-1.5 text-lg rounded-lg"
           aria-label={item.name}
           animate:flip={{ duration: flipDurationMs }}
         >
