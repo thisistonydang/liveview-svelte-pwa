@@ -1,5 +1,5 @@
 <script>
-  import { clickOutside } from "lib/hooks/clickOutside";
+  import { clickOutside } from "lib/actions/clickOutside";
   import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
   import { isThemeMenuOpened } from "../lib/isThemeMenuOpened";
