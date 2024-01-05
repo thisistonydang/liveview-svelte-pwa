@@ -3,7 +3,7 @@
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
 
-  import { clickOutside } from "lib/hooks/clickOutside";
+  import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
   import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
