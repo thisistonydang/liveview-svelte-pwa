@@ -1,4 +1,5 @@
 <script>
+  import { get } from "svelte/store";
   import { fly } from "svelte/transition";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
@@ -30,9 +31,9 @@
     syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
-  function deleteItem(item) {
-    $todoItems = $todoItems.filter((i) => i.id !== item.id);
-    $completedItems = $completedItems.filter((i) => i.id !== item.id);
+  function deleteItem(itemsStore, item) {
+    const newItems = get(itemsStore).filter((i) => i.id !== item.id);
+    itemsStore.set(newItems);
     syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
