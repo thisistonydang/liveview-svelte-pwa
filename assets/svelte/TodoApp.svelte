@@ -43,6 +43,18 @@
     syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
+  function updateItem(itemsStore, newItem) {
+    const newItems = get(itemsStore).map((item) => {
+      if (item.id === newItem.id) {
+        return newItem;
+      }
+      return { id: item.id, name: item.name };
+    });
+
+    itemsStore.set(newItems);
+    syncClientToServer($todoItems, $completedItems, $liveView);
+  }
+
   function deleteItem(itemsStore, item) {
     const newItems = get(itemsStore).filter((i) => i.id !== item.id);
     itemsStore.set(newItems);
