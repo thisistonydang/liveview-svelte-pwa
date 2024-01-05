@@ -143,6 +143,7 @@
   items={$todoItems}
   itemsStore={todoItems}
   checkHandler={checkItem}
+  {updateItem}
   {deleteItem}
   {handleConsider}
   {handleFinalize}
@@ -156,6 +157,7 @@
   items={$completedItems}
   itemsStore={completedItems}
   checkHandler={uncheckItem}
+  {updateItem}
   {deleteItem}
   {handleConsider}
   {handleFinalize}
