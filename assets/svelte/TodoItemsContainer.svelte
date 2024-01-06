@@ -9,7 +9,7 @@
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
   import { isThemeMenuOpened } from "lib/theme-selector";
 
-  import { isAccountMenuOpened } from "../stores/clientOnlyState";
+  import { isAccountMenuOpened, openedOptionsMenuId } from "../stores/clientOnlyState";
   import TodoEditForm from "./TodoEditForm.svelte";
   import TodoOptionsMenu from "./TodoOptionsMenu.svelte";
 
@@ -34,6 +34,7 @@
     dragDisabled = false;
     $isThemeMenuOpened = false;
     $isAccountMenuOpened = false;
+    $openedOptionsMenuId = "";
   }
 
   function handleKeyDown(e) {
