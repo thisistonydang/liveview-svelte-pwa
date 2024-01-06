@@ -3,11 +3,17 @@
   import { fly } from "svelte/transition";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
-  import { isCompletedOpened, isTodoOpened, newTodo } from "../stores/clientOnlyState";
+  import {
+    isCompletedOpened,
+    isTodoOpened,
+    newTodo,
+    openedOptionsMenuId,
+  } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
   import { syncClientToServer } from "./StateManagement.svelte";
+  import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
   /**
@@ -16,6 +22,7 @@
    * @property {string} name
    */
 
+  const todoOptionsMenuClass = "todo-options-menu";
   let error = "";
   let dragDisabled = true;
 
@@ -122,6 +129,11 @@
   }
 </script>
 
+<ClickOutsideClassHandler
+  className={todoOptionsMenuClass}
+  callbackFunction={() => ($openedOptionsMenuId = "")}
+/>
+
 <form on:submit|preventDefault={addItem} class="join my-2 w-full">
   <input
     type="text"
@@ -149,6 +161,7 @@
   {handleFinalize}
   bind:dragDisabled
   noItemsMessage="All done!"
+  {todoOptionsMenuClass}
 />
 
 <TodoItemsContainer
@@ -163,4 +176,5 @@
   {handleFinalize}
   bind:dragDisabled
   noItemsMessage="No completed items."
+  {todoOptionsMenuClass}
 />
