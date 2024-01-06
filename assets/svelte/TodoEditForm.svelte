@@ -13,8 +13,6 @@
   let error = "";
 
   function handleSubmit() {
-    console.log("[handleSubmit] handling submit");
-
     // Trim whitespace.
     newName = newName.replace(/\s+/g, " ");
 
