@@ -9,6 +9,7 @@
     isCompletedOpened,
     isTodoOpened,
     newTodo,
+    openedOptionsMenuId,
   } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
@@ -18,7 +19,7 @@
    *
    * @param {string} key - Key to get from localStorage.
    * @param {string} type - Type of value.
-   * @param {boolean} defaultValue - Default value to return if value is not found in localStorage.
+   * @param {boolean | string} defaultValue - Default value to return if value is not found in localStorage.
    */
   function getParseValue(key, type, defaultValue) {
     const value = localStorage.getItem(key);
@@ -40,6 +41,7 @@
     $isTodoOpened = getParseValue("isTodoOpened", "boolean", $isTodoOpened);
     $isCompletedOpened = getParseValue("isCompletedOpened", "boolean", $isCompletedOpened);
     $newTodo = getParseValue("newTodo", "string", $newTodo);
+    $openedOptionsMenuId = getParseValue("openedOptionsMenuId", "string", $openedOptionsMenuId);
     // $syncState is not set here because it is set in StateManagement
 
     // Let offline-svelte know that the client state has been restored in order
@@ -54,6 +56,7 @@
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
     localStorage.setItem("isCompletedOpened", JSON.stringify($isCompletedOpened));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
+    localStorage.setItem("openedOptionsMenuId", JSON.stringify($openedOptionsMenuId));
     localStorage.setItem("syncState", JSON.stringify($syncState));
   }
 </script>
@@ -76,6 +79,10 @@
 
       case "isCompletedOpened":
         $isCompletedOpened = JSON.parse(newValue);
+        break;
+
+      case "openedOptionsMenuId":
+        $openedOptionsMenuId = JSON.parse(newValue);
         break;
 
       case "newTodo":
