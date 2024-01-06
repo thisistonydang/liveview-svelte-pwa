@@ -1,12 +1,12 @@
 export function clickOutside(element, callbackFunction) {
-  function onClick(event) {
+  function clickOutsideHandler(event) {
     if (!element.contains(event.target)) {
       callbackFunction(event);
     }
   }
 
   setTimeout(() => {
-    document.body.addEventListener("click", onClick);
+    document.body.addEventListener("click", clickOutsideHandler);
   }, 0);
 
   return {
@@ -14,7 +14,7 @@ export function clickOutside(element, callbackFunction) {
       callbackFunction = newCallbackFunction;
     },
     destroy() {
-      document.body.removeEventListener("click", onClick);
+      document.body.removeEventListener("click", clickOutsideHandler);
     },
   };
 }
