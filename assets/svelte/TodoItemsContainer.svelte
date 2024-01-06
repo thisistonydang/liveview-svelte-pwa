@@ -24,6 +24,7 @@
   export let handleFinalize;
   export let dragDisabled;
   export let noItemsMessage;
+  export let todoOptionsMenuClass;
 
   const flipDurationMs = 100;
 
@@ -100,7 +101,13 @@
             </span>
 
             <div class="flex gap-1">
-              <TodoOptionsMenu {item} {itemsStore} {updateItem} {deleteItem} />
+              <TodoOptionsMenu
+                {item}
+                {itemsStore}
+                {updateItem}
+                {deleteItem}
+                {todoOptionsMenuClass}
+              />
 
               <!-- Drag Handle. -->
               <button
