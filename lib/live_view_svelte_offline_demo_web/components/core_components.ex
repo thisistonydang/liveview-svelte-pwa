@@ -203,7 +203,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CoreComponents do
   def simple_form(assigns) do
     ~H"""
     <.form :let={f} for={@for} as={@as} {@rest}>
-      <div class="mt-10 space-y-8 p-4 border border-neutral rounded-lg">
+      <div class="space-y-8 p-4 border border-neutral rounded-lg">
         <%= render_slot(@inner_block, f) %>
         <div :for={action <- @actions} class="mt-2 flex items-center justify-between gap-6">
           <%= render_slot(action, f) %>
@@ -428,9 +428,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.CoreComponents do
 
   def header(assigns) do
     ~H"""
-    <header class={[@actions != [] && "flex items-center justify-between gap-6", @class]}>
+    <header class={["my-10", @actions != [] && "flex items-center justify-between gap-6", @class]}>
       <div>
-        <h1 class="text-lg font-semibold leading-8">
+        <h1 class="text-2xl font-semibold leading-8">
           <%= render_slot(@inner_block) %>
         </h1>
         <p :if={@subtitle != []} class="mt-2 text-sm leading-6">
