@@ -23,6 +23,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
 
       <div class="space-y-12">
         <div>
+          <h2 class="text-xl font-semibold mb-2">
+            Change Email
+          </h2>
+
           <.simple_form
             for={@email_form}
             id="email_form"
@@ -44,7 +48,12 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
             </:actions>
           </.simple_form>
         </div>
+
         <div>
+          <h2 class="text-xl font-semibold mb-2">
+            Change Password
+          </h2>
+
           <.simple_form
             for={@password_form}
             id="password_form"
