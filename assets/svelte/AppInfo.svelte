@@ -30,7 +30,7 @@
           external
         >
           PostgreSQL
-        </Link> for real-time syncing across multiple devices and data persistence.
+        </Link> for real-time syncing and data persistence.
       </li>
 
       <li>

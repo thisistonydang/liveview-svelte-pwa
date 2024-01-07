@@ -9,7 +9,7 @@ can sync real-time across multiple devices while also being able to fallback to 
 - Phoenix [LiveView](https://github.com/phoenixframework/phoenix_live_view),
   [PubSub](https://hexdocs.pm/phoenix/channels.html#pubsub), and
   [Ecto](https://github.com/elixir-ecto/ecto/tree/v3.11.1)/[PostgreSQL](https://www.postgresql.org/)
-  for real-time syncing across multiple devices and data persistence.
+  for real-time syncing and data persistence.
 - [Svelte](https://svelte.dev/) (via [live_svelte](https://github.com/woutdp/live_svelte)),
   [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API), 
   and [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 
