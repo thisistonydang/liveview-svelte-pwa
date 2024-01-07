@@ -80,7 +80,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
 
   def user_auth_layout(assigns) do
     ~H"""
-    <div class="max-w-[390px] mx-auto px-2 md:p-0 mt-10">
+    <div class="max-w-[390px] mx-auto px-2 md:p-0 my-10">
       <%= render_slot(@inner_block) %>
     </div>
     """
