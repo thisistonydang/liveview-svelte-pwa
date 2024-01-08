@@ -20,6 +20,19 @@ if System.get_env("PHX_SERVER") do
   config :live_view_svelte_offline_demo, LiveViewSvelteOfflineDemoWeb.Endpoint, server: true
 end
 
+# Set up default Signer for creating JWTs with Joken.
+key_pem =
+  System.get_env("JWT_PRIVATE_KEY") ||
+    raise """
+    environment variable JWT_PRIVATE_KEY is missing.
+    """
+
+config :joken,
+  default_signer: [
+    signer_alg: "EdDSA",
+    key_pem: key_pem |> String.replace(~r/\\n/, "\n")
+  ]
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||
