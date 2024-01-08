@@ -1,20 +1,51 @@
 defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
-  import Swoosh.Email
+  # import Swoosh.Email
 
-  alias LiveViewSvelteOfflineDemo.Mailer
+  # alias LiveViewSvelteOfflineDemo.Mailer
 
-  # Delivers the email using the application mailer.
-  defp deliver(recipient, subject, body) do
-    email =
-      new()
-      |> to(recipient)
-      |> from({"LiveViewSvelteOfflineDemo", "contact@example.com"})
-      |> subject(subject)
-      |> text_body(body)
+  # # Delivers the email using the application mailer.
+  # defp deliver(recipient, subject, body) do
+  #   email =
+  #     new()
+  #     |> to(recipient)
+  #     |> from({"LiveViewSvelteOfflineDemo", "contact@example.com"})
+  #     |> subject(subject)
+  #     |> text_body(body)
 
-    with {:ok, _metadata} <- Mailer.deliver(email) do
-      {:ok, email}
-    end
+  #   with {:ok, _metadata} <- Mailer.deliver(email) do
+  #     {:ok, email}
+  #   end
+  # end
+
+  alias LiveViewSvelteOfflineDemo.Jwt
+
+  defp deliver(email, subject, html) do
+    extra_claims = %{
+      "app" => "ToDo",
+      "email" => email,
+      "name" => "",
+      "subject" => "[ToDo App] #{subject}",
+      "html" => """
+      Hi #{email},<br><br>
+
+      #{html}<br><br>
+
+      --<br>
+      Tony Dang<br>
+      <a href="https://tonydang.blog">tonydang.blog</a><br><br>
+
+      App Link: <a href="https://liveview-svelte-pwa.fly.dev">ToDo</a><br>
+      Questions or feedback for this app? Please feel free to respond to this email!
+      """
+    }
+
+    # Create JWT token.
+    {:ok, token, _} = Jwt.generate_and_sign(extra_claims)
+
+    # Send email request to JS backend.
+    # TODO: Send this in the background to reduce user wait time?
+    # TODO: Handle errors.
+    Req.post("#{System.get_env("JS_BACKEND_URL")}/microservices/mailer/send?jwt=#{token}")
   end
 
   @doc """
