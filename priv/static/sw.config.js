@@ -3,11 +3,7 @@ export default {
   debug: false,
   privateAssets: [
     "/app", 
-
-    // These are public routes but should only be cached after login so that
-    // DataClearer does not run while offline.
     "/about",
-    "/offline", 
   ],
   publicAssets: [
     "/assets/app.css",
@@ -27,5 +23,9 @@ export default {
     "/screenshot-wide-light.png",
     "/screenshot-wide-dark.png",
     "/site.webmanifest",
+
+    // Note: This route should only be cached after login so that
+    // DataClearer does not run.
+    "/offline", 
   ]
 }
