@@ -22,8 +22,6 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
   """
   def deliver_confirmation_instructions(user, url) do
     deliver(user.email, "Confirmation instructions", """
-    Hi #{user.email},<br><br>
-
     You can confirm your account by visiting the URL below:<br><br>
 
     #{url}<br><br>
@@ -37,8 +35,6 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
   """
   def deliver_reset_password_instructions(user, url) do
     deliver(user.email, "Reset password instructions", """
-    Hi #{user.email},<br><br>
-
     You can reset your password by visiting the URL below:<br><br>
 
     #{url}<br><br>
