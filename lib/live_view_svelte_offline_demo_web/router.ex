@@ -23,7 +23,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
     # This route is just for creating the logo image in development.
     # get "/logo", LogoController, :index
 
-    get "/about", AboutController, :index
     get "/offline", OfflineController, :index
   end
 
@@ -75,6 +74,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end
 
+    get "/about", AboutController, :index
     get "/app", AppController, :index
   end
 
