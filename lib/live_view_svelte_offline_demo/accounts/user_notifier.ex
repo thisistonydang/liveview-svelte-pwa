@@ -37,18 +37,13 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
   """
   def deliver_reset_password_instructions(user, url) do
     deliver(user.email, "Reset password instructions", """
+    Hi #{user.email},<br><br>
 
-    ==============================
+    You can reset your password by visiting the URL below:<br><br>
 
-    Hi #{user.email},
-
-    You can reset your password by visiting the URL below:
-
-    #{url}
+    #{url}<br><br>
 
     If you didn't request this change, please ignore this.
-
-    ==============================
     """)
   end
 
