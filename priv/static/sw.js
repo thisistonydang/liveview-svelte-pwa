@@ -12,12 +12,9 @@ sw.addEventListener("install", handleInstall);
 
 /**
  * Handle install event.
- *
- * @param {ExtendableEvent} event
  */
-function handleInstall(event) {
+function handleInstall() {
   debug && console.log("[Service Worker] Installed.");
-  event.waitUntil(cacheAssets(publicAssets));
 }
 
 /**
