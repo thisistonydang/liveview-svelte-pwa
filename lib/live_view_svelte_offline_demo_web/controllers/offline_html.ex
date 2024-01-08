@@ -4,9 +4,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.OfflineHTML do
   def index(assigns) do
     ~H"""
     <.ErrorLayout
-      title="Whoops, you may be offline..."
+      title="Whoops, something went wrong or you may be offline..."
       subtitle="Please check your connection or try refreshing."
-      href={~p"/app"}
+      href={~p"/"}
       linkText="Refresh"
     />
     """
