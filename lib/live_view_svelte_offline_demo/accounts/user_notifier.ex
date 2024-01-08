@@ -48,18 +48,11 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
   """
   def deliver_update_email_instructions(user, url) do
     deliver(user.email, "Update email instructions", """
+    You can change your email by visiting the URL below:<br><br>
 
-    ==============================
-
-    Hi #{user.email},
-
-    You can change your email by visiting the URL below:
-
-    #{url}
+    #{url}<br><br>
 
     If you didn't request this change, please ignore this.
-
-    ==============================
     """)
   end
 end
