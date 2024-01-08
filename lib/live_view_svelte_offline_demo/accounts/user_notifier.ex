@@ -22,18 +22,13 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
   """
   def deliver_confirmation_instructions(user, url) do
     deliver(user.email, "Confirmation instructions", """
+    Hi #{user.email},<br><br>
 
-    ==============================
+    You can confirm your account by visiting the URL below:<br><br>
 
-    Hi #{user.email},
+    #{url}<br><br>
 
-    You can confirm your account by visiting the URL below:
-
-    #{url}
-
-    If you didn't create an account with us, please ignore this.
-
-    ==============================
+    If you didn't create an account, please ignore this.
     """)
   end
 
