@@ -1,5 +1,5 @@
 export default {
-  cacheName: "v2024.01.01.4",
+  cacheName: "v2024.01.08.1",
   debug: false,
   privateAssets: [
     "/app", 
