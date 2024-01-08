@@ -105,7 +105,8 @@ async function respond(request) {
   // fallback response.
   try {
     const response = await fetch(request, {
-      signal: AbortSignal.timeout(2000), // Timeout to prevent excessive wait time.
+      // Only timeout fetch if /app has been cached.
+      signal: await cache.match(new Request("/app")) ? AbortSignal.timeout(2000) : null, 
     });
 
     // If offline, fetch can return a value that is not a Response instead of
