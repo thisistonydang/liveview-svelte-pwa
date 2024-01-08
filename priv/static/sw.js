@@ -139,7 +139,7 @@ async function respond(request) {
             <title>ToDo · Offline-Enabled LiveView Svelte Demo</title>
           </head>
           <body>
-            <h1>Whoops, something went wrong or you may be offline...</h1>
+            <h1>Whoops, can't connect to server...</h1>
             <p>Please check your connection or try refreshing.</p>  
             <a href="/">Refresh</a>
           </body>
