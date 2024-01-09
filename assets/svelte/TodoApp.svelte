@@ -28,7 +28,7 @@
 
   function addItem() {
     // Trim whitespace.
-    $newTodo = $newTodo.replace(/\s+/g, " ");
+    $newTodo = $newTodo.trim().replace(/\s+/g, " ");
     $newTodo = $newTodo === " " ? "" : $newTodo;
 
     // Check if empty string.

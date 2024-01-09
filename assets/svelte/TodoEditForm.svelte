@@ -9,12 +9,13 @@
   export let itemsStore;
   export let updateItem;
 
+  /** @type {string} */
   let newName = item.newName;
   let error = "";
 
   function handleSubmit() {
     // Trim whitespace.
-    newName = newName.replace(/\s+/g, " ");
+    newName = newName.trim().replace(/\s+/g, " ");
 
     // Check if new item name is empty string or unchanged.
     if (["", " ", item.name].includes(newName)) {
