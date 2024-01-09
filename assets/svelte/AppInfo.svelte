@@ -43,6 +43,11 @@
           localStorage
         </Link> for offline support.
       </li>
+
+      <li>
+        <Link href="https://crdt.tech/" external>CRDTs</Link>
+        to resolve conflicts between distributed app states.
+      </li>
     </ul>
   </div>
 

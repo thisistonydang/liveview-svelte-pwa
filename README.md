@@ -14,6 +14,7 @@ can sync real-time across multiple devices while also being able to fallback to 
   [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API), 
   and [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 
   for offline support.
+- [CRDTs](https://crdt.tech/) to resolve conflicts between distributed app states.
 
 ## Demo
 
