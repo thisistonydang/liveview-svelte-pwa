@@ -80,7 +80,7 @@ sw.addEventListener("fetch", handleFetch);
  *
  * @param {FetchEvent} event
  */
-async function handleFetch(event) {
+function handleFetch(event) {
   // Ignore non-GET requests.
   if (event.request.method.toUpperCase() !== 'GET') return; 
   
@@ -88,29 +88,26 @@ async function handleFetch(event) {
   const url = new URL(event.request.url);
   if (url.pathname === '/phoenix/live_reload/frame') return; 
 
-  // If /app is not yet cached, ignore handling fetch event.
-  const cache = await caches.open(cacheName);
-  const cachedAppResponse = await cache.match(new Request("/app"))
-  if (!cachedAppResponse) return;
-
   debug && console.log("[Service Worker] Handling fetch...");
-  event.respondWith(respond(event.request, cache));
+  event.respondWith(respond(event.request));
 }
 
 /**
  * Respond to fetch request.
  * 
  * @param {Request} request
- * @param {Cache} cache
  * 
  * @returns {Promise<Response>}
  */
-async function respond(request, cache) {
+async function respond(request) {
+  const cache = await caches.open(cacheName);
+
   // Try to fetch from network first. If successful, return response. Else, return a
   // cached or fallback response.
   try {
     const response = await fetch(request, {
-      signal: AbortSignal.timeout(2000), // Timeout to prevent hanging fetch requests.
+      // If /app is cached, timeout after 2s to avoid excessive wait time.
+      signal: await cache.match(new Request("/app")) ? AbortSignal.timeout(2000) : null, 
     });
 
     // If offline, fetch can return a value that is not a Response instead of
