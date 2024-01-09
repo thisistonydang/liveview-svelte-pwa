@@ -17,7 +17,7 @@
   export let isDropdownOpened;
   export let items;
   export let itemsStore;
-  export let checkHandler;
+  export let toggleCompleted;
   export let updateItem;
   export let deleteItem;
   export let handleConsider;

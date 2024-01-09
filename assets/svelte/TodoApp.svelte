@@ -151,7 +151,7 @@
   bind:isDropdownOpened={$isTodoOpened}
   items={$todoItems}
   itemsStore={todoItems}
-  checkHandler={checkItem}
+  {toggleCompleted}
   {updateItem}
   {deleteItem}
   {handleConsider}
@@ -166,7 +166,7 @@
   bind:isDropdownOpened={$isCompletedOpened}
   items={$completedItems}
   itemsStore={completedItems}
-  checkHandler={uncheckItem}
+  {toggleCompleted}
   {updateItem}
   {deleteItem}
   {handleConsider}
