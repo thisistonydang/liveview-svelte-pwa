@@ -75,6 +75,8 @@
       }
       return i;
     });
+
+    syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
   function handleConsider(event, itemsStore) {
