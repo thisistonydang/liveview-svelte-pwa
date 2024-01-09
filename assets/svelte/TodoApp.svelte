@@ -68,16 +68,13 @@
     syncClientToServer($todoItems, $completedItems, $liveView);
   }
 
-  function checkItem(item) {
-    $todoItems = $todoItems.filter((i) => i.id !== item.id);
-    $completedItems = [item, ...$completedItems];
-    syncClientToServer($todoItems, $completedItems, $liveView);
-  }
-
-  function uncheckItem(item) {
-    $completedItems = $completedItems.filter((i) => i.id !== item.id);
-    $todoItems = [item, ...$todoItems];
-    syncClientToServer($todoItems, $completedItems, $liveView);
+  function toggleCompleted(item) {
+    $todoItems = $todoItems.map((i) => {
+      if (i.id === item.id) {
+        return { ...i, completed: !i.completed };
+      }
+      return i;
+    });
   }
 
   function handleConsider(event, itemsStore) {
