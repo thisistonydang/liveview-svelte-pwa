@@ -81,7 +81,7 @@ sw.addEventListener("fetch", handleFetch);
  * @param {FetchEvent} event
  */
 function handleFetch(event) {
-  if (event.request.method !== 'GET') return; // Ignore non-GET requests.
+  if (event.request.method.toUpperCase() !== 'GET') return; // Ignore non-GET requests.
   
   // Ignore LiveReloader. Only requested in dev.
   const url = new URL(event.request.url);
