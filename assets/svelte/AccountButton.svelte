@@ -34,8 +34,8 @@
       $toast = {
         show: true,
         kind: "error",
-        title: "Whoops, you may be offline.",
-        msg: "You must be online to view settings. Please check your connection and try again.",
+        title: "Whoops, can't connect to server...",
+        msg: "You must be connected to view settings. Please check your connection or try refreshing.",
       };
       hideTopBar();
       isSettingsLoading = false;
@@ -56,8 +56,8 @@
       $toast = {
         show: true,
         kind: "error",
-        title: "Whoops, you may be offline.",
-        msg: "You must be online to logout. Please check your connection and try again.",
+        title: "Whoops, can't connect to server...",
+        msg: "You must be connected to logout. Please check your connection or try refreshing.",
       };
       hideTopBar();
       isLogOutLoading = false;
