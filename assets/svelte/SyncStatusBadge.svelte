@@ -21,7 +21,7 @@
 </script>
 
 <button
-  class="badge w-28 border border-neutral"
+  class="badge w-28 border border-neutral focus:outline outline-accent outline-2 outline-offset-2"
   class:badge-accent={$syncState === "Synced"}
   class:badge-primary={$syncState === "Syncing"}
   class:badge-secondary={$syncState === "Not Synced"}
