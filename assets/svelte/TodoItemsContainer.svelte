@@ -93,11 +93,11 @@
               <input
                 class="checkbox"
                 type="checkbox"
-                checked={title === "Completed"}
-                on:change={() => checkHandler(item)}
+                checked={item.completed}
+                on:change={() => toggleCompleted(item)}
               />
 
-              <span class:line-through={title === "Completed"}>{item.name}</span>
+              <span class:line-through={item.completed}>{item.name}</span>
             </span>
 
             <div class="flex gap-1">
