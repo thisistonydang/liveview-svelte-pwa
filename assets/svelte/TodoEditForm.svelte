@@ -19,7 +19,7 @@
 
     // Check if new item name is empty string or unchanged.
     if (["", " ", item.name].includes(newName)) {
-      updateItem(itemsStore, { id: item.id, name: item.name });
+      updateItem(itemsStore, { id: item.id, name: item.name, completed: item.completed });
       return;
     }
 
@@ -31,7 +31,7 @@
       }
     }
 
-    updateItem(itemsStore, { id: item.id, name: newName });
+    updateItem(itemsStore, { id: item.id, name: newName, completed: item.completed });
   }
 
   /**
@@ -46,7 +46,7 @@
 
   function handleInput() {
     // Track the newName so that page refreshes don't reset the input value.
-    updateItem(itemsStore, { id: item.id, name: item.name, newName, isEditing: true });
+    updateItem(itemsStore, { ...item, newName });
 
     // Reset error message.
     error = "";
