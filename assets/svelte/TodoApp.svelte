@@ -55,7 +55,7 @@
       if (item.id === newItem.id) {
         return newItem;
       }
-      return { id: item.id, name: item.name };
+      return { id: item.id, name: item.name, completed: item.completed };
     });
 
     itemsStore.set(newItems);
