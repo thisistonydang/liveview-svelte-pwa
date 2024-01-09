@@ -34,7 +34,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserLoginLive do
         </:actions>
         <:actions>
           <.button phx-disable-with="Signing in..." class="w-full">
-            Sign in <span aria-hidden="true">→</span>
+            Sign in
           </.button>
         </:actions>
       </.simple_form>
