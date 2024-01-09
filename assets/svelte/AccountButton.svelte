@@ -101,10 +101,10 @@
         <a href="/about" on:click|preventDefault={showAbout}>About</a>
       </li>
       <li>
-        <button on:click={showSettings} {disabled}>
+        <a href="/users/settings" on:click|preventDefault={showSettings} {disabled}>
           Settings
           <span class="loading loading-dots loading-xs" class:hidden={!isSettingsLoading}></span>
-        </button>
+        </a>
       </li>
       <li>
         <button on:click={logOutUser} {disabled}>
