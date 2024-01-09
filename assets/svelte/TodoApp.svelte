@@ -157,18 +157,3 @@
   noItemsMessage="All done!"
   {todoOptionsMenuClass}
 />
-
-<TodoItemsContainer
-  title="Completed"
-  bind:isDropdownOpened={$isTodoOpened}
-  items={$completedItems}
-  itemsStore={completedItems}
-  {toggleCompleted}
-  {updateItem}
-  {deleteItem}
-  {handleConsider}
-  {handleFinalize}
-  bind:dragDisabled
-  noItemsMessage="No completed items."
-  {todoOptionsMenuClass}
-/>
