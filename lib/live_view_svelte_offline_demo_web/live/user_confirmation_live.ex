@@ -15,7 +15,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserConfirmationLive do
       <.simple_form for={@form} id="confirmation_form" phx-submit="confirm_account">
         <.input field={@form[:token]} type="hidden" />
         <:actions>
-          <.button phx-disable-with="Confirming..." class="w-full">Confirm my account</.button>
+          <div class="w-full mb-8">
+            <.button phx-disable-with="Confirming..." class="w-full">Confirm my account</.button>
+          </div>
         </:actions>
       </.simple_form>
     </.user_auth_layout>
