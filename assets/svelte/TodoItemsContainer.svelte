@@ -89,7 +89,7 @@
           {#if item.isEditing}
             <TodoEditForm {item} {itemsStore} {updateItem} />
           {:else}
-            <span class="flex items-center gap-3">
+            <label class="flex items-center gap-3 grow cursor-pointer">
               <input
                 class="checkbox"
                 type="checkbox"
@@ -98,7 +98,7 @@
               />
 
               <span class:line-through={item.completed}>{item.name}</span>
-            </span>
+            </label>
 
             <div class="flex gap-1">
               <TodoOptionsMenu
