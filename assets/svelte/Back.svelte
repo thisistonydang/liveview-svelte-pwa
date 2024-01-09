@@ -19,12 +19,12 @@
     class="flex"
     on:click={() => {
       showTopBar();
-      history.back();
 
-      // If back() doesn't work, fallback to /app so the user is not stuck.
-      setTimeout(() => {
-        window.location.href = "/app";
-      }, 500);
+      if (history.length === 1) {
+        window.location.replace("/app");
+      } else {
+        history.back();
+      }
     }}
   >
     <ArrowLeftSvgIcon className="h-10 w-10" />
