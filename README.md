@@ -19,6 +19,11 @@ can sync real-time across multiple devices while also being able to fallback to 
 
 A live demo can be found [here](https://liveview-svelte-pwa.fly.dev/app).
 
+## Inspired by
+
+- [Ryan Cooke - E2E Reactivity - using Svelte with Phoenix LiveView](https://www.youtube.com/watch?v=asm2TTm035o)
+- [LiveSvelte - Render Svelte directly into Phoenix LiveView with E2E reactivity.](https://www.youtube.com/watch?v=JMkvbW35QvA)
+
 ## Contact
 
 Created by [Tony Dang](https://tonydang.blog). Please feel free send any questions or feedback to

@@ -60,6 +60,24 @@
   {/if}
 
   <div class="my-6">
+    <h2 class="text-3xl font-bold my-3">Inspired by</h2>
+
+    <ul class="list-disc pl-4">
+      <li>
+        <Link href="https://www.youtube.com/watch?v=asm2TTm035o" external>
+          Ryan Cooke - E2E Reactivity - using Svelte with Phoenix LiveView
+        </Link>
+      </li>
+
+      <li>
+        <Link href="https://www.youtube.com/watch?v=JMkvbW35QvA" external>
+          LiveSvelte - Render Svelte directly into Phoenix LiveView with E2E reactivity.
+        </Link>
+      </li>
+    </ul>
+  </div>
+
+  <div class="my-6">
     <h2 class="text-3xl font-bold my-3">Contact</h2>
 
     Created by
