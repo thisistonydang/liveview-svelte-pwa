@@ -22,7 +22,7 @@
   function showAbout() {
     $isAccountMenuOpened = false;
     showTopBar();
-    window.location.href = "/about";
+    window.location.href = "/app/about";
   }
 
   async function showSettings() {
@@ -98,7 +98,7 @@
 
     <ul>
       <li>
-        <a href="/about" on:click|preventDefault={showAbout}>About</a>
+        <a href="/app/about" on:click|preventDefault={showAbout}>About</a>
       </li>
       <li>
         <a href="/users/settings" on:click|preventDefault={showSettings} {disabled}>
