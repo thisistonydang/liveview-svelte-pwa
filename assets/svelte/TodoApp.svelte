@@ -3,12 +3,7 @@
   import { fly } from "svelte/transition";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
-  import {
-    isCompletedOpened,
-    isTodoOpened,
-    newTodo,
-    openedOptionsMenuId,
-  } from "../stores/clientOnlyState";
+  import { isTodoOpened, newTodo, openedOptionsMenuId } from "../stores/clientOnlyState";
   import { completedItems, todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
@@ -165,7 +160,7 @@
 
 <TodoItemsContainer
   title="Completed"
-  bind:isDropdownOpened={$isCompletedOpened}
+  bind:isDropdownOpened={$isTodoOpened}
   items={$completedItems}
   itemsStore={completedItems}
   {toggleCompleted}

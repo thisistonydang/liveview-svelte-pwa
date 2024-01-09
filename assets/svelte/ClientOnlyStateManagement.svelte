@@ -6,7 +6,6 @@
 
   import {
     isAccountMenuOpened,
-    isCompletedOpened,
     isTodoOpened,
     newTodo,
     openedOptionsMenuId,
@@ -39,7 +38,6 @@
     $isAccountMenuOpened = getParseValue("isAccountMenuOpened", "boolean", $isAccountMenuOpened);
     $isThemeMenuOpened = getParseValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
     $isTodoOpened = getParseValue("isTodoOpened", "boolean", $isTodoOpened);
-    $isCompletedOpened = getParseValue("isCompletedOpened", "boolean", $isCompletedOpened);
     $newTodo = getParseValue("newTodo", "string", $newTodo);
     $openedOptionsMenuId = getParseValue("openedOptionsMenuId", "string", $openedOptionsMenuId);
     // $syncState is not set here because it is set in StateManagement
@@ -54,7 +52,6 @@
     localStorage.setItem("isAccountMenuOpened", JSON.stringify($isAccountMenuOpened));
     localStorage.setItem("isThemeMenuOpened", JSON.stringify($isThemeMenuOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
-    localStorage.setItem("isCompletedOpened", JSON.stringify($isCompletedOpened));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
     localStorage.setItem("openedOptionsMenuId", JSON.stringify($openedOptionsMenuId));
     localStorage.setItem("syncState", JSON.stringify($syncState));
@@ -75,10 +72,6 @@
 
       case "isTodoOpened":
         $isTodoOpened = JSON.parse(newValue);
-        break;
-
-      case "isCompletedOpened":
-        $isCompletedOpened = JSON.parse(newValue);
         break;
 
       case "openedOptionsMenuId":
