@@ -38,8 +38,7 @@
           class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
           on:click={() =>
             updateItem(itemsStore, {
-              id: item.id,
-              name: item.name,
+              ...item,
               newName: item.name,
               isEditing: true,
             })}
