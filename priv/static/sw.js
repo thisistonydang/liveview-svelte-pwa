@@ -90,7 +90,8 @@ async function handleFetch(event) {
 
   // If /app is not yet cached, ignore handling fetch event.
   const cache = await caches.open(cacheName);
-  if (await cache.match(new Request("/app"))) return;
+  const cachedAppResponse = await cache.match(new Request("/app"))
+  if (!cachedAppResponse) return;
 
   debug && console.log("[Service Worker] Handling fetch...");
   event.respondWith(respond(event.request, cache));
