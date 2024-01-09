@@ -45,7 +45,7 @@
       }
     }
 
-    $todoItems = [{ id: crypto.randomUUID(), name: $newTodo }, ...$todoItems];
+    $todoItems = [{ id: crypto.randomUUID(), name: $newTodo, completed: false }, ...$todoItems];
     $newTodo = "";
     syncClientToServer($todoItems, $completedItems, $liveView);
   }
