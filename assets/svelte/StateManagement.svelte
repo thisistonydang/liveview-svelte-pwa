@@ -60,7 +60,8 @@
         typeof parsedValue.meta?.synced !== "boolean" ||
         !["number", "undefined"].includes(typeof parsedValue.meta?.timestamp) ||
         typeof parsedValue.timestamp !== "number" ||
-        !Array.isArray(parsedValue.value?.todo)
+        !Array.isArray(parsedValue.value?.todo) ||
+        !Array.isArray(parsedValue.value?.lists)
       ) {
         console.error("Invalid client state.", parsedValue);
         return resetClientState(key);
