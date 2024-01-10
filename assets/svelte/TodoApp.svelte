@@ -2,7 +2,7 @@
   import { get } from "svelte/store";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
-  import { isTodoOpened, newTodo, openedOptionsMenuId } from "../stores/clientOnlyState";
+  import { isTodoOpened, newList, newTodo, openedOptionsMenuId } from "../stores/clientOnlyState";
   import { activeTab } from "../stores/clientOnlyState";
   import { todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
@@ -149,9 +149,9 @@
 {:else if $activeTab === "Lists"}
   <NewItemForm
     submitHandler={addItem}
-    bind:value={$newTodo}
-    placeholder="Enter to-do item"
-    submitButtonText="Add"
+    bind:value={$newList}
+    placeholder="Enter new list name"
+    submitButtonText="Create"
     bind:error
   />
 
