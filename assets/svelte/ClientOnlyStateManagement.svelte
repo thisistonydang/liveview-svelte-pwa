@@ -10,7 +10,7 @@
     newTodo,
     openedOptionsMenuId,
   } from "../stores/clientOnlyState";
-  import { completedItems, todoItems } from "../stores/crdtState";
+  import { todoItems } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
 
   /**
@@ -89,7 +89,6 @@
       case "clientState":
         const clientState = JSON.parse(newValue);
         $todoItems = clientState.value.todo;
-        $completedItems = clientState.value.completed;
         break;
     }
   }}
