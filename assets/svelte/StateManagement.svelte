@@ -87,7 +87,13 @@
     const clientState = getClientState(key);
     const latestState = mergeState({ clientState, serverState });
     localStorage.setItem(key, JSON.stringify(latestState));
-    $todoItems = latestState.value.todo;
+
+    // Set stores to match latest state.
+    // Note: The check to see if todo/lists is an array is to cover the cases where
+    // todo/lists is undefined due to legacy code.
+    // TODO: Maybe remove this check in the future?
+    $todoItems = Array.isArray(latestState.value.todo) ? latestState.value.todo : [];
+    $todoLists = Array.isArray(latestState.value.lists) ? latestState.value.lists : [];
 
     if (latestState.meta.synced) {
       $syncState = "Synced";
