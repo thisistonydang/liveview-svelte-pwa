@@ -26,24 +26,6 @@
   // TodoItems Handlers ____________________________________________________________________________
 
   function addTodo() {
-    // Trim whitespace.
-    $newTodo = $newTodo.trim().replace(/\s+/g, " ");
-    $newTodo = $newTodo === " " ? "" : $newTodo;
-
-    // Check if empty string.
-    if ($newTodo === "") {
-      error = "Name cannot be blank!";
-      return;
-    }
-
-    // Check if item already exists.
-    for (const item of $todoItems) {
-      if (item.name.toLowerCase() === $newTodo.toLowerCase()) {
-        error = "Item already exists!";
-        return;
-      }
-    }
-
     $todoItems = [{ id: crypto.randomUUID(), name: $newTodo, completed: false }, ...$todoItems];
     $newTodo = "";
     syncClientToServer($todoItems, $todoLists, $liveView);
