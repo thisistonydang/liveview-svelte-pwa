@@ -18,7 +18,7 @@
     newName = newName.replace(/\s+/g, " ").trim();
 
     // Check if new item name is empty string or unchanged.
-    if (["", " ", item.name].includes(newName)) {
+    if (["", item.name].includes(newName)) {
       updateItem(itemsStore, { id: item.id, name: item.name, completed: item.completed });
       return;
     }
