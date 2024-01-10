@@ -18,7 +18,7 @@
   import NewItemForm from "./NewItemForm.svelte";
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
-  const todoOptionsMenuClass = "todo-options-menu";
+  const optionsMenuClass = "options-menu";
   let dragDisabled = true;
 
   // Todo lists handlers ___________________________________________________________________________
@@ -120,7 +120,7 @@
 </script>
 
 <ClickOutsideClassHandler
-  className={todoOptionsMenuClass}
+  className={optionsMenuClass}
   callbackFunction={() => ($openedOptionsMenuId = "")}
 />
 
@@ -145,7 +145,7 @@
     {handleFinalize}
     bind:dragDisabled
     noItemsMessage="All done!"
-    {todoOptionsMenuClass}
+    {optionsMenuClass}
   />
 {:else if $activeTab === "Lists"}
   <NewItemForm
@@ -168,6 +168,6 @@
     {handleFinalize}
     bind:dragDisabled
     noItemsMessage="All done!"
-    {todoOptionsMenuClass}
+    {optionsMenuClass}
   />
 {/if}
