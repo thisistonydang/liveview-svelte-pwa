@@ -10,8 +10,8 @@
   import { isThemeMenuOpened } from "lib/theme-selector";
 
   import { isAccountMenuOpened, openedOptionsMenuId } from "../stores/clientOnlyState";
+  import OptionsMenu from "./OptionsMenu.svelte";
   import TodoEditForm from "./TodoEditForm.svelte";
-  import TodoOptionsMenu from "./TodoOptionsMenu.svelte";
 
   export let title;
   export let isDropdownOpened;
@@ -104,13 +104,7 @@
             </label>
 
             <div class="flex gap-1">
-              <TodoOptionsMenu
-                {item}
-                {itemsStore}
-                {updateItem}
-                {deleteItem}
-                {todoOptionsMenuClass}
-              />
+              <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {todoOptionsMenuClass} />
 
               <!-- Drag Handle. -->
               <button
