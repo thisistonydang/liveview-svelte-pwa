@@ -156,7 +156,7 @@
   />
 
   <TodoItemsContainer
-    title="To Do"
+    title="Lists"
     bind:isDropdownOpened={$isTodoOpened}
     items={$todoItems}
     itemsStore={todoItems}
