@@ -2,11 +2,11 @@
   import { get } from "svelte/store";
 
   /** Save new state to localStorage and notify server. */
-  export function syncClientToServer(todoItems, completedItems, live) {
+  export function syncClientToServer(todoItems, live) {
     const newClientState = {
       meta: { synced: false },
       timestamp: Date.now(),
-      value: { todo: todoItems, completed: completedItems },
+      value: { todo: todoItems },
     };
     localStorage.setItem(CLIENT_STATE_KEY, JSON.stringify(newClientState));
 
@@ -27,7 +27,7 @@
 
 <script>
   import { onMount } from "svelte";
-  import { completedItems, todoItems } from "../stores/crdtState";
+  import { todoItems } from "../stores/crdtState";
   import { isSocketMounted, liveView, serverState } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
@@ -38,7 +38,7 @@
     const clientState = {
       meta: { synced: false },
       timestamp: 0,
-      value: { todo: [], completed: [] },
+      value: { todo: [] },
     };
     localStorage.setItem(key, JSON.stringify(clientState));
 
@@ -60,8 +60,7 @@
         typeof parsedValue.meta?.synced !== "boolean" ||
         !["number", "undefined"].includes(typeof parsedValue.meta?.timestamp) ||
         typeof parsedValue.timestamp !== "number" ||
-        !Array.isArray(parsedValue.value?.todo) ||
-        !Array.isArray(parsedValue.value?.completed)
+        !Array.isArray(parsedValue.value?.todo)
       ) {
         console.error("Invalid client state.", parsedValue);
         return resetClientState(key);
@@ -88,7 +87,6 @@
     const latestState = mergeState({ clientState, serverState });
     localStorage.setItem(key, JSON.stringify(latestState));
     $todoItems = latestState.value.todo;
-    $completedItems = latestState.value.completed;
 
     if (latestState.meta.synced) {
       $syncState = "Synced";
