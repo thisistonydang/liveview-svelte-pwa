@@ -136,7 +136,6 @@
   <TodoItemsContainer
     title="To Do"
     bind:isDropdownOpened={$isTodoOpened}
-    items={$todoItems}
     itemsStore={todoItems}
     {toggleCompleted}
     {updateItem}
@@ -159,8 +158,7 @@
   <TodoItemsContainer
     title="Lists"
     bind:isDropdownOpened={$isListsOpened}
-    items={$todoItems}
-    itemsStore={todoItems}
+    itemsStore={todoLists}
     {toggleCompleted}
     {updateItem}
     {deleteItem}
