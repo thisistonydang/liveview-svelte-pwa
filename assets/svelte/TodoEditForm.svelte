@@ -15,7 +15,7 @@
 
   function handleSubmit() {
     // Trim whitespace.
-    newName = newName.trim().replace(/\s+/g, " ");
+    newName = newName.replace(/\s+/g, " ").trim();
 
     // Check if new item name is empty string or unchanged.
     if (["", " ", item.name].includes(newName)) {
