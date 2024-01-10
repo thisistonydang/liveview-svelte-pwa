@@ -13,7 +13,7 @@
     newTodo,
     openedOptionsMenuId,
   } from "../stores/clientOnlyState";
-  import { todoItems } from "../stores/crdtState";
+  import { todoItems, todoLists } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
 
   /**
@@ -110,6 +110,7 @@
       case "clientState":
         const clientState = JSON.parse(newValue);
         $todoItems = clientState.value.todo;
+        $todoLists = clientState.value.lists;
         break;
     }
   }}
