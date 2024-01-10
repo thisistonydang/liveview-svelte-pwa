@@ -7,6 +7,7 @@
   import {
     activeTab,
     isAccountMenuOpened,
+    isListsOpened,
     isTodoOpened,
     newList,
     newTodo,
@@ -40,6 +41,7 @@
     $activeTab = getParseValue("activeTab", "string", $activeTab);
     $isAccountMenuOpened = getParseValue("isAccountMenuOpened", "boolean", $isAccountMenuOpened);
     $isThemeMenuOpened = getParseValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
+    $isListsOpened = getParseValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParseValue("isTodoOpened", "boolean", $isTodoOpened);
     $newList = getParseValue("newList", "string", $newList);
     $newTodo = getParseValue("newTodo", "string", $newTodo);
@@ -56,6 +58,7 @@
     localStorage.setItem("activeTab", JSON.stringify($activeTab));
     localStorage.setItem("isAccountMenuOpened", JSON.stringify($isAccountMenuOpened));
     localStorage.setItem("isThemeMenuOpened", JSON.stringify($isThemeMenuOpened));
+    localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
     localStorage.setItem("newList", JSON.stringify($newList));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
@@ -78,6 +81,10 @@
 
       case "isThemeMenuOpened":
         $isThemeMenuOpened = JSON.parse(newValue);
+        break;
+
+      case "isListsOpened":
+        $isListsOpened = JSON.parse(newValue);
         break;
 
       case "isTodoOpened":
