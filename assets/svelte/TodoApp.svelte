@@ -21,7 +21,7 @@
   const todoOptionsMenuClass = "todo-options-menu";
   let dragDisabled = true;
 
-  // TodoLists Handlers ____________________________________________________________________________
+  // Todo lists handlers ___________________________________________________________________________
 
   function addList() {
     $todoLists = [{ id: crypto.randomUUID(), name: $newList }, ...$todoLists];
@@ -29,7 +29,7 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
-  // TodoItems Handlers ____________________________________________________________________________
+  // Todo items handlers ___________________________________________________________________________
 
   function addTodo() {
     $todoItems = [{ id: crypto.randomUUID(), name: $newTodo, completed: false }, ...$todoItems];
@@ -49,12 +49,6 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
-  function deleteItem(itemsStore, item) {
-    const newItems = get(itemsStore).filter((i) => i.id !== item.id);
-    itemsStore.set(newItems);
-    syncClientToServer($todoItems, $todoLists, $liveView);
-  }
-
   function toggleCompleted(item) {
     $todoItems = $todoItems.map((i) => {
       if (i.id === item.id) {
@@ -66,7 +60,15 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
-  // Drag and Drop Handlers ________________________________________________________________________
+  // Handlers for both todo lists and todo items ___________________________________________________
+
+  function deleteItem(itemsStore, item) {
+    const newItems = get(itemsStore).filter((i) => i.id !== item.id);
+    itemsStore.set(newItems);
+    syncClientToServer($todoItems, $todoLists, $liveView);
+  }
+
+  // Drag and drop handlers ________________________________________________________________________
 
   function handleConsider(event, itemsStore) {
     const newItems = filterDuplicates(event.detail.items);
