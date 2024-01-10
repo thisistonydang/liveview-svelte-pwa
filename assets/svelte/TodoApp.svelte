@@ -11,12 +11,6 @@
   import NewItemForm from "./NewItemForm.svelte";
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
-  /**
-   * @typedef {Object} TodoItem
-   * @property {string} id
-   * @property {string} name
-   */
-
   const todoOptionsMenuClass = "todo-options-menu";
   let error = "";
   let dragDisabled = true;
@@ -107,7 +101,7 @@
   /**
    * Helper function to remove any items with duplicate ids from the items array.
    *
-   * @param {TodoItem[]} items
+   * @param {{id: string;}[]} items
    */
   function filterDuplicates(items) {
     /** @type {string[]} */
