@@ -25,8 +25,8 @@
 
     // Check new item name already exists.
     for (const item of get(itemsStore)) {
-      if (newName.toLowerCase() === item.name.toLowerCase()) {
-        error = "Item already exists!";
+      if (item.name.toLowerCase() === newName.toLowerCase()) {
+        error = `"${newName}" already exists!`;
         return;
       }
     }
