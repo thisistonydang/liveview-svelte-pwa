@@ -22,6 +22,10 @@
   let error = "";
   let dragDisabled = true;
 
+  // TodoLists Handlers ____________________________________________________________________________
+
+  // TodoItems Handlers ____________________________________________________________________________
+
   function addItem() {
     // Trim whitespace.
     $newTodo = $newTodo.trim().replace(/\s+/g, " ");
@@ -74,6 +78,8 @@
 
     syncClientToServer($todoItems, $liveView);
   }
+
+  // Drag and Drop Handlers ________________________________________________________________________
 
   function handleConsider(event, itemsStore) {
     const newItems = filterDuplicates(event.detail.items);
