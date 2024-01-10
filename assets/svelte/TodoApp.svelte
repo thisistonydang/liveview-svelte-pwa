@@ -10,7 +10,7 @@
     openedOptionsMenuId,
   } from "../stores/clientOnlyState";
   import { activeTab } from "../stores/clientOnlyState";
-  import { todoItems } from "../stores/crdtState";
+  import { todoItems, todoLists } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
   import { syncClientToServer } from "./StateManagement.svelte";
