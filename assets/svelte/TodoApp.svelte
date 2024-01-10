@@ -2,7 +2,13 @@
   import { get } from "svelte/store";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
-  import { isTodoOpened, newList, newTodo, openedOptionsMenuId } from "../stores/clientOnlyState";
+  import {
+    isListsOpened,
+    isTodoOpened,
+    newList,
+    newTodo,
+    openedOptionsMenuId,
+  } from "../stores/clientOnlyState";
   import { activeTab } from "../stores/clientOnlyState";
   import { todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
@@ -157,7 +163,7 @@
 
   <TodoItemsContainer
     title="Lists"
-    bind:isDropdownOpened={$isTodoOpened}
+    bind:isDropdownOpened={$isListsOpened}
     items={$todoItems}
     itemsStore={todoItems}
     {toggleCompleted}
