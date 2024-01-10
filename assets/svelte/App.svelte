@@ -11,6 +11,7 @@
   import { serverState } from "../stores/liveViewSocket";
 
   import AppSkeleton from "./AppSkeleton.svelte";
+  import BottomNavigation from "./BottomNavigation.svelte";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
@@ -53,6 +54,8 @@
   <div class="max-w-2xl mx-auto px-2 md:p-0">
     <TodoApp />
   </div>
+
+  <BottomNavigation />
 {:else}
   <AppSkeleton />
 {/if}
