@@ -19,7 +19,6 @@
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
   const todoOptionsMenuClass = "todo-options-menu";
-  let error = "";
   let dragDisabled = true;
 
   // TodoLists Handlers ____________________________________________________________________________
@@ -141,7 +140,6 @@
     bind:value={$newTodo}
     placeholder="Enter to-do item"
     submitButtonText="Add"
-    bind:error
   />
 
   <TodoItemsContainer
@@ -164,7 +162,6 @@
     bind:value={$newList}
     placeholder="Enter new list name"
     submitButtonText="Create"
-    bind:error
   />
 
   <TodoItemsContainer
