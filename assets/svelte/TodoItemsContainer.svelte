@@ -10,8 +10,8 @@
   import { isThemeMenuOpened } from "lib/theme-selector";
 
   import { isAccountMenuOpened, openedOptionsMenuId } from "../stores/clientOnlyState";
+  import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
-  import TodoEditForm from "./TodoEditForm.svelte";
 
   export let title;
   export let isDropdownOpened;
@@ -87,7 +87,7 @@
           animate:flip={{ duration: flipDurationMs }}
         >
           {#if item.isEditing}
-            <TodoEditForm {item} {itemsStore} {updateItem} />
+            <EditForm {item} {itemsStore} {updateItem} />
           {:else}
             <label
               class="flex items-center gap-3 grow cursor-pointer"
