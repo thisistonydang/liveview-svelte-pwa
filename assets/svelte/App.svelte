@@ -27,7 +27,8 @@
 
   // Setting $serverState here is required so that an initial state is available
   // when offline. This allows the initial syncServerToClient call to set the
-  // initial app state ($todoItems and $syncState stores) even when offline.
+  // initial app state ($todoItems, $todoLists, and $syncState stores) even when
+  // offline.
   $serverState = server_state;
 
   onMount(() => {
