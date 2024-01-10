@@ -58,13 +58,13 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
       iex> get_user_state(1)
       %UserState{
         user_id: 1,
-        state: %{"timestamp" => 1_701_807_051_829, "value" => %{"todo" => [], "completed" => []}
+        state: %{"timestamp" => 1_701_807_051_829, "value" => %{"todo" => []}
       }
 
       iex> get_user_state(456)
       %UserState{
         user_id: 456,
-        state: %{"timestamp" => 0, "value" => %{"todo" => [], "completed" => []}
+        state: %{"timestamp" => 0, "value" => %{"todo" => []}
       }
 
   """
@@ -72,7 +72,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
     # Default state if user_state does not exist.
     state = %{
       "timestamp" => 0,
-      "value" => %{"todo" => [], "completed" => []}
+      "value" => %{"todo" => []}
     }
 
     {:ok, user_state} =
@@ -160,7 +160,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
     %{
       "meta" => %{"synced" => true},
       "timestamp" => 0,
-      "value" => %{"todo" => [], "completed" => []}
+      "value" => %{"todo" => []}
     }
   end
 end
