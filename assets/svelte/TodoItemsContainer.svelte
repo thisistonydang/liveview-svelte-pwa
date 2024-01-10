@@ -89,7 +89,10 @@
           {#if item.isEditing}
             <TodoEditForm {item} {itemsStore} {updateItem} />
           {:else}
-            <label class="flex items-center gap-3 grow cursor-pointer">
+            <label
+              class="flex items-center gap-3 grow cursor-pointer"
+              class:opacity-50={item.completed}
+            >
               <input
                 class="checkbox"
                 type="checkbox"
