@@ -47,7 +47,7 @@
 
     $todoItems = [{ id: crypto.randomUUID(), name: $newTodo, completed: false }, ...$todoItems];
     $newTodo = "";
-    syncClientToServer($todoItems, $liveView);
+    syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
   function updateItem(itemsStore, newItem) {
@@ -59,13 +59,13 @@
     });
 
     itemsStore.set(newItems);
-    syncClientToServer($todoItems, $liveView);
+    syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
   function deleteItem(itemsStore, item) {
     const newItems = get(itemsStore).filter((i) => i.id !== item.id);
     itemsStore.set(newItems);
-    syncClientToServer($todoItems, $liveView);
+    syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
   function toggleCompleted(item) {
@@ -76,7 +76,7 @@
       return i;
     });
 
-    syncClientToServer($todoItems, $liveView);
+    syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
   // Drag and Drop Handlers ________________________________________________________________________
@@ -108,7 +108,7 @@
       dragDisabled = true;
     }
 
-    syncClientToServer($todoItems, $liveView);
+    syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
   /**
