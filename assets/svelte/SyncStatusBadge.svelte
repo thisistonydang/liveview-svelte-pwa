@@ -3,7 +3,7 @@
   import SuccessSvgIcon from "lib/svg-icons/SuccessSvgIcon.svelte";
   import WarningSvgIcon from "lib/svg-icons/WarningSvgIcon.svelte";
 
-  import { todoItems, completedItems } from "../stores/crdtState";
+  import { todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
@@ -15,7 +15,7 @@
       $syncState = "Syncing";
       setTimeout(() => ($syncState = "Synced"), 250);
     } else {
-      syncClientToServer($todoItems, $completedItems, $liveView);
+      syncClientToServer($todoItems, $liveView);
     }
   }
 </script>
