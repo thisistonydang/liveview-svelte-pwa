@@ -21,16 +21,11 @@
   export let handleFinalize;
   export let dragDisabled;
   export let handleStartDrag;
+  export let handleDragKeyDown;
   export let noItemsMessage;
   export let optionsMenuClass;
 
   const flipDurationMs = 100;
-
-  function handleKeyDown(e) {
-    if ((e.key === "Enter" || e.key === " ") && dragDisabled) {
-      dragDisabled = false;
-    }
-  }
 </script>
 
 <div class="collapse border border-neutral mt-2 mb-20">
@@ -101,7 +96,7 @@
                 class:cursor-grabbing={!dragDisabled}
                 on:mousedown={handleStartDrag}
                 on:touchstart={handleStartDrag}
-                on:keydown={handleKeyDown}
+                on:keydown={handleDragKeyDown}
                 use:clickOutside={() => (dragDisabled = true)}
               >
                 <Bars3SvgIcon className="w-6 h-6" />

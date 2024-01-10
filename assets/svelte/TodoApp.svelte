@@ -129,6 +129,12 @@
     $isAccountMenuOpened = false;
     $openedOptionsMenuId = "";
   }
+
+  function handleDragKeyDown(e) {
+    if ((e.key === "Enter" || e.key === " ") && dragDisabled) {
+      dragDisabled = false;
+    }
+  }
 </script>
 
 <ClickOutsideClassHandler
@@ -156,6 +162,7 @@
     {handleFinalize}
     bind:dragDisabled
     {handleStartDrag}
+    {handleDragKeyDown}
     noItemsMessage="All done!"
     {optionsMenuClass}
   />
@@ -179,6 +186,7 @@
     {handleFinalize}
     bind:dragDisabled
     {handleStartDrag}
+    {handleDragKeyDown}
     noItemsMessage="All done!"
     {optionsMenuClass}
   />
