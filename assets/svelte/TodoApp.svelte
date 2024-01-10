@@ -1,6 +1,5 @@
 <script>
   import { get } from "svelte/store";
-  import { fly } from "svelte/transition";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
   import { isTodoOpened, newTodo, openedOptionsMenuId } from "../stores/clientOnlyState";
