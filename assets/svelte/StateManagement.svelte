@@ -38,7 +38,7 @@
     const clientState = {
       meta: { synced: false },
       timestamp: 0,
-      value: { todo: [] },
+      value: { todo: [], lists: [] },
     };
     localStorage.setItem(key, JSON.stringify(clientState));
 
