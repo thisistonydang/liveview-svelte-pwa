@@ -23,6 +23,12 @@
 
   // TodoLists Handlers ____________________________________________________________________________
 
+  function addList() {
+    $todoLists = [{ id: crypto.randomUUID(), name: $newList }, ...$todoLists];
+    $newList = "";
+    syncClientToServer($todoItems, $todoLists, $liveView);
+  }
+
   // TodoItems Handlers ____________________________________________________________________________
 
   function addTodo() {
