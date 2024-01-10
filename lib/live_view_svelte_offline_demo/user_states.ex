@@ -55,30 +55,32 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
 
   ## Examples
 
+      # existing user_id
       iex> get_user_state(1)
       %UserState{
         user_id: 1,
-        state: %{"timestamp" => 1_701_807_051_829, "value" => %{"todo" => []}
+        state: %{
+          "timestamp" => 1_701_807_051_829,
+          "value" => %{"todo" => [], "lists" => []}
+        }
       }
 
+      # non-existing user_id
       iex> get_user_state(456)
       %UserState{
         user_id: 456,
-        state: %{"timestamp" => 0, "value" => %{"todo" => []}
+        state: %{
+          "timestamp" => 0,
+          "value" => %{"todo" => [], "lists" => []}
+        }
       }
 
   """
   def get_user_state(user_id) do
-    # Default state if user_state does not exist.
-    state = %{
-      "timestamp" => 0,
-      "value" => %{"todo" => []}
-    }
-
     {:ok, user_state} =
       case Repo.get_by(UserState, user_id: user_id) do
         # TODO: Handle case where create_user_state/1 returns {:error, changeset}?
-        nil -> create_user_state(%{state: state, user_id: user_id})
+        nil -> create_user_state(%{state: default_state(), user_id: user_id})
         user_state -> {:ok, user_state}
       end
 
@@ -157,10 +159,14 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
   Returns a default server state for the initial server render.
   """
   def initial_server_state() do
+    default_state() |> Map.merge(%{"meta" => %{"synced" => true}})
+  end
+
+  # Default user_state map value if user_state does not exist yet.
+  defp default_state do
     %{
-      "meta" => %{"synced" => true},
       "timestamp" => 0,
-      "value" => %{"todo" => []}
+      "value" => %{"todo" => [], "lists" => []}
     }
   end
 end
