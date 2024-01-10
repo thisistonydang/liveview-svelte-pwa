@@ -15,7 +15,6 @@
 
   export let title;
   export let isDropdownOpened;
-  export let items;
   export let itemsStore;
   export let toggleCompleted;
   export let updateItem;
@@ -53,7 +52,7 @@
   <div class="collapse-title relative" style="cursor: default;">
     <div class="flex gap-2 items-center text-xl font-medium">
       <span>{title}</span>
-      <span class="badge badge-neutral">{items.length}</span>
+      <span class="badge badge-neutral">{$itemsStore.length}</span>
     </div>
 
     <!-- Collapse toggle. -->
@@ -70,9 +69,9 @@
       class="min-h-[40px]"
       aria-label={title}
       use:dndzone={{
-        items,
+        items: $itemsStore,
         flipDurationMs,
-        dragDisabled: !items.length || dragDisabled,
+        dragDisabled,
         morphDisabled: true,
         dropTargetStyle: {},
         dropTargetClasses: ["border-2", "border-dashed", "rounded-lg", "border-accent"],
@@ -80,7 +79,7 @@
       on:consider={(event) => handleConsider(event, itemsStore)}
       on:finalize={(event) => handleFinalize(event, itemsStore)}
     >
-      {#each items as item (item.id)}
+      {#each $itemsStore as item (item.id)}
         <li
           class="flex items-center justify-between px-2 py-1.5 text-lg rounded-lg"
           aria-label={item.name}
