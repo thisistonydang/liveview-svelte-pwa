@@ -26,7 +26,7 @@
 
   // TodoItems Handlers ____________________________________________________________________________
 
-  function addItem() {
+  function addTodo() {
     // Trim whitespace.
     $newTodo = $newTodo.trim().replace(/\s+/g, " ");
     $newTodo = $newTodo === " " ? "" : $newTodo;
@@ -137,7 +137,7 @@
 
 {#if $activeTab === "To-Do"}
   <NewItemForm
-    submitHandler={addItem}
+    submitHandler={addTodo}
     bind:value={$newTodo}
     placeholder="Enter to-do item"
     submitButtonText="Add"
