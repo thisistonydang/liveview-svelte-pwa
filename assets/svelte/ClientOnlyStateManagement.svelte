@@ -8,6 +8,7 @@
     activeTab,
     isAccountMenuOpened,
     isTodoOpened,
+    newList,
     newTodo,
     openedOptionsMenuId,
   } from "../stores/clientOnlyState";
@@ -40,6 +41,7 @@
     $isAccountMenuOpened = getParseValue("isAccountMenuOpened", "boolean", $isAccountMenuOpened);
     $isThemeMenuOpened = getParseValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
     $isTodoOpened = getParseValue("isTodoOpened", "boolean", $isTodoOpened);
+    $newList = getParseValue("newList", "string", $newList);
     $newTodo = getParseValue("newTodo", "string", $newTodo);
     $openedOptionsMenuId = getParseValue("openedOptionsMenuId", "string", $openedOptionsMenuId);
     // $syncState is not set here because it is set in StateManagement
@@ -55,6 +57,7 @@
     localStorage.setItem("isAccountMenuOpened", JSON.stringify($isAccountMenuOpened));
     localStorage.setItem("isThemeMenuOpened", JSON.stringify($isThemeMenuOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
+    localStorage.setItem("newList", JSON.stringify($newList));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
     localStorage.setItem("openedOptionsMenuId", JSON.stringify($openedOptionsMenuId));
     localStorage.setItem("syncState", JSON.stringify($syncState));
@@ -83,6 +86,10 @@
 
       case "openedOptionsMenuId":
         $openedOptionsMenuId = JSON.parse(newValue);
+        break;
+
+      case "newList":
+        $newList = JSON.parse(newValue);
         break;
 
       case "newTodo":
