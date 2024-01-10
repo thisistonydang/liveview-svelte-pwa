@@ -1,15 +1,17 @@
 <script>
   import { get } from "svelte/store";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
+  import { isThemeMenuOpened } from "lib/theme-selector";
 
   import {
+    activeTab,
+    isAccountMenuOpened,
     isListsOpened,
     isTodoOpened,
     newList,
     newTodo,
     openedOptionsMenuId,
   } from "../stores/clientOnlyState";
-  import { activeTab } from "../stores/clientOnlyState";
   import { todoItems, todoLists } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
@@ -117,6 +119,16 @@
       return false;
     });
   }
+
+  function handleStartDrag(event) {
+    // Preventing default to prevent lag on touch devices (because of the
+    // browser checking for screen scrolling).
+    event.preventDefault();
+    dragDisabled = false;
+    $isThemeMenuOpened = false;
+    $isAccountMenuOpened = false;
+    $openedOptionsMenuId = "";
+  }
 </script>
 
 <ClickOutsideClassHandler
@@ -143,6 +155,7 @@
     {handleConsider}
     {handleFinalize}
     bind:dragDisabled
+    {handleStartDrag}
     noItemsMessage="All done!"
     {optionsMenuClass}
   />
@@ -165,6 +178,7 @@
     {handleConsider}
     {handleFinalize}
     bind:dragDisabled
+    {handleStartDrag}
     noItemsMessage="All done!"
     {optionsMenuClass}
   />

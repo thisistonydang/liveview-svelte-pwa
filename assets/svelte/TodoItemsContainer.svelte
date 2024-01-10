@@ -20,20 +20,11 @@
   export let handleConsider;
   export let handleFinalize;
   export let dragDisabled;
+  export let handleStartDrag;
   export let noItemsMessage;
   export let optionsMenuClass;
 
   const flipDurationMs = 100;
-
-  function startDrag(event) {
-    // Preventing default to prevent lag on touch devices (because of the
-    // browser checking for screen scrolling).
-    event.preventDefault();
-    dragDisabled = false;
-    $isThemeMenuOpened = false;
-    $isAccountMenuOpened = false;
-    $openedOptionsMenuId = "";
-  }
 
   function handleKeyDown(e) {
     if ((e.key === "Enter" || e.key === " ") && dragDisabled) {
@@ -108,8 +99,8 @@
                 aria-label="drag-handle"
                 class:cursor-grab={dragDisabled}
                 class:cursor-grabbing={!dragDisabled}
-                on:mousedown={startDrag}
-                on:touchstart={startDrag}
+                on:mousedown={handleStartDrag}
+                on:touchstart={handleStartDrag}
                 on:keydown={handleKeyDown}
                 use:clickOutside={() => (dragDisabled = true)}
               >
