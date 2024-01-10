@@ -128,20 +128,13 @@
   callbackFunction={() => ($openedOptionsMenuId = "")}
 />
 
-<form on:submit|preventDefault={addItem} class="join my-2 w-full">
-  <input
-    type="text"
-    placeholder="Type here"
-    class="input input-bordered border-neutral w-full join-item"
-    required
-    bind:value={$newTodo}
-    on:input={() => (error = "")}
-  />
-  <button class="btn btn-accent join-item border border-neutral">Add</button>
-</form>
-{#if error}
-  <p class="text-error" in:fly={{ y: -10 }}>{error}</p>
-{/if}
+<NewItemForm
+  submitHandler={addItem}
+  bind:value={$newTodo}
+  placeholder="Enter to-do item"
+  submitButtonText="Add"
+  bind:error
+/>
 
 <TodoItemsContainer
   title="To Do"
