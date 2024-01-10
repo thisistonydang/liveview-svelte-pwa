@@ -33,7 +33,7 @@
 
     // Check if empty string.
     if ($newTodo === "") {
-      error = "Item cannot be empty!";
+      error = "Name cannot be blank!";
       return;
     }
 
