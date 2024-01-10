@@ -37,18 +37,6 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
-  function updateItem(itemsStore, newItem) {
-    const newItems = get(itemsStore).map((item) => {
-      if (item.id === newItem.id) {
-        return newItem;
-      }
-      return { id: item.id, name: item.name, completed: item.completed };
-    });
-
-    itemsStore.set(newItems);
-    syncClientToServer($todoItems, $todoLists, $liveView);
-  }
-
   function toggleCompleted(item) {
     $todoItems = $todoItems.map((i) => {
       if (i.id === item.id) {
@@ -61,6 +49,18 @@
   }
 
   // Handlers for both todo lists and todo items ___________________________________________________
+
+  function updateItem(itemsStore, newItem) {
+    const newItems = get(itemsStore).map((item) => {
+      if (item.id === newItem.id) {
+        return newItem;
+      }
+      return { id: item.id, name: item.name, completed: item.completed };
+    });
+
+    itemsStore.set(newItems);
+    syncClientToServer($todoItems, $todoLists, $liveView);
+  }
 
   function deleteItem(itemsStore, item) {
     const newItems = get(itemsStore).filter((i) => i.id !== item.id);
