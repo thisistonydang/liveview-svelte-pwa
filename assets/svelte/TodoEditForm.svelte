@@ -22,7 +22,7 @@
       return;
     }
 
-    // Check new item name already exists.
+    // Check if new item name already exists.
     for (const item of $itemsStore) {
       if (item.name.toLowerCase() === newName.toLowerCase()) {
         error = `"${newName}" already exists!`;
