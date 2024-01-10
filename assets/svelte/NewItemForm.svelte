@@ -1,8 +1,10 @@
 <script>
   import { fly } from "svelte/transition";
 
+  export let store;
+
   /** @type {() => void}*/
-  export let submitHandler;
+  export let addItemCallback;
 
   /** @type {string} */
   export let value;
