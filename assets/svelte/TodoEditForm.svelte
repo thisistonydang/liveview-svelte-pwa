@@ -1,5 +1,4 @@
 <script>
-  import { get } from "svelte/store";
   import { fly } from "svelte/transition";
 
   import { clickOutside } from "lib/actions/clickOutside";
@@ -24,7 +23,7 @@
     }
 
     // Check new item name already exists.
-    for (const item of get(itemsStore)) {
+    for (const item of $itemsStore) {
       if (item.name.toLowerCase() === newName.toLowerCase()) {
         error = `"${newName}" already exists!`;
         return;
