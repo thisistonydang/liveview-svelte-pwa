@@ -9,6 +9,7 @@
 
   import { syncClientToServer } from "./StateManagement.svelte";
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
+  import NewItemForm from "./NewItemForm.svelte";
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
   /**
