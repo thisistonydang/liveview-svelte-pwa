@@ -136,7 +136,8 @@
 
 {#if $activeTab === "To-Do"}
   <NewItemForm
-    submitHandler={addTodo}
+    store={todoItems}
+    addItemCallback={addTodo}
     bind:value={$newTodo}
     placeholder="Enter to-do item"
     submitButtonText="Add"
@@ -158,7 +159,8 @@
   />
 {:else if $activeTab === "Lists"}
   <NewItemForm
-    submitHandler={addItem}
+    store={todoLists}
+    addItemCallback={addList}
     bind:value={$newList}
     placeholder="Enter new list name"
     submitButtonText="Create"
