@@ -4,7 +4,7 @@
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
   import { isTodoOpened, newTodo, openedOptionsMenuId } from "../stores/clientOnlyState";
-  import { completedItems, todoItems } from "../stores/crdtState";
+  import { todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
   import { syncClientToServer } from "./StateManagement.svelte";
@@ -42,7 +42,7 @@
 
     $todoItems = [{ id: crypto.randomUUID(), name: $newTodo, completed: false }, ...$todoItems];
     $newTodo = "";
-    syncClientToServer($todoItems, $completedItems, $liveView);
+    syncClientToServer($todoItems, $liveView);
   }
 
   function updateItem(itemsStore, newItem) {
@@ -54,13 +54,13 @@
     });
 
     itemsStore.set(newItems);
-    syncClientToServer($todoItems, $completedItems, $liveView);
+    syncClientToServer($todoItems, $liveView);
   }
 
   function deleteItem(itemsStore, item) {
     const newItems = get(itemsStore).filter((i) => i.id !== item.id);
     itemsStore.set(newItems);
-    syncClientToServer($todoItems, $completedItems, $liveView);
+    syncClientToServer($todoItems, $liveView);
   }
 
   function toggleCompleted(item) {
@@ -71,7 +71,7 @@
       return i;
     });
 
-    syncClientToServer($todoItems, $completedItems, $liveView);
+    syncClientToServer($todoItems, $liveView);
   }
 
   function handleConsider(event, itemsStore) {
@@ -101,7 +101,7 @@
       dragDisabled = true;
     }
 
-    syncClientToServer($todoItems, $completedItems, $liveView);
+    syncClientToServer($todoItems, $liveView);
   }
 
   /**
