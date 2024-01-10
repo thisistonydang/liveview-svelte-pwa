@@ -13,11 +13,31 @@
   /** @type {string} */
   export let submitButtonText;
 
-  /** @type {string} */
-  export let error;
+  let error = "";
+
+  function handleSubmit() {
+    // Trim whitespace.
+    value = value.replace(/\s+/g, " ").trim();
+
+    // Check if empty string.
+    if (value === "") {
+      error = "Cannot be blank!";
+      return;
+    }
+
+    // Check if item already exists.
+    for (const item of $store) {
+      if (item.name.toLowerCase() === value.toLowerCase()) {
+        error = `"${value}" already exists!`;
+        return;
+      }
+    }
+
+    addItemCallback();
+  }
 </script>
 
-<form on:submit|preventDefault={submitHandler} class="join my-2 w-full">
+<form on:submit|preventDefault={handleSubmit} class="join my-2 w-full">
   <input
     type="text"
     {placeholder}
