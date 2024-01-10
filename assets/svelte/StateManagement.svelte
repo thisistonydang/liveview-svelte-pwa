@@ -2,11 +2,11 @@
   import { get } from "svelte/store";
 
   /** Save new state to localStorage and notify server. */
-  export function syncClientToServer(todoItems, live) {
+  export function syncClientToServer(todoItems, todoLists, live) {
     const newClientState = {
       meta: { synced: false },
       timestamp: Date.now(),
-      value: { todo: todoItems },
+      value: { todo: todoItems, lists: todoLists },
     };
     localStorage.setItem(CLIENT_STATE_KEY, JSON.stringify(newClientState));
 
