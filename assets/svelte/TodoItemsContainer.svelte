@@ -45,7 +45,7 @@
   }
 </script>
 
-<div class="collapse border border-neutral my-2">
+<div class="collapse border border-neutral mt-2 mb-20">
   <!-- This hidden checkbox controls the collapse via Daisy UI. -->
   <input type="checkbox" class="pointer-events-none" bind:checked={isDropdownOpened} />
 
