@@ -3,6 +3,7 @@
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
   import { isTodoOpened, newTodo, openedOptionsMenuId } from "../stores/clientOnlyState";
+  import { activeTab } from "../stores/clientOnlyState";
   import { todoItems } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
@@ -122,25 +123,50 @@
   callbackFunction={() => ($openedOptionsMenuId = "")}
 />
 
-<NewItemForm
-  submitHandler={addItem}
-  bind:value={$newTodo}
-  placeholder="Enter to-do item"
-  submitButtonText="Add"
-  bind:error
-/>
+{#if $activeTab === "To-Do"}
+  <NewItemForm
+    submitHandler={addItem}
+    bind:value={$newTodo}
+    placeholder="Enter to-do item"
+    submitButtonText="Add"
+    bind:error
+  />
 
-<TodoItemsContainer
-  title="To Do"
-  bind:isDropdownOpened={$isTodoOpened}
-  items={$todoItems}
-  itemsStore={todoItems}
-  {toggleCompleted}
-  {updateItem}
-  {deleteItem}
-  {handleConsider}
-  {handleFinalize}
-  bind:dragDisabled
-  noItemsMessage="All done!"
-  {todoOptionsMenuClass}
-/>
+  <TodoItemsContainer
+    title="To Do"
+    bind:isDropdownOpened={$isTodoOpened}
+    items={$todoItems}
+    itemsStore={todoItems}
+    {toggleCompleted}
+    {updateItem}
+    {deleteItem}
+    {handleConsider}
+    {handleFinalize}
+    bind:dragDisabled
+    noItemsMessage="All done!"
+    {todoOptionsMenuClass}
+  />
+{:else if $activeTab === "Lists"}
+  <NewItemForm
+    submitHandler={addItem}
+    bind:value={$newTodo}
+    placeholder="Enter to-do item"
+    submitButtonText="Add"
+    bind:error
+  />
+
+  <TodoItemsContainer
+    title="To Do"
+    bind:isDropdownOpened={$isTodoOpened}
+    items={$todoItems}
+    itemsStore={todoItems}
+    {toggleCompleted}
+    {updateItem}
+    {deleteItem}
+    {handleConsider}
+    {handleFinalize}
+    bind:dragDisabled
+    noItemsMessage="All done!"
+    {todoOptionsMenuClass}
+  />
+{/if}
