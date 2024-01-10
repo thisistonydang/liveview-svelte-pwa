@@ -22,10 +22,9 @@
   export let dragDisabled;
   export let handleStartDrag;
   export let handleDragKeyDown;
+  export let flipDurationMs;
   export let noItemsMessage;
   export let optionsMenuClass;
-
-  const flipDurationMs = 100;
 </script>
 
 <div class="collapse border border-neutral mt-2 mb-20">

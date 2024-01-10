@@ -21,6 +21,7 @@
   import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
   const optionsMenuClass = "options-menu";
+  const flipDurationMs = 100;
   let dragDisabled = true;
 
   // Todo lists handlers ___________________________________________________________________________
@@ -163,6 +164,7 @@
     bind:dragDisabled
     {handleStartDrag}
     {handleDragKeyDown}
+    {flipDurationMs}
     noItemsMessage="All done!"
     {optionsMenuClass}
   />
@@ -187,6 +189,7 @@
     bind:dragDisabled
     {handleStartDrag}
     {handleDragKeyDown}
+    {flipDurationMs}
     noItemsMessage="All done!"
     {optionsMenuClass}
   />
