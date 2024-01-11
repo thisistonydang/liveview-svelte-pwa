@@ -53,8 +53,8 @@
           class:opacity-50={item.completed}
         >
           <input
-            class="checkbox bg-transparent"
             type="checkbox"
+            class="checkbox bg-transparent"
             checked={item.completed}
             on:change={() => toggleCompleted(item)}
           />
