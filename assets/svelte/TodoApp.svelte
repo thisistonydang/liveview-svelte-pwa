@@ -11,6 +11,7 @@
     newList,
     newTodo,
     openedOptionsMenuId,
+    selectedListId,
   } from "../stores/clientOnlyState";
   import { todoItems, todoLists } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
@@ -19,6 +20,7 @@
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import ItemsContainer from "./ItemsContainer.svelte";
   import NewItemForm from "./NewItemForm.svelte";
+  import NoListCard from "./NoListCard.svelte";
   import TodoCheckList from "./TodoCheckList.svelte";
   import TodoListSelector from "./TodoListSelector.svelte";
 
@@ -151,31 +153,35 @@
 />
 
 {#if $activeTab === "To-Do"}
-  <NewItemForm
-    store={todoItems}
-    addItemCallback={addTodo}
-    bind:value={$newTodo}
-    placeholder="Enter to-do item"
-    submitButtonText="Add"
-  />
-
-  <ItemsContainer title="To Do" length={$todoItems.length} bind:isDropdownOpened={$isTodoOpened}>
-    <TodoCheckList
-      title="To Do"
-      itemsStore={todoItems}
-      {toggleCompleted}
-      {updateItem}
-      {deleteItem}
-      {handleConsider}
-      {handleFinalize}
-      bind:dragDisabled
-      {handleStartDrag}
-      {handleDragKeyDown}
-      {flipDurationMs}
-      noItemsMessage="All done!"
-      {optionsMenuClass}
+  {#if $selectedListId}
+    <NewItemForm
+      store={todoItems}
+      addItemCallback={addTodo}
+      bind:value={$newTodo}
+      placeholder="Enter to-do item"
+      submitButtonText="Add"
     />
-  </ItemsContainer>
+
+    <ItemsContainer title="To Do" length={$todoItems.length} bind:isDropdownOpened={$isTodoOpened}>
+      <TodoCheckList
+        title="To Do"
+        itemsStore={todoItems}
+        {toggleCompleted}
+        {updateItem}
+        {deleteItem}
+        {handleConsider}
+        {handleFinalize}
+        bind:dragDisabled
+        {handleStartDrag}
+        {handleDragKeyDown}
+        {flipDurationMs}
+        noItemsMessage="All done!"
+        {optionsMenuClass}
+      />
+    </ItemsContainer>
+  {:else}
+    <NoListCard />
+  {/if}
 {:else if $activeTab === "Lists"}
   <NewItemForm
     store={todoLists}
