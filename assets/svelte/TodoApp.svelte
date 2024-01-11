@@ -62,7 +62,7 @@
       if (item.id === newItem.id) {
         return newItem;
       }
-      return { id: item.id, name: item.name, completed: item.completed };
+      return { id: item.id, name: item.name, completed: item.completed, list_id: item.list_id };
     });
 
     itemsStore.set(newItems);
