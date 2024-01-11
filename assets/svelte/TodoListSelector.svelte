@@ -24,7 +24,7 @@
   export let optionsMenuClass;
 </script>
 
-<ul
+<form
   class="min-h-[40px]"
   aria-label={title}
   use:dndzone={{
@@ -39,7 +39,7 @@
   on:finalize={(event) => handleFinalize(event, itemsStore)}
 >
   {#each $itemsStore as item (item.id)}
-    <li
+    <div
       class="flex items-center justify-between px-2 py-1.5 text-lg rounded-lg"
       aria-label={item.name}
       animate:flip={{ duration: flipDurationMs }}
@@ -66,6 +66,7 @@
 
           <!-- Drag Handle. -->
           <button
+            type="button"
             aria-label="drag-handle"
             class:cursor-grab={dragDisabled}
             class:cursor-grabbing={!dragDisabled}
@@ -78,8 +79,8 @@
           </button>
         </div>
       {/if}
-    </li>
+    </div>
   {:else}
     <p class="flex items-center h-10 px-2" in:fade={{ delay: 250 }}>{noItemsMessage}</p>
   {/each}
-</ul>
+</form>
