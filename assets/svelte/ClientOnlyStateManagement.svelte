@@ -12,6 +12,7 @@
     newList,
     newTodo,
     openedOptionsMenuId,
+    selectedListId,
   } from "../stores/clientOnlyState";
   import { todoItems, todoLists } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
@@ -46,6 +47,7 @@
     $newList = getParseValue("newList", "string", $newList);
     $newTodo = getParseValue("newTodo", "string", $newTodo);
     $openedOptionsMenuId = getParseValue("openedOptionsMenuId", "string", $openedOptionsMenuId);
+    $selectedListId = getParseValue("selectedListId", "string", $selectedListId);
     // $syncState is not set here because it is set in StateManagement
 
     // Let offline-svelte know that the client state has been restored in order
@@ -63,6 +65,7 @@
     localStorage.setItem("newList", JSON.stringify($newList));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
     localStorage.setItem("openedOptionsMenuId", JSON.stringify($openedOptionsMenuId));
+    localStorage.setItem("selectedListId", JSON.stringify($selectedListId));
     localStorage.setItem("syncState", JSON.stringify($syncState));
   }
 </script>
@@ -91,16 +94,20 @@
         $isTodoOpened = JSON.parse(newValue);
         break;
 
-      case "openedOptionsMenuId":
-        $openedOptionsMenuId = JSON.parse(newValue);
-        break;
-
       case "newList":
         $newList = JSON.parse(newValue);
         break;
 
       case "newTodo":
         $newTodo = JSON.parse(newValue);
+        break;
+
+      case "openedOptionsMenuId":
+        $openedOptionsMenuId = JSON.parse(newValue);
+        break;
+
+      case "selectedListId":
+        $selectedListId = JSON.parse(newValue);
         break;
 
       case "syncState":
