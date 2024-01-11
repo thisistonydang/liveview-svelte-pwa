@@ -112,6 +112,7 @@
     // TODO: Maybe remove this check in the future?
     $todoItems = Array.isArray(latestState.value.todo) ? latestState.value.todo : [];
     $todoLists = Array.isArray(latestState.value.lists) ? latestState.value.lists : [];
+    setSelectedListId($todoLists);
 
     if (latestState.meta.synced) {
       $syncState = "Synced";

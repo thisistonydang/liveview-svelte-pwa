@@ -70,6 +70,10 @@
   function deleteItem(itemsStore, item) {
     const newItems = get(itemsStore).filter((i) => i.id !== item.id);
     itemsStore.set(newItems);
+
+    // If the deleted item is the selected list, update selectedListId store.
+    setSelectedListId($todoLists);
+
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
