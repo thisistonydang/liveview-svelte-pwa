@@ -180,7 +180,8 @@
       bind:isDropdownOpened={$isTodoOpened}
     >
       <TodoCheckList
-        title="To Do"
+        title={selectedListName}
+        items={selectedListTodoItems}
         itemsStore={todoItems}
         {toggleCompleted}
         {updateItem}

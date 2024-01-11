@@ -10,6 +10,7 @@
   import OptionsMenu from "./OptionsMenu.svelte";
 
   export let title;
+  export let items;
   export let itemsStore;
   export let toggleCompleted;
   export let updateItem;
@@ -28,7 +29,7 @@
   class="min-h-[40px]"
   aria-label={title}
   use:dndzone={{
-    items: $itemsStore,
+    items,
     flipDurationMs,
     dragDisabled,
     morphDisabled: true,
@@ -38,7 +39,7 @@
   on:consider={(event) => handleConsider(event, itemsStore)}
   on:finalize={(event) => handleFinalize(event, itemsStore)}
 >
-  {#each $itemsStore as item (item.id)}
+  {#each items as item (item.id)}
     <li
       class="flex items-center justify-between px-2 py-1.5 text-lg rounded-lg"
       aria-label={item.name}
