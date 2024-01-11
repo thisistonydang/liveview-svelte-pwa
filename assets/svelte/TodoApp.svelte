@@ -174,7 +174,11 @@
       submitButtonText="Add"
     />
 
-    <ItemsContainer title="To Do" length={$todoItems.length} bind:isDropdownOpened={$isTodoOpened}>
+    <ItemsContainer
+      title={selectedListName}
+      length={selectedListTodoItems.length}
+      bind:isDropdownOpened={$isTodoOpened}
+    >
       <TodoCheckList
         title="To Do"
         itemsStore={todoItems}
