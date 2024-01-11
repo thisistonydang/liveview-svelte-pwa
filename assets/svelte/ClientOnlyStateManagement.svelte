@@ -4,7 +4,9 @@
    *
    * @param {string} key - Key to get from localStorage.
    * @param {string} type - Type of value.
-   * @param {boolean | string} defaultValue - Default value to return if value is not found in localStorage.
+   * @param {string | boolean} defaultValue - Default value to return if value is not found in localStorage.
+   *
+   * @returns {string | boolean} - Parsed value from localStorage or default value.
    */
   export function getParsedValue(key, type, defaultValue) {
     const value = localStorage.getItem(key);
