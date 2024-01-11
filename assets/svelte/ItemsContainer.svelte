@@ -3,8 +3,8 @@
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
 
   export let title;
+  export let length;
   export let isDropdownOpened;
-  export let itemsStore;
 </script>
 
 <div class="collapse border border-neutral mt-2 mb-20">
@@ -15,7 +15,7 @@
   <div class="collapse-title relative" style="cursor: default;">
     <div class="flex gap-2 items-center text-xl font-medium">
       <span>{title}</span>
-      <span class="badge badge-neutral">{$itemsStore.length}</span>
+      <span class="badge badge-neutral">{length}</span>
     </div>
 
     <!-- Collapse toggle. -->

@@ -153,7 +153,7 @@
     submitButtonText="Add"
   />
 
-  <ItemsContainer title="To Do" bind:isDropdownOpened={$isTodoOpened} itemsStore={todoItems}>
+  <ItemsContainer title="To Do" length={$todoItems.length} bind:isDropdownOpened={$isTodoOpened}>
     <TodoCheckList
       title="To Do"
       itemsStore={todoItems}
@@ -179,7 +179,7 @@
     submitButtonText="Create"
   />
 
-  <ItemsContainer title="Lists" bind:isDropdownOpened={$isListsOpened} itemsStore={todoLists}>
+  <ItemsContainer title="Lists" length={$todoLists.length} bind:isDropdownOpened={$isListsOpened}>
     <TodoCheckList
       title="Lists"
       itemsStore={todoLists}
