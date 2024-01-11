@@ -39,7 +39,10 @@
   // Todo items handlers ___________________________________________________________________________
 
   function addTodo() {
-    $todoItems = [{ id: crypto.randomUUID(), name: $newTodo, completed: false }, ...$todoItems];
+    $todoItems = [
+      { id: crypto.randomUUID(), name: $newTodo, completed: false, list_id: $selectedListId },
+      ...$todoItems,
+    ];
     $newTodo = "";
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
