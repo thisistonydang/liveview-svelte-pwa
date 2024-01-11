@@ -18,7 +18,12 @@
 
     // Check if new item name is empty string or unchanged.
     if (["", item.name].includes(newName)) {
-      updateItem(itemsStore, { id: item.id, name: item.name, completed: item.completed });
+      updateItem(itemsStore, {
+        id: item.id,
+        name: item.name,
+        completed: item.completed,
+        list_id: item.list_id,
+      });
       return;
     }
 
@@ -30,7 +35,12 @@
       }
     }
 
-    updateItem(itemsStore, { id: item.id, name: newName, completed: item.completed });
+    updateItem(itemsStore, {
+      id: item.id,
+      name: newName,
+      completed: item.completed,
+      list_id: item.list_id,
+    });
   }
 
   /**
