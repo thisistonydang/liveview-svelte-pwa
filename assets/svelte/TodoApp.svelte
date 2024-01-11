@@ -72,6 +72,7 @@
     itemsStore.set(newItems);
 
     // If the deleted item is the selected list, update selectedListId store.
+    // TODO: This can probably be optimized to not run every time an item is deleted.
     setSelectedListId($todoLists);
 
     syncClientToServer($todoItems, $todoLists, $liveView);
