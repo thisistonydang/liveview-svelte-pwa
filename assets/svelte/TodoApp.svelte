@@ -145,6 +145,16 @@
       dragDisabled = false;
     }
   }
+
+  function setSelectedListName(listId) {
+    return $todoLists.find((list) => list.id === listId)?.name ?? "";
+  }
+  $: selectedListName = setSelectedListName($selectedListId);
+
+  function setSelectedListTodoItems(listId) {
+    return $todoItems.filter((item) => item.list_id === listId);
+  }
+  $: selectedListTodoItems = setSelectedListTodoItems($selectedListId);
 </script>
 
 <ClickOutsideClassHandler
