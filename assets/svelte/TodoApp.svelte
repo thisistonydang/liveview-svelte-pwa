@@ -16,7 +16,7 @@
   import { todoItems, todoLists } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
-  import { syncClientToServer } from "./StateManagement.svelte";
+  import { setSelectedListId, syncClientToServer } from "./StateManagement.svelte";
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import ItemsContainer from "./ItemsContainer.svelte";
   import NewItemForm from "./NewItemForm.svelte";
