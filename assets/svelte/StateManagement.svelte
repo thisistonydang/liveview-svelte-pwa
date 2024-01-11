@@ -4,47 +4,6 @@
   import { selectedListId } from "../stores/clientOnlyState";
   import { getParsedValue } from "./ClientOnlyStateManagement.svelte";
 
-  function resetClientState(key) {
-    const clientState = {
-      meta: { synced: false },
-      timestamp: 0,
-      value: { todo: [], lists: [] },
-    };
-    localStorage.setItem(key, JSON.stringify(clientState));
-
-    return clientState;
-  }
-
-  function getClientState(key) {
-    const value = localStorage.getItem(key);
-
-    // If entry does not exist, create a new clientState object.
-    if (!value) return resetClientState(key);
-
-    try {
-      const parsedValue = JSON.parse(value);
-
-      // If parsed client state is invalid, create a new clientState object.
-      // TODO: Add more validation checks.
-      if (
-        typeof parsedValue.meta?.synced !== "boolean" ||
-        !["number", "undefined"].includes(typeof parsedValue.meta?.timestamp) ||
-        typeof parsedValue.timestamp !== "number" ||
-        !Array.isArray(parsedValue.value?.todo) ||
-        !Array.isArray(parsedValue.value?.lists)
-      ) {
-        console.error("Invalid client state.", parsedValue);
-        return resetClientState(key);
-      }
-
-      // If parsed client state is valid, return parsed value as clientState.
-      return parsedValue;
-    } catch (error) {
-      console.error(error);
-      return resetClientState(key);
-    }
-  }
-
   /**
    * Make sure that selectedListId exists in todoLists, else set selectedListId to first list or "".
    *
@@ -92,6 +51,47 @@
 
   const CLIENT_STATE_KEY = "clientState";
   let mounted = false;
+
+  function resetClientState(key) {
+    const clientState = {
+      meta: { synced: false },
+      timestamp: 0,
+      value: { todo: [], lists: [] },
+    };
+    localStorage.setItem(key, JSON.stringify(clientState));
+
+    return clientState;
+  }
+
+  function getClientState(key) {
+    const value = localStorage.getItem(key);
+
+    // If entry does not exist, create a new clientState object.
+    if (!value) return resetClientState(key);
+
+    try {
+      const parsedValue = JSON.parse(value);
+
+      // If parsed client state is invalid, create a new clientState object.
+      // TODO: Add more validation checks.
+      if (
+        typeof parsedValue.meta?.synced !== "boolean" ||
+        !["number", "undefined"].includes(typeof parsedValue.meta?.timestamp) ||
+        typeof parsedValue.timestamp !== "number" ||
+        !Array.isArray(parsedValue.value?.todo) ||
+        !Array.isArray(parsedValue.value?.lists)
+      ) {
+        console.error("Invalid client state.", parsedValue);
+        return resetClientState(key);
+      }
+
+      // If parsed client state is valid, return parsed value as clientState.
+      return parsedValue;
+    } catch (error) {
+      console.error(error);
+      return resetClientState(key);
+    }
+  }
 
   /**
    * Merge client and server state.
