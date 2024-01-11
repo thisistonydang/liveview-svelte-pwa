@@ -19,6 +19,7 @@
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import ItemsContainer from "./ItemsContainer.svelte";
   import NewItemForm from "./NewItemForm.svelte";
+  import TodoCheckList from "./TodoCheckList.svelte";
 
   const optionsMenuClass = "options-menu";
   const flipDurationMs = 100;
@@ -152,22 +153,23 @@
     submitButtonText="Add"
   />
 
-  <ItemsContainer
-    title="To Do"
-    bind:isDropdownOpened={$isTodoOpened}
-    itemsStore={todoItems}
-    {toggleCompleted}
-    {updateItem}
-    {deleteItem}
-    {handleConsider}
-    {handleFinalize}
-    bind:dragDisabled
-    {handleStartDrag}
-    {handleDragKeyDown}
-    {flipDurationMs}
-    noItemsMessage="All done!"
-    {optionsMenuClass}
-  />
+  <ItemsContainer title="To Do" bind:isDropdownOpened={$isTodoOpened} itemsStore={todoItems}>
+    <TodoCheckList
+      title="To Do"
+      itemsStore={todoItems}
+      {toggleCompleted}
+      {updateItem}
+      {deleteItem}
+      {handleConsider}
+      {handleFinalize}
+      bind:dragDisabled
+      {handleStartDrag}
+      {handleDragKeyDown}
+      {flipDurationMs}
+      noItemsMessage="All done!"
+      {optionsMenuClass}
+    />
+  </ItemsContainer>
 {:else if $activeTab === "Lists"}
   <NewItemForm
     store={todoLists}
@@ -177,20 +179,21 @@
     submitButtonText="Create"
   />
 
-  <ItemsContainer
-    title="Lists"
-    bind:isDropdownOpened={$isListsOpened}
-    itemsStore={todoLists}
-    {toggleCompleted}
-    {updateItem}
-    {deleteItem}
-    {handleConsider}
-    {handleFinalize}
-    bind:dragDisabled
-    {handleStartDrag}
-    {handleDragKeyDown}
-    {flipDurationMs}
-    noItemsMessage="All done!"
-    {optionsMenuClass}
-  />
+  <ItemsContainer title="Lists" bind:isDropdownOpened={$isListsOpened} itemsStore={todoLists}>
+    <TodoCheckList
+      title="Lists"
+      itemsStore={todoLists}
+      {toggleCompleted}
+      {updateItem}
+      {deleteItem}
+      {handleConsider}
+      {handleFinalize}
+      bind:dragDisabled
+      {handleStartDrag}
+      {handleDragKeyDown}
+      {flipDurationMs}
+      noItemsMessage="All done!"
+      {optionsMenuClass}
+    />
+  </ItemsContainer>
 {/if}

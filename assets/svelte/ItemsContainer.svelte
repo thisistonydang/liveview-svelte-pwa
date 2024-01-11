@@ -2,22 +2,9 @@
   import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
 
-  import TodoCheckList from "./TodoCheckList.svelte";
-
   export let title;
   export let isDropdownOpened;
   export let itemsStore;
-  export let toggleCompleted;
-  export let updateItem;
-  export let deleteItem;
-  export let handleConsider;
-  export let handleFinalize;
-  export let dragDisabled;
-  export let handleStartDrag;
-  export let handleDragKeyDown;
-  export let flipDurationMs;
-  export let noItemsMessage;
-  export let optionsMenuClass;
 </script>
 
 <div class="collapse border border-neutral mt-2 mb-20">
@@ -41,20 +28,6 @@
   </div>
 
   <div class="collapse-content">
-    <TodoCheckList
-      {title}
-      {itemsStore}
-      {toggleCompleted}
-      {updateItem}
-      {deleteItem}
-      {handleConsider}
-      {handleFinalize}
-      {dragDisabled}
-      {handleStartDrag}
-      {handleDragKeyDown}
-      {flipDurationMs}
-      {noItemsMessage}
-      {optionsMenuClass}
-    />
+    <slot />
   </div>
 </div>
