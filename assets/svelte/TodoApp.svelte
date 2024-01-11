@@ -17,8 +17,8 @@
 
   import { syncClientToServer } from "./StateManagement.svelte";
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
+  import ItemsContainer from "./ItemsContainer.svelte";
   import NewItemForm from "./NewItemForm.svelte";
-  import TodoItemsContainer from "./TodoItemsContainer.svelte";
 
   const optionsMenuClass = "options-menu";
   const flipDurationMs = 100;
@@ -152,7 +152,7 @@
     submitButtonText="Add"
   />
 
-  <TodoItemsContainer
+  <ItemsContainer
     title="To Do"
     bind:isDropdownOpened={$isTodoOpened}
     itemsStore={todoItems}
@@ -177,7 +177,7 @@
     submitButtonText="Create"
   />
 
-  <TodoItemsContainer
+  <ItemsContainer
     title="Lists"
     bind:isDropdownOpened={$isListsOpened}
     itemsStore={todoLists}
