@@ -6,6 +6,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
 
+  import { selectedListId } from "../stores/clientOnlyState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
@@ -51,10 +52,12 @@
           class:opacity-50={item.completed}
         >
           <input
-            class="checkbox bg-transparent"
-            type="checkbox"
-            checked={item.completed}
-            on:change={() => toggleCompleted(item)}
+            type="radio"
+            class="radio bg-transparent focus:radio-accent"
+            class:radio-accent={$selectedListId === item.id}
+            class:hover:radio-accent={$selectedListId === item.id}
+            value={item.id}
+            bind:group={$selectedListId}
           />
 
           <span class:line-through={item.completed}>{item.name}</span>
