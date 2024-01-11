@@ -212,7 +212,6 @@
     <TodoListSelector
       title="Lists"
       itemsStore={todoLists}
-      {toggleCompleted}
       {updateItem}
       {deleteItem}
       {handleConsider}

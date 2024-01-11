@@ -11,7 +11,6 @@
 
   export let title;
   export let itemsStore;
-  export let toggleCompleted;
   export let updateItem;
   export let deleteItem;
   export let handleConsider;
