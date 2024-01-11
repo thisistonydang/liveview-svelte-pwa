@@ -39,26 +39,6 @@
   import { todoItems, todoLists } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
 
-  /**
-   * Get parsed value from localStorage.
-   *
-   * @param {string} key - Key to get from localStorage.
-   * @param {string} type - Type of value.
-   * @param {boolean | string} defaultValue - Default value to return if value is not found in localStorage.
-   */
-  function getParseValue(key, type, defaultValue) {
-    const value = localStorage.getItem(key);
-
-    if (!value) return defaultValue;
-
-    try {
-      const parsedValue = JSON.parse(value);
-      return typeof parsedValue === type ? parsedValue : defaultValue;
-    } catch {
-      return defaultValue;
-    }
-  }
-
   onMount(() => {
     // Sync client state stores with localStorage on startup.
     $activeTab = getParseValue("activeTab", "string", $activeTab);
