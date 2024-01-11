@@ -6,7 +6,7 @@
    * @param {string} type - Type of value.
    * @param {boolean | string} defaultValue - Default value to return if value is not found in localStorage.
    */
-  export function getParseValue(key, type, defaultValue) {
+  export function getParsedValue(key, type, defaultValue) {
     const value = localStorage.getItem(key);
 
     if (!value) return defaultValue;
@@ -41,15 +41,15 @@
 
   onMount(() => {
     // Sync client state stores with localStorage on startup.
-    $activeTab = getParseValue("activeTab", "string", $activeTab);
-    $isAccountMenuOpened = getParseValue("isAccountMenuOpened", "boolean", $isAccountMenuOpened);
-    $isThemeMenuOpened = getParseValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
-    $isListsOpened = getParseValue("isListsOpened", "boolean", $isListsOpened);
-    $isTodoOpened = getParseValue("isTodoOpened", "boolean", $isTodoOpened);
-    $newList = getParseValue("newList", "string", $newList);
-    $newTodo = getParseValue("newTodo", "string", $newTodo);
-    $openedOptionsMenuId = getParseValue("openedOptionsMenuId", "string", $openedOptionsMenuId);
-    $selectedListId = getParseValue("selectedListId", "string", $selectedListId);
+    $activeTab = getParsedValue("activeTab", "string", $activeTab);
+    $isAccountMenuOpened = getParsedValue("isAccountMenuOpened", "boolean", $isAccountMenuOpened);
+    $isThemeMenuOpened = getParsedValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
+    $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
+    $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
+    $newList = getParsedValue("newList", "string", $newList);
+    $newTodo = getParsedValue("newTodo", "string", $newTodo);
+    $openedOptionsMenuId = getParsedValue("openedOptionsMenuId", "string", $openedOptionsMenuId);
+    // $selectedListId is not set here because it is set in StateManagement
     // $syncState is not set here because it is set in StateManagement
 
     // Let offline-svelte know that the client state has been restored in order
