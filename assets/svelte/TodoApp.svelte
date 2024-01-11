@@ -153,10 +153,7 @@
   }
   $: selectedListName = setSelectedListName($selectedListId);
 
-  function setSelectedListTodoItems(listId) {
-    return $todoItems.filter((item) => item.list_id === listId);
-  }
-  $: selectedListTodoItems = setSelectedListTodoItems($selectedListId);
+  $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
 </script>
 
 <ClickOutsideClassHandler
