@@ -134,4 +134,11 @@
 
   // Sync state whenever new server state is received.
   $: if (mounted) syncServerToClient($serverState, CLIENT_STATE_KEY);
+
+  // Update todoItems whenever selectedListId changes.
+  function updateTodoItems(listId) {
+    const allTodos = getClientState(CLIENT_STATE_KEY).value.todo;
+    $todoItems = allTodos.filter((item) => item.list_id === listId);
+  }
+  $: if (mounted) updateTodoItems($selectedListId);
 </script>
