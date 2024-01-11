@@ -110,9 +110,12 @@
     // Note: The check to see if todo/lists is an array is to cover the cases where
     // todo/lists is undefined due to legacy code.
     // TODO: Maybe remove this check in the future?
-    $todoItems = Array.isArray(latestState.value.todo) ? latestState.value.todo : [];
     $todoLists = Array.isArray(latestState.value.lists) ? latestState.value.lists : [];
     setSelectedListId($todoLists);
+
+    $todoItems = Array.isArray(latestState.value.todo)
+      ? latestState.value.todo.filter((item) => item.list_id === $selectedListId)
+      : [];
 
     if (latestState.meta.synced) {
       $syncState = "Synced";
