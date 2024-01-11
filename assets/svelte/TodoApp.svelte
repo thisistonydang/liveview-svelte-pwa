@@ -20,6 +20,7 @@
   import ItemsContainer from "./ItemsContainer.svelte";
   import NewItemForm from "./NewItemForm.svelte";
   import TodoCheckList from "./TodoCheckList.svelte";
+  import TodoListSelector from "./TodoListSelector.svelte";
 
   const optionsMenuClass = "options-menu";
   const flipDurationMs = 100;
@@ -180,7 +181,7 @@
   />
 
   <ItemsContainer title="Lists" length={$todoLists.length} bind:isDropdownOpened={$isListsOpened}>
-    <TodoCheckList
+    <TodoListSelector
       title="Lists"
       itemsStore={todoLists}
       {toggleCompleted}
