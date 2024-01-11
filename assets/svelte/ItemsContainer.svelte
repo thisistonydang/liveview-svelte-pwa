@@ -2,8 +2,13 @@
   import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
 
+  /** @type {string} */
   export let title;
+
+  /** @type {number} */
   export let length;
+
+  /** @type {boolean} */
   export let isDropdownOpened;
 </script>
 
