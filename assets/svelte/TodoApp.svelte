@@ -1,7 +1,6 @@
 <script>
   import { get } from "svelte/store";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
-  import { isThemeMenuOpened } from "lib/theme-selector";
 
   import {
     activeTab,
@@ -138,7 +137,6 @@
     // browser checking for screen scrolling).
     event.preventDefault();
     dragDisabled = false;
-    $isThemeMenuOpened = false;
     $openedMenuId = "";
   }
 
