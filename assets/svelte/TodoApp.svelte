@@ -5,7 +5,6 @@
 
   import {
     activeTab,
-    isAccountMenuOpened,
     isListsOpened,
     isTodoOpened,
     newList,
@@ -139,7 +138,6 @@
     event.preventDefault();
     dragDisabled = false;
     $isThemeMenuOpened = false;
-    $isAccountMenuOpened = false;
     $openedMenuId = "";
   }
 
