@@ -24,7 +24,7 @@
   import TodoCheckList from "./TodoCheckList.svelte";
   import TodoListSelector from "./TodoListSelector.svelte";
 
-  const optionsMenuClass = "options-menu";
+  const menuClass = "menu-class";
   const flipDurationMs = 100;
   let dragDisabled = true;
 
@@ -193,7 +193,7 @@
         {handleDragKeyDown}
         {flipDurationMs}
         noItemsMessage="All done!"
-        {optionsMenuClass}
+        {menuClass}
       />
     </ItemsContainer>
   {:else}
@@ -221,7 +221,7 @@
       {handleDragKeyDown}
       {flipDurationMs}
       noItemsMessage="No lists yet. Please create a list to get started."
-      {optionsMenuClass}
+      {menuClass}
     />
   </ItemsContainer>
 {/if}
