@@ -2,8 +2,6 @@
   import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
 
-  import { openedMenuId } from "../stores/clientOnlyState";
-
   /** @type {string} */
   export let title;
 
@@ -14,7 +12,7 @@
   export let isDropdownOpened;
 </script>
 
-<div class="collapse border border-neutral mt-2 mb-20" class:pointer-events-none={$openedMenuId}>
+<div class="collapse border border-neutral mt-2 mb-20">
   <!-- This hidden checkbox controls the collapse via Daisy UI. -->
   <input type="checkbox" class="pointer-events-none" bind:checked={isDropdownOpened} />
 
