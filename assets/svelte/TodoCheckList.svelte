@@ -6,6 +6,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
 
+  import { openedMenuId } from "../stores/clientOnlyState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
@@ -51,10 +52,11 @@
         <label
           class="flex items-center gap-3 grow cursor-pointer"
           class:opacity-50={item.completed}
+          class:pointer-events-none={$openedMenuId}
         >
           <input
             type="checkbox"
-            class="checkbox bg-transparent"
+            class="checkbox bg-transparent pointer-events-auto"
             checked={item.completed}
             on:change={() => toggleCompleted(item)}
           />

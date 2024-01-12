@@ -6,7 +6,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
 
-  import { selectedListId } from "../stores/clientOnlyState";
+  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
@@ -50,10 +50,11 @@
         <label
           class="flex items-center gap-3 grow cursor-pointer"
           class:opacity-50={item.completed}
+          class:pointer-events-none={$openedMenuId}
         >
           <input
             type="radio"
-            class="radio bg-transparent focus:radio-accent"
+            class="radio bg-transparent focus:radio-accent pointer-events-auto"
             class:radio-accent={$selectedListId === item.id}
             class:hover:radio-accent={$selectedListId === item.id}
             value={item.id}
