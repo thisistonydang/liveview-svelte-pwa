@@ -42,9 +42,6 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     timestamp = changeset |> get_change(:state) |> Map.get("timestamp")
 
     case timestamp do
-      nil ->
-        changeset |> add_error(:state, "'timestamp' key is not present in state map")
-
       timestamp when not is_integer(timestamp) ->
         changeset |> add_error(:state, "timestamp must be an integer")
 
