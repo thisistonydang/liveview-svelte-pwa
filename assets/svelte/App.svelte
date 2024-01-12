@@ -25,6 +25,8 @@
   export let currentUserEmail;
   export let server_state;
 
+  const menuClass = "menu-class";
+
   // Setting $serverState here is required so that an initial state is available
   // when offline. This allows the initial syncServerToClient call to set the
   // initial app state ($todoItems, $todoLists, and $syncState stores) even when
@@ -53,7 +55,7 @@
   <Header {currentUserEmail} />
 
   <div class="max-w-2xl mx-auto px-2 md:p-0">
-    <TodoApp />
+    <TodoApp {menuClass} />
   </div>
 
   <BottomNavigation />

@@ -23,7 +23,9 @@
   import TodoCheckList from "./TodoCheckList.svelte";
   import TodoListSelector from "./TodoListSelector.svelte";
 
-  const menuClass = "menu-class";
+  /** @type {string} */
+  export let menuClass;
+
   const flipDurationMs = 100;
   let dragDisabled = true;
 
