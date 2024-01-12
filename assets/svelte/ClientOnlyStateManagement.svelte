@@ -26,7 +26,6 @@
   import { onMount } from "svelte";
 
   import { isClientStateRestored } from "lib/offline-svelte";
-  import { isThemeMenuOpened } from "lib/theme-selector";
 
   import {
     activeTab,
@@ -43,7 +42,6 @@
   onMount(() => {
     // Sync client state stores with localStorage on startup.
     $activeTab = getParsedValue("activeTab", "string", $activeTab);
-    $isThemeMenuOpened = getParsedValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
     $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
     $newList = getParsedValue("newList", "string", $newList);
@@ -60,7 +58,6 @@
   // Keep localStorage in sync with client state stores.
   $: if ($isClientStateRestored) {
     localStorage.setItem("activeTab", JSON.stringify($activeTab));
-    localStorage.setItem("isThemeMenuOpened", JSON.stringify($isThemeMenuOpened));
     localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
     localStorage.setItem("newList", JSON.stringify($newList));
@@ -77,10 +74,6 @@
     switch (key) {
       case "activeTab":
         $activeTab = JSON.parse(newValue);
-        break;
-
-      case "isThemeMenuOpened":
-        $isThemeMenuOpened = JSON.parse(newValue);
         break;
 
       case "isListsOpened":
