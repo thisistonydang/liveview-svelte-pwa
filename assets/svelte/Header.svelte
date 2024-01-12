@@ -11,6 +11,7 @@
   /** @type {string} */
   export let menuClass;
 
+  /** @type {number} */
   let scrollY;
 </script>
 
