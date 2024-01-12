@@ -1,9 +1,13 @@
 <script>
-  import { clickOutside } from "lib/actions/clickOutside";
   import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
-  import { isThemeMenuOpened } from "./lib/isThemeMenuOpened";
+  import { openedMenuId } from "../stores/clientOnlyState";
   import ThemeChoiceButton from "./ThemeChoiceButton.svelte";
+
+  /** @type {string} */
+  export let menuClass;
+
+  const themeMenuId = "theme-menu-id";
 </script>
 
 <details
