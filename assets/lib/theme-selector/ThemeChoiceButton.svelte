@@ -22,7 +22,7 @@
 <script>
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
-  import { currentTheme } from "./lib/currentTheme";
+  import { currentTheme } from "../../stores/clientOnlyState";
 
   /** @type {"system" | "light" | "dark"} */
   export let theme;
