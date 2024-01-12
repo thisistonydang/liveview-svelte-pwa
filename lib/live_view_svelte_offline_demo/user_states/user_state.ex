@@ -14,9 +14,28 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     user_state
     |> cast(attrs, [:state, :user_id])
     |> validate_required([:state, :user_id])
+    |> validate_state_map_structure()
     |> validate_timestamp()
     |> foreign_key_constraint(:user_id)
     |> unique_constraint(:user_id)
+  end
+
+  # Check if state map has the correct structure and remove any extra keys.
+  defp validate_state_map_structure(changeset) do
+    state = changeset |> get_change(:state)
+
+    case state do
+      %{"timestamp" => timestamp, "value" => %{"todo" => todo, "lists" => lists}} ->
+        changeset
+        |> delete_change(:state)
+        |> put_change(:state, %{
+          "timestamp" => timestamp,
+          "value" => %{"todo" => todo, "lists" => lists}
+        })
+
+      _ ->
+        changeset |> add_error(:state, "state map structure is not valid")
+    end
   end
 
   def validate_timestamp(changeset) do
