@@ -6,5 +6,5 @@ export const isListsOpened = writable(true);
 export const isTodoOpened = writable(true);
 export const newList = writable("");
 export const newTodo = writable("");
-export const openedOptionsMenuId = writable("");
+export const openedMenuId = writable("");
 export const selectedListId = writable("");
