@@ -10,7 +10,7 @@
     isTodoOpened,
     newList,
     newTodo,
-    openedOptionsMenuId,
+    openedMenuId,
     selectedListId,
   } from "../stores/clientOnlyState";
   import { todoItems, todoLists } from "../stores/crdtState";
