@@ -16,7 +16,6 @@
   import { liveView } from "../stores/liveViewSocket";
 
   import { setSelectedListId, syncClientToServer } from "./StateManagement.svelte";
-  import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import ItemsContainer from "./ItemsContainer.svelte";
   import NewItemForm from "./NewItemForm.svelte";
   import NoListCard from "./NoListCard.svelte";
@@ -158,8 +157,6 @@
 
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
 </script>
-
-<ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
 
 {#if $activeTab === "To-Do"}
   {#if $selectedListId}

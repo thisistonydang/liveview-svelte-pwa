@@ -8,10 +8,12 @@
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
+  import { openedMenuId } from "../stores/clientOnlyState";
   import { serverState } from "../stores/liveViewSocket";
 
   import AppSkeleton from "./AppSkeleton.svelte";
   import BottomNavigation from "./BottomNavigation.svelte";
+  import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
@@ -48,6 +50,8 @@
 <StateManagement />
 <ClientOnlyStateManagement />
 <OfflineSvelte />
+
+<ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
 
 {#if $isClientStateRestored}
   <Toast />
