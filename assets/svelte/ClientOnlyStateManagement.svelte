@@ -35,7 +35,7 @@
     isTodoOpened,
     newList,
     newTodo,
-    openedOptionsMenuId,
+    openedMenuId,
     selectedListId,
   } from "../stores/clientOnlyState";
   import { todoItems, todoLists } from "../stores/crdtState";
@@ -50,7 +50,7 @@
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
     $newList = getParsedValue("newList", "string", $newList);
     $newTodo = getParsedValue("newTodo", "string", $newTodo);
-    $openedOptionsMenuId = getParsedValue("openedOptionsMenuId", "string", $openedOptionsMenuId);
+    $openedMenuId = getParsedValue("openedMenuId", "string", $openedMenuId);
     // $selectedListId is not set here because it is set in StateManagement
     // $syncState is not set here because it is set in StateManagement
 
@@ -68,7 +68,7 @@
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
     localStorage.setItem("newList", JSON.stringify($newList));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
-    localStorage.setItem("openedOptionsMenuId", JSON.stringify($openedOptionsMenuId));
+    localStorage.setItem("openedMenuId", JSON.stringify($openedMenuId));
     localStorage.setItem("selectedListId", JSON.stringify($selectedListId));
     localStorage.setItem("syncState", JSON.stringify($syncState));
   }
@@ -106,8 +106,8 @@
         $newTodo = JSON.parse(newValue);
         break;
 
-      case "openedOptionsMenuId":
-        $openedOptionsMenuId = JSON.parse(newValue);
+      case "openedMenuId":
+        $openedMenuId = JSON.parse(newValue);
         break;
 
       case "selectedListId":
