@@ -83,39 +83,41 @@
   }
 </script>
 
-<details
-  class="dropdown dropdown-end"
-  bind:open={$isAccountMenuOpened}
-  use:clickOutside={() => ($isAccountMenuOpened = false)}
->
-  <summary class="my-1 btn btn-circle btn-neutral" aria-label="Account Menu">
+<div class="{menuClass} relative">
+  <button
+    class="my-1 btn btn-circle btn-neutral"
+    aria-label="Account Menu"
+    on:click={() => ($openedMenuId = $openedMenuId === accountMenuId ? "" : accountMenuId)}
+  >
     <UserSvgIcon className="h-6 w-6" />
-  </summary>
+  </button>
 
-  <div class="dropdown-content menu bg-base-200 border border-neutral rounded-box">
-    <div class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
-      {currentUserEmail}
-      <div class="text-xs font-normal h-4" class:skeleton={!$serviceWorkerVersion}>
-        {$serviceWorkerVersion}
+  {#if $openedMenuId === accountMenuId}
+    <div class="menu bg-base-200 border border-neutral rounded-box absolute -left-[134px]">
+      <div class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
+        {currentUserEmail}
+        <div class="text-xs font-normal h-4" class:skeleton={!$serviceWorkerVersion}>
+          {$serviceWorkerVersion}
+        </div>
       </div>
-    </div>
 
-    <ul>
-      <li>
-        <a href="/app/about" on:click|preventDefault={showAbout}>About</a>
-      </li>
-      <li>
-        <a href="/users/settings" on:click|preventDefault={showSettings} {disabled}>
-          Settings
-          <span class="loading loading-dots loading-xs" class:hidden={!isSettingsLoading}></span>
-        </a>
-      </li>
-      <li>
-        <button on:click={logOutUser} {disabled}>
-          Log out
-          <span class="loading loading-dots loading-xs" class:hidden={!isLogOutLoading}></span>
-        </button>
-      </li>
-    </ul>
-  </div>
-</details>
+      <ul>
+        <li>
+          <a href="/app/about" on:click|preventDefault={showAbout}>About</a>
+        </li>
+        <li>
+          <a href="/users/settings" on:click|preventDefault={showSettings} {disabled}>
+            Settings
+            <span class="loading loading-dots loading-xs" class:hidden={!isSettingsLoading}></span>
+          </a>
+        </li>
+        <li>
+          <button on:click={logOutUser} {disabled}>
+            Log out
+            <span class="loading loading-dots loading-xs" class:hidden={!isLogOutLoading}></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  {/if}
+</div>
