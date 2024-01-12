@@ -1,5 +1,4 @@
 <script>
-  import { clickOutside } from "lib/actions/clickOutside.js";
   import {
     isConnected,
     isClientStateRestored,
