@@ -3,7 +3,7 @@
   import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
   import { isThemeMenuOpened } from "./lib/isThemeMenuOpened";
-  import ThemeChoiceButton from "./components/ThemeChoiceButton.svelte";
+  import ThemeChoiceButton from "./ThemeChoiceButton.svelte";
 </script>
 
 <details
