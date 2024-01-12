@@ -159,10 +159,7 @@
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
 </script>
 
-<ClickOutsideClassHandler
-  className={optionsMenuClass}
-  callbackFunction={() => ($openedOptionsMenuId = "")}
-/>
+<ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
 
 {#if $activeTab === "To-Do"}
   {#if $selectedListId}
