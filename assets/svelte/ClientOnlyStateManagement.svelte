@@ -30,7 +30,6 @@
 
   import {
     activeTab,
-    isAccountMenuOpened,
     isListsOpened,
     isTodoOpened,
     newList,
@@ -44,7 +43,6 @@
   onMount(() => {
     // Sync client state stores with localStorage on startup.
     $activeTab = getParsedValue("activeTab", "string", $activeTab);
-    $isAccountMenuOpened = getParsedValue("isAccountMenuOpened", "boolean", $isAccountMenuOpened);
     $isThemeMenuOpened = getParsedValue("isThemeMenuOpened", "boolean", $isThemeMenuOpened);
     $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
@@ -62,7 +60,6 @@
   // Keep localStorage in sync with client state stores.
   $: if ($isClientStateRestored) {
     localStorage.setItem("activeTab", JSON.stringify($activeTab));
-    localStorage.setItem("isAccountMenuOpened", JSON.stringify($isAccountMenuOpened));
     localStorage.setItem("isThemeMenuOpened", JSON.stringify($isThemeMenuOpened));
     localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
@@ -80,10 +77,6 @@
     switch (key) {
       case "activeTab":
         $activeTab = JSON.parse(newValue);
-        break;
-
-      case "isAccountMenuOpened":
-        $isAccountMenuOpened = JSON.parse(newValue);
         break;
 
       case "isThemeMenuOpened":
