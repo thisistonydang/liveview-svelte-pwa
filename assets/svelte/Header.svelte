@@ -5,7 +5,11 @@
   import SessionsBadge from "./SessionsBadge.svelte";
   import SyncStatusBadge from "./SyncStatusBadge.svelte";
 
+  /** @type {string} */
   export let currentUserEmail;
+
+  /** @type {string} */
+  export let menuClass;
 
   let scrollY;
 </script>
@@ -24,7 +28,7 @@
 
     <div class="flex items-center gap-3">
       <ThemeSelector />
-      <AccountButton {currentUserEmail} />
+      <AccountButton {currentUserEmail} {menuClass} />
     </div>
   </div>
 </div>

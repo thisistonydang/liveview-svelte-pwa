@@ -52,7 +52,7 @@
 {#if $isClientStateRestored}
   <Toast />
   <UpdateAlert />
-  <Header {currentUserEmail} />
+  <Header {currentUserEmail} {menuClass} />
 
   <div class="max-w-2xl mx-auto px-2 md:p-0">
     <TodoApp {menuClass} />
