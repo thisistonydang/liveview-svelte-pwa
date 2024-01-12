@@ -21,7 +21,7 @@
   let disabled = false;
 
   function showAbout() {
-    $isAccountMenuOpened = false;
+    $openedMenuId = "";
     showTopBar();
     window.location.href = "/app/about";
   }
@@ -44,7 +44,7 @@
       return;
     }
 
-    $isAccountMenuOpened = false;
+    $openedMenuId = "";
     window.location.href = "/users/settings";
   }
 
