@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  import { currentTheme } from "../stores/clientOnlyState";
+  import { currentTheme } from "../stores/currentTheme";
 
   import ThemeButton from "./ThemeButton.svelte";
   import ThemeSyncManager from "./ThemeSyncManager.svelte";
