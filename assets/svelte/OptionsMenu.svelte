@@ -3,7 +3,7 @@
   import PencilSvgIcon from "lib/svg-icons/PencilSvgIcon.svelte";
   import TrashSvgIcon from "lib/svg-icons/TrashSvgIcon.svelte";
 
-  import { openedOptionsMenuId } from "../stores/clientOnlyState";
+  import { openedMenuId } from "../stores/clientOnlyState";
 
   export let item;
   export let itemsStore;
@@ -16,12 +16,12 @@
   <button
     class="flex items-center"
     aria-label="Toggle options menu."
-    on:click={() => ($openedOptionsMenuId = $openedOptionsMenuId === item.id ? "" : item.id)}
+    on:click={() => ($openedMenuId = $openedMenuId === item.id ? "" : item.id)}
   >
     <EllipsisHorizontalCircleSvgIcon className="w-6 h-6" />
   </button>
 
-  {#if $openedOptionsMenuId === item.id}
+  {#if $openedMenuId === item.id}
     <div class="absolute right-8 -top-3 menu bg-base-200 border border-neutral rounded-box">
       <div class="flex items-center gap-2">
         <button
