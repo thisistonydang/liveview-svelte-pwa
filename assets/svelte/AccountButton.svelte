@@ -10,7 +10,7 @@
   import { showTopBar, hideTopBar } from "lib/topbar";
 
   import config from "../../priv/static/sw.config.js";
-  import { isAccountMenuOpened } from "../stores/clientOnlyState";
+  import { openedMenuId } from "../stores/clientOnlyState";
   import { toast } from "../stores/toast";
 
   export let currentUserEmail;
