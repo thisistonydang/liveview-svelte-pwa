@@ -3,7 +3,7 @@
 
   import { currentTheme } from "./lib/currentTheme";
 
-  import ThemeButton from "./components/ThemeButton.svelte";
+  import ThemeButton from "./ThemeButton.svelte";
   import ThemeSyncManager from "./ThemeSyncManager.svelte";
 
   onMount(() => {
