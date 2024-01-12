@@ -140,7 +140,7 @@
     dragDisabled = false;
     $isThemeMenuOpened = false;
     $isAccountMenuOpened = false;
-    $openedOptionsMenuId = "";
+    $openedMenuId = "";
   }
 
   function handleDragKeyDown(e) {
