@@ -57,7 +57,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
           }
         </script>
       </head>
-      <body class="antialiased min-h-screen">
+      <body class="antialiased">
         <%= render_slot(@inner_block) %>
       </body>
     </html>
