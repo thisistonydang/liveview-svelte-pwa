@@ -21,7 +21,7 @@
   export let handleDragKeyDown;
   export let flipDurationMs;
   export let noItemsMessage;
-  export let optionsMenuClass;
+  export let menuClass;
 </script>
 
 <div
@@ -64,7 +64,7 @@
         </label>
 
         <div class="flex gap-1">
-          <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {optionsMenuClass} />
+          <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {menuClass} />
 
           <!-- Drag Handle. -->
           <button

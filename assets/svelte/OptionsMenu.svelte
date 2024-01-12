@@ -9,10 +9,10 @@
   export let itemsStore;
   export let updateItem;
   export let deleteItem;
-  export let optionsMenuClass;
+  export let menuClass;
 </script>
 
-<div class="{optionsMenuClass} relative">
+<div class="{menuClass} relative pointer-events-auto">
   <button
     class="flex items-center"
     aria-label="Toggle options menu."
