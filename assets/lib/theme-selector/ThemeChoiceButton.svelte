@@ -1,8 +1,8 @@
 <script>
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
-  import { currentTheme } from "../lib/currentTheme";
-  import { setTheme } from "../lib/setTheme";
+  import { currentTheme } from "./lib/currentTheme";
+  import { setTheme } from "./lib/setTheme";
 
   /** @type {"system" | "light" | "dark"} */
   export let theme;
