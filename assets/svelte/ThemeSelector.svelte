@@ -6,6 +6,9 @@
   import ThemeButton from "./ThemeButton.svelte";
   import ThemeSyncManager from "./ThemeSyncManager.svelte";
 
+  /** @type {string} */
+  export let menuClass;
+
   onMount(() => {
     const theme = JSON.parse(localStorage.getItem("theme"));
 
@@ -17,5 +20,5 @@
   });
 </script>
 
-<ThemeButton />
+<ThemeButton {menuClass} />
 <ThemeSyncManager />

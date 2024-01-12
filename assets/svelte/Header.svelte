@@ -27,7 +27,7 @@
     </div>
 
     <div class="flex items-center gap-3">
-      <ThemeSelector />
+      <ThemeSelector {menuClass} />
       <AccountButton {currentUserEmail} {menuClass} />
     </div>
   </div>
