@@ -13,7 +13,11 @@
   import { openedMenuId } from "../stores/clientOnlyState";
   import { toast } from "../stores/toast";
 
+  /** @type {string} */
   export let currentUserEmail;
+
+  /** @type {string} */
+  export let menuClass;
 
   const accountMenuId = "account-menu-id";
   let isLogOutLoading = false;
