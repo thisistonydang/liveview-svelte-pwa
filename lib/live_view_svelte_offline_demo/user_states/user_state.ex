@@ -14,10 +14,26 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     user_state
     |> cast(attrs, [:state, :user_id])
     |> validate_required([:state, :user_id])
-    |> validate_length(:state, is: 2)
+    |> validate_timestamp()
     |> foreign_key_constraint(:user_id)
     |> unique_constraint(:user_id)
   end
 
-  # TODO: add validation for state map
+  def validate_timestamp(changeset) do
+    timestamp = changeset |> get_change(:state) |> Map.get("timestamp")
+
+    case timestamp do
+      nil ->
+        changeset |> add_error(:state, "'timestamp' key is not present in state map")
+
+      timestamp when not is_integer(timestamp) ->
+        changeset |> add_error(:state, "timestamp must be an integer")
+
+      timestamp when timestamp < 0 ->
+        changeset |> add_error(:state, "timestamp must be greater than 0")
+
+      _ ->
+        changeset
+    end
+  end
 end
