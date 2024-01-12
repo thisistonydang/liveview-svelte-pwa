@@ -1,5 +1,5 @@
 <script>
-  import { setTheme } from "./lib/setTheme";
+  import { setTheme } from "./ThemeChoiceButton.svelte";
 </script>
 
 <!-- Keep theme synced when theme is updated in localStorage on another

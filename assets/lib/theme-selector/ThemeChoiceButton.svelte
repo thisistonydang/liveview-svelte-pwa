@@ -1,8 +1,28 @@
+<script context="module">
+  /**
+   * Set the theme.
+   *
+   * @param {"system" | "light" | "dark"} theme
+   * @returns {void}
+   */
+  export function setTheme(theme) {
+    currentTheme.set(theme);
+
+    if (theme === "system") {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.removeItem("theme");
+      return;
+    }
+
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", JSON.stringify(theme));
+  }
+</script>
+
 <script>
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
   import { currentTheme } from "./lib/currentTheme";
-  import { setTheme } from "./lib/setTheme";
 
   /** @type {"system" | "light" | "dark"} */
   export let theme;
