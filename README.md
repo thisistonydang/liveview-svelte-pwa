@@ -22,8 +22,9 @@ A live demo can be found [here](https://liveview-svelte-pwa.fly.dev/app).
 
 ## Inspired by
 
-- [Ryan Cooke - E2E Reactivity - using Svelte with Phoenix LiveView](https://www.youtube.com/watch?v=asm2TTm035o)
-- [LiveSvelte - Render Svelte directly into Phoenix LiveView with E2E reactivity.](https://www.youtube.com/watch?v=JMkvbW35QvA)
+- Wout De Puysseleir - [LiveSvelte - Render Svelte directly into Phoenix LiveView with E2E reactivity.](https://www.youtube.com/watch?v=JMkvbW35QvA)
+- Ryan Cooke - [Ryan Cooke - E2E Reactivity - using Svelte with Phoenix LiveView](https://www.youtube.com/watch?v=asm2TTm035o)
+- Daniils Petrovs - [SvelteKit: From landing page to offline PWAs](https://speakerdeck.com/danirukun/svelte-hololive-fan-booth-project)
 
 ## Contact
 

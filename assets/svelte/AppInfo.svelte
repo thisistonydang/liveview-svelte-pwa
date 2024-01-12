@@ -69,14 +69,23 @@
 
     <ul class="list-disc pl-4">
       <li>
-        <Link href="https://www.youtube.com/watch?v=asm2TTm035o" external>
-          Ryan Cooke - E2E Reactivity - using Svelte with Phoenix LiveView
+        Wout De Puysseleir -
+        <Link href="https://www.youtube.com/watch?v=JMkvbW35QvA" external>
+          LiveSvelte - Render Svelte directly into Phoenix LiveView with E2E reactivity.
         </Link>
       </li>
 
       <li>
-        <Link href="https://www.youtube.com/watch?v=JMkvbW35QvA" external>
-          LiveSvelte - Render Svelte directly into Phoenix LiveView with E2E reactivity.
+        Ryan Cooke -
+        <Link href="https://www.youtube.com/watch?v=asm2TTm035o" external>
+          E2E Reactivity - using Svelte with Phoenix LiveView
+        </Link>
+      </li>
+
+      <li>
+        Daniils Petrovs -
+        <Link href="https://speakerdeck.com/danirukun/svelte-hololive-fan-booth-project" external>
+          SvelteKit: From landing page to offline PWAs
         </Link>
       </li>
     </ul>
