@@ -21,10 +21,10 @@
   }
 
   onMount(() => {
-    document.body.addEventListener("click", clickOutsideClassHandler);
+    document.documentElement.addEventListener("click", clickOutsideClassHandler);
 
     return () => {
-      document.body.removeEventListener("click", clickOutsideClassHandler);
+      document.documentElement.removeEventListener("click", clickOutsideClassHandler);
     };
   });
 </script>
