@@ -15,6 +15,7 @@
 
   export let currentUserEmail;
 
+  const accountMenuId = "account-menu-id";
   let isLogOutLoading = false;
   let isSettingsLoading = false;
   let disabled = false;
