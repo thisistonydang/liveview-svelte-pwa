@@ -18,9 +18,9 @@
 
 {#if showAlert}
   <div
+    role="alert"
     transition:fly={{ y: -100, duration: 750 }}
     bind:clientWidth={width}
-    role="alert"
     style:margin-left={`-${width / 2}px`}
     class="fixed left-1/2 w-full sm:max-w-sm z-40"
   >
