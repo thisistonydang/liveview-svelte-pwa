@@ -106,7 +106,7 @@
 
       case "clientState":
         const clientState = JSON.parse(newValue);
-        $todoItems = clientState.value.todo;
+        $todoItems = clientState.value.todos;
         $todoLists = clientState.value.lists;
         break;
     }
