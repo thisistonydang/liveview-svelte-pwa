@@ -60,6 +60,11 @@
             value={item.id}
             bind:group={$selectedListId}
             on:change={() => ($activeTab = "To-Do")}
+            on:click={() => {
+              if ($selectedListId === item.id) {
+                $activeTab = "To-Do";
+              }
+            }}
           />
 
           <span class:line-through={item.completed}>{item.name}</span>
