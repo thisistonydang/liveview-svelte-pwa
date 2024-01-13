@@ -25,12 +25,12 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     state = changeset |> get_change(:state)
 
     case state do
-      %{"timestamp" => timestamp, "value" => %{"todo" => todo, "lists" => lists}} ->
+      %{"timestamp" => timestamp, "value" => %{"lists" => lists, "todos" => todos}} ->
         changeset
         |> delete_change(:state)
         |> put_change(:state, %{
           "timestamp" => timestamp,
-          "value" => %{"todo" => todo, "lists" => lists}
+          "value" => %{"lists" => lists, "todos" => todos}
         })
 
       _ ->
