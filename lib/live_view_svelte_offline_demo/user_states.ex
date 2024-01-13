@@ -61,7 +61,10 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
         user_id: 1,
         state: %{
           "timestamp" => 1_701_807_051_829,
-          "value" => %{"todo" => [], "lists" => []}
+          "value" => %{
+            "lists" => [],
+            "todos" => []
+          }
         }
       }
 
@@ -71,7 +74,10 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
         user_id: 456,
         state: %{
           "timestamp" => 0,
-          "value" => %{"todo" => [], "lists" => []}
+          "value" => %{
+            "lists" => [],
+            "todos" => []
+          }
         }
       }
 
@@ -166,7 +172,10 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
   defp default_state do
     %{
       "timestamp" => 0,
-      "value" => %{"todo" => [], "lists" => []}
+      "value" => %{
+        "lists" => [],
+        "todos" => []
+      }
     }
   end
 end
