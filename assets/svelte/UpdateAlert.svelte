@@ -22,34 +22,35 @@
     transition:fly={{ y: -100, duration: 750 }}
     bind:clientWidth={width}
     style:margin-left={`-${width / 2}px`}
-    class="fixed left-1/2 w-full sm:max-w-sm z-40"
+    class="
+      fixed left-1/2 max-w-[90vw] xs:max-w-sm z-40
+      alert shadow-lg border border-neutral m-2
+    "
   >
-    <div class="alert shadow-lg border border-neutral m-2" style:width={`${width - 16}px`}>
-      <InfoSvgIcon className="h-6 w-6" />
+    <InfoSvgIcon className="h-6 w-6" />
 
-      <div>
-        <h3 class="font-bold">Update Available</h3>
-        <div class="text-sm">Reload to update?</div>
-      </div>
+    <div>
+      <h3 class="font-bold">Update Available</h3>
+      <div class="text-sm">Reload to update?</div>
+    </div>
 
-      <div>
-        <button
-          class="btn btn-sm border border-neutral transition-none"
-          on:click={() => (showAlert = false)}
-        >
-          Later
-        </button>
+    <div>
+      <button
+        class="btn btn-sm border border-neutral transition-none"
+        on:click={() => (showAlert = false)}
+      >
+        Later
+      </button>
 
-        <button
-          class="btn btn-sm btn-accent border border-neutral"
-          on:click={() => {
-            $isSWUpdateConfirmed = true;
-            showAlert = false;
-          }}
-        >
-          Update
-        </button>
-      </div>
+      <button
+        class="btn btn-sm btn-accent border border-neutral"
+        on:click={() => {
+          $isSWUpdateConfirmed = true;
+          showAlert = false;
+        }}
+      >
+        Update
+      </button>
     </div>
   </div>
 {/if}
