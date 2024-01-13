@@ -39,7 +39,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     end
   end
 
-  def validate_timestamp(changeset) do
+  defp validate_timestamp(changeset) do
     timestamp = changeset |> get_change(:state) |> Map.get("timestamp")
 
     case timestamp do
