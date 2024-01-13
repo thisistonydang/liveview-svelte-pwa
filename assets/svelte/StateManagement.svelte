@@ -24,7 +24,7 @@
     const newClientState = {
       meta: { synced: false },
       timestamp: Date.now(),
-      value: { todo: todoItems, lists: todoLists },
+      value: { lists: todoLists, todos: todoItems },
     };
     localStorage.setItem(CLIENT_STATE_KEY, JSON.stringify(newClientState));
 
@@ -56,7 +56,7 @@
     const clientState = {
       meta: { synced: false },
       timestamp: 0,
-      value: { todo: [], lists: [] },
+      value: { lists: [], todos: [] },
     };
     localStorage.setItem(key, JSON.stringify(clientState));
 
@@ -78,7 +78,7 @@
         typeof parsedValue.meta?.synced !== "boolean" ||
         !["number", "undefined"].includes(typeof parsedValue.meta?.timestamp) ||
         typeof parsedValue.timestamp !== "number" ||
-        !Array.isArray(parsedValue.value?.todo) ||
+        !Array.isArray(parsedValue.value?.todos) ||
         !Array.isArray(parsedValue.value?.lists)
       ) {
         console.error("Invalid client state.", parsedValue);
@@ -107,10 +107,10 @@
     localStorage.setItem(key, JSON.stringify(latestState));
 
     // Set stores to match latest state.
-    // Note: The check to see if todo/lists is an array is to cover the cases where
-    // todo/lists is undefined due to legacy code.
+    // Note: The check to see if todos/lists is an array is to cover the cases where
+    // todos/lists is undefined due to legacy code.
     // TODO: Maybe remove this check in the future?
-    $todoItems = Array.isArray(latestState.value.todo) ? latestState.value.todo : [];
+    $todoItems = Array.isArray(latestState.value.todos) ? latestState.value.todos : [];
     $todoLists = Array.isArray(latestState.value.lists) ? latestState.value.lists : [];
     setSelectedListId($todoLists);
 
