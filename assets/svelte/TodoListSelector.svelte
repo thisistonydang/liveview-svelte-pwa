@@ -6,7 +6,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
 
-  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { activeTab, openedMenuId, selectedListId } from "../stores/clientOnlyState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
@@ -59,6 +59,7 @@
             class:hover:radio-accent={$selectedListId === item.id}
             value={item.id}
             bind:group={$selectedListId}
+            on:change={() => ($activeTab = "To-Do")}
           />
 
           <span class:line-through={item.completed}>{item.name}</span>
