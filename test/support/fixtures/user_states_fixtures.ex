@@ -13,7 +13,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStatesFixtures do
   def user_state_fixture(
         state \\ %{
           "timestamp" => System.os_time(:millisecond),
-          "value" => %{"todo" => [], "completed" => []}
+          "value" => %{"lists" => [], "todos" => []}
         }
       ) do
     {:ok, user} =
