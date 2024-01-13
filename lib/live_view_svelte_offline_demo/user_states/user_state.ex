@@ -16,6 +16,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     |> validate_required([:state, :user_id])
     |> validate_state_map_structure()
     |> validate_timestamp()
+    |> validate_state_map_value()
     |> foreign_key_constraint(:user_id)
     |> unique_constraint(:user_id)
   end
