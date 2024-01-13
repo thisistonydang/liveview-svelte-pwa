@@ -12,7 +12,7 @@
   export let isDropdownOpened;
 </script>
 
-<div class="collapse border border-neutral mt-2 mb-20">
+<div class="collapse border border-neutral mt-2 mb-20 overflow-visible">
   <!-- This hidden checkbox controls the collapse via Daisy UI. -->
   <input type="checkbox" class="pointer-events-none" bind:checked={isDropdownOpened} />
 
