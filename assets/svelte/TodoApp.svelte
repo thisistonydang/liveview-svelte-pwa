@@ -57,6 +57,11 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
+  /**
+   * Move a todo item to a new list.
+   * @param {string} itemId
+   * @param {string} newListId
+   */
   function moveTodo(itemId, newListId) {
     $todoItems = $todoItems.map((item) => {
       if (item.id === itemId) {
