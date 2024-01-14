@@ -117,8 +117,8 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
-  function deleteItem(itemsStore, item) {
-    const newItems = get(itemsStore).filter((i) => i.id !== item.id);
+  function deleteItem(itemsStore, itemId) {
+    const newItems = get(itemsStore).filter((item) => item.id !== itemId);
     itemsStore.set(newItems);
 
     // If the deleted item is the selected list, update selectedListId store.

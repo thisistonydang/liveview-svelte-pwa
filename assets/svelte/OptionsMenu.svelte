@@ -27,7 +27,7 @@
     <div class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box">
       <button
         class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
-        on:click={() => deleteItem(itemsStore, item)}
+        on:click={() => deleteItem(itemsStore, item.id)}
       >
         <TrashSvgIcon className="w-4 h-4" />
         Delete
