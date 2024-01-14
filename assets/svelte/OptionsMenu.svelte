@@ -4,7 +4,7 @@
   import PencilSvgIcon from "lib/svg-icons/PencilSvgIcon.svelte";
   import TrashSvgIcon from "lib/svg-icons/TrashSvgIcon.svelte";
 
-  import { openedMenuId } from "../stores/clientOnlyState";
+  import { moveTodoId, openedMenuId } from "../stores/clientOnlyState";
 
   export let item;
   export let itemsStore;
