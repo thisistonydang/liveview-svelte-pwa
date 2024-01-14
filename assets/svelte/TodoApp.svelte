@@ -196,6 +196,7 @@
         items={selectedListTodoItems}
         itemsStore={todoItems}
         {toggleCompleted}
+        {moveTodo}
         {updateItem}
         {deleteItem}
         {handleConsider}
