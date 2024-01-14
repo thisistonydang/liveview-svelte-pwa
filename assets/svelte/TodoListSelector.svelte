@@ -49,7 +49,6 @@
       {:else}
         <label
           class="flex items-center gap-3 grow cursor-pointer"
-          class:opacity-50={item.completed}
           class:pointer-events-none={$openedMenuId}
         >
           <input
@@ -67,7 +66,7 @@
             }}
           />
 
-          <span class="break-all" class:line-through={item.completed}>{item.name}</span>
+          <span class="break-all">{item.name}</span>
         </label>
 
         <div class="flex gap-1">
