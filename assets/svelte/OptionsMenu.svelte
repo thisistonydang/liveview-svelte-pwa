@@ -24,31 +24,41 @@
   </button>
 
   {#if $openedMenuId === item.id}
-    <div class="absolute right-8 -top-3 menu bg-base-200 border border-neutral rounded-box">
-      <div class="flex items-center gap-2">
+    <div class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box">
+      <button
+        class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
+        on:click={() => deleteItem(itemsStore, item)}
+      >
+        <TrashSvgIcon className="w-4 h-4" />
+        Delete
+      </button>
+
+      {#if moveTodoMenuId}
         <button
           class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
-          on:click={() => deleteItem(itemsStore, item)}
+          on:click={(e) => {
+            e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
+            $moveTodoId = item.id;
+            $openedMenuId = moveTodoMenuId;
+          }}
         >
-          <TrashSvgIcon className="w-4 h-4" />
-          Delete
+          <ArrowRightStartOnRectangleSvgIcon className="w-4 h-4" />
+          Move
         </button>
+      {/if}
 
-        <div class="bg-neutral-content opacity-75 h-6 w-[1px]" />
-
-        <button
-          class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
-          on:click={() =>
-            updateItem(itemsStore, {
-              ...item,
-              newName: item.name,
-              isEditing: true,
-            })}
-        >
-          <PencilSvgIcon className="w-4 h-4" />
-          Edit
-        </button>
-      </div>
+      <button
+        class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
+        on:click={() =>
+          updateItem(itemsStore, {
+            ...item,
+            newName: item.name,
+            isEditing: true,
+          })}
+      >
+        <PencilSvgIcon className="w-4 h-4" />
+        Edit
+      </button>
     </div>
   {/if}
 </div>
