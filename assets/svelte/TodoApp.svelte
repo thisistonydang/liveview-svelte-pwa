@@ -6,6 +6,7 @@
     activeTab,
     isListsOpened,
     isTodoOpened,
+    moveTodoId,
     newList,
     newTodo,
     openedMenuId,
@@ -200,9 +201,14 @@
   $: selectedListName = setSelectedListName($selectedListId);
 
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
+
+  // Get itemToMove when $moveTodoId changes _____________________________________________________
+  $: itemToMove = $todoItems.find((item) => item.id === $moveTodoId);
 </script>
 
-<MoveTodoMenu {menuClass} {moveTodoMenuId} {moveTodo} />
+{#if itemToMove && $openedMenuId === moveTodoMenuId}
+  <MoveTodoMenu {itemToMove} {menuClass} {moveTodo} />
+{/if}
 
 {#if $activeTab === "To-Do"}
   {#if $selectedListId}
