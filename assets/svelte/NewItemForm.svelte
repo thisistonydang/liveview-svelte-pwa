@@ -1,5 +1,6 @@
 <script>
   import { fly } from "svelte/transition";
+  import { selectedListId } from "../stores/clientOnlyState";
 
   export let store;
 
@@ -27,11 +28,18 @@
       return;
     }
 
-    // Check if item already exists.
+    // Check if item already exists in the list it's being added to.
     for (const item of $store) {
-      if (item.name.toLowerCase() === value.toLowerCase()) {
-        error = `"${value}" already exists!`;
-        return;
+      if (item.list_id) {
+        if (item.list_id === $selectedListId && item.name.toLowerCase() === value.toLowerCase()) {
+          error = `"${value}" already exists in the list!`;
+          return;
+        }
+      } else {
+        if (item.name.toLowerCase() === value.toLowerCase()) {
+          error = `A list named "${value}" already exists!`;
+          return;
+        }
       }
     }
 
