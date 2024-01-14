@@ -31,6 +31,7 @@
     activeTab,
     isListsOpened,
     isTodoOpened,
+    moveTodoId,
     newList,
     newTodo,
     openedMenuId,
@@ -44,6 +45,7 @@
     $activeTab = getParsedValue("activeTab", "string", $activeTab);
     $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
+    $moveTodoId = getParsedValue("moveTodoId", "string", $moveTodoId);
     $newList = getParsedValue("newList", "string", $newList);
     $newTodo = getParsedValue("newTodo", "string", $newTodo);
     $openedMenuId = getParsedValue("openedMenuId", "string", $openedMenuId);
@@ -60,6 +62,7 @@
     localStorage.setItem("activeTab", JSON.stringify($activeTab));
     localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
+    localStorage.setItem("moveTodoId", JSON.stringify($moveTodoId));
     localStorage.setItem("newList", JSON.stringify($newList));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
     localStorage.setItem("openedMenuId", JSON.stringify($openedMenuId));
@@ -82,6 +85,10 @@
 
       case "isTodoOpened":
         $isTodoOpened = JSON.parse(newValue);
+        break;
+
+      case "moveTodoId":
+        $moveTodoId = JSON.parse(newValue);
         break;
 
       case "newList":
