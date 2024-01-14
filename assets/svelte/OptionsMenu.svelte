@@ -11,7 +11,7 @@
   export let updateItem;
   export let deleteItem;
   export let menuClass;
-  export let moveTodoMenuId;
+  export let moveTodoMenuId = undefined;
 </script>
 
 <div class="{menuClass} relative pointer-events-auto">
