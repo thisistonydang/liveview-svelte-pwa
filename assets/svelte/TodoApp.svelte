@@ -57,6 +57,17 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
+  function moveTodo(itemId, newListId) {
+    $todoItems = $todoItems.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, list_id: newListId };
+      }
+      return item;
+    });
+
+    syncClientToServer($todoItems, $todoLists, $liveView);
+  }
+
   // Handlers for both todo lists and todo items ___________________________________________________
 
   function updateItem(itemsStore, newItem) {
