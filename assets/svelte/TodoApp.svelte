@@ -65,18 +65,34 @@
 
   /**
    * Move a todo item to a new list.
-   * @param {string} itemId
+   * @param {TodoItem} itemToMove
    * @param {string} newListId
+   * @returns {"ok" | "error"} Return "ok" if the item was moved successfully, otherwise return "error".
    */
-  function moveTodo(itemId, newListId) {
+  function moveTodo(itemToMove, newListId) {
+    // Return "ok" if the itemToMove is already in the new list.
+    if (itemToMove.list_id === newListId) {
+      return "ok";
+    }
+
+    // Return "error" if the itemToMove name already exists in the new list.
+    const itemsInNewList = $todoItems.filter((item) => item.list_id === newListId);
+    for (const item of itemsInNewList) {
+      if (item.name.toLowerCase() === itemToMove.name.toLowerCase()) {
+        return "error";
+      }
+    }
+
     $todoItems = $todoItems.map((item) => {
-      if (item.id === itemId) {
+      if (item.id === itemToMove.id) {
         return { ...item, list_id: newListId };
       }
       return item;
     });
 
     syncClientToServer($todoItems, $todoLists, $liveView);
+
+    return "ok";
   }
 
   // Handlers for both todo lists and todo items ___________________________________________________
