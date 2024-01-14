@@ -140,8 +140,8 @@
     $openedMenuId = "";
   }
 
-  function handleDragKeyDown(e) {
-    if ((e.key === "Enter" || e.key === " ") && dragDisabled) {
+  function handleDragKeyDown(event) {
+    if ((event.key === "Enter" || event.key === " ") && dragDisabled) {
       dragDisabled = false;
     }
   }
