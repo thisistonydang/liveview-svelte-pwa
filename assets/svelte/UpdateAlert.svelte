@@ -5,6 +5,8 @@
   import InfoSvgIcon from "lib/svg-icons/InfoSvgIcon.svelte";
 
   let showAlert = false;
+
+  /** @type {number} */
   let width;
 
   $: if ($isSWUpdateAvailable) {
