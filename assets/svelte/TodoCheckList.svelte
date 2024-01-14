@@ -58,7 +58,7 @@
             type="checkbox"
             class="checkbox bg-transparent pointer-events-auto"
             checked={item.completed}
-            on:change={() => toggleCompleted(item)}
+            on:change={() => toggleCompleted(item.id)}
           />
 
           <span class:line-through={item.completed}>{item.name}</span>

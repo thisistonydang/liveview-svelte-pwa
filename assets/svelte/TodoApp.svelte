@@ -46,12 +46,12 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
-  function toggleCompleted(item) {
-    $todoItems = $todoItems.map((i) => {
-      if (i.id === item.id) {
-        return { ...i, completed: !i.completed };
+  function toggleCompleted(itemId) {
+    $todoItems = $todoItems.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, completed: !item.completed };
       }
-      return i;
+      return item;
     });
 
     syncClientToServer($todoItems, $todoLists, $liveView);
