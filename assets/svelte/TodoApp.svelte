@@ -16,6 +16,7 @@
 
   import { setSelectedListId, syncClientToServer } from "./StateManagement.svelte";
   import ItemsContainer from "./ItemsContainer.svelte";
+  import MoveTodoMenu from "./MoveTodoMenu.svelte";
   import NewItemForm from "./NewItemForm.svelte";
   import NoListCard from "./NoListCard.svelte";
   import TodoCheckList from "./TodoCheckList.svelte";
@@ -176,6 +177,8 @@
 
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
 </script>
+
+<MoveTodoMenu {menuClass} {moveTodoMenuId} {moveTodo} />
 
 {#if $activeTab === "To-Do"}
   {#if $selectedListId}
