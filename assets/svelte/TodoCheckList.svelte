@@ -62,7 +62,7 @@
             on:change={() => toggleCompleted(item.id)}
           />
 
-          <span class:line-through={item.completed}>{item.name}</span>
+          <span class="break-all" class:line-through={item.completed}>{item.name}</span>
         </label>
 
         <div class="flex gap-1">
