@@ -24,7 +24,7 @@
   export let flipDurationMs;
   export let noItemsMessage;
   export let menuClass;
-  export let moveItemMenuId;
+  export let moveTodoMenuId;
 </script>
 
 <ul
@@ -66,7 +66,7 @@
         </label>
 
         <div class="flex gap-1">
-          <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {menuClass} {moveItemMenuId} />
+          <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {menuClass} {moveTodoMenuId} />
 
           <!-- Drag Handle. -->
           <button
