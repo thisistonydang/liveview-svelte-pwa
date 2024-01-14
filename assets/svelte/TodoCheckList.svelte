@@ -14,6 +14,7 @@
   export let items;
   export let itemsStore;
   export let toggleCompleted;
+  export let moveTodo;
   export let updateItem;
   export let deleteItem;
   export let handleConsider;
@@ -65,7 +66,7 @@
         </label>
 
         <div class="flex gap-1">
-          <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {menuClass} />
+          <OptionsMenu {item} {itemsStore} {moveTodo} {updateItem} {deleteItem} {menuClass} />
 
           <!-- Drag Handle. -->
           <button
