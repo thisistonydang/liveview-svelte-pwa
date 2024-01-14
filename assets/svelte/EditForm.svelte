@@ -4,6 +4,8 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
+  import { selectedListId } from "../stores/clientOnlyState";
+
   export let item;
   export let itemsStore;
   export let updateItem;
@@ -29,9 +31,16 @@
 
     // Check if new item name already exists.
     for (const item of $itemsStore) {
-      if (item.name.toLowerCase() === newName.toLowerCase()) {
-        error = `"${newName}" already exists!`;
-        return;
+      if (item.list_id) {
+        if (item.list_id === $selectedListId && item.name.toLowerCase() === newName.toLowerCase()) {
+          error = `"${newName}" already exists in the list!`;
+          return;
+        }
+      } else {
+        if (item.name.toLowerCase() === newName.toLowerCase()) {
+          error = `A list named "${newName}" already exists!`;
+          return;
+        }
       }
     }
 
