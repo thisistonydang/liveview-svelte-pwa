@@ -24,6 +24,7 @@
   /** @type {string} */
   export let menuClass;
 
+  const moveItemMenuId = "move-item-menu-id";
   const flipDurationMs = 100;
   let dragDisabled = true;
 
@@ -206,6 +207,7 @@
         {flipDurationMs}
         noItemsMessage="All done!"
         {menuClass}
+        {moveItemMenuId}
       />
     </ItemsContainer>
   {:else}

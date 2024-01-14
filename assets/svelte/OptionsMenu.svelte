@@ -10,6 +10,7 @@
   export let updateItem;
   export let deleteItem;
   export let menuClass;
+  export let moveItemMenuId;
 </script>
 
 <div class="{menuClass} relative pointer-events-auto">
