@@ -7,6 +7,7 @@
 
   export let item;
   export let itemsStore;
+  export let moveTodo = undefined;
   export let updateItem;
   export let deleteItem;
   export let menuClass;
