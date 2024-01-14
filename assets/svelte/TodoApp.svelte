@@ -46,6 +46,10 @@
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
+  /**
+   * Toggle the completed status of a todo item.
+   * @param {string} itemId
+   */
   function toggleCompleted(itemId) {
     $todoItems = $todoItems.map((item) => {
       if (item.id === itemId) {
