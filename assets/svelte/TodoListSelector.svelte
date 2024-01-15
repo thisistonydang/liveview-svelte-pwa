@@ -62,10 +62,12 @@
         >
           <span style="word-break: break-word;">
             {list.name}
+
             <span class="badge badge-xs transition-none p-2">
               {completedItems.length} / {listItems.length}
             </span>
           </span>
+
           <ChevronRightSvgIcon className="shrink-0 w-4 h-4" />
         </button>
 
