@@ -77,7 +77,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
 
     <div
       id="sticky-header"
-      class="sticky top-0 left-0 w-full py-1 z-10 bg-base-100 border-neutral h-14"
+      class="sticky top-0 left-0 w-full py-1 z-10 bg-base-100 border-neutral h-16"
     >
       <div class="max-w-2xl mx-auto px-2 md:p-0 h-full flex items-center">
         <%= render_slot(@inner_block) %>
