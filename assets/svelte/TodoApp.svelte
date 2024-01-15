@@ -266,7 +266,6 @@
       {handleStartDrag}
       {handleDragKeyDown}
       {flipDurationMs}
-      noItemsMessage="No lists yet. Please create a list to get started."
       {menuClass}
     />
   </ItemsContainer>
