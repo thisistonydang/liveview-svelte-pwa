@@ -8,11 +8,11 @@
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
   import { activeTab, openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { todoLists } from "../stores/crdtState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
   export let title;
-  export let itemsStore;
   export let updateItem;
   export let deleteItem;
   export let handleConsider;
@@ -29,24 +29,24 @@
   class="min-h-[40px]"
   aria-label={title}
   use:dndzone={{
-    items: $itemsStore,
+    items: $todoLists,
     flipDurationMs,
     dragDisabled,
     morphDisabled: true,
     dropTargetStyle: {},
     dropTargetClasses: ["border-2", "border-dashed", "rounded-lg", "border-accent"],
   }}
-  on:consider={(event) => handleConsider(event, itemsStore)}
-  on:finalize={(event) => handleFinalize(event, itemsStore)}
+  on:consider={(event) => handleConsider(event, todoLists)}
+  on:finalize={(event) => handleFinalize(event, todoLists)}
 >
-  {#each $itemsStore as list (list.id)}
+  {#each $todoLists as list (list.id)}
     <div
       class="flex items-center justify-between"
       aria-label={list.name}
       animate:flip={{ duration: flipDurationMs }}
     >
       {#if list.isEditing}
-        <EditForm item={list} {itemsStore} {updateItem} />
+        <EditForm item={list} itemsStore={todoLists} {updateItem} />
       {:else}
         <button
           class="
@@ -65,7 +65,7 @@
         </button>
 
         <div class="flex gap-1">
-          <OptionsMenu item={list} {itemsStore} {updateItem} {deleteItem} {menuClass} />
+          <OptionsMenu item={list} itemsStore={todoLists} {updateItem} {deleteItem} {menuClass} />
 
           <!-- Drag Handle. -->
           <button

@@ -258,7 +258,6 @@
   <ItemsContainer title="Lists" length={$todoLists.length} bind:isDropdownOpened={$isListsOpened}>
     <TodoListSelector
       title="Lists"
-      itemsStore={todoLists}
       {updateItem}
       {deleteItem}
       {handleConsider}
