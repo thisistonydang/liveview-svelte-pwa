@@ -1,4 +1,20 @@
-<script context="module">
+<script>
+  import { onMount } from "svelte";
+
+  import { isClientStateRestored } from "lib/offline-svelte";
+
+  import {
+    isListsOpened,
+    isTodoOpened,
+    moveTodoId,
+    newList,
+    newTodo,
+    openedMenuId,
+    selectedListId,
+  } from "../stores/clientOnlyState";
+  import { todoItems, todoLists } from "../stores/crdtState";
+  import { syncState } from "../stores/syncState";
+
   /**
    * Get parsed value from localStorage.
    *
@@ -8,7 +24,7 @@
    *
    * @returns {string | boolean} - Parsed value from localStorage or default value.
    */
-  export function getParsedValue(key, type, defaultValue) {
+  function getParsedValue(key, type, defaultValue) {
     const value = localStorage.getItem(key);
 
     if (!value) return defaultValue;
@@ -20,25 +36,6 @@
       return defaultValue;
     }
   }
-</script>
-
-<script>
-  import { onMount } from "svelte";
-
-  import { isClientStateRestored } from "lib/offline-svelte";
-
-  import {
-    activeTab,
-    isListsOpened,
-    isTodoOpened,
-    moveTodoId,
-    newList,
-    newTodo,
-    openedMenuId,
-    selectedListId,
-  } from "../stores/clientOnlyState";
-  import { todoItems, todoLists } from "../stores/crdtState";
-  import { syncState } from "../stores/syncState";
 
   onMount(() => {
     // Sync client state stores with localStorage on startup.
