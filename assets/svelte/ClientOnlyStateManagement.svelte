@@ -39,7 +39,6 @@
 
   onMount(() => {
     // Sync client state stores with localStorage on startup.
-    $activeTab = getParsedValue("activeTab", "string", $activeTab);
     $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
     $moveTodoId = getParsedValue("moveTodoId", "string", $moveTodoId);
@@ -56,7 +55,6 @@
 
   // Keep localStorage in sync with client state stores.
   $: if ($isClientStateRestored) {
-    localStorage.setItem("activeTab", JSON.stringify($activeTab));
     localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
     localStorage.setItem("moveTodoId", JSON.stringify($moveTodoId));
@@ -72,10 +70,6 @@
 <svelte:window
   on:storage={({ key, newValue }) => {
     switch (key) {
-      case "activeTab":
-        $activeTab = JSON.parse(newValue);
-        break;
-
       case "isListsOpened":
         $isListsOpened = JSON.parse(newValue);
         break;
