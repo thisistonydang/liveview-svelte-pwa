@@ -2,7 +2,7 @@
   import ArrowLeftSvgIcon from "lib/svg-icons/ArrowLeftSvgIcon.svelte";
   import { showTopBar } from "lib/topbar";
 
-  export let live;
+  export let live = undefined;
   live;
 
   export let href = undefined;
