@@ -5,6 +5,7 @@
 
   import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
+  import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
   import { activeTab, openedMenuId, selectedListId } from "../stores/clientOnlyState";
   import EditForm from "./EditForm.svelte";
@@ -40,34 +41,28 @@
 >
   {#each $itemsStore as item (item.id)}
     <div
-      class="flex items-center justify-between px-2 py-1.5 text-lg rounded-lg"
+      class="flex items-center justify-between"
       aria-label={item.name}
       animate:flip={{ duration: flipDurationMs }}
     >
       {#if item.isEditing}
         <EditForm {item} {itemsStore} {updateItem} />
       {:else}
-        <label
-          class="flex items-center gap-3 grow cursor-pointer"
+        <button
+          class="
+            flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg
+            text-lg text-left hover:bg-neutral
+          "
           class:pointer-events-none={$openedMenuId}
+          on:click={() => {
+            $selectedListId = item.id;
+            $activeTab = "To-Do";
+            history.pushState({}, "", `/app#${item.id}`);
+          }}
         >
-          <input
-            type="radio"
-            class="radio bg-transparent focus:radio-accent pointer-events-auto"
-            class:radio-accent={$selectedListId === item.id}
-            class:hover:radio-accent={$selectedListId === item.id}
-            value={item.id}
-            bind:group={$selectedListId}
-            on:change={() => ($activeTab = "To-Do")}
-            on:click={() => {
-              if ($selectedListId === item.id) {
-                $activeTab = "To-Do";
-              }
-            }}
-          />
-
           <span style="word-break: break-word;">{item.name}</span>
-        </label>
+          <ChevronRightSvgIcon className="shrink-0 w-4 h-4" />
+        </button>
 
         <div class="flex gap-1">
           <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {menuClass} />
