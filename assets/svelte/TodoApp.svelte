@@ -19,7 +19,6 @@
   import ItemsContainer from "./ItemsContainer.svelte";
   import MoveTodoMenu from "./MoveTodoMenu.svelte";
   import NewItemForm from "./NewItemForm.svelte";
-  import NoListCard from "./NoListCard.svelte";
   import TodoCheckList from "./TodoCheckList.svelte";
   import TodoListSelector from "./TodoListSelector.svelte";
 
@@ -212,42 +211,38 @@
 {/if}
 
 {#if $activeTab === "To-Do"}
-  {#if $selectedListId}
-    <NewItemForm
-      store={todoItems}
-      addItemCallback={addTodo}
-      bind:value={$newTodo}
-      placeholder="Enter to-do item"
-      submitButtonText="Add"
-    />
+  <NewItemForm
+    store={todoItems}
+    addItemCallback={addTodo}
+    bind:value={$newTodo}
+    placeholder="Enter to-do item"
+    submitButtonText="Add"
+  />
 
-    <ItemsContainer
+  <ItemsContainer
+    title={selectedListName}
+    totalCount={selectedListTodoItems.length}
+    completedCount={selectedListCompletedItems.length}
+    bind:isDropdownOpened={$isTodoOpened}
+  >
+    <TodoCheckList
       title={selectedListName}
-      totalCount={selectedListTodoItems.length}
-      completedCount={selectedListCompletedItems.length}
-      bind:isDropdownOpened={$isTodoOpened}
-    >
-      <TodoCheckList
-        title={selectedListName}
-        items={selectedListTodoItems}
-        itemsStore={todoItems}
-        {toggleCompleted}
-        {updateItem}
-        {deleteItem}
-        {handleConsider}
-        {handleFinalize}
-        bind:dragDisabled
-        {handleStartDrag}
-        {handleDragKeyDown}
-        {flipDurationMs}
-        noItemsMessage="All done!"
-        {menuClass}
-        {moveTodoMenuId}
-      />
-    </ItemsContainer>
-  {:else}
-    <NoListCard />
-  {/if}
+      items={selectedListTodoItems}
+      itemsStore={todoItems}
+      {toggleCompleted}
+      {updateItem}
+      {deleteItem}
+      {handleConsider}
+      {handleFinalize}
+      bind:dragDisabled
+      {handleStartDrag}
+      {handleDragKeyDown}
+      {flipDurationMs}
+      noItemsMessage="All done!"
+      {menuClass}
+      {moveTodoMenuId}
+    />
+  </ItemsContainer>
 {:else if $activeTab === "Lists"}
   <NewItemForm
     store={todoLists}
