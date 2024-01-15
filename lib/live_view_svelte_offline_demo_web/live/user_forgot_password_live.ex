@@ -6,7 +6,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserForgotPasswordLive do
   def render(assigns) do
     ~H"""
     <.sticky_header>
-      <.Back href={~p"/users/log_in"} />
+      <.Back showTopBarOnNav href={~p"/users/log_in"} />
     </.sticky_header>
 
     <.user_auth_layout>

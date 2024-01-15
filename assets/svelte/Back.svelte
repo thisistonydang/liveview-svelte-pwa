@@ -7,6 +7,7 @@
 
   export let href = undefined;
   export let ariaLabel = "Back";
+  export let showTopBarOnNav = false;
 </script>
 
 {#if href}
@@ -18,7 +19,9 @@
     aria-label={ariaLabel}
     class="flex"
     on:click={() => {
-      showTopBar();
+      if (showTopBarOnNav) {
+        showTopBar();
+      }
 
       if (history.length === 1) {
         window.location.replace("/app");

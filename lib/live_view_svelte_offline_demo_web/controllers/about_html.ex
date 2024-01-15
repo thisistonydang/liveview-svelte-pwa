@@ -7,7 +7,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.AboutHTML do
     <.ThemeSyncManager />
 
     <.sticky_header>
-      <.Back />
+      <.Back showTopBarOnNav />
     </.sticky_header>
 
     <.AppInfo />

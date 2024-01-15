@@ -12,7 +12,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
     <.PageLifeCycleEvents />
 
     <.sticky_header>
-      <.Back />
+      <.Back showTopBarOnNav />
     </.sticky_header>
 
     <.user_auth_layout>

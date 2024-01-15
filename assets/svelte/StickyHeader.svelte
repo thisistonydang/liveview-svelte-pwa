@@ -12,6 +12,6 @@
   class:border-b={scrollY > 0}
 >
   <div class="max-w-2xl mx-auto px-2 md:p-0 h-full flex items-center">
-    <Back showTopBarOnNav={false} />
+    <Back />
   </div>
 </div>
