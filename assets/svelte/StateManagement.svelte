@@ -2,22 +2,6 @@
   import { get } from "svelte/store";
 
   import { selectedListId } from "../stores/clientOnlyState";
-  import { getParsedValue } from "./ClientOnlyStateManagement.svelte";
-
-  /**
-   * Make sure that selectedListId exists in todoLists, else set selectedListId to first list or "".
-   *
-   * @param {{id: string, name: string}[]} todoLists - Array of todo lists.
-   */
-  export function setSelectedListId(todoLists) {
-    const listId = getParsedValue("selectedListId", "string", "");
-    const listExists = Boolean(todoLists.find((list) => list.id === listId));
-    if (listExists) {
-      selectedListId.set(listId);
-    } else {
-      selectedListId.set(todoLists.length ? todoLists[0].id : "");
-    }
-  }
 
   /** Save new state to localStorage and notify server. */
   export function syncClientToServer(todoItems, todoLists, live) {
@@ -112,7 +96,6 @@
     // TODO: Maybe remove this check in the future?
     $todoItems = Array.isArray(latestState.value.todos) ? latestState.value.todos : [];
     $todoLists = Array.isArray(latestState.value.lists) ? latestState.value.lists : [];
-    setSelectedListId($todoLists);
 
     if (latestState.meta.synced) {
       $syncState = "Synced";
