@@ -1,8 +1,11 @@
 <script>
+  import { scale } from "svelte/transition";
+
   import ArrowRightStartOnRectangleSvgIcon from "lib/svg-icons/ArrowRightStartOnRectangleSvgIcon.svelte";
   import EllipsisHorizontalCircleSvgIcon from "lib/svg-icons/EllipsisHorizontalCircleSvgIcon.svelte";
   import PencilSvgIcon from "lib/svg-icons/PencilSvgIcon.svelte";
   import TrashSvgIcon from "lib/svg-icons/TrashSvgIcon.svelte";
+  import XCircleSvgIcon from "lib/svg-icons/XCircleSvgIcon.svelte";
 
   import { moveTodoId, openedMenuId } from "../stores/clientOnlyState";
 
@@ -20,11 +23,18 @@
     aria-label="Toggle options menu."
     on:click={() => ($openedMenuId = $openedMenuId === item.id ? "" : item.id)}
   >
-    <EllipsisHorizontalCircleSvgIcon className="w-6 h-6" />
+    <div class="swap swap-rotate">
+      <input type="checkbox" class="hidden" checked={$openedMenuId === item.id} />
+      <EllipsisHorizontalCircleSvgIcon className="swap-off w-6 h-6" />
+      <XCircleSvgIcon className="swap-on w-6 h-6" />
+    </div>
   </button>
 
   {#if $openedMenuId === item.id}
-    <div class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box">
+    <div
+      in:scale={{ duration: 100 }}
+      class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box"
+    >
       <button
         class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
         on:click={() => deleteItem(itemsStore, item.id)}
