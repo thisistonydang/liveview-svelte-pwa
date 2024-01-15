@@ -105,6 +105,27 @@
     }
   }
 
+  function syncSelectedListIdWithUrl() {
+    const url = new URL(window.location.href);
+    const hash = url.hash;
+
+    if (hash === "") {
+      $selectedListId = "";
+      return;
+    }
+
+    const listId = hash.replace("#", "");
+    const list = $todoLists.find((list) => list.id === listId);
+    if (list) {
+      $selectedListId = listId;
+      history.replaceState({}, "", "/app");
+      history.pushState({}, "", `/app#${listId}`);
+    } else {
+      $selectedListId = "";
+      history.replaceState({}, "", "/app");
+    }
+  }
+
   onMount(() => {
     mounted = true;
   });
@@ -114,4 +135,11 @@
 
   // Sync state whenever new server state is received.
   $: if (mounted) syncServerToClient($serverState, CLIENT_STATE_KEY);
+
+  // Sync selectedListId with url on app mount.
+  // Note: This needs to happen after the first syncServerToClient call so that
+  // $todoLists is populated.
+  $: if (mounted) syncSelectedListIdWithUrl();
 </script>
+
+<svelte:window on:popstate={syncSelectedListIdWithUrl} />
