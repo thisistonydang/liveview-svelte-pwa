@@ -12,7 +12,6 @@
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
-  export let title;
   export let updateItem;
   export let deleteItem;
   export let handleConsider;
@@ -26,7 +25,7 @@
 
 <div
   class="min-h-[40px]"
-  aria-label={title}
+  aria-label="Lists"
   use:dndzone={{
     items: $todoLists,
     flipDurationMs,
