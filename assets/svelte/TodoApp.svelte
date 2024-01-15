@@ -3,7 +3,6 @@
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
 
   import {
-    activeTab,
     isListsOpened,
     isTodoOpened,
     moveTodoId,
@@ -206,7 +205,7 @@
   <MoveTodoMenu {itemToMove} {menuClass} {moveTodo} />
 {/if}
 
-{#if $activeTab === "To-Do"}
+{#if $selectedListId}
   <NewItemForm
     store={todoItems}
     addItemCallback={addTodo}
@@ -239,7 +238,7 @@
       {moveTodoMenuId}
     />
   </ItemsContainer>
-{:else if $activeTab === "Lists"}
+{:else}
   <NewItemForm
     store={todoLists}
     addItemCallback={addList}
