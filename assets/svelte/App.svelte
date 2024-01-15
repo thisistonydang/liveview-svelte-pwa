@@ -8,7 +8,7 @@
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
-  import { openedMenuId } from "../stores/clientOnlyState";
+  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
   import { serverState } from "../stores/liveViewSocket";
 
   import AppSkeleton from "./AppSkeleton.svelte";
@@ -16,6 +16,7 @@
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
+  import StickyHeader from "./StickyHeader.svelte";
   import Toast from "./Toast.svelte";
   import TodoApp from "./TodoApp.svelte";
   import UpdateAlert from "./UpdateAlert.svelte";
@@ -55,7 +56,12 @@
 {#if $isClientStateRestored}
   <Toast />
   <UpdateAlert />
-  <Header {currentUserEmail} {menuClass} />
+
+  {#if $selectedListId}
+    <StickyHeader />
+  {:else}
+    <Header {currentUserEmail} {menuClass} />
+  {/if}
 
   <div class="max-w-2xl mx-auto px-2 md:p-0">
     <TodoApp {menuClass} />
