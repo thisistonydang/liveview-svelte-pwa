@@ -1,6 +1,5 @@
 import { writable } from "svelte/store";
 
-export const activeTab = writable("To-Do"); // "To-Do" | "Lists"
 export const isListsOpened = writable(true);
 export const isTodoOpened = writable(true);
 export const moveTodoId = writable("");
