@@ -18,8 +18,8 @@
 
   <!-- Collapse title. -->
   <div class="collapse-title relative" style="cursor: default;">
-    <div class="flex gap-2 items-center text-xl font-medium">
-      <span>{title}</span>
+    <div class="flex gap-2 items-center text-xl font-medium mr-5">
+      <span style="word-break: break-word;">{title}</span>
       <span class="badge badge-neutral">{length}</span>
     </div>
 
