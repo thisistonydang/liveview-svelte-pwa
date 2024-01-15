@@ -201,6 +201,7 @@
   $: selectedListName = setSelectedListName($selectedListId);
 
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
+  $: selectedListCompletedItems = selectedListTodoItems.filter((item) => item.completed);
 
   // Get itemToMove when $moveTodoId changes _____________________________________________________
   $: itemToMove = $todoItems.find((item) => item.id === $moveTodoId);
@@ -222,7 +223,8 @@
 
     <ItemsContainer
       title={selectedListName}
-      length={selectedListTodoItems.length}
+      totalCount={selectedListTodoItems.length}
+      completedCount={selectedListCompletedItems.length}
       bind:isDropdownOpened={$isTodoOpened}
     >
       <TodoCheckList
@@ -255,7 +257,11 @@
     submitButtonText="Create"
   />
 
-  <ItemsContainer title="Lists" length={$todoLists.length} bind:isDropdownOpened={$isListsOpened}>
+  <ItemsContainer
+    title="Lists"
+    totalCount={$todoLists.length}
+    bind:isDropdownOpened={$isListsOpened}
+  >
     <TodoListSelector
       {updateItem}
       {deleteItem}

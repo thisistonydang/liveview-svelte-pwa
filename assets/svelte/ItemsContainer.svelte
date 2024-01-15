@@ -6,7 +6,10 @@
   export let title;
 
   /** @type {number} */
-  export let length;
+  export let totalCount;
+
+  /** @type {number | undefined} */
+  export let completedCount = undefined;
 
   /** @type {boolean} */
   export let isDropdownOpened;
@@ -20,7 +23,10 @@
   <div class="collapse-title relative" style="cursor: default;">
     <div class="flex gap-2 items-center text-xl font-medium mr-5">
       <span style="word-break: break-word;">{title}</span>
-      <span class="badge badge-neutral">{length}</span>
+
+      <span class="badge badge-neutral shrink-0">
+        {completedCount !== undefined ? `${completedCount} / ${totalCount}` : totalCount}
+      </span>
     </div>
 
     <!-- Collapse toggle. -->
