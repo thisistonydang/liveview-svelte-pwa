@@ -68,7 +68,17 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
 
   def sticky_header(assigns) do
     ~H"""
-    <div class="sticky top-0 left-0 w-full py-1 z-10 bg-base-100 border-neutral border-b h-14">
+    <script>
+      window.addEventListener("scroll", () => {
+        const stickyHeader = document.getElementById("sticky-header")
+        stickyHeader?.classList.toggle("border-b", window.scrollY > 0)
+      })
+    </script>
+
+    <div
+      id="sticky-header"
+      class="sticky top-0 left-0 w-full py-1 z-10 bg-base-100 border-neutral h-14"
+    >
       <div class="max-w-2xl mx-auto px-2 md:p-0 h-full flex items-center">
         <%= render_slot(@inner_block) %>
       </div>
