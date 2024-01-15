@@ -66,7 +66,7 @@
             }}
           />
 
-          <span class="break-all">{item.name}</span>
+          <span style="word-break: break-word;">{item.name}</span>
         </label>
 
         <div class="flex gap-1">
