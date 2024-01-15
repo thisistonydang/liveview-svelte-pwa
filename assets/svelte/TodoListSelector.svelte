@@ -8,7 +8,7 @@
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
   import { activeTab, openedMenuId, selectedListId } from "../stores/clientOnlyState";
-  import { todoLists } from "../stores/crdtState";
+  import { todoLists, todoItems } from "../stores/crdtState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
@@ -38,6 +38,8 @@
   on:finalize={(event) => handleFinalize(event, todoLists)}
 >
   {#each $todoLists as list (list.id)}
+    {@const listItems = $todoItems.filter((item) => item.list_id === list.id)}
+    {@const completedItems = listItems.filter((item) => item.completed)}
     <div
       class="flex items-center justify-between"
       aria-label={list.name}
@@ -58,7 +60,12 @@
             history.pushState({}, "", `/app#${list.id}`);
           }}
         >
-          <span style="word-break: break-word;">{list.name}</span>
+          <span style="word-break: break-word;">
+            {list.name}
+            <span class="badge badge-xs transition-none p-2">
+              {completedItems.length} / {listItems.length}
+            </span>
+          </span>
           <ChevronRightSvgIcon className="shrink-0 w-4 h-4" />
         </button>
 
