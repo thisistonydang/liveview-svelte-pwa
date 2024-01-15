@@ -39,14 +39,14 @@
   on:consider={(event) => handleConsider(event, itemsStore)}
   on:finalize={(event) => handleFinalize(event, itemsStore)}
 >
-  {#each $itemsStore as item (item.id)}
+  {#each $itemsStore as list (list.id)}
     <div
       class="flex items-center justify-between"
-      aria-label={item.name}
+      aria-label={list.name}
       animate:flip={{ duration: flipDurationMs }}
     >
-      {#if item.isEditing}
-        <EditForm {item} {itemsStore} {updateItem} />
+      {#if list.isEditing}
+        <EditForm item={list} {itemsStore} {updateItem} />
       {:else}
         <button
           class="
@@ -55,17 +55,17 @@
           "
           class:pointer-events-none={$openedMenuId}
           on:click={() => {
-            $selectedListId = item.id;
+            $selectedListId = list.id;
             $activeTab = "To-Do";
-            history.pushState({}, "", `/app#${item.id}`);
+            history.pushState({}, "", `/app#${list.id}`);
           }}
         >
-          <span style="word-break: break-word;">{item.name}</span>
+          <span style="word-break: break-word;">{list.name}</span>
           <ChevronRightSvgIcon className="shrink-0 w-4 h-4" />
         </button>
 
         <div class="flex gap-1">
-          <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {menuClass} />
+          <OptionsMenu item={list} {itemsStore} {updateItem} {deleteItem} {menuClass} />
 
           <!-- Drag Handle. -->
           <button
