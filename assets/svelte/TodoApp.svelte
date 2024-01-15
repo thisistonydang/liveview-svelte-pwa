@@ -15,7 +15,7 @@
   import { todoItems, todoLists } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
-  import { setSelectedListId, syncClientToServer } from "./StateManagement.svelte";
+  import { syncClientToServer } from "./StateManagement.svelte";
   import ItemsContainer from "./ItemsContainer.svelte";
   import MoveTodoMenu from "./MoveTodoMenu.svelte";
   import NewItemForm from "./NewItemForm.svelte";
@@ -120,10 +120,6 @@
   function deleteItem(itemsStore, itemId) {
     const newItems = get(itemsStore).filter((item) => item.id !== itemId);
     itemsStore.set(newItems);
-
-    // If the deleted item is the selected list, update selectedListId store.
-    // TODO: This can probably be optimized to not run every time an item is deleted.
-    setSelectedListId($todoLists);
 
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
