@@ -7,7 +7,7 @@
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
-  import { activeTab, openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
   import { todoLists, todoItems } from "../stores/crdtState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
@@ -56,7 +56,6 @@
           class:pointer-events-none={$openedMenuId}
           on:click={() => {
             $selectedListId = list.id;
-            $activeTab = "To-Do";
             history.pushState({}, "", `/app#${list.id}`);
           }}
         >
