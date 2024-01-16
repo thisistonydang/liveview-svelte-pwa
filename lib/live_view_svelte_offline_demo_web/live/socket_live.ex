@@ -15,8 +15,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
       # Subscribe to user state updates.
       UserStates.subscribe(user_id)
 
-      # Track and subscribe to presence updates for the user.
-      Presence.track_user_presence(socket)
+      # Subscribe to presence updates for the user.
       Presence.subscribe(user_id)
     end
 

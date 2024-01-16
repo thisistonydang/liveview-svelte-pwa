@@ -122,11 +122,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
   end
 
   def mount(_params, _session, socket) do
-    # Track user presence.
-    if connected?(socket) do
-      Presence.track_user_presence(socket)
-    end
-
     user = socket.assigns.current_user
     email_changeset = Accounts.change_user_email(user)
     password_changeset = Accounts.change_user_password(user)
