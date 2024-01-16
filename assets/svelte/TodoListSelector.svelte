@@ -57,6 +57,7 @@
           on:click={() => {
             $selectedListId = list.id;
             history.pushState({}, "", `/app#${list.id}`);
+            window.scrollTo(0, 0);
           }}
         >
           <span style="word-break: break-word;">

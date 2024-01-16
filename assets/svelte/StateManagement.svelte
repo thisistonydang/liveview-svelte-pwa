@@ -140,6 +140,8 @@
   // Note: This needs to happen after the first syncServerToClient call so that
   // $todoLists is populated.
   $: if (mounted) syncSelectedListIdWithUrl();
+
+  $: if (mounted) history.scrollRestoration = "auto";
 </script>
 
 <svelte:window on:popstate={syncSelectedListIdWithUrl} />
