@@ -43,7 +43,7 @@
 >
   {#each items as item (item.id)}
     <li
-      class="flex items-center justify-between px-2 py-1.5 text-lg rounded-lg"
+      class="flex items-center justify-between"
       aria-label={item.name}
       animate:flip={{ duration: flipDurationMs }}
     >
@@ -51,7 +51,10 @@
         <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />
       {:else}
         <label
-          class="flex items-center gap-3 grow cursor-pointer"
+          class="
+            flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg
+            text-lg cursor-pointer hover:bg-neutral
+          "
           class:opacity-50={item.completed}
           class:pointer-events-none={$openedMenuId}
         >
