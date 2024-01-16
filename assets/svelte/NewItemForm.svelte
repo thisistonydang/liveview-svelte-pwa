@@ -47,7 +47,7 @@
   }
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="join mt-1 mb-2 w-full">
+<form on:submit|preventDefault={handleSubmit} class="join mb-1 w-full">
   <input
     type="text"
     {placeholder}
