@@ -22,7 +22,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.Presence do
     case Map.has_key?(presences, user_id_as_string) do
       true ->
         %{^user_id_as_string => %{metas: metas}} = presences
-        length(metas)
+        # Get session count by counting unique sessions_id's. This prevents
+        # zombie sessions from skewing the count.
+        metas |> Enum.uniq_by(& &1.session_id) |> length()
 
       _ ->
         0
