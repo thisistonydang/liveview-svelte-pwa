@@ -200,12 +200,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
     end
   end
 
-  def handle_event("before_unload", _params, socket) do
-    Presence.untrack_user_presence(socket)
-
-    {:noreply, socket}
-  end
-
   def handle_event(
         "visibility_change",
         %{"sessionId" => session_id, "visibilityState" => visibility_state},
