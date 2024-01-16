@@ -46,7 +46,7 @@
       animate:flip={{ duration: flipDurationMs }}
     >
       {#if list.isEditing}
-        <EditForm item={list} itemsStore={todoLists} {updateItem} />
+        <EditForm item={list} itemsStore={todoLists} {updateItem} {menuClass} />
       {:else}
         <button
           class="
