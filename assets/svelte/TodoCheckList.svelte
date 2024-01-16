@@ -48,7 +48,7 @@
       animate:flip={{ duration: flipDurationMs }}
     >
       {#if item.isEditing}
-        <EditForm {item} {itemsStore} {updateItem} />
+        <EditForm {item} {itemsStore} {updateItem} {menuClass} />
       {:else}
         <label
           class="flex items-center gap-3 grow cursor-pointer"
