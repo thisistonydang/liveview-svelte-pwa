@@ -52,7 +52,7 @@
       {:else}
         <label
           class="
-            flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg
+            flex items-center gap-3 grow pr-2 py-1.5 mr-5 rounded-lg
             text-lg cursor-pointer hover:bg-neutral
           "
           class:opacity-50={item.completed}
