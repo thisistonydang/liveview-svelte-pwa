@@ -16,6 +16,20 @@
   let error = "";
 
   /**
+   * Commit edits made to the item and close the edit form.
+   */
+  function commitEdits() {
+    updateItem(itemsStore, {
+      id: item.id,
+      name: newName,
+      completed: item.completed,
+      list_id: item.list_id,
+    });
+
+    $openedMenuId = "";
+  }
+
+  /**
    * Discard edits made to the item and close the edit form.
    */
   function discardEdits() {
@@ -36,6 +50,12 @@
     // Check if new item name is empty string or unchanged.
     if (["", item.name].includes(newName)) {
       discardEdits();
+      return;
+    }
+
+    // Check if new item name is a change in casing of the original name.
+    if (item.name.toLowerCase() === newName.toLowerCase()) {
+      commitEdits();
       return;
     }
 
@@ -64,14 +84,7 @@
       }
     }
 
-    updateItem(itemsStore, {
-      id: item.id,
-      name: newName,
-      completed: item.completed,
-      list_id: item.list_id,
-    });
-
-    $openedMenuId = "";
+    commitEdits();
   }
 
   /**
