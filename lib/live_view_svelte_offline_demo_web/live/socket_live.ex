@@ -69,9 +69,13 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
-  def handle_event("visibility_change", %{"visibilityState" => visibility_state}, socket) do
+  def handle_event(
+        "visibility_change",
+        %{"sessionId" => session_id, "visibilityState" => visibility_state},
+        socket
+      ) do
     case visibility_state do
-      "visible" -> Presence.track_user_presence(socket)
+      "visible" -> Presence.track_user_presence(socket, session_id)
       _ -> Presence.untrack_user_presence(socket)
     end
 
