@@ -39,9 +39,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.Presence do
   @doc """
   Track the presence of the current user in the socket.
   """
-  def track_user_presence(socket) do
+  def track_user_presence(socket, session_id) do
     %{id: user_id} = socket.assigns.current_user
-    track(self(), presence_topic(user_id), user_id, %{})
+    track(self(), presence_topic(user_id), user_id, %{session_id: session_id})
   end
 
   @doc """
