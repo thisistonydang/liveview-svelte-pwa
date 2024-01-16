@@ -223,7 +223,6 @@
     <TodoCheckList
       title={selectedListName}
       items={selectedListTodoItems}
-      itemsStore={todoItems}
       {toggleCompleted}
       {updateItem}
       {deleteItem}

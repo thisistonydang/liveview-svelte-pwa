@@ -6,13 +6,13 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
 
+  import { todoItems } from "../stores/crdtState";
   import { openedMenuId } from "../stores/clientOnlyState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
   export let title;
   export let items;
-  export let itemsStore;
   export let toggleCompleted;
   export let updateItem;
   export let deleteItem;
@@ -38,8 +38,8 @@
     dropTargetStyle: {},
     dropTargetClasses: ["border-2", "border-dashed", "rounded-lg", "border-accent"],
   }}
-  on:consider={(event) => handleConsider(event, itemsStore)}
-  on:finalize={(event) => handleFinalize(event, itemsStore)}
+  on:consider={(event) => handleConsider(event, todoItems)}
+  on:finalize={(event) => handleFinalize(event, todoItems)}
 >
   {#each items as item (item.id)}
     <li
@@ -48,7 +48,7 @@
       animate:flip={{ duration: flipDurationMs }}
     >
       {#if item.isEditing}
-        <EditForm {item} {itemsStore} {updateItem} {menuClass} />
+        <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />
       {:else}
         <label
           class="flex items-center gap-3 grow cursor-pointer"
@@ -68,7 +68,14 @@
         </label>
 
         <div class="flex gap-1">
-          <OptionsMenu {item} {itemsStore} {updateItem} {deleteItem} {menuClass} {moveTodoMenuId} />
+          <OptionsMenu
+            {item}
+            itemsStore={todoItems}
+            {updateItem}
+            {deleteItem}
+            {menuClass}
+            {moveTodoMenuId}
+          />
 
           <!-- Drag Handle. -->
           <button
