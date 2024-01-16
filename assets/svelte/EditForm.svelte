@@ -16,7 +16,7 @@
   let error = "";
 
   /**
-   * Discard any edits made to the item and close the edit form.
+   * Discard edits made to the item and close the edit form.
    */
   function discardEdits() {
     updateItem(itemsStore, {
