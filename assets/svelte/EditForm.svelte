@@ -4,7 +4,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
-  import { selectedListId } from "../stores/clientOnlyState";
+  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
 
   export let item;
   export let itemsStore;
@@ -15,7 +15,7 @@
   let newName = item.newName;
   let error = "";
 
-  function handleSubmit() {
+  function handleSubmit({ isClickedOutside } = { isClickedOutside: false }) {
     // Trim whitespace.
     newName = newName.replace(/\s+/g, " ").trim();
 
@@ -27,6 +27,8 @@
         completed: item.completed,
         list_id: item.list_id,
       });
+
+      $openedMenuId = "";
       return;
     }
 
@@ -34,11 +36,31 @@
     for (const item of $itemsStore) {
       if (item.list_id) {
         if (item.list_id === $selectedListId && item.name.toLowerCase() === newName.toLowerCase()) {
+          if (isClickedOutside) {
+            updateItem(itemsStore, {
+              id: item.id,
+              name: item.name,
+              completed: item.completed,
+              list_id: item.list_id,
+            });
+            return;
+          }
+
           error = `"${newName}" already exists in the list!`;
           return;
         }
       } else {
         if (item.name.toLowerCase() === newName.toLowerCase()) {
+          if (isClickedOutside) {
+            updateItem(itemsStore, {
+              id: item.id,
+              name: item.name,
+              completed: item.completed,
+              list_id: item.list_id,
+            });
+            return;
+          }
+
           error = `A list named "${newName}" already exists!`;
           return;
         }
@@ -51,6 +73,8 @@
       completed: item.completed,
       list_id: item.list_id,
     });
+
+    $openedMenuId = "";
   }
 
   /**
@@ -79,7 +103,11 @@
   }
 </script>
 
-<form class="w-full" on:submit|preventDefault={handleSubmit} use:clickOutside={handleSubmit}>
+<form
+  class="{menuClass} w-full"
+  on:submit|preventDefault={handleSubmit}
+  use:clickOutside={() => handleSubmit({ isClickedOutside: true })}
+>
   <div class="w-full join">
     <input
       use:focus
