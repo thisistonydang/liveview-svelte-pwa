@@ -15,20 +15,27 @@
   let newName = item.newName;
   let error = "";
 
+  /**
+   * Discard any edits made to the item and close the edit form.
+   */
+  function discardEdits() {
+    updateItem(itemsStore, {
+      id: item.id,
+      name: item.name,
+      completed: item.completed,
+      list_id: item.list_id,
+    });
+
+    $openedMenuId = "";
+  }
+
   function handleSubmit({ isClickedOutside } = { isClickedOutside: false }) {
     // Trim whitespace.
     newName = newName.replace(/\s+/g, " ").trim();
 
     // Check if new item name is empty string or unchanged.
     if (["", item.name].includes(newName)) {
-      updateItem(itemsStore, {
-        id: item.id,
-        name: item.name,
-        completed: item.completed,
-        list_id: item.list_id,
-      });
-
-      $openedMenuId = "";
+      discardEdits();
       return;
     }
 
@@ -37,12 +44,7 @@
       if (item.list_id) {
         if (item.list_id === $selectedListId && item.name.toLowerCase() === newName.toLowerCase()) {
           if (isClickedOutside) {
-            updateItem(itemsStore, {
-              id: item.id,
-              name: item.name,
-              completed: item.completed,
-              list_id: item.list_id,
-            });
+            discardEdits();
             return;
           }
 
@@ -52,12 +54,7 @@
       } else {
         if (item.name.toLowerCase() === newName.toLowerCase()) {
           if (isClickedOutside) {
-            updateItem(itemsStore, {
-              id: item.id,
-              name: item.name,
-              completed: item.completed,
-              list_id: item.list_id,
-            });
+            discardEdits();
             return;
           }
 
