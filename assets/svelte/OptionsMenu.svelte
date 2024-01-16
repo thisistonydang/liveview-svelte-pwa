@@ -59,12 +59,16 @@
 
       <button
         class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
-        on:click={() =>
+        on:click={(e) => {
+          e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
+          $openedMenuId = "edit-form-id";
+
           updateItem(itemsStore, {
             ...item,
             newName: item.name,
             isEditing: true,
-          })}
+          });
+        }}
       >
         <PencilSvgIcon className="w-4 h-4" />
         Edit
