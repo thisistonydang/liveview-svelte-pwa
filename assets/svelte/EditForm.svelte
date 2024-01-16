@@ -9,6 +9,7 @@
   export let item;
   export let itemsStore;
   export let updateItem;
+  export let menuClass;
 
   /** @type {string} */
   let newName = item.newName;
