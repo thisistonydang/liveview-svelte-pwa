@@ -8,8 +8,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
     ~H"""
     <!-- Keep theme synced when theme is changed in another tab or window of the same browser. -->
     <.ThemeSyncManager />
-    <!-- Send page lifecycle events to server. -->
-    <.PageLifeCycleEvents />
+    <!-- Track visibility to determine session count. -->
+    <.VisibilityChangeTracker />
 
     <.sticky_header>
       <.Back showTopBarOnNav />
