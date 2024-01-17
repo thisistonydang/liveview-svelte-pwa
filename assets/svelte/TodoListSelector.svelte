@@ -54,7 +54,7 @@
         <button
           class="flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg text-lg text-left"
           class:pointer-events-none={$openedMenuId}
-          class:hover:bg-neutral={!hasTouchScreen}
+          class:hover:bg-base-200={!hasTouchScreen}
           on:click={() => {
             $urlHash = "listId";
             $selectedListId = list.id;

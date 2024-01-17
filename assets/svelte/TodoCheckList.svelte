@@ -57,7 +57,7 @@
           class="flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg text-lg cursor-pointer"
           class:opacity-50={item.completed}
           class:pointer-events-none={$openedMenuId}
-          class:hover:bg-neutral={!hasTouchScreen}
+          class:hover:bg-base-200={!hasTouchScreen}
         >
           <input
             type="checkbox"
