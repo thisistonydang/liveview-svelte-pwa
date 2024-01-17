@@ -53,4 +53,11 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
         changeset
     end
   end
+
+  defp is_valid_uuid?(uuid) do
+    case Ecto.UUID.dump(uuid) do
+      {:ok, _} -> true
+      _ -> false
+    end
+  end
 end
