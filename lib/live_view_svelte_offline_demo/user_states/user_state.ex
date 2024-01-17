@@ -15,7 +15,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     |> cast(attrs, [:state, :user_id])
     |> validate_required([:state, :user_id])
     |> validate_state_map_structure()
-    |> validate_timestamp()
+    |> validate_state_map_timestamp()
     |> validate_state_map_value()
     |> foreign_key_constraint(:user_id)
     |> unique_constraint(:user_id)
@@ -39,7 +39,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     end
   end
 
-  defp validate_timestamp(changeset) do
+  defp validate_state_map_timestamp(changeset) do
     timestamp = changeset |> get_change(:state) |> Map.get("timestamp")
 
     case timestamp do
