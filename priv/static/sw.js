@@ -84,6 +84,9 @@ function handleFetch(event) {
   // Ignore non-GET requests.
   if (event.request.method.toUpperCase() !== 'GET') return; 
   
+  // Ignore requests for chrome extensions.
+  if (event.request.url.startsWith('chrome-extension://')) return;
+  
   // Ignore LiveReloader. Only requested in dev.
   const url = new URL(event.request.url);
   if (url.pathname === '/phoenix/live_reload/frame') return; 
