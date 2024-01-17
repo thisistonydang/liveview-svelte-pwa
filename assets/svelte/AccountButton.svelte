@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     isConnected,
     isClientStateRestored,
@@ -12,11 +12,8 @@
   import { openedMenuId, urlHash } from "../stores/clientOnlyState";
   import { toast } from "../stores/toast";
 
-  /** @type {string} */
-  export let currentUserEmail;
-
-  /** @type {string} */
-  export let menuClass;
+  export let currentUserEmail: string;
+  export let menuClass: string;
 
   const accountMenuId = "account-menu-id";
   let isLogOutLoading = false;
@@ -106,7 +103,11 @@
           <a href="/app#about" on:click|preventDefault={showAbout}>About</a>
         </li>
         <li>
-          <a href="/users/settings" on:click|preventDefault={showSettings} {disabled}>
+          <a
+            href="/users/settings"
+            on:click|preventDefault={showSettings}
+            class:pointer-events-none={disabled}
+          >
             Settings
             <span class="loading loading-dots loading-xs" class:hidden={!isSettingsLoading}></span>
           </a>
