@@ -4,6 +4,7 @@
   import { dndzone } from "svelte-dnd-action";
 
   import { clickOutside } from "lib/actions/clickOutside";
+  import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
@@ -21,6 +22,8 @@
   export let handleDragKeyDown;
   export let flipDurationMs: number;
   export let menuClass: string;
+
+  const hasTouchScreen = useHasTouchScreen();
 </script>
 
 <div
@@ -49,11 +52,9 @@
         <EditForm item={list} itemsStore={todoLists} {updateItem} {menuClass} />
       {:else}
         <button
-          class="
-            flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg
-            text-lg text-left hover:bg-neutral
-          "
+          class="flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg text-lg text-left"
           class:pointer-events-none={$openedMenuId}
+          class:hover:bg-neutral={!hasTouchScreen}
           on:click={() => {
             $urlHash = "listId";
             $selectedListId = list.id;
