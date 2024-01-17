@@ -124,7 +124,7 @@
         const listId = hash.replace("#", "");
         const list = $todoLists.find((list) => list.id === listId);
         if (list) {
-          $urlHash = listId;
+          $urlHash = "listId";
           $selectedListId = listId;
           history.replaceState({}, "", "/app");
           history.pushState({}, "", `/app#${listId}`);
