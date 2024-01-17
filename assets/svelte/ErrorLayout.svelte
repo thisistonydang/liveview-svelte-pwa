@@ -1,5 +1,6 @@
 <script lang="ts">
   import FrownSvgIcon from "lib/svg-icons/FrownSvgIcon.svelte";
+  import { showTopBar } from "lib/topbar";
 
   export let live = undefined;
   live;
@@ -24,6 +25,7 @@
         class="btn btn-accent my-2"
         {href}
         on:click|preventDefault={() => {
+          showTopBar();
           window.location.replace(href);
         }}
       >
