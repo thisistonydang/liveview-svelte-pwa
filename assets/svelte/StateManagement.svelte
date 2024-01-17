@@ -1,7 +1,7 @@
 <script context="module">
   import { get } from "svelte/store";
 
-  import { selectedListId } from "../stores/clientOnlyState";
+  import { selectedListId, urlHash } from "../stores/clientOnlyState";
 
   /** Save new state to localStorage and notify server. */
   export function syncClientToServer(todoItems, todoLists, live) {
@@ -105,24 +105,35 @@
     }
   }
 
-  function syncSelectedListIdWithUrl() {
+  /**
+   * Keep $urlHash and $selectedListId in sync with the url.
+   */
+  function syncAppStateWithUrl() {
     const url = new URL(window.location.href);
     const hash = url.hash;
 
-    if (hash === "") {
-      $selectedListId = "";
-      return;
-    }
+    switch (hash) {
+      case "#about":
+        $urlHash = "about";
+        $selectedListId = "";
+        history.replaceState({}, "", "/app");
+        history.pushState({}, "", "/app#about");
+        break;
 
-    const listId = hash.replace("#", "");
-    const list = $todoLists.find((list) => list.id === listId);
-    if (list) {
-      $selectedListId = listId;
-      history.replaceState({}, "", "/app");
-      history.pushState({}, "", `/app#${listId}`);
-    } else {
-      $selectedListId = "";
-      history.replaceState({}, "", "/app");
+      default:
+        const listId = hash.replace("#", "");
+        const list = $todoLists.find((list) => list.id === listId);
+        if (list) {
+          $urlHash = listId;
+          $selectedListId = listId;
+          history.replaceState({}, "", "/app");
+          history.pushState({}, "", `/app#${listId}`);
+        } else {
+          $urlHash = "";
+          $selectedListId = "";
+          history.replaceState({}, "", "/app");
+        }
+        break;
     }
   }
 
@@ -139,9 +150,9 @@
   // Sync selectedListId with url on app mount.
   // Note: This needs to happen after the first syncServerToClient call so that
   // $todoLists is populated.
-  $: if (mounted) syncSelectedListIdWithUrl();
+  $: if (mounted) syncAppStateWithUrl();
 
   $: if (mounted) history.scrollRestoration = "auto";
 </script>
 
-<svelte:window on:popstate={syncSelectedListIdWithUrl} />
+<svelte:window on:popstate={syncAppStateWithUrl} />
