@@ -82,8 +82,8 @@ sw.addEventListener("fetch", handleFetch);
  */
 function handleFetch(event) {
   // Ignore non-GET requests.
-  if (event.request.method.toUpperCase() !== 'GET') return; 
-  
+  if (event.request.method.toUpperCase() !== 'GET') return;
+
   // Ignore requests for chrome extensions.
   if (event.request.url.startsWith('chrome-extension://')) return;
   
