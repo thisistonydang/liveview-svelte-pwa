@@ -7,7 +7,7 @@
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
-  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { openedMenuId, selectedListId, urlHash } from "../stores/clientOnlyState";
   import { todoLists, todoItems } from "../stores/crdtState";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
