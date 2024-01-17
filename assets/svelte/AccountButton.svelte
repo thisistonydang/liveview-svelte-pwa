@@ -9,7 +9,7 @@
   import { showTopBar, hideTopBar } from "lib/topbar";
 
   import config from "../../priv/static/sw.config.js";
-  import { openedMenuId } from "../stores/clientOnlyState";
+  import { openedMenuId, urlHash } from "../stores/clientOnlyState";
   import { toast } from "../stores/toast";
 
   /** @type {string} */
@@ -22,12 +22,6 @@
   let isLogOutLoading = false;
   let isSettingsLoading = false;
   let disabled = false;
-
-  function showAbout() {
-    $openedMenuId = "";
-    showTopBar();
-    window.location.href = "/app/about";
-  }
 
   async function showSettings() {
     disabled = true;
@@ -103,7 +97,7 @@
 
       <ul>
         <li>
-          <a href="/app/about" on:click|preventDefault={showAbout}>About</a>
+          <a href="/app#about" on:click={() => ($urlHash = "about")}>About</a>
         </li>
         <li>
           <a href="/users/settings" on:click|preventDefault={showSettings} {disabled}>
