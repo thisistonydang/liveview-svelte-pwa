@@ -54,7 +54,9 @@
         <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />
       {:else}
         <label
-          class="flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg text-lg cursor-pointer"
+          class="
+            flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg
+            text-lg cursor-pointer active:bg-base-300"
           class:opacity-50={item.completed}
           class:pointer-events-none={$openedMenuId}
           class:hover:bg-base-200={!hasTouchScreen}

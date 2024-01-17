@@ -52,7 +52,10 @@
         <EditForm item={list} itemsStore={todoLists} {updateItem} {menuClass} />
       {:else}
         <button
-          class="flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg text-lg text-left"
+          class="
+            flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg
+            text-lg text-left active:bg-base-300
+          "
           class:pointer-events-none={$openedMenuId}
           class:hover:bg-base-200={!hasTouchScreen}
           on:click={() => {
