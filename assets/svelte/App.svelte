@@ -8,9 +8,10 @@
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
-  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { openedMenuId, urlHash } from "../stores/clientOnlyState";
   import { serverState } from "../stores/liveViewSocket";
 
+  import AppInfo from "./AppInfo.svelte";
   import AppSkeleton from "./AppSkeleton.svelte";
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
@@ -57,15 +58,19 @@
   <Toast />
   <UpdateAlert />
 
-  {#if $selectedListId}
-    <StickyHeader />
-  {:else}
+  {#if $urlHash === ""}
     <Header {currentUserEmail} {menuClass} />
+  {:else}
+    <StickyHeader />
   {/if}
 
-  <div class="max-w-2xl mx-auto px-2 md:p-0">
-    <TodoApp {menuClass} />
-  </div>
+  {#if $urlHash === "about"}
+    <AppInfo />
+  {:else}
+    <div class="max-w-2xl mx-auto px-2 md:p-0">
+      <TodoApp {menuClass} />
+    </div>
+  {/if}
 {:else}
   <AppSkeleton />
 {/if}
