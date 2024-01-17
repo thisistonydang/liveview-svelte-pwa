@@ -6,6 +6,35 @@
   export let totalCount: number;
   export let completedCount: number | undefined = undefined;
   export let isDropdownOpened: boolean;
+
+  const emoticons = [
+    "(◕‿◕)",
+    "(＾▽＾)",
+    "◉‿◉",
+    "≖‿≖",
+    "മ◡മ",
+    "╰(▔∀▔)╯",
+    "⊙▽⊙",
+    "ȏ.̮ȏ",
+    "◙‿◙",
+    "(^人^)",
+    "٩(◕‿◕｡)۶",
+    "മ◡മ",
+    "(*^‿^*)",
+    "( ‾́ ◡ ‾́ )",
+    "(￣个￣)",
+    "(*꒦ິ꒳꒦ີ)",
+    "(¬‿¬)",
+    "(•‿•)",
+  ];
+  let emoticonIndex = 0;
+
+  $: if (isDropdownOpened) {
+    emoticonIndex++;
+    if (emoticonIndex >= emoticons.length) {
+      emoticonIndex = 0;
+    }
+  }
 </script>
 
 <div class="collapse border border-neutral mt-2 mb-20 overflow-visible">
