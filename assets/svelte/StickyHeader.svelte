@@ -1,8 +1,7 @@
-<script>
+<script lang="ts">
   import Back from "./Back.svelte";
 
-  /** @type {number} */
-  let scrollY;
+  let scrollY: number;
 </script>
 
 <svelte:window bind:scrollY />
