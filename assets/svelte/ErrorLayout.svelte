@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
   import FrownSvgIcon from "lib/svg-icons/FrownSvgIcon.svelte";
 
-  export let live;
+  export let live = undefined;
   live;
 
-  export let title;
-  export let subtitle = undefined;
-  export let href;
-  export let linkText;
+  export let title: string;
+  export let subtitle: string = undefined;
+  export let href: string;
+  export let linkText: string;
 </script>
 
 <div class="hero min-h-screen">
