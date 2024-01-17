@@ -25,7 +25,7 @@
   export let live;
   live;
 
-  export let currentUserEmail;
+  export let currentUserEmail: string;
   export let server_state;
 
   const menuClass = "menu-class";
