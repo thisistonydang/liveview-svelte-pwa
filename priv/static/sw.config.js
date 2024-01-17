@@ -3,7 +3,6 @@ export default {
   debug: false,
   privateAssets: [
     "/app", 
-    "/app/about",
   ],
   publicAssets: [
     "/assets/app.css",

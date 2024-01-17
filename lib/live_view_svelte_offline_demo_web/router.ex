@@ -74,7 +74,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end
 
-    get "/app/about", AboutController, :index
     get "/app", AppController, :index
   end
 
