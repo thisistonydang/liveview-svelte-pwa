@@ -12,20 +12,20 @@
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
-  export let title;
+  export let title: string;
   export let items;
   export let toggleCompleted;
   export let updateItem;
   export let deleteItem;
   export let handleConsider;
   export let handleFinalize;
-  export let dragDisabled;
+  export let dragDisabled: boolean;
   export let handleStartDrag;
   export let handleDragKeyDown;
-  export let flipDurationMs;
+  export let flipDurationMs: number;
   export let noItemsMessage;
-  export let menuClass;
-  export let moveTodoMenuId;
+  export let menuClass: string;
+  export let moveTodoMenuId: string;
 
   const hasTouchScreen = useHasTouchScreen();
 </script>
