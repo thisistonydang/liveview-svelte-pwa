@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { flip } from "svelte/animate";
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
@@ -16,11 +16,11 @@
   export let deleteItem;
   export let handleConsider;
   export let handleFinalize;
-  export let dragDisabled;
+  export let dragDisabled: boolean;
   export let handleStartDrag;
   export let handleDragKeyDown;
-  export let flipDurationMs;
-  export let menuClass;
+  export let flipDurationMs: number;
+  export let menuClass: string;
 </script>
 
 <div
