@@ -1,17 +1,13 @@
-<script>
+<script lang="ts">
   import AccountButton from "./AccountButton.svelte";
   import SessionsBadge from "./SessionsBadge.svelte";
   import SyncStatusBadge from "./SyncStatusBadge.svelte";
   import ThemeButton from "./ThemeButton.svelte";
 
-  /** @type {string} */
-  export let currentUserEmail;
+  export let currentUserEmail: string;
+  export let menuClass: string;
 
-  /** @type {string} */
-  export let menuClass;
-
-  /** @type {number} */
-  let scrollY;
+  let scrollY: number;
 </script>
 
 <svelte:window bind:scrollY />
