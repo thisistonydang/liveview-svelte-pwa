@@ -1,20 +1,12 @@
-<script>
+<script lang="ts">
   import { fly } from "svelte/transition";
   import { selectedListId } from "../stores/clientOnlyState";
 
   export let store;
-
-  /** @type {() => void}*/
-  export let addItemCallback;
-
-  /** @type {string} */
-  export let value;
-
-  /** @type {string} */
-  export let placeholder;
-
-  /** @type {string} */
-  export let submitButtonText;
+  export let addItemCallback: () => void;
+  export let value: string;
+  export let placeholder: string;
+  export let submitButtonText: string;
 
   let error = "";
 
