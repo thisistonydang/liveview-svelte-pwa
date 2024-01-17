@@ -1,11 +1,10 @@
-<script>
+<script lang="ts">
   import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
   import { openedMenuId } from "../stores/clientOnlyState";
   import ThemeChoiceButton from "./ThemeChoiceButton.svelte";
 
-  /** @type {string} */
-  export let menuClass;
+  export let menuClass: string;
 
   const themeMenuId = "theme-menu-id";
 </script>
