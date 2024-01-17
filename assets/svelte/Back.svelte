@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import ArrowLeftSvgIcon from "lib/svg-icons/ArrowLeftSvgIcon.svelte";
   import { showTopBar } from "lib/topbar";
 
   export let live = undefined;
   live;
 
-  export let href = undefined;
+  export let href: string = undefined;
   export let ariaLabel = "Back";
   export let showTopBarOnNav = false;
 </script>
