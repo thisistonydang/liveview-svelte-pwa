@@ -1,12 +1,25 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
   import { openedMenuId } from "../stores/clientOnlyState";
+  import { currentTheme } from "../stores/currentTheme";
   import ThemeChoiceButton from "./ThemeChoiceButton.svelte";
 
   export let menuClass: string;
 
   const themeMenuId = "theme-menu-id";
+
+  onMount(() => {
+    const theme = JSON.parse(localStorage.getItem("theme"));
+
+    if (!theme) {
+      $currentTheme = "system";
+    } else {
+      $currentTheme = theme;
+    }
+  });
 </script>
 
 <div class="{menuClass} relative">
