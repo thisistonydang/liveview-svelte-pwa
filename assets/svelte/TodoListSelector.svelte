@@ -55,6 +55,7 @@
           "
           class:pointer-events-none={$openedMenuId}
           on:click={() => {
+            $urlHash = "listId";
             $selectedListId = list.id;
             history.pushState({}, "", `/app#${list.id}`);
             window.scrollTo(0, 0);
