@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import GitHubSvgIcon from "lib/svg-icons/GitHubSvgIcon.svelte";
   import Link from "./Link.svelte";
 
   export let showAuthLinks = false;
 </script>
 
-<div class="max-w-md mx-auto px-6 md:p-0 mt-10">
+<div class="max-w-md mx-auto px-4 md:p-0">
   <h1 class="text-5xl font-black my-5">Offline-Enabled LiveView Svelte Demo</h1>
 
   <p>
