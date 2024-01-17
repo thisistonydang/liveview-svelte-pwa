@@ -210,7 +210,7 @@
     store={todoItems}
     addItemCallback={addTodo}
     bind:value={$newTodo}
-    placeholder="Enter to-do item"
+    placeholder="Enter new item name"
     submitButtonText="Add"
   />
 
@@ -232,7 +232,6 @@
       {handleStartDrag}
       {handleDragKeyDown}
       {flipDurationMs}
-      noItemsMessage="All done!"
       {menuClass}
       {moveTodoMenuId}
     />
