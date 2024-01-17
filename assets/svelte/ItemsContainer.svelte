@@ -1,18 +1,11 @@
-<script>
+<script lang="ts">
   import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
 
-  /** @type {string} */
-  export let title;
-
-  /** @type {number} */
-  export let totalCount;
-
-  /** @type {number | undefined} */
-  export let completedCount = undefined;
-
-  /** @type {boolean} */
-  export let isDropdownOpened;
+  export let title: string;
+  export let totalCount: number;
+  export let completedCount: number | undefined = undefined;
+  export let isDropdownOpened: boolean;
 </script>
 
 <div class="collapse border border-neutral mt-2 mb-20 overflow-visible">
