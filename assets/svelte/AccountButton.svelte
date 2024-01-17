@@ -23,6 +23,12 @@
   let isSettingsLoading = false;
   let disabled = false;
 
+  function showAbout() {
+    $urlHash = "about";
+    history.pushState({}, "", `/app#${$urlHash}`);
+    window.scrollTo(0, 0);
+  }
+
   async function showSettings() {
     disabled = true;
     isSettingsLoading = true;
@@ -97,7 +103,7 @@
 
       <ul>
         <li>
-          <a href="/app#about" on:click={() => ($urlHash = "about")}>About</a>
+          <a href="/app#about" on:click|preventDefault={showAbout}>About</a>
         </li>
         <li>
           <a href="/users/settings" on:click|preventDefault={showSettings} {disabled}>
