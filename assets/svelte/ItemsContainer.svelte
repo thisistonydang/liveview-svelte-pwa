@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { sineIn } from "svelte/easing";
+  import { fade } from "svelte/transition";
+
   import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
   import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
 
@@ -37,7 +40,7 @@
   }
 </script>
 
-<div class="collapse border border-neutral mt-2 mb-20 overflow-visible">
+<div class="collapse border border-neutral mt-2 mb-10 overflow-visible">
   <!-- This hidden checkbox controls the collapse via Daisy UI. -->
   <input type="checkbox" class="pointer-events-none" bind:checked={isDropdownOpened} />
 
@@ -64,3 +67,9 @@
     <slot />
   </div>
 </div>
+
+{#if !isDropdownOpened}
+  <div class="text-center text-6xl xs:text-7xl sm:text-8xl opacity-90" in:fade={{ easing: sineIn }}>
+    {emoticons[emoticonIndex]}
+  </div>
+{/if}
