@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
   import { setTheme } from "./ThemeChoiceButton.svelte";
+
+  export let live = undefined;
+  live;
 </script>
 
 <!-- Keep theme synced when theme is updated in localStorage on another
