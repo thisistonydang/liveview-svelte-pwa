@@ -428,7 +428,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CoreComponents do
 
   def header(assigns) do
     ~H"""
-    <header class={["my-10", @actions != [] && "flex items-center justify-between gap-6", @class]}>
+    <header class={["mb-10", @actions != [] && "flex items-center justify-between gap-6", @class]}>
       <div>
         <h1 class="text-2xl font-semibold leading-8">
           <%= render_slot(@inner_block) %>
