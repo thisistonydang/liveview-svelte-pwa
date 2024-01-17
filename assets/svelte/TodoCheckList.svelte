@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
   import { flip } from "svelte/animate";
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
 
   import { clickOutside } from "lib/actions/clickOutside";
+  import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
 
   import { todoItems } from "../stores/crdtState";
@@ -25,6 +26,8 @@
   export let noItemsMessage;
   export let menuClass;
   export let moveTodoMenuId;
+
+  const hasTouchScreen = useHasTouchScreen();
 </script>
 
 <ul
@@ -51,12 +54,10 @@
         <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />
       {:else}
         <label
-          class="
-            flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg
-            text-lg cursor-pointer hover:bg-neutral
-          "
+          class="flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg text-lg cursor-pointer"
           class:opacity-50={item.completed}
           class:pointer-events-none={$openedMenuId}
+          class:hover:bg-neutral={!hasTouchScreen}
         >
           <input
             type="checkbox"
