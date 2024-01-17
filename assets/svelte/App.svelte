@@ -18,6 +18,7 @@
   import Header from "./Header.svelte";
   import StateManagement from "./StateManagement.svelte";
   import StickyHeader from "./StickyHeader.svelte";
+  import ThemeSyncManager from "./ThemeSyncManager.svelte";
   import Toast from "./Toast.svelte";
   import TodoApp from "./TodoApp.svelte";
   import UpdateAlert from "./UpdateAlert.svelte";
@@ -51,6 +52,7 @@
 <StateManagement />
 <ClientOnlyStateManagement />
 <OfflineSvelte />
+<ThemeSyncManager />
 
 <ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
 

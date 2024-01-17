@@ -4,7 +4,6 @@
   import { currentTheme } from "../stores/currentTheme";
 
   import ThemeButton from "./ThemeButton.svelte";
-  import ThemeSyncManager from "./ThemeSyncManager.svelte";
 
   /** @type {string} */
   export let menuClass;
@@ -21,4 +20,3 @@
 </script>
 
 <ThemeButton {menuClass} />
-<ThemeSyncManager />
