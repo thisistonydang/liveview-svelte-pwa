@@ -3,7 +3,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.HomeHTML do
 
   def index(assigns) do
     ~H"""
-    <div class="sm:my-20">
+    <div class="my-10 sm:my-20">
       <.AppInfo showAuthLinks />
     </div>
     """
