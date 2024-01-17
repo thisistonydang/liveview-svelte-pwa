@@ -1,12 +1,11 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   import { currentTheme } from "../stores/currentTheme";
 
   import ThemeButton from "./ThemeButton.svelte";
 
-  /** @type {string} */
-  export let menuClass;
+  export let menuClass: string;
 
   onMount(() => {
     const theme = JSON.parse(localStorage.getItem("theme"));
