@@ -90,6 +90,9 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     end)
   end
 
+  defp is_valid_id_and_name?(item) do
+    is_valid_uuid?(item["id"]) && is_binary(item["name"]) && String.length(item["name"]) <= 1000
+  end
 
   defp is_valid_uuid?(uuid) do
     case Ecto.UUID.dump(uuid) do
