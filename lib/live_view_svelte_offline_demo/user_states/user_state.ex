@@ -91,7 +91,10 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
   end
 
   defp is_valid_id_and_name?(item) do
-    is_valid_uuid?(item["id"]) && is_binary(item["name"]) && String.length(item["name"]) <= 1000
+    is_valid_uuid?(item["id"]) && is_valid_name?(item["name"])
+  end
+  defp is_valid_name?(name) do
+    is_binary(name) && String.length(name) <= 1000
   end
 
   defp is_valid_uuid?(uuid) do
