@@ -199,8 +199,10 @@
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
   $: selectedListCompletedItems = selectedListTodoItems.filter((item) => item.completed);
 
-  // Get itemToMove when $moveTodoId changes _____________________________________________________
-  $: itemToMove = $todoItems.find((item) => item.id === $moveTodoId);
+  // Get itemToMove when $moveTodoId changes _______________________________________________________
+  $: itemToMove =
+    $todoLists.find((list) => list.id === $moveTodoId) ??
+    $todoItems.find((item) => item.id === $moveTodoId);
 </script>
 
 {#if itemToMove && $openedMenuId === moveTodoMenuId}
