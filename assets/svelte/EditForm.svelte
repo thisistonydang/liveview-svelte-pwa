@@ -84,6 +84,12 @@
       }
     }
 
+    // Check if string is too long.
+    if (newName.length > 500) {
+      error = "Cannot be over 500 characters!";
+      return;
+    }
+
     commitEdits();
   }
 
