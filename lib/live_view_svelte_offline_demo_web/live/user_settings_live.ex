@@ -34,6 +34,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
             phx-change="validate_email"
           >
             <.input field={@email_form[:email]} type="email" label="Email" required />
+
             <.input
               field={@email_form[:current_password]}
               name="current_password"
@@ -43,6 +44,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
               value={@email_form_current_password}
               required
             />
+
             <:actions>
               <.button phx-disable-with="Changing...">Change Email</.button>
             </:actions>
@@ -98,6 +100,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
                 />
               </div>
             </div>
+
             <:actions>
               <.button phx-disable-with="Changing...">Change Password</.button>
             </:actions>
