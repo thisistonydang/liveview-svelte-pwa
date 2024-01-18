@@ -15,6 +15,7 @@
   import { liveView } from "../stores/liveViewSocket";
 
   import { syncClientToServer } from "./StateManagement.svelte";
+  import ConfirmDeletionModal from "./ConfirmDeletionModal.svelte";
   import ItemsContainer from "./ItemsContainer.svelte";
   import MoveTodoMenu from "./MoveTodoMenu.svelte";
   import NewItemForm from "./NewItemForm.svelte";
