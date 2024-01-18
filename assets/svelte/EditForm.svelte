@@ -140,7 +140,7 @@
   </div>
 
   {#if error}
-    <p class="text-error mt-1 text-sm" in:fly={{ y: -10 }}>
+    <p style="word-break: break-word;" class="text-error mt-1 text-sm" in:fly={{ y: -10 }}>
       {error}
     </p>
   {/if}
