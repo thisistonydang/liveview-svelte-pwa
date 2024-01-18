@@ -61,5 +61,5 @@
 </form>
 
 {#if error}
-  <p class="text-error" in:fly={{ y: -10 }}>{error}</p>
+  <p style="word-break: break-word;" class="text-error" in:fly={{ y: -10 }}>{error}</p>
 {/if}
