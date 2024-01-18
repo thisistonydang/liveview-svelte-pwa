@@ -262,6 +262,7 @@
       {handleDragKeyDown}
       {flipDurationMs}
       {menuClass}
+      {confirmDeletionModalId}
     />
   </ItemsContainer>
 {/if}
