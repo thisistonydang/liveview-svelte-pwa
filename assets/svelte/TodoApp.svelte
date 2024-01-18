@@ -33,6 +33,7 @@
   /** @type {string} */
   export let menuClass;
 
+  const confirmDeletionMenuId = "confirm_deletion-menu-id";
   const moveTodoMenuId = "move-todo-menu-id";
   const flipDurationMs = 100;
   let dragDisabled = true;
