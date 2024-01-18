@@ -93,6 +93,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
   defp is_valid_id_and_name?(item) do
     is_valid_uuid?(item["id"]) && is_valid_name?(item["name"])
   end
+
   def is_valid_new_name?(item) do
     Map.has_key?(item, "newName") && is_valid_name?(item["newName"])
   end
