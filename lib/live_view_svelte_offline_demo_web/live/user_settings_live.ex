@@ -33,7 +33,13 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
             phx-submit="update_email"
             phx-change="validate_email"
           >
-            <.input field={@email_form[:email]} type="email" label="Email" required />
+            <.input
+              field={@email_form[:email]}
+              type="email"
+              label="Email"
+              required
+              autocomplete="username"
+            />
 
             <.input
               field={@email_form[:current_password]}
@@ -43,6 +49,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
               label="Current password"
               value={@email_form_current_password}
               required
+              autocomplete="current-password"
             />
 
             <:actions>
