@@ -6,7 +6,7 @@
   import {
     isListsOpened,
     isTodoOpened,
-    moveTodoId,
+    itemToProcessId,
     newList,
     newTodo,
     openedMenuId,
@@ -41,7 +41,7 @@
     // Sync client state stores with localStorage on startup.
     $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
-    $moveTodoId = getParsedValue("moveTodoId", "string", $moveTodoId);
+    $itemToProcessId = getParsedValue("itemToProcessId", "string", $itemToProcessId);
     $newList = getParsedValue("newList", "string", $newList);
     $newTodo = getParsedValue("newTodo", "string", $newTodo);
     $openedMenuId = getParsedValue("openedMenuId", "string", $openedMenuId);
@@ -57,7 +57,7 @@
   $: if ($isClientStateRestored) {
     localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
-    localStorage.setItem("moveTodoId", JSON.stringify($moveTodoId));
+    localStorage.setItem("itemToProcessId", JSON.stringify($itemToProcessId));
     localStorage.setItem("newList", JSON.stringify($newList));
     localStorage.setItem("newTodo", JSON.stringify($newTodo));
     localStorage.setItem("openedMenuId", JSON.stringify($openedMenuId));
@@ -78,8 +78,8 @@
         $isTodoOpened = JSON.parse(newValue);
         break;
 
-      case "moveTodoId":
-        $moveTodoId = JSON.parse(newValue);
+      case "itemToProcessId":
+        $itemToProcessId = JSON.parse(newValue);
         break;
 
       case "newList":
