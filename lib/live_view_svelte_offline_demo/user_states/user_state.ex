@@ -53,6 +53,10 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
         changeset
     end
   end
+
+  defp validate_state_map_value(changeset) do
+  end
+
   def validate_lists(lists) do
     lists
     # Filter out lists that don't have the correct structure.
