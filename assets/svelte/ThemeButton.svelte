@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { scale } from "svelte/transition";
 
   import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
@@ -32,7 +33,10 @@
   </button>
 
   {#if $openedMenuId === themeMenuId}
-    <div class="menu bg-base-200 border border-neutral rounded-box absolute right-0">
+    <div
+      in:scale={{ duration: 100 }}
+      class="menu bg-base-200 border border-neutral rounded-box absolute right-0"
+    >
       <p class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">Theme</p>
 
       <ul class="w-28">
