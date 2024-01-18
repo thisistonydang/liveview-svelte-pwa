@@ -82,7 +82,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     end)
   end
 
-  def validate_todos(clean_lists, todos) do
+  defp validate_todos(clean_lists, todos) do
     clean_todos =
       todos
       # Filter out todos that don't have the correct structure.
