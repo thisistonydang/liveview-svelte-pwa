@@ -62,6 +62,13 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     case {lists, todos} do
       {lists, todos} when not is_list(lists) or not is_list(todos) ->
         changeset |> add_error(:state, "'lists' and 'todos' keys must be lists")
+
+      {lists, todos} ->
+        %{clean_lists: clean_lists, clean_todos: clean_todos} =
+          lists
+          |> validate_lists()
+          |> validate_todos(todos)
+
     end
   end
 
