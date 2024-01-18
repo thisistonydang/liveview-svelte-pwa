@@ -77,9 +77,11 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
             <div>
               <.input
                 field={@password_form[:email]}
-                type="hidden"
+                type="text"
                 id="hidden_user_email"
                 value={@current_email}
+                autocomplete="username"
+                style="display: none;"
               />
 
               <div class="space-y-8">
@@ -88,12 +90,14 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
                   type="password"
                   label="New password"
                   required
+                  autocomplete="new-password"
                 />
 
                 <.input
                   field={@password_form[:password_confirmation]}
                   type="password"
                   label="Confirm new password"
+                  autocomplete="new-password"
                 />
 
                 <.input
@@ -104,6 +108,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserSettingsLive do
                   id="current_password_for_password"
                   value={@current_password}
                   required
+                  autocomplete="current-password"
                 />
               </div>
             </div>
