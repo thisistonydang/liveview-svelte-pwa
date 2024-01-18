@@ -205,8 +205,12 @@
     $todoItems.find((item) => item.id === $moveTodoId);
 </script>
 
-{#if itemToMove && $openedMenuId === moveTodoMenuId}
-  <MoveTodoMenu {itemToMove} {menuClass} {moveTodo} />
+{#if itemToMove}
+  {#if $openedMenuId === confirmDeletionModalId}
+    <ConfirmDeletionModal listId={itemToMove.id} {menuClass} {deleteItem} />
+  {:else if $openedMenuId === moveTodoMenuId}
+    <MoveTodoMenu {itemToMove} {menuClass} {moveTodo} />
+  {/if}
 {/if}
 
 {#if $selectedListId}
