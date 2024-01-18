@@ -98,6 +98,10 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     Map.has_key?(item, "newName") && is_valid_name?(item["newName"])
   end
 
+  defp is_valid_completed_and_list_id?(clean_lists, todo) do
+    is_boolean(todo["completed"]) && is_valid_list_id?(clean_lists, todo["list_id"])
+  end
+
   defp is_valid_name?(name) do
     is_binary(name) && String.length(name) <= 1000
   end
