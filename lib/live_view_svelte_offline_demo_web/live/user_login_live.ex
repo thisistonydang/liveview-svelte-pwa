@@ -23,15 +23,24 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserLoginLive do
       </.header>
 
       <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
+        <.input field={@form[:email]} type="email" label="Email" required autocomplete="username" />
+
+        <.input
+          field={@form[:password]}
+          type="password"
+          label="Password"
+          required
+          autocomplete="current-password"
+        />
 
         <:actions>
           <.input field={@form[:remember_me]} type="checkbox" label="Keep me logged in" />
+
           <.link href={~p"/users/reset_password"} class="text-sm font-semibold">
             Forgot your password?
           </.link>
         </:actions>
+
         <:actions>
           <.button phx-disable-with="Signing in..." class="w-full">
             Sign in
