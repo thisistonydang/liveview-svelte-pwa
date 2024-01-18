@@ -200,17 +200,15 @@
   $: selectedListCompletedItems = selectedListTodoItems.filter((item) => item.completed);
 
   // Get itemToMove when $moveTodoId changes _______________________________________________________
-  $: itemToMove =
-    $todoLists.find((list) => list.id === $moveTodoId) ??
-    $todoItems.find((item) => item.id === $moveTodoId);
+  $: itemToMove = $todoItems.find((item) => item.id === $moveTodoId);
 </script>
 
-{#if itemToMove}
-  {#if $openedMenuId === confirmDeletionModalId}
-    <ConfirmDeletionModal listId={itemToMove.id} {menuClass} {deleteItem} />
-  {:else if $openedMenuId === moveTodoMenuId}
-    <MoveTodoMenu {itemToMove} {menuClass} {moveTodo} />
-  {/if}
+{#if $moveTodoId && $openedMenuId === confirmDeletionModalId}
+  <ConfirmDeletionModal listId={$moveTodoId} {menuClass} {deleteItem} />
+{/if}
+
+{#if itemToMove && $openedMenuId === moveTodoMenuId}
+  <MoveTodoMenu {itemToMove} {menuClass} {moveTodo} />
 {/if}
 
 {#if $selectedListId}
