@@ -73,8 +73,8 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     # Remove extra keys from list maps.
     |> Enum.map(fn list ->
       case list do
-        %{"id" => id, "name" => name, "isEditing" => is_editing, "newName" => new_name} ->
-          %{"id" => id, "name" => name, "isEditing" => is_editing, "newName" => new_name}
+        %{"id" => id, "name" => name, "isEditing" => true, "newName" => new_name} ->
+          %{"id" => id, "name" => name, "isEditing" => true, "newName" => new_name}
 
         %{"id" => id, "name" => name} ->
           %{"id" => id, "name" => name}
