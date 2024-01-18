@@ -38,7 +38,15 @@
     >
       <button
         class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
-        on:click={() => deleteItem(itemsStore, item.id)}
+        on:click={(e) => {
+          if (confirmDeletionModalId) {
+            e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
+            $moveTodoId = item.id;
+            $openedMenuId = confirmDeletionModalId;
+          } else {
+            deleteItem(itemsStore, item.id);
+          }
+        }}
       >
         <TrashSvgIcon className="w-4 h-4" />
         Delete
