@@ -55,6 +55,9 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
   end
 
   defp validate_state_map_value(changeset) do
+    state = changeset |> get_change(:state)
+    lists = state |> Map.get("value") |> Map.get("lists")
+    todos = state |> Map.get("value") |> Map.get("todos")
   end
 
   defp validate_lists(lists) do
