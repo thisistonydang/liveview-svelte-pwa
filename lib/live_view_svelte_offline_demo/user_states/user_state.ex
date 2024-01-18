@@ -53,6 +53,43 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
         changeset
     end
   end
+  def validate_lists(lists) do
+    lists
+    # Filter out lists that don't have the correct structure.
+    |> Enum.filter(fn list ->
+      case list do
+        %{"id" => id, "name" => name, "isEditing" => is_editing} ->
+          is_valid_uuid?(id) &&
+            is_binary(name) &&
+            String.length(name) <= 1000 &&
+            is_editing == true &&
+            Map.has_key?(list, "newName") &&
+            is_binary(list["newName"]) &&
+            String.length(list["newName"]) <= 1000
+
+        %{"id" => id, "name" => name} ->
+          is_valid_uuid?(id) &&
+            is_binary(name) &&
+            String.length(name) <= 1000
+
+        _ ->
+          false
+      end
+    end)
+    # Remove lists with duplicate ids.
+    |> Enum.uniq_by(& &1["id"])
+    # Remove extra keys from list maps.
+    |> Enum.map(fn list ->
+      case list do
+        %{"id" => id, "name" => name, "isEditing" => is_editing, "newName" => new_name} ->
+          %{"id" => id, "name" => name, "isEditing" => is_editing, "newName" => new_name}
+
+        %{"id" => id, "name" => name} ->
+          %{"id" => id, "name" => name}
+      end
+    end)
+  end
+
 
   defp is_valid_uuid?(uuid) do
     case Ecto.UUID.dump(uuid) do
