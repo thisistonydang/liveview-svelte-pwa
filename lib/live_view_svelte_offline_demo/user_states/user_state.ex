@@ -82,6 +82,55 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     end)
   end
 
+  def validate_todos(clean_lists, todos) do
+    clean_todos =
+      todos
+      # Filter out todos that don't have the correct structure.
+      |> Enum.filter(fn todo ->
+        case todo do
+          %{"id" => _, "name" => _, "completed" => _, "list_id" => _, "isEditing" => true} ->
+            is_valid_id_and_name?(todo) &&
+              is_valid_completed_and_list_id?(clean_lists, todo) &&
+              is_valid_new_name?(todo)
+
+          %{"id" => _, "name" => _, "completed" => _, "list_id" => _} ->
+            is_valid_id_and_name?(todo) &&
+              is_valid_completed_and_list_id?(clean_lists, todo)
+
+          _ ->
+            false
+        end
+      end)
+      # Remove todos with duplicate ids.
+      |> Enum.uniq_by(& &1["id"])
+      # Remove extra keys from todo maps.
+      |> Enum.map(fn todo ->
+        case todo do
+          %{
+            "id" => id,
+            "name" => name,
+            "completed" => completed,
+            "list_id" => list_id,
+            "isEditing" => true,
+            "newName" => new_name
+          } ->
+            %{
+              "id" => id,
+              "name" => name,
+              "completed" => completed,
+              "list_id" => list_id,
+              "isEditing" => true,
+              "newName" => new_name
+            }
+
+          %{"id" => id, "name" => name, "completed" => completed, "list_id" => list_id} ->
+            %{"id" => id, "name" => name, "completed" => completed, "list_id" => list_id}
+        end
+      end)
+
+    %{clean_lists: clean_lists, clean_todos: clean_todos}
+  end
+
   defp is_valid_id_and_name?(item) do
     is_valid_uuid?(item["id"]) && is_valid_name?(item["name"])
   end
