@@ -22,6 +22,7 @@
   export let handleDragKeyDown;
   export let flipDurationMs: number;
   export let menuClass: string;
+  export let confirmDeletionModalId: string;
 
   const hasTouchScreen = useHasTouchScreen();
 </script>
@@ -77,7 +78,14 @@
         </button>
 
         <div class="flex gap-1">
-          <OptionsMenu item={list} itemsStore={todoLists} {updateItem} {deleteItem} {menuClass} />
+          <OptionsMenu
+            item={list}
+            itemsStore={todoLists}
+            {updateItem}
+            {deleteItem}
+            {menuClass}
+            {confirmDeletionModalId}
+          />
 
           <!-- Drag Handle. -->
           <button
