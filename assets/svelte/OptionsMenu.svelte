@@ -36,52 +36,58 @@
       in:scale={{ duration: 100 }}
       class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box"
     >
-      <button
-        class="flex items-center gap-1 p-2 rounded-lg hover:bg-base-300"
-        on:click={(e) => {
-          if (confirmDeletionModalId) {
-            e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
-            $itemToProcessId = item.id;
-            $openedMenuId = confirmDeletionModalId;
-          } else {
-            deleteItem(itemsStore, item.id);
-          }
-        }}
-      >
-        <TrashSvgIcon className="w-4 h-4" />
-        Delete
-      </button>
-
-      {#if moveTodoMenuId}
+      <li>
         <button
-          class="flex items-center gap-1 p-2 rounded-lg hover:bg-base-300"
+          class="flex items-center gap-1 p-2 rounded-lg"
           on:click={(e) => {
-            e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
-            $itemToProcessId = item.id;
-            $openedMenuId = moveTodoMenuId;
+            if (confirmDeletionModalId) {
+              e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
+              $itemToProcessId = item.id;
+              $openedMenuId = confirmDeletionModalId;
+            } else {
+              deleteItem(itemsStore, item.id);
+            }
           }}
         >
-          <ArrowRightStartOnRectangleSvgIcon className="w-4 h-4" />
-          Move
+          <TrashSvgIcon className="w-4 h-4" />
+          Delete
         </button>
+      </li>
+
+      {#if moveTodoMenuId}
+        <li>
+          <button
+            class="flex items-center gap-1 p-2 rounded-lg"
+            on:click={(e) => {
+              e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
+              $itemToProcessId = item.id;
+              $openedMenuId = moveTodoMenuId;
+            }}
+          >
+            <ArrowRightStartOnRectangleSvgIcon className="w-4 h-4" />
+            Move
+          </button>
+        </li>
       {/if}
 
-      <button
-        class="flex items-center gap-1 p-2 rounded-lg hover:bg-base-300"
-        on:click={(e) => {
-          e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
-          $openedMenuId = "edit-form-id";
+      <li>
+        <button
+          class="flex items-center gap-1 p-2 rounded-lg"
+          on:click={(e) => {
+            e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
+            $openedMenuId = "edit-form-id";
 
-          updateItem(itemsStore, {
-            ...item,
-            newName: item.name,
-            isEditing: true,
-          });
-        }}
-      >
-        <PencilSvgIcon className="w-4 h-4" />
-        Edit
-      </button>
+            updateItem(itemsStore, {
+              ...item,
+              newName: item.name,
+              isEditing: true,
+            });
+          }}
+        >
+          <PencilSvgIcon className="w-4 h-4" />
+          Edit
+        </button>
+      </li>
     </div>
   {/if}
 </div>
