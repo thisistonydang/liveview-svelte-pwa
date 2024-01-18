@@ -32,7 +32,10 @@
 
       <button
         class="btn btn-error border border-neutral"
-        on:click={() => deleteItem(todoLists, listId)}
+        on:click={() => {
+          deleteItem(todoLists, listId);
+          dialog.close();
+        }}
       >
         Delete
       </button>
