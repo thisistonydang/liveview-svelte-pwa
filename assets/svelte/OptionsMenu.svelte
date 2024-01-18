@@ -7,7 +7,7 @@
   import TrashSvgIcon from "lib/svg-icons/TrashSvgIcon.svelte";
   import XCircleSvgIcon from "lib/svg-icons/XCircleSvgIcon.svelte";
 
-  import { moveTodoId, openedMenuId } from "../stores/clientOnlyState";
+  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
 
   export let item;
   export let itemsStore;
@@ -41,7 +41,7 @@
         on:click={(e) => {
           if (confirmDeletionModalId) {
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
-            $moveTodoId = item.id;
+            $itemToProcessId = item.id;
             $openedMenuId = confirmDeletionModalId;
           } else {
             deleteItem(itemsStore, item.id);
@@ -57,7 +57,7 @@
           class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
           on:click={(e) => {
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
-            $moveTodoId = item.id;
+            $itemToProcessId = item.id;
             $openedMenuId = moveTodoMenuId;
           }}
         >
