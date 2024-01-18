@@ -92,12 +92,9 @@
       }
     }
 
-    $todoItems = $todoItems.map((item) => {
-      if (item.id === itemToMove.id) {
-        return { ...item, list_id: newListId };
-      }
-      return item;
-    });
+    // Move itemToMove to the top of the new list.
+    const newTodoItems = $todoItems.filter((item) => item.id !== itemToMove.id);
+    $todoItems = [{ ...itemToMove, list_id: newListId }, ...newTodoItems];
 
     syncClientToServer($todoItems, $todoLists, $liveView);
 
