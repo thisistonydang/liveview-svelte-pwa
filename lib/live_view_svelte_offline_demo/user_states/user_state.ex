@@ -108,4 +108,11 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
       _ -> false
     end
   end
+
+  defp is_valid_list_id?(clean_lists, list_id) do
+    case Enum.find(clean_lists, &(&1["id"] == list_id)) do
+      nil -> false
+      _ -> true
+    end
+  end
 end
