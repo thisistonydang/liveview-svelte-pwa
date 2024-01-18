@@ -59,7 +59,7 @@
                 msg: `'${itemToMove.name}' already exists in the '${list.name}' list.`,
               };
             } else {
-              $openedMenuId = "";
+              dialog.close();
               $toast = {
                 show: false,
                 kind: "info",
