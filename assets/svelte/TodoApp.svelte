@@ -5,7 +5,7 @@
   import {
     isListsOpened,
     isTodoOpened,
-    moveTodoId,
+    itemToProcessId,
     newList,
     newTodo,
     openedMenuId,
@@ -199,12 +199,12 @@
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
   $: selectedListCompletedItems = selectedListTodoItems.filter((item) => item.completed);
 
-  // Get itemToMove when $moveTodoId changes _______________________________________________________
-  $: itemToMove = $todoItems.find((item) => item.id === $moveTodoId);
+  // Get itemToMove when $itemToProcessId changes _______________________________________________________
+  $: itemToMove = $todoItems.find((item) => item.id === $itemToProcessId);
 </script>
 
-{#if $moveTodoId && $openedMenuId === confirmDeletionModalId}
-  <ConfirmDeletionModal listId={$moveTodoId} {menuClass} {deleteItem} />
+{#if $itemToProcessId && $openedMenuId === confirmDeletionModalId}
+  <ConfirmDeletionModal listId={$itemToProcessId} {menuClass} {deleteItem} />
 {/if}
 
 {#if itemToMove && $openedMenuId === moveTodoMenuId}
