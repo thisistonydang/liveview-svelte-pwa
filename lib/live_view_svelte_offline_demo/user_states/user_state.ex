@@ -58,19 +58,11 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     # Filter out lists that don't have the correct structure.
     |> Enum.filter(fn list ->
       case list do
-        %{"id" => id, "name" => name, "isEditing" => is_editing} ->
-          is_valid_uuid?(id) &&
-            is_binary(name) &&
-            String.length(name) <= 1000 &&
-            is_editing == true &&
-            Map.has_key?(list, "newName") &&
-            is_binary(list["newName"]) &&
-            String.length(list["newName"]) <= 1000
+        %{"id" => _, "name" => _, "isEditing" => true} ->
+          is_valid_id_and_name?(list) && is_valid_new_name?(list)
 
-        %{"id" => id, "name" => name} ->
-          is_valid_uuid?(id) &&
-            is_binary(name) &&
-            String.length(name) <= 1000
+        %{"id" => _, "name" => _} ->
+          is_valid_id_and_name?(list)
 
         _ ->
           false
