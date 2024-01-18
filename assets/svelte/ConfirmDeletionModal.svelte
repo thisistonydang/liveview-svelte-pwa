@@ -3,7 +3,7 @@
 
   import { clickOutside } from "lib/actions/clickOutside";
 
-  import { openedMenuId } from "../stores/clientOnlyState";
+  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
   import { todoLists } from "../stores/crdtState";
 
   export let listId: string;
@@ -22,7 +22,10 @@
 <dialog
   bind:this={dialog}
   class="{menuClass} menu bg-base-200 border border-neutral rounded-box"
-  on:close={() => ($openedMenuId = "")}
+  on:close={() => {
+    $openedMenuId = "";
+    $itemToProcessId = "";
+  }}
 >
   <div class="text-lg" use:clickOutside={() => dialog.close()}>
     <p class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-2">Confirm Deletion</p>

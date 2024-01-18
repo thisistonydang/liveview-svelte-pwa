@@ -4,7 +4,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
 
-  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { itemToProcessId, openedMenuId, selectedListId } from "../stores/clientOnlyState";
   import { todoLists } from "../stores/crdtState";
   import { toast } from "../stores/toast";
 
@@ -24,7 +24,10 @@
 <dialog
   bind:this={dialog}
   class="{menuClass} menu bg-base-200 border border-neutral rounded-box"
-  on:close={() => ($openedMenuId = "")}
+  on:close={() => {
+    $openedMenuId = "";
+    $itemToProcessId = "";
+  }}
 >
   <div class="text-lg" use:clickOutside={() => dialog.close()}>
     <p class="pl-4 pr-14 py-2 font-bold border-b border-neutral rounded-none mb-1.5">Select List</p>
