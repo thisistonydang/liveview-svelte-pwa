@@ -35,6 +35,12 @@
       }
     }
 
+    // Check if string is too long.
+    if (value.length > 500) {
+      error = "Cannot be over 500 characters!";
+      return;
+    }
+
     addItemCallback();
   }
 </script>
