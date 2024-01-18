@@ -57,7 +57,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
   defp validate_state_map_value(changeset) do
   end
 
-  def validate_lists(lists) do
+  defp validate_lists(lists) do
     lists
     # Filter out lists that don't have the correct structure.
     |> Enum.filter(fn list ->
