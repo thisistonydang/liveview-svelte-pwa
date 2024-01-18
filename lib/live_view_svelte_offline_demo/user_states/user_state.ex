@@ -60,6 +60,8 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     todos = state |> Map.get("value") |> Map.get("todos")
 
     case {lists, todos} do
+      {lists, todos} when not is_list(lists) or not is_list(todos) ->
+        changeset |> add_error(:state, "'lists' and 'todos' keys must be lists")
     end
   end
 
