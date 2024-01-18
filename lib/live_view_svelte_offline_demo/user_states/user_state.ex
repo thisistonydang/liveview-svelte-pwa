@@ -69,6 +69,11 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
           |> validate_lists()
           |> validate_todos(todos)
 
+        changeset
+        |> put_change(
+          :state,
+          Map.merge(state, %{"value" => %{"lists" => clean_lists, "todos" => clean_todos}})
+        )
     end
   end
 
