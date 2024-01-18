@@ -37,7 +37,7 @@
       class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box"
     >
       <button
-        class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
+        class="flex items-center gap-1 p-2 rounded-lg hover:bg-base-300"
         on:click={(e) => {
           if (confirmDeletionModalId) {
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
@@ -54,7 +54,7 @@
 
       {#if moveTodoMenuId}
         <button
-          class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
+          class="flex items-center gap-1 p-2 rounded-lg hover:bg-base-300"
           on:click={(e) => {
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
             $itemToProcessId = item.id;
@@ -67,7 +67,7 @@
       {/if}
 
       <button
-        class="flex items-center gap-1 p-2 rounded-lg hover:bg-neutral"
+        class="flex items-center gap-1 p-2 rounded-lg hover:bg-base-300"
         on:click={(e) => {
           e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
           $openedMenuId = "edit-form-id";

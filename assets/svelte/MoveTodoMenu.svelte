@@ -39,7 +39,7 @@
     {#each $todoLists as list (list.id)}
       <label
         style="word-break: break-word;"
-        class="flex items-center gap-3 px-2 py-1.5 rounded-lg cursor-pointer hover:bg-neutral"
+        class="flex items-center gap-3 px-2 py-1.5 rounded-lg cursor-pointer hover:bg-base-300"
       >
         <input
           type="radio"
