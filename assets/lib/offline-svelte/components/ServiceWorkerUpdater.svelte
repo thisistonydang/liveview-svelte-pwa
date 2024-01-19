@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
+  import config from "../../../../priv/static/sw.config.js";
   import { isSWUpdateAvailable } from "../lib/isSWUpdateAvailable";
   import { isSWUpdateConfirmed } from "../lib/isSWUpdateConfirmed";
 
@@ -33,6 +34,6 @@
   });
 
   $: if ($isSWUpdateConfirmed) {
-    newSW.postMessage({ type: "request_skip_waiting" });
+    newSW.postMessage({ type: config.messageTypes.REQUEST_SKIP_WAITING });
   }
 </script>
