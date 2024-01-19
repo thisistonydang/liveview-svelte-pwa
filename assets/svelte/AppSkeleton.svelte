@@ -7,6 +7,5 @@
     </div>
   </div>
   <div class="skeleton w-full h-16 mb-3"></div>
-  <div class="skeleton w-full h-1/2 mb-3"></div>
-  <div class="skeleton w-full h-1/2 mb-3"></div>
+  <div class="skeleton w-full h-full mb-3"></div>
 </div>
