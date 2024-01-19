@@ -4,7 +4,7 @@
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
 
 import config from "./sw.config.js";
-const { cacheName, debug, publicAssets } = config; 
+const { cacheName, debug, messageTypes } = config; 
 
 // Install _________________________________________________________________________________________
 
@@ -192,19 +192,19 @@ function handleMessage(event) {
   debug && console.log("[Service Worker] Handling message...", event.data);
 
   switch (event.data.type) {
-    case "request_asset_caching":
+    case messageTypes.REQUEST_ASSET_CACHING:
       event.waitUntil(cacheAssets(event.data.payload.assets));
       break;
 
-    case "request_asset_deletion":
+    case messageTypes.REQUEST_ASSET_DELETION:
       event.waitUntil(deleteCacheAssets(event.data.payload.assets));
       break;
 
-    case "request_skip_waiting":
+    case messageTypes.REQUEST_SKIP_WAITING:
       event.waitUntil(handleRequestSkipWaiting(event));
       break;
 
-    case "request_service_worker_version":
+    case messageTypes.REQUEST_SERVICE_WORKER_VERSION:
       const message = {
         type: event.data.type,
         payload: {
