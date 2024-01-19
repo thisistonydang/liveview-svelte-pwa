@@ -1,6 +1,12 @@
 export default {
   cacheName: "v2024.01.14.1",
   debug: false,
+  messageTypes: {
+    REQUEST_ASSET_CACHING: "request_asset_caching",
+    REQUEST_ASSET_DELETION: "request_asset_deletion",
+    REQUEST_SKIP_WAITING: "request_skip_waiting",
+    REQUEST_SERVICE_WORKER_VERSION: "request_service_worker_version",
+  },
   privateAssets: [
     "/app", 
   ],
