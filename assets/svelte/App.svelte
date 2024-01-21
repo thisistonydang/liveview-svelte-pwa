@@ -50,6 +50,7 @@
 <StateManagement />
 <ClientOnlyStateManagement bind:isClientStateRestored />
 <OfflineSvelte />
+<ScrollPositionRestorer {isClientStateRestored} />
 <ThemeSyncManager />
 
 <ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
@@ -74,5 +75,3 @@
 {:else}
   <AppSkeleton />
 {/if}
-
-<ScrollPositionRestorer {isClientStateRestored} />
