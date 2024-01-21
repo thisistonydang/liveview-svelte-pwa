@@ -1,7 +1,7 @@
 <script>
   import { isClientStateRestored } from "../lib/isClientStateRestored";
 
-  export let scrollPositionKey;
+  const scrollPositionKey = "scrollPosition";
 
   let scrollPositionRestored = false;
   let scrollX;
