@@ -1,7 +1,5 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
-
-  import { isClientStateRestored } from "lib/offline-svelte";
 
   import {
     isListsOpened,
@@ -14,6 +12,8 @@
   } from "../stores/clientOnlyState";
   import { todoItems, todoLists } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
+
+  export let isClientStateRestored: boolean;
 
   /**
    * Get parsed value from localStorage.
@@ -50,11 +50,11 @@
 
     // Let offline-svelte know that the client state has been restored in order
     // to restore scroll position.
-    $isClientStateRestored = true;
+    isClientStateRestored = true;
   });
 
   // Keep localStorage in sync with client state stores.
-  $: if ($isClientStateRestored) {
+  $: if (isClientStateRestored) {
     localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
     localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
     localStorage.setItem("itemToProcessId", JSON.stringify($itemToProcessId));
