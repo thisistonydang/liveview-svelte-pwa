@@ -73,3 +73,5 @@
 {:else}
   <AppSkeleton />
 {/if}
+
+<ScrollPositionRestorer {isClientStateRestored} />
