@@ -1,10 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import {
-    isClientStateRestored,
-    requestAssetCaching,
-    requestServiceWorkerVersion,
-  } from "../lib/offline-svelte";
+  import { requestAssetCaching, requestServiceWorkerVersion } from "../lib/offline-svelte";
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
@@ -30,6 +26,7 @@
   export let server_state;
 
   const menuClass = "menu-class";
+  let isClientStateRestored = false;
 
   // Setting $serverState here is required so that an initial state is available
   // when offline. This allows the initial syncServerToClient call to set the
@@ -61,7 +58,7 @@
   <UpdateAlert />
 
   {#if $urlHash === ""}
-    <Header {currentUserEmail} {menuClass} />
+    <Header {currentUserEmail} bind:isClientStateRestored {menuClass} />
   {:else}
     <StickyHeader />
   {/if}
