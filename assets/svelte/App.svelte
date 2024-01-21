@@ -53,7 +53,7 @@
 
 <ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
 
-{#if $isClientStateRestored}
+{#if isClientStateRestored}
   <Toast />
   <UpdateAlert />
 
