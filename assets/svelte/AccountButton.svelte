@@ -33,7 +33,7 @@
     isSettingsLoading = true;
     showTopBar();
 
-    if (!(await isConnected())) {
+    if (!(await isConnected({}))) {
       $toast = {
         show: true,
         kind: "error",
@@ -55,7 +55,7 @@
     isLogOutLoading = true;
     showTopBar();
 
-    if (!(await isConnected())) {
+    if (!(await isConnected({}))) {
       $toast = {
         show: true,
         kind: "error",
