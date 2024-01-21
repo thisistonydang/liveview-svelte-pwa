@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { fly } from "svelte/transition";
 
   import { isConnected, isSWUpdateAvailable, isSWUpdateConfirmed } from "lib/offline-svelte";
@@ -6,8 +6,7 @@
 
   let showAlert = false;
 
-  /** @type {number} */
-  let width;
+  let width: number;
 
   $: if ($isSWUpdateAvailable) {
     isConnected({ timeout: 10000 }).then((connected) => {
