@@ -1,4 +1,3 @@
-export { isClientStateRestored } from "./lib/isClientStateRestored";
 export { isConnected } from "./lib/isConnected";
 export { isSWUpdateAvailable } from "./lib/isSWUpdateAvailable";
 export { isSWUpdateConfirmed } from "./lib/isSWUpdateConfirmed";
