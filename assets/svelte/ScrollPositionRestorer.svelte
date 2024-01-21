@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import { isClientStateRestored } from "../lib/isClientStateRestored";
 
   const scrollPositionKey = "scrollPosition";
 
   let scrollPositionRestored = false;
-  let scrollX;
-  let scrollY;
+  let scrollX: number;
+  let scrollY: number;
 
   function restoreScrollPosition() {
     const scrollPosition = localStorage.getItem(scrollPositionKey);
