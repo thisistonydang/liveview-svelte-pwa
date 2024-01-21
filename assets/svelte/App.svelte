@@ -47,7 +47,7 @@
 </script>
 
 <StateManagement />
-<ClientOnlyStateManagement />
+<ClientOnlyStateManagement bind:isClientStateRestored />
 <OfflineSvelte />
 <ThemeSyncManager />
 
