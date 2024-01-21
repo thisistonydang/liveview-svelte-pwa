@@ -1,12 +1,7 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
 
-  import {
-    isConnected,
-    isClientStateRestored,
-    requestAssetDeletion,
-    serviceWorkerVersion,
-  } from "lib/offline-svelte";
+  import { isConnected, requestAssetDeletion, serviceWorkerVersion } from "lib/offline-svelte";
   import UserSvgIcon from "lib/svg-icons/UserSvgIcon.svelte";
   import { showTopBar, hideTopBar } from "lib/topbar";
 
@@ -15,6 +10,7 @@
   import { toast } from "../stores/toast";
 
   export let currentUserEmail: string;
+  export let isClientStateRestored: boolean;
   export let menuClass: string;
 
   const accountMenuId = "account-menu-id";
@@ -69,7 +65,7 @@
     }
 
     requestAssetDeletion(config.privateAssets); // Clear cached assets.
-    $isClientStateRestored = false; // This stops client state from being saved to localStorage.
+    isClientStateRestored = false; // This stops client state from being saved to localStorage.
     localStorage.clear(); // Clear client state.
 
     const logOutLink = document.getElementById("log-out-link");
