@@ -1,19 +1,16 @@
 /**
  * Check if the client can connect to the origin server.
  *
- * @param {Object} options
- * @param {string} options.pathname - URL path to try to send fetch request. Default: "/"
- * @param {number} options.timeout - Default: 2000 milliseconds
- *
- * @returns {Promise<boolean>}
+ * @param options.pathname - URL path to try to send fetch request. Default: "/"
+ * @param options.timeout - Default: 5000 milliseconds
  */
-export async function isConnected(
-  { pathname = "/", timeout = 5000 } = { pathname: "/", timeout: 5000 },
-) {
-  if (!window.navigator.onLine) {
-    return false;
-  }
-
+export async function isConnected({
+  pathname = "/",
+  timeout = 5000,
+}: {
+  pathname?: string;
+  timeout?: number;
+}): Promise<boolean> {
   try {
     // Avoid CORS errors with request to own origin.
     const url = new URL(`${window.location.origin}${pathname}`);
