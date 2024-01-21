@@ -5,6 +5,7 @@
   import ThemeButton from "./ThemeButton.svelte";
 
   export let currentUserEmail: string;
+  export let isClientStateRestored: boolean;
   export let menuClass: string;
 
   let scrollY: number;
@@ -24,7 +25,7 @@
 
     <div class="flex items-center gap-3">
       <ThemeButton {menuClass} />
-      <AccountButton {currentUserEmail} {menuClass} />
+      <AccountButton {currentUserEmail} bind:isClientStateRestored {menuClass} />
     </div>
   </div>
 </div>
