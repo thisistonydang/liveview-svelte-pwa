@@ -1,8 +1,5 @@
 import { writable } from "svelte/store";
 
-// Boolean store to track when the socket is initially mounted.
-export let isSocketMounted = writable(false);
-
 // Store containing 'live' object from live_svelte.
 export let liveView = writable();
 

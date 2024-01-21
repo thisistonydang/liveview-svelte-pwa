@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  import { isSocketMounted, liveView, serverState, sessionCount } from "../stores/liveViewSocket";
+  import { liveView, serverState, sessionCount } from "../stores/liveViewSocket";
   import VisibilityChangeTracker from "./VisibilityChangeTracker.svelte";
 
   // Store 'live' object from live_svelte in a Svelte store.
@@ -17,7 +17,7 @@
   $: $sessionCount = session_count;
 
   onMount(() => {
-    $isSocketMounted = true;
+    live.pushEvent("request_server_state");
   });
 </script>
 

@@ -30,7 +30,7 @@
 <script>
   import { onMount } from "svelte";
   import { todoItems, todoLists } from "../stores/crdtState";
-  import { isSocketMounted, liveView, serverState } from "../stores/liveViewSocket";
+  import { liveView, serverState } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
   const CLIENT_STATE_KEY = "clientState";
@@ -140,9 +140,6 @@
   onMount(() => {
     mounted = true;
   });
-
-  // Request latest server state when LiveView socket is mounted.
-  $: if ($isSocketMounted) $liveView.pushEvent("request_server_state");
 
   // Sync state whenever new server state is received.
   $: if (mounted) syncServerToClient($serverState, CLIENT_STATE_KEY);
