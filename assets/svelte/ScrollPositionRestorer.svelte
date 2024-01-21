@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isClientStateRestored } from "../lib/isClientStateRestored";
+  export let isClientStateRestored = false;
 
   const scrollPositionKey = "scrollPosition";
 
@@ -22,7 +22,7 @@
   }
 
   // Restore scroll position AFTER client state is restored to avoid jumping scroll position.
-  $: if ($isClientStateRestored) {
+  $: if (isClientStateRestored) {
     setTimeout(() => {
       restoreScrollPosition();
       scrollPositionRestored = true;
