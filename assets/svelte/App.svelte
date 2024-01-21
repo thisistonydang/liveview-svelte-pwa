@@ -12,6 +12,7 @@
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
+  import ScrollPositionRestorer from "./ScrollPositionRestorer.svelte";
   import StateManagement from "./StateManagement.svelte";
   import StickyHeader from "./StickyHeader.svelte";
   import ThemeSyncManager from "./ThemeSyncManager.svelte";
