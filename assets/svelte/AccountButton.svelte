@@ -64,9 +64,11 @@
       return;
     }
 
-    requestAssetDeletion(config.privateAssets); // Clear cached assets.
-    isClientStateRestored = false; // This stops client state from being saved to localStorage.
+    // This shows the skeleton screen and also stops client state from being saved to localStorage.
+    isClientStateRestored = false;
+
     localStorage.clear(); // Clear client state.
+    requestAssetDeletion(config.privateAssets); // Clear cached assets.
 
     const logOutLink = document.getElementById("log-out-link");
     try {
