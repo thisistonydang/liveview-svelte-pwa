@@ -55,12 +55,14 @@
     </div>
 
     <!-- Collapse toggle. -->
-    <label class="cursor-pointer swap swap-rotate absolute top-[18px] right-5">
-      <!-- This checkbox toggles the above Daisy UI checkbox. -->
-      <input type="checkbox" class="hidden" bind:checked={isDropdownOpened} />
+    <button
+      class="swap swap-rotate absolute top-[18px] right-5"
+      class:swap-active={isDropdownOpened}
+      on:click={() => (isDropdownOpened = !isDropdownOpened)}
+    >
       <ChevronDownSvgIcon className="swap-off w-6 h-6" />
       <ChevronUpSvgIcon className="swap-on w-6 h-6" />
-    </label>
+    </button>
   </div>
 
   <div class="collapse-content">
