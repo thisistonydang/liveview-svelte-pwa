@@ -40,10 +40,10 @@
   }
 </script>
 
-<div class="collapse border border-neutral mt-2 mb-10 overflow-visible">
-  <!-- This hidden checkbox controls the collapse via Daisy UI. -->
-  <input type="checkbox" class="hidden pointer-events-none" bind:checked={isDropdownOpened} />
-
+<div
+  class="collapse border border-neutral mt-2 mb-10 overflow-visible"
+  class:collapse-open={isDropdownOpened}
+>
   <!-- Collapse title. -->
   <div class="collapse-title relative" style="cursor: default;">
     <div class="flex gap-2 items-center text-xl font-medium mr-5">
