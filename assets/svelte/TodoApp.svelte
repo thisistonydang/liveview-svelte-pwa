@@ -196,7 +196,7 @@
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
   $: selectedListCompletedItems = selectedListTodoItems.filter((item) => item.completed);
 
-  // Get itemToMove when $itemToProcessId changes _______________________________________________________
+  // Get itemToMove when $itemToProcessId changes __________________________________________________
   $: itemToMove = $todoItems.find((item) => item.id === $itemToProcessId);
 </script>
 
