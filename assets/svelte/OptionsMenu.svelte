@@ -40,8 +40,8 @@
 
   {#if $openedMenuId === item.id}
     <ul
-      in:scale={{ duration: 100 }}
       class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box"
+      in:scale={{ duration: 100 }}
     >
       <li>
         <button
