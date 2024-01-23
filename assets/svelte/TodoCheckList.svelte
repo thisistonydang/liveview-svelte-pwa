@@ -93,8 +93,8 @@
       {/if}
     </li>
   {:else}
-    <p class="flex items-center h-10 px-2" in:fade={{ delay: 250 }}>
+    <li class="flex items-center h-10 px-2" in:fade={{ delay: 250 }}>
       This list is looking lonely! Add some items?
-    </p>
+    </li>
   {/each}
 </ul>
