@@ -22,7 +22,7 @@
 </script>
 
 <button
-  title="Drag to sort"
+  title="Drag to sort."
   aria-label="Drag to sort."
   class="
     rounded-lg
