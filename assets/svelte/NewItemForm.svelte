@@ -51,7 +51,7 @@
     {placeholder}
     class="
       input input-bordered border-neutral w-full join-item
-      focus:outline-none focus:ring-2 focus:ring-accent focus:ring-inset
+      focus:outline-none focus:ring-1 focus:ring-accent focus:ring-inset
     "
     required
     bind:value

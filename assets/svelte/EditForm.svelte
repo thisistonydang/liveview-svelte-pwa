@@ -128,7 +128,10 @@
     <input
       use:focus
       type="text"
-      class="input input-bordered border-neutral w-full sm:join-item"
+      class="
+        input input-bordered border-neutral w-full sm:join-item
+        focus:outline-none focus:ring-1 focus:ring-accent focus:ring-inset
+      "
       bind:value={newName}
       on:input={handleInput}
       on:keydown={handleKeyDown}
