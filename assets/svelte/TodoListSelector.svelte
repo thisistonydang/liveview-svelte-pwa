@@ -25,7 +25,10 @@
 </script>
 
 <div
-  class="min-h-[40px]"
+  class="
+    min-h-[40px] rounded-lg
+    focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+  "
   aria-label="Lists"
   use:dndzone={{
     items: $todoLists,
@@ -42,7 +45,10 @@
     {@const listItems = $todoItems.filter((item) => item.list_id === list.id)}
     {@const completedItems = listItems.filter((item) => item.completed)}
     <div
-      class="flex items-center justify-between"
+      class="
+        flex items-center justify-between rounded-lg
+        focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+      "
       aria-label={list.name}
       animate:flip={{ duration: flipDurationMs }}
     >
@@ -53,6 +59,7 @@
           class="
             flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg
             text-lg text-left active:bg-base-300
+            focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
           "
           class:pointer-events-none={$openedMenuId}
           class:hover:bg-base-200={!hasTouchScreen}
