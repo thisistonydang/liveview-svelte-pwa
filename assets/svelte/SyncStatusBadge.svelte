@@ -21,6 +21,8 @@
 </script>
 
 <button
+  aria-label="Sync Status."
+  title="Click to force sync."
   class="
     badge w-28 border border-neutral
     focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
