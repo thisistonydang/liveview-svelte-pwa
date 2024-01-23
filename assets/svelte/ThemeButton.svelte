@@ -30,7 +30,7 @@
       focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
     "
     aria-label="Theme Selector."
-    title="Click to change the theme (system, dark, light)."
+    title="Click to change the theme."
     on:click={() => ($openedMenuId = $openedMenuId === themeMenuId ? "" : themeMenuId)}
   >
     <SwatchSvgIcon className="h-6 w-6" />
