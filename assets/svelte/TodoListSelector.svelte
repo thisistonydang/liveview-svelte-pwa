@@ -24,7 +24,7 @@
   const hasTouchScreen = useHasTouchScreen();
 </script>
 
-<div
+<ul
   class="
     min-h-[40px] rounded-lg
     focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
@@ -44,7 +44,7 @@
   {#each $todoLists as list (list.id)}
     {@const listItems = $todoItems.filter((item) => item.list_id === list.id)}
     {@const completedItems = listItems.filter((item) => item.completed)}
-    <div
+    <li
       class="
         flex items-center justify-between rounded-lg
         focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
@@ -94,10 +94,10 @@
           <DragHandle bind:dragDisabled />
         </div>
       {/if}
-    </div>
+    </li>
   {:else}
     <p class="flex items-center h-10 px-2" in:fade={{ delay: 250 }}>
       No lists yet. Please create a list to get started.
     </p>
   {/each}
-</div>
+</ul>
