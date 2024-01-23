@@ -1,5 +1,5 @@
-<script>
-  export let href;
+<script lang="ts">
+  export let href: string;
   export let external = false;
 </script>
 
