@@ -174,8 +174,7 @@ async function respond(request) {
  */
 async function cacheResponse(request, response) {
   const cache = await caches.open(cacheName);
-  // TODO: Store by request URL instead of request object?
-  await cache.put(request, response); // TODO: Is this await necessary?
+  await cache.put(request, response); 
   debug && console.log(`[Service Worker] Cached ${request.url}`);
 }
 
