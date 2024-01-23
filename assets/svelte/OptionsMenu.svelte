@@ -22,6 +22,9 @@
 
   let trapFocus = false;
 
+  $: if ($openedMenuId !== item.id) {
+    trapFocus = false;
+  }
 </script>
 
 <div class="{menuClass} relative pointer-events-auto">
