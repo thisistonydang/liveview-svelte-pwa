@@ -27,7 +27,10 @@
 </script>
 
 <ul
-  class="min-h-[40px]"
+  class="
+    min-h-[40px] rounded-lg
+    focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+  "
   aria-label={title}
   use:dndzone={{
     items,
@@ -42,7 +45,10 @@
 >
   {#each items as item (item.id)}
     <li
-      class="flex items-center justify-between"
+      class="
+        flex items-center justify-between rounded-lg
+        focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+      "
       aria-label={item.name}
       animate:flip={{ duration: flipDurationMs }}
     >
@@ -59,7 +65,10 @@
         >
           <input
             type="checkbox"
-            class="checkbox bg-transparent pointer-events-auto"
+            class="
+              checkbox bg-transparent pointer-events-auto
+              focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-transparent
+            "
             checked={item.completed}
             on:change={() => toggleCompleted(item.id)}
           />
