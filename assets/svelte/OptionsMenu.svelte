@@ -20,6 +20,7 @@
 
 <div class="{menuClass} relative pointer-events-auto">
   <button
+    title="Options"
     class="flex items-center"
     aria-label="Toggle options menu."
     on:click={() => ($openedMenuId = $openedMenuId === item.id ? "" : item.id)}
