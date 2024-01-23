@@ -1,8 +1,7 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
-  /** @type {string} */
-  export let className;
+  export let className: string;
   export let callbackFunction;
 
   /**
