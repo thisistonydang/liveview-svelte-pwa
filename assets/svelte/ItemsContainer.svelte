@@ -56,7 +56,7 @@
 
     <!-- Collapse toggle. -->
     <button
-      title="Toggle collapse"
+      title="Toggle collapse."
       aria-label="Toggle collapse."
       class="
        swap swap-rotate absolute top-[18px] right-5 rounded-lg
