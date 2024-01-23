@@ -56,6 +56,7 @@
         <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />
       {:else}
         <label
+          title="Click to toggle completed."
           class="
             flex items-center gap-3 grow px-2 py-1.5 mr-5 rounded-lg
             text-lg cursor-pointer active:bg-base-300"
