@@ -72,6 +72,11 @@
             "
             checked={item.completed}
             on:change={() => toggleCompleted(item.id)}
+            on:keydown={(event) => {
+              if (event.key === "Enter") {
+                toggleCompleted(item.id);
+              }
+            }}
           />
 
           <span style="word-break: break-word;" class:line-through={item.completed}>
