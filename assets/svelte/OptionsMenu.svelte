@@ -32,7 +32,7 @@
   </button>
 
   {#if $openedMenuId === item.id}
-    <div
+    <ul
       in:scale={{ duration: 100 }}
       class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box"
     >
@@ -88,6 +88,6 @@
           Edit
         </button>
       </li>
-    </div>
+    </ul>
   {/if}
 </div>
