@@ -20,12 +20,12 @@
 
 <div class="{menuClass} relative pointer-events-auto">
   <button
-    title="Options"
     class="
       flex items-center rounded-full
       focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
     "
-    aria-label="Toggle options menu."
+    aria-label="Options menu."
+    title="Click to toggle options menu."
     on:click={() => ($openedMenuId = $openedMenuId === item.id ? "" : item.id)}
   >
     <div class="swap swap-rotate">
