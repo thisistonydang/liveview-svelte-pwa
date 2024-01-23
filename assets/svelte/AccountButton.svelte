@@ -82,7 +82,10 @@
 
 <div class="{menuClass} relative">
   <button
-    class="my-1 btn btn-circle btn-neutral"
+    class="
+      my-1 btn btn-circle btn-neutral
+      focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+    "
     aria-label="Account Menu"
     on:click={() => ($openedMenuId = $openedMenuId === accountMenuId ? "" : accountMenuId)}
   >

@@ -21,7 +21,10 @@
 <div class="{menuClass} relative pointer-events-auto">
   <button
     title="Options"
-    class="flex items-center"
+    class="
+      flex items-center
+      focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+    "
     aria-label="Toggle options menu."
     on:click={() => ($openedMenuId = $openedMenuId === item.id ? "" : item.id)}
   >
