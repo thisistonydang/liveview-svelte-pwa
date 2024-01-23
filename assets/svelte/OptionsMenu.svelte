@@ -36,6 +36,11 @@
     aria-label="Options menu."
     title="Click to toggle options menu."
     on:click={() => ($openedMenuId = $openedMenuId === item.id ? "" : item.id)}
+    on:keydown={(event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        trapFocus = true;
+      }
+    }}
   >
     <div class="swap swap-rotate">
       <input type="checkbox" class="hidden" checked={$openedMenuId === item.id} />
