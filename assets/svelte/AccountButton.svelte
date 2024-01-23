@@ -1,6 +1,9 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
 
+  import { focusTrap } from "@skeletonlabs/skeleton";
+
+  import { onEscape } from "lib/actions/onEscape";
   import { isConnected, requestAssetDeletion, serviceWorkerVersion } from "lib/offline-svelte";
   import UserSvgIcon from "lib/svg-icons/UserSvgIcon.svelte";
   import { showTopBar, hideTopBar } from "lib/topbar";
@@ -17,6 +20,7 @@
   let isLogOutLoading = false;
   let isSettingsLoading = false;
   let disabled = false;
+  let trapFocus = false;
 
   function showAbout() {
     $urlHash = "about";
@@ -78,6 +82,10 @@
       alert("Error logging out. Please try again.");
     }
   }
+
+  $: if ($openedMenuId !== accountMenuId) {
+    trapFocus = false;
+  }
 </script>
 
 <div class="{menuClass} relative">
@@ -89,6 +97,11 @@
     aria-label="Account Menu."
     title="Click to open account menu."
     on:click={() => ($openedMenuId = $openedMenuId === accountMenuId ? "" : accountMenuId)}
+    on:keydown={(event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        trapFocus = true;
+      }
+    }}
   >
     <UserSvgIcon className="h-6 w-6" />
   </button>
@@ -96,6 +109,8 @@
   {#if $openedMenuId === accountMenuId}
     <div
       in:scale={{ duration: 100 }}
+      use:focusTrap={trapFocus}
+      use:onEscape={() => ($openedMenuId = "")}
       class="menu bg-base-200 border border-neutral rounded-box absolute right-0"
     >
       <div class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
@@ -107,7 +122,11 @@
 
       <ul>
         <li>
-          <a href="/app#about" on:click|preventDefault={showAbout}>About</a>
+          <a
+            href="/app#about"
+            on:click|preventDefault={showAbout}
+            on:focus={() => (trapFocus = true)}>About</a
+          >
         </li>
         <li>
           <a
