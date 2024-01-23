@@ -59,7 +59,7 @@
       title="Toggle collapse"
       aria-label="Toggle collapse."
       class="
-       swap swap-rotate absolute top-[18px] right-5
+       swap swap-rotate absolute top-[18px] right-5 rounded-lg
        focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
       "
       class:swap-active={isDropdownOpened}
