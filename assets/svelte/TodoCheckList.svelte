@@ -68,7 +68,7 @@
             type="checkbox"
             class="
               checkbox bg-transparent pointer-events-auto
-              focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-transparent
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-transparent
             "
             checked={item.completed}
             on:change={() => toggleCompleted(item.id)}
