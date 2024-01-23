@@ -56,6 +56,7 @@
         <EditForm item={list} itemsStore={todoLists} {updateItem} {menuClass} />
       {:else}
         <button
+          title="Click to view list."
           class="
             flex items-center gap-1 grow px-2 py-1.5 mr-5 rounded-lg
             text-lg text-left active:bg-base-300
