@@ -3,13 +3,12 @@
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
 
-  import { clickOutside } from "lib/actions/clickOutside";
   import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
-  import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
   import { openedMenuId, selectedListId, urlHash } from "../stores/clientOnlyState";
   import { todoLists, todoItems } from "../stores/crdtState";
+  import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
@@ -18,8 +17,6 @@
   export let handleConsider;
   export let handleFinalize;
   export let dragDisabled: boolean;
-  export let handleStartDrag;
-  export let handleDragKeyDown;
   export let flipDurationMs: number;
   export let menuClass: string;
   export let confirmDeletionModalId: string;
@@ -87,18 +84,7 @@
             {confirmDeletionModalId}
           />
 
-          <!-- Drag Handle. -->
-          <button
-            aria-label="drag-handle"
-            class:cursor-grab={dragDisabled}
-            class:cursor-grabbing={!dragDisabled}
-            on:mousedown={handleStartDrag}
-            on:touchstart={handleStartDrag}
-            on:keydown={handleDragKeyDown}
-            use:clickOutside={() => (dragDisabled = true)}
-          >
-            <Bars3SvgIcon className="w-6 h-6" />
-          </button>
+          <DragHandle bind:dragDisabled />
         </div>
       {/if}
     </div>
