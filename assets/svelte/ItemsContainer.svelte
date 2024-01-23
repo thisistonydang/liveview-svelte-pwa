@@ -56,6 +56,8 @@
 
     <!-- Collapse toggle. -->
     <button
+      title="Toggle collapse"
+      aria-label="Toggle collapse."
       class="swap swap-rotate absolute top-[18px] right-5"
       class:swap-active={isDropdownOpened}
       on:click={() => (isDropdownOpened = !isDropdownOpened)}
