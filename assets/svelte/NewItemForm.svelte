@@ -7,6 +7,7 @@
   export let value: string;
   export let placeholder: string;
   export let submitButtonText: string;
+  export let submitButtonTitle: string;
 
   let error = "";
 
@@ -58,7 +59,7 @@
     on:input={() => (error = "")}
   />
 
-  <button class="btn btn-accent join-item border border-neutral">
+  <button class="btn btn-accent join-item border border-neutral" title={submitButtonTitle}>
     {submitButtonText}
   </button>
 </form>

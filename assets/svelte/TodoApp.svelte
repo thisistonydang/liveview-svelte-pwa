@@ -201,6 +201,7 @@
     bind:value={$newTodo}
     placeholder="Enter new item name"
     submitButtonText="Add"
+    submitButtonTitle="Add item to list."
   />
 
   <ItemsContainer
@@ -230,6 +231,7 @@
     bind:value={$newList}
     placeholder="Enter new list name"
     submitButtonText="Create"
+    submitButtonTitle="Create new list."
   />
 
   <ItemsContainer
