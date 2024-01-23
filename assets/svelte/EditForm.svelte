@@ -1,6 +1,8 @@
 <script>
   import { fly } from "svelte/transition";
 
+  import { focusTrap } from "@skeletonlabs/skeleton";
+
   import { clickOutside } from "lib/actions/clickOutside";
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
@@ -123,6 +125,7 @@
   class="{menuClass} w-full"
   on:submit|preventDefault={handleSubmit}
   use:clickOutside={() => handleSubmit({ isClickedOutside: true })}
+  use:focusTrap={true}
 >
   <div class="w-full join">
     <input
