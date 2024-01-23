@@ -22,7 +22,7 @@
   <button
     title="Options"
     class="
-      flex items-center
+      flex items-center rounded-full
       focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
     "
     aria-label="Toggle options menu."
