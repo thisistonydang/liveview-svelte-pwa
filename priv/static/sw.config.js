@@ -11,8 +11,6 @@ export default {
     "/app", 
   ],
   publicAssets: [
-    "/assets/app.css",
-    "/assets/app.js",
     "/favicon.ico",
     "/android-chrome-192x192.png",
     "/android-chrome-512x512.png",

@@ -1,6 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { requestAssetCaching, requestServiceWorkerVersion } from "../lib/offline-svelte";
+  import {
+    isConnected,
+    requestAssetCaching,
+    requestServiceWorkerVersion,
+  } from "../lib/offline-svelte";
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
@@ -36,7 +40,20 @@
   $serverState = server_state;
 
   onMount(() => {
-    requestAssetCaching([...config.privateAssets, ...config.publicAssets]);
+    isConnected({ timeout: 10000 }).then((connected) => {
+      if (connected) {
+        const appJsScript: HTMLScriptElement = document.querySelector("script[phx-track-static]");
+        const appJsUrl = new URL(appJsScript.src);
+        const appJs = `${appJsUrl.pathname}${appJsUrl.search}`;
+
+        const appCssLink: HTMLLinkElement = document.querySelector("link[phx-track-static]");
+        const appCssUrl = new URL(appCssLink.href);
+        const appCss = `${appCssUrl.pathname}${appCssUrl.search}`;
+
+        requestAssetCaching([...config.privateAssets, ...config.publicAssets, appJs, appCss]);
+      }
+    });
+
     requestServiceWorkerVersion();
 
     // Change URL to "/app" if it's not already. This is for the case where the service worker
