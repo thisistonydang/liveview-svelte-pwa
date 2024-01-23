@@ -29,8 +29,8 @@
       my-1 btn btn-circle btn-neutral
       focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
     "
-    aria-label="Change theme."
-    title="Change theme."
+    aria-label="Theme Selector."
+    title="Click to change the theme (system, dark, light)."
     on:click={() => ($openedMenuId = $openedMenuId === themeMenuId ? "" : themeMenuId)}
   >
     <SwatchSvgIcon className="h-6 w-6" />
