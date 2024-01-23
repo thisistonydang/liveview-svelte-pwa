@@ -86,7 +86,8 @@
       my-1 btn btn-circle btn-neutral
       focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
     "
-    aria-label="Account Menu"
+    aria-label="Account Menu."
+    title="Click to open account menu."
     on:click={() => ($openedMenuId = $openedMenuId === accountMenuId ? "" : accountMenuId)}
   >
     <UserSvgIcon className="h-6 w-6" />
