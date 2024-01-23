@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   import { liveView, serverState, sessionCount } from "../stores/liveViewSocket";
