@@ -1,6 +1,9 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
 
+  import { focusTrap } from "@skeletonlabs/skeleton";
+
+  import { onEscape } from "lib/actions/onEscape";
   import ArrowRightStartOnRectangleSvgIcon from "lib/svg-icons/ArrowRightStartOnRectangleSvgIcon.svelte";
   import EllipsisHorizontalCircleSvgIcon from "lib/svg-icons/EllipsisHorizontalCircleSvgIcon.svelte";
   import PencilSvgIcon from "lib/svg-icons/PencilSvgIcon.svelte";
