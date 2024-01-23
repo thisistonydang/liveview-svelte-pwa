@@ -140,7 +140,11 @@
       on:keydown={handleKeyDown}
     />
 
-    <button class="btn btn-accent join-item border border-neutral" aria-label="Update item.">
+    <button
+      class="btn btn-accent join-item border border-neutral"
+      aria-label="Update item."
+      on:keydown={handleKeyDown}
+    >
       <CheckSvgIconMicro className="w-5 h-5" />
     </button>
   </div>
