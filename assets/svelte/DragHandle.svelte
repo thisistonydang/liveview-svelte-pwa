@@ -24,6 +24,10 @@
 <button
   title="Drag to sort"
   aria-label="Drag to sort."
+  class="
+    rounded-lg
+    focus:outline-none focus-visible:ring ring-accent
+  "
   class:cursor-grab={dragDisabled}
   class:cursor-grabbing={!dragDisabled}
   on:mousedown={handleStartDrag}
