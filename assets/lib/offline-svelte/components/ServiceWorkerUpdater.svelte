@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   import config from "../../../../priv/static/sw.config.js";
   import { isSWUpdateAvailable } from "../lib/isSWUpdateAvailable";
   import { isSWUpdateConfirmed } from "../lib/isSWUpdateConfirmed";
 
-  let newSW;
+  let newSW: ServiceWorker;
 
   async function detectSWUpdate() {
     // Get current active SW.
