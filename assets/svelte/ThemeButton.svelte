@@ -2,6 +2,9 @@
   import { onMount } from "svelte";
   import { scale } from "svelte/transition";
 
+  import { focusTrap } from "@skeletonlabs/skeleton";
+
+  import { onEscape } from "lib/actions/onEscape";
   import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
 
   import { openedMenuId } from "../stores/clientOnlyState";
@@ -11,6 +14,7 @@
   export let menuClass: string;
 
   const themeMenuId = "theme-menu-id";
+  let trapFocus = false;
 
   onMount(() => {
     const theme = JSON.parse(localStorage.getItem("theme"));
@@ -21,6 +25,10 @@
       $currentTheme = theme;
     }
   });
+
+  $: if ($openedMenuId !== themeMenuId) {
+    trapFocus = false;
+  }
 </script>
 
 <div class="{menuClass} relative">
@@ -32,6 +40,11 @@
     aria-label="Theme Selector."
     title="Click to change the theme."
     on:click={() => ($openedMenuId = $openedMenuId === themeMenuId ? "" : themeMenuId)}
+    on:keydown={(event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        trapFocus = true;
+      }
+    }}
   >
     <SwatchSvgIcon className="h-6 w-6" />
   </button>
@@ -39,6 +52,8 @@
   {#if $openedMenuId === themeMenuId}
     <div
       in:scale={{ duration: 100 }}
+      use:focusTrap={trapFocus}
+      use:onEscape={() => ($openedMenuId = "")}
       class="menu bg-base-200 border border-neutral rounded-box absolute right-0"
     >
       <p class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">Theme</p>
