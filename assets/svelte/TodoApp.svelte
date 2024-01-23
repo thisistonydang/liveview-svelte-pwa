@@ -172,20 +172,6 @@
     });
   }
 
-  function handleStartDrag(event) {
-    // Preventing default to prevent lag on touch devices (because of the
-    // browser checking for screen scrolling).
-    event.preventDefault();
-    dragDisabled = false;
-    $openedMenuId = "";
-  }
-
-  function handleDragKeyDown(event) {
-    if ((event.key === "Enter" || event.key === " ") && dragDisabled) {
-      dragDisabled = false;
-    }
-  }
-
   // Keep selected list name and items in sync with selected list id _______________________________
 
   function setSelectedListName(listId) {
@@ -232,8 +218,6 @@
       {handleConsider}
       {handleFinalize}
       bind:dragDisabled
-      {handleStartDrag}
-      {handleDragKeyDown}
       {flipDurationMs}
       {menuClass}
       {moveTodoMenuId}
@@ -259,8 +243,6 @@
       {handleConsider}
       {handleFinalize}
       bind:dragDisabled
-      {handleStartDrag}
-      {handleDragKeyDown}
       {flipDurationMs}
       {menuClass}
       {confirmDeletionModalId}
