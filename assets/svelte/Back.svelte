@@ -17,6 +17,7 @@
 {:else}
   <button
     aria-label={ariaLabel}
+    title={ariaLabel}
     class="
       flex rounded-lg
       focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
