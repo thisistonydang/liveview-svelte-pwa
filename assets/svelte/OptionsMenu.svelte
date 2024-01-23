@@ -53,6 +53,8 @@
     <ul
       class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box"
       in:scale={{ duration: 100 }}
+      use:focusTrap={trapFocus}
+      use:onEscape={() => ($openedMenuId = "")}
     >
       <li>
         <button
@@ -66,6 +68,7 @@
               deleteItem(itemsStore, item.id);
             }
           }}
+          on:focus={() => (trapFocus = true)}
         >
           <TrashSvgIcon className="w-4 h-4" />
           Delete
@@ -90,6 +93,7 @@
 
       <li>
         <button
+          data-focusindex="0"
           class="flex items-center gap-1 p-2 rounded-lg"
           on:click={(e) => {
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
