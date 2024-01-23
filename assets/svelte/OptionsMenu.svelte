@@ -19,6 +19,9 @@
   export let menuClass: string;
   export let moveTodoMenuId = undefined;
   export let confirmDeletionModalId = undefined;
+
+  let trapFocus = false;
+
 </script>
 
 <div class="{menuClass} relative pointer-events-auto">
