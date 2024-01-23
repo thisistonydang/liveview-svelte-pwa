@@ -3,6 +3,8 @@
 
   import { selectedListId, urlHash } from "../stores/clientOnlyState";
 
+  const CLIENT_STATE_KEY = "clientState";
+
   /** Save new state to localStorage and notify server. */
   export function syncClientToServer(todoItems, todoLists, live) {
     const newClientState = {
@@ -27,16 +29,15 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import { todoItems, todoLists } from "../stores/crdtState";
   import { liveView, serverState } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
-  const CLIENT_STATE_KEY = "clientState";
   let mounted = false;
 
-  function resetClientState(key) {
+  function resetClientState(key: string) {
     const clientState = {
       meta: { synced: false },
       timestamp: 0,
@@ -47,7 +48,7 @@
     return clientState;
   }
 
-  function getClientState(key) {
+  function getClientState(key: string) {
     const value = localStorage.getItem(key);
 
     // If entry does not exist, create a new clientState object.
@@ -85,7 +86,7 @@
     return clientState.timestamp > serverState.timestamp ? clientState : serverState;
   }
 
-  function syncServerToClient(serverState, key) {
+  function syncServerToClient(serverState, key: string) {
     const clientState = getClientState(key);
     const latestState = mergeState({ clientState, serverState });
     localStorage.setItem(key, JSON.stringify(latestState));

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { fly } from "svelte/transition";
 
   import { clickOutside } from "lib/actions/clickOutside";

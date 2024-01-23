@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
   export let live = undefined;

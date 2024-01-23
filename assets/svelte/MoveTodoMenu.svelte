@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   import { clickOutside } from "lib/actions/clickOutside";
@@ -9,10 +9,10 @@
   import { toast } from "../stores/toast";
 
   export let itemToMove;
-  export let menuClass;
+  export let menuClass: string;
   export let moveTodo;
 
-  let dialog;
+  let dialog: HTMLDialogElement;
 
   onMount(() => {
     dialog.showModal();

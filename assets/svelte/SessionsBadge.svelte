@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { sessionCount } from "../stores/liveViewSocket";
 </script>
 

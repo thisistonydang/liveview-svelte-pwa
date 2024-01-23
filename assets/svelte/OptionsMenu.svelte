@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { scale } from "svelte/transition";
 
   import ArrowRightStartOnRectangleSvgIcon from "lib/svg-icons/ArrowRightStartOnRectangleSvgIcon.svelte";
@@ -13,7 +13,7 @@
   export let itemsStore;
   export let updateItem;
   export let deleteItem;
-  export let menuClass;
+  export let menuClass: string;
   export let moveTodoMenuId = undefined;
   export let confirmDeletionModalId = undefined;
 </script>

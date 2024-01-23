@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import RefreshingSvgIcon from "lib/svg-icons/RefreshingSvgIcon.svelte";
   import SuccessSvgIcon from "lib/svg-icons/SuccessSvgIcon.svelte";
   import WarningSvgIcon from "lib/svg-icons/WarningSvgIcon.svelte";
