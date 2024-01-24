@@ -40,5 +40,8 @@ export function focusTrap(
   element: HTMLElement,
   { focusFirstElement = false, onEscape = undefined }: Options,
 ) {
+  // Get all focusable elements inside the element via the data-focusindex attribute.
+  const focusableElements = Array.from(element.querySelectorAll("[data-focusindex]"));
+
 
 }
