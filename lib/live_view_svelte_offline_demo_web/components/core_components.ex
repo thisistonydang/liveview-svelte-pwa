@@ -317,7 +317,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.CoreComponents do
           name={@name}
           value="true"
           checked={@checked}
-          class="checkbox"
+          class="
+            checkbox bg-transparent
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-transparent
+          "
           {@rest}
         />
         <%= @label %>
