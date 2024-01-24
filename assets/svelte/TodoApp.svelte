@@ -172,6 +172,18 @@
     });
   }
 
+  /**
+   * Handle keydown events for drag and drop.
+   *
+   * @param {KeyboardEvent} event
+   */
+  function handleDragKeyDown(event) {
+    // Allow Enter and Space keys to start drag and drop.
+    if ((event.key === "Enter" || event.key === " ") && dragDisabled) {
+      dragDisabled = false;
+    }
+  }
+
   // Keep selected list name and items in sync with selected list id _______________________________
 
   function setSelectedListName(listId) {
@@ -218,6 +230,7 @@
       {deleteItem}
       {handleConsider}
       {handleFinalize}
+      {handleDragKeyDown}
       bind:dragDisabled
       {flipDurationMs}
       {menuClass}
@@ -244,6 +257,7 @@
       {deleteItem}
       {handleConsider}
       {handleFinalize}
+      {handleDragKeyDown}
       bind:dragDisabled
       {flipDurationMs}
       {menuClass}
