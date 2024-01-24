@@ -17,7 +17,8 @@ function focusElement(element: Element) {
   if (isHTMLElement(element)) {
     element.focus();
   } else {
-    throw new Error("Element is not an HTMLElement and cannot be focused.");
+    console.error("Element is not an HTMLElement and cannot be focused.", element);
   }
 }
+
 
