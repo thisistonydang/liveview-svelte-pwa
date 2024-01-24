@@ -31,7 +31,7 @@
     $itemToProcessId = "";
   }}
 >
-  <div class="text-lg" use:clickOutside={() => dialog.close()}>
+  <div class="text-lg" use:clickOutside={() => dialog.close()} use:focusTrap={true}>
     <p class="pl-4 pr-14 py-2 font-bold border-b border-neutral rounded-none mb-1.5">Select List</p>
 
     <button class="absolute top-3.5 right-3" aria-label="Close." on:click={() => dialog.close()}>
