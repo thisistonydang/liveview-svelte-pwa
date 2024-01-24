@@ -51,5 +51,42 @@ export function focusTrap(
     focusElement(firstElementToFocus);
   }
 
+  function keydownHandler(event: KeyboardEvent) {
+    const indexOfActiveElement = focusableElements.indexOf(document.activeElement);
+    const previousElement =
+      indexOfActiveElement === 0
+        ? focusableElements[focusableElements.length - 1]
+        : focusableElements[indexOfActiveElement - 1];
+    const nextElement =
+      indexOfActiveElement === focusableElements.length - 1
+        ? focusableElements[0]
+        : focusableElements[indexOfActiveElement + 1];
+
+    switch (event.key) {
+      case "Tab":
+        event.preventDefault(); // Prevents tabbing out of the element
+
+        if (event.shiftKey) {
+          focusElement(previousElement);
+        } else {
+          focusElement(nextElement);
+        }
+        break;
+
+      case "ArrowUp":
+        focusElement(previousElement);
+        break;
+
+      case "ArrowDown":
+        focusElement(nextElement);
+        break;
+
+      case "Escape":
+        if (onEscape) {
+          onEscape();
+        }
+        break;
+    }
+  }
 
 }
