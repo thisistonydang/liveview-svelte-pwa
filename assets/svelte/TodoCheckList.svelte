@@ -3,6 +3,7 @@
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
 
+  import { onKeydown } from "lib/actions/onKeydown";
   import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
 
   import { todoItems } from "../stores/crdtState";
@@ -18,6 +19,7 @@
   export let deleteItem;
   export let handleConsider;
   export let handleFinalize;
+  export let handleDragKeyDown: (event: KeyboardEvent) => void;
   export let dragDisabled: boolean;
   export let flipDurationMs: number;
   export let menuClass: string;
@@ -51,6 +53,7 @@
       "
       aria-label={item.name}
       animate:flip={{ duration: flipDurationMs }}
+      use:onKeydown={handleDragKeyDown}
     >
       {#if item.isEditing}
         <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />

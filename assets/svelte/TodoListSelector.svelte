@@ -3,6 +3,7 @@
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
 
+  import { onKeydown } from "lib/actions/onKeydown";
   import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
@@ -16,6 +17,7 @@
   export let deleteItem;
   export let handleConsider;
   export let handleFinalize;
+  export let handleDragKeyDown: (event: KeyboardEvent) => void;
   export let dragDisabled: boolean;
   export let flipDurationMs: number;
   export let menuClass: string;
@@ -51,6 +53,7 @@
       "
       aria-label={list.name}
       animate:flip={{ duration: flipDurationMs }}
+      use:onKeydown={handleDragKeyDown}
     >
       {#if list.isEditing}
         <EditForm item={list} itemsStore={todoLists} {updateItem} {menuClass} />
