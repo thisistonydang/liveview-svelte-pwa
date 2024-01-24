@@ -381,6 +381,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CoreComponents do
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
           "input input-bordered w-full",
+          "focus:outline-none focus:border-none focus:ring-2 focus:ring-accent",
           "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
           @errors == [] && "border-zinc-300 focus:border-zinc-400",
           @errors != [] && "border-error focus:border-error"
