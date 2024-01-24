@@ -97,11 +97,9 @@
   /**
    * Allow the user to cancel the edit by pressing the escape key.
    */
-  function handleKeyDown(event) {
-    if (event.key === "Escape") {
-      newName = "";
-      handleSubmit();
-    }
+  function handleEscape() {
+    newName = "";
+    handleSubmit();
   }
 
   function handleInput() {
@@ -132,14 +130,12 @@
       "
       bind:value={newName}
       on:input={handleInput}
-      on:keydown={handleKeyDown}
     />
 
     <button
       data-focusindex="1"
       class="btn btn-accent join-item border border-neutral"
       aria-label="Update item."
-      on:keydown={handleKeyDown}
     >
       <CheckSvgIconMicro className="w-5 h-5" />
     </button>
