@@ -117,7 +117,10 @@
   class="{menuClass} w-full"
   on:submit|preventDefault={handleSubmit}
   use:clickOutside={() => handleSubmit({ isClickedOutside: true })}
-  use:focusTrap={true}
+  use:focusTrap={{
+    focusFirstElement: true,
+    onEscape: handleEscape,
+  }}
 >
   <div class="w-full join">
     <input
