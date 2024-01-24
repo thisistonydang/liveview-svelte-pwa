@@ -21,7 +21,7 @@
   </p>
 
   <div class="my-6">
-    <h2 class="text-3xl font-bold my-3">It utilizes the following technologies</h2>
+    <h2 class="text-3xl font-bold my-3">Technologies used</h2>
 
     <ul class="list-disc pl-4">
       <li>
@@ -55,7 +55,7 @@
   </div>
 
   {#if showAuthLinks}
-    <h2 class="text-3xl font-bold my-3">Register or log in to try it out</h2>
+    <h2 class="text-3xl font-bold my-3">Try it out</h2>
 
     <ul class="flex gap-2">
       <li>
