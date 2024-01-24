@@ -6,7 +6,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
 
-  import { itemToProcessId, openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
   import { todoLists } from "../stores/crdtState";
   import { toast } from "../stores/toast";
 
@@ -73,6 +73,13 @@
               }
             }}
           >
+            <input
+              aria-hidden="true"
+              tabindex="-1"
+              type="radio"
+              class="radio bg-transparent"
+              class:radio-accent={list.id === itemToMove.list_id}
+              checked={list.id === itemToMove.list_id}
             />
 
             {list.name}
