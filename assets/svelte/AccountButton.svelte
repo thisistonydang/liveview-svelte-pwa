@@ -1,9 +1,7 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
 
-  import { focusTrap } from "@skeletonlabs/skeleton";
-
-  import { onEscape } from "lib/actions/onEscape";
+  import { focusTrap } from "lib/actions/focusTrap.js";
   import { isConnected, requestAssetDeletion, serviceWorkerVersion } from "lib/offline-svelte";
   import UserSvgIcon from "lib/svg-icons/UserSvgIcon.svelte";
   import { showTopBar, hideTopBar } from "lib/topbar";
@@ -20,7 +18,7 @@
   let isLogOutLoading = false;
   let isSettingsLoading = false;
   let disabled = false;
-  let trapFocus = false;
+  let focusFirstElement = false;
 
   function showAbout() {
     $urlHash = "about";
@@ -84,7 +82,7 @@
   }
 
   $: if ($openedMenuId !== accountMenuId) {
-    trapFocus = false;
+    focusFirstElement = false;
   }
 </script>
 
@@ -99,7 +97,7 @@
     on:click={() => ($openedMenuId = $openedMenuId === accountMenuId ? "" : accountMenuId)}
     on:keydown={(event) => {
       if (event.key === "Enter" || event.key === " ") {
-        trapFocus = true;
+        focusFirstElement = true;
       }
     }}
   >
@@ -109,8 +107,10 @@
   {#if $openedMenuId === accountMenuId}
     <div
       in:scale={{ duration: 100 }}
-      use:focusTrap={trapFocus}
-      use:onEscape={() => ($openedMenuId = "")}
+      use:focusTrap={{
+        focusFirstElement,
+        onEscape: () => ($openedMenuId = ""),
+      }}
       class="menu bg-base-200 border border-neutral rounded-box absolute right-0"
     >
       <div class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
@@ -122,14 +122,11 @@
 
       <ul>
         <li>
-          <a
-            href="/app#about"
-            on:click|preventDefault={showAbout}
-            on:focus={() => (trapFocus = true)}>About</a
-          >
+          <a data-focusindex="0" href="/app#about" on:click|preventDefault={showAbout}>About</a>
         </li>
         <li>
           <a
+            data-focusindex="1"
             href="/users/settings"
             on:click|preventDefault={showSettings}
             class:pointer-events-none={disabled}
@@ -139,7 +136,7 @@
           </a>
         </li>
         <li>
-          <button on:click={logOutUser} {disabled}>
+          <button data-focusindex="2" on:click={logOutUser} {disabled}>
             Log out
             <span class="loading loading-dots loading-xs" class:hidden={!isLogOutLoading}></span>
           </button>
