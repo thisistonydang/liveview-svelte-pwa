@@ -110,7 +110,10 @@
       aria-label="Github"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-block hover:opacity-75"
+      class="
+        inline-block hover:opacity-75 rounded-lg
+        focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+      "
     >
       <GitHubSvgIcon className="h-10 w-10" />
     </a>
