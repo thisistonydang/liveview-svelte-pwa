@@ -46,44 +46,36 @@
     <ul>
       {#each $todoLists as list (list.id)}
         <li>
-          <label
-            style="word-break: break-word;"
-            class="flex items-center gap-3 px-2 py-1.5 rounded-lg cursor-pointer"
-          >
-            <input
-              type="radio"
-              class="radio bg-transparent focus:radio-accent pointer-events-auto"
-              class:radio-accent={$selectedListId === list.id}
-              class:hover:radio-accent={$selectedListId === list.id}
-              name="list-to-move-to"
-              checked={list.id === itemToMove.list_id}
-              on:click={(e) => {
-                e.stopPropagation(); // Prevent clicks from closing toast message.
-                e.preventDefault(); // Prevent radio button from being checked.
+          <button
+            title="Move to this list."
+            class="p-1"
+            on:click={(e) => {
+              e.stopPropagation(); // Prevent clicks from closing toast message.
 
-                // Try to move the todo item to the selected list.
-                const response = moveTodo(itemToMove, list.id);
-                if (response === "error") {
-                  $toast = {
-                    show: true,
-                    kind: "info",
-                    title: "Whoops, can't move item...",
-                    msg: `'${itemToMove.name}' already exists in the '${list.name}' list.`,
-                  };
-                } else {
-                  dialog.close();
-                  $toast = {
-                    show: false,
-                    kind: "info",
-                    title: "",
-                    msg: "",
-                  };
-                }
-              }}
+              // Try to move the todo item to the selected list.
+              const response = moveTodo(itemToMove, list.id);
+              if (response === "error") {
+                $toast = {
+                  show: true,
+                  kind: "info",
+                  title: "Whoops, can't move item...",
+                  msg: `'${itemToMove.name}' already exists in the '${list.name}' list.`,
+                };
+              } else {
+                dialog.close();
+                $toast = {
+                  show: false,
+                  kind: "info",
+                  title: "",
+                  msg: "",
+                };
+              }
+            }}
+          >
             />
 
             {list.name}
-          </label>
+          </button>
         </li>
       {/each}
     </ul>
