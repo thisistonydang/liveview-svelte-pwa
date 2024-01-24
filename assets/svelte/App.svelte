@@ -55,12 +55,6 @@
     });
 
     requestServiceWorkerVersion();
-
-    // Change URL to "/app" if it's not already. This is for the case where the service worker
-    // serves the cached "/app" route when the client requests the root "/" route.
-    if (window.location.pathname !== "/app") {
-      history.replaceState(null, "", "/app");
-    }
   });
 </script>
 
