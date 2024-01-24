@@ -43,5 +43,13 @@ export function focusTrap(
   // Get all focusable elements inside the element via the data-focusindex attribute.
   const focusableElements = Array.from(element.querySelectorAll("[data-focusindex]"));
 
+  // Focus the first element if the option is set.
+  if (focusFirstElement) {
+    const firstElementToFocus = focusableElements.find(
+      (el) => el.getAttribute("data-focusindex") === "0",
+    );
+    focusElement(firstElementToFocus);
+  }
+
 
 }
