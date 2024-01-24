@@ -1,8 +1,7 @@
 <script>
   import { fly } from "svelte/transition";
 
-  import { focusTrap } from "@skeletonlabs/skeleton";
-
+  import { focusTrap } from "lib/actions/focusTrap";
   import { clickOutside } from "lib/actions/clickOutside";
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
