@@ -122,20 +122,27 @@ async function respond(request) {
     return response;
   } catch (error) {
     debug && console.error(`[Service Worker] Failed to fetch (${request.url}).`, error);
-    
-    // Check if cached response is available after trying the network first.
+
+    // If request is for root path, redirect to /app.
+    const url = new URL(request.url);
+    if (url.pathname === "/") {
+      return Response.redirect("/app", 302);
+    }
+
+    // Check if cached response is available.
     const cachedResponse = await cache.match(request);
     if (cachedResponse) {
       debug && console.log("[Service Worker] Found cached response.", cachedResponse);
       return cachedResponse;
     }
 
-    // If network is down and no cache response for the request, use a fallback response.
+    // When network is down and no cached response for the request, use a fallback response.
     debug && console.log("[Service Worker] No cached response. Using fallback response.");
 
-    const fallbackResponse = (
-      await cache.match(new Request("/offline")) ||
-      new Response(`
+    return (
+      (await cache.match(new Request("/offline"))) ||
+      new Response(
+        `
         <!DOCTYPE html>
         <html lang="en">
           <head>
@@ -149,19 +156,13 @@ async function respond(request) {
             <a href="/">Refresh</a>
           </body>
         </html>
-      `, {
-        status: 503,
-        headers: { "Content-Type": "text/html" }, 
-      })
-    )
-    
-    // If request is for root path, return cached /app route if available.
-    const url = new URL(request.url);
-    if (url.pathname === "/") {
-      return await cache.match(new Request("/app")) || fallbackResponse;
-    }
-
-    return fallbackResponse
+      `,
+        {
+          status: 503,
+          headers: { "Content-Type": "text/html" },
+        },
+      )
+    );
   }
 }
 
@@ -174,7 +175,7 @@ async function respond(request) {
  */
 async function cacheResponse(request, response) {
   const cache = await caches.open(cacheName);
-  await cache.put(request, response); 
+  await cache.put(request, response);
   debug && console.log(`[Service Worker] Cached ${request.url}`);
 }
 
@@ -215,16 +216,13 @@ function handleMessage(event) {
       break;
 
     default:
-      console.error(
-        "[Service Worker] Unknown message type received.",
-        event.data
-      );
+      console.error("[Service Worker] Unknown message type received.", event.data);
   }
 }
 
 /**
  * Skip waiting and notify client to reload.
- * 
+ *
  * @param {ExtendableMessageEvent} event
  */
 async function handleRequestSkipWaiting(event) {
