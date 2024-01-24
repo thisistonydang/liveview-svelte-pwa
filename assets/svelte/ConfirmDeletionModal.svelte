@@ -39,7 +39,14 @@
     <p class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-2">Confirm Deletion</p>
 
     <div class="flex justify-around">
-      <button data-focusindex="0" class="btn border border-neutral" on:click={() => dialog.close()}>
+      <button
+        data-focusindex="0"
+        class="
+        btn border border-neutral
+        focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+      "
+        on:click={() => dialog.close()}
+      >
         Cancel
       </button>
 
