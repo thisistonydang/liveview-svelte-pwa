@@ -124,7 +124,7 @@
 >
   <div class="w-full join">
     <input
-      use:focus
+      data-focusindex="0"
       type="text"
       class="
         input input-bordered border-neutral w-full join-item
@@ -136,6 +136,7 @@
     />
 
     <button
+      data-focusindex="1"
       class="btn btn-accent join-item border border-neutral"
       aria-label="Update item."
       on:keydown={handleKeyDown}
