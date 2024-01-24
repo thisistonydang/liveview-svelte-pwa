@@ -14,7 +14,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserLoginLive do
           Don't have an account?
           <.link
             navigate={~p"/users/register"}
-            class="font-semibold underline underline-offset-4 hover:no-underline"
+            class="
+              font-semibold underline underline-offset-4 hover:no-underline rounded
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
           >
             Sign up
           </.link>
@@ -36,7 +39,13 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserLoginLive do
         <:actions>
           <.input field={@form[:remember_me]} type="checkbox" label="Keep me logged in" />
 
-          <.link href={~p"/users/reset_password"} class="text-sm font-semibold">
+          <.link
+            href={~p"/users/reset_password"}
+            class="
+              text-sm font-semibold rounded
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
+          >
             Forgot your password?
           </.link>
         </:actions>
