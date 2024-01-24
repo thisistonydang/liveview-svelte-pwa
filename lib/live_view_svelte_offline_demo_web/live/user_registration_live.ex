@@ -17,7 +17,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.UserRegistrationLive do
           Already registered?
           <.link
             navigate={~p"/users/log_in"}
-            class="font-semibold underline underline-offset-4 hover:no-underline"
+            class="
+              font-semibold underline underline-offset-4 hover:no-underline rounded
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
           >
             Sign in
           </.link>
