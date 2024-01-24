@@ -36,4 +36,9 @@ function focusElement(element: Element) {
  * @param options.focusFirstElement Whether to focus the first focusable element when created.
  * @param options.onEscape Callback to run when the escape key is pressed.
  */
+export function focusTrap(
+  element: HTMLElement,
+  { focusFirstElement = false, onEscape = undefined }: Options,
+) {
 
+}
