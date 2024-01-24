@@ -100,7 +100,13 @@
       {/if}
     </li>
   {:else}
-    <li class="flex items-center h-10 px-2" in:fade={{ delay: 250 }}>
+    <li
+      class="
+        flex items-center h-10 px-2 rounded-lg
+        focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+      "
+      in:fade={{ delay: 250 }}
+    >
       No lists yet. Please create a list to get started.
     </li>
   {/each}
