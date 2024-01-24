@@ -13,12 +13,6 @@
     dragDisabled = false;
     $openedMenuId = "";
   }
-
-  function handleDragKeyDown(event: KeyboardEvent) {
-    if ((event.key === "Enter" || event.key === " ") && dragDisabled) {
-      dragDisabled = false;
-    }
-  }
 </script>
 
 <button
@@ -30,9 +24,9 @@
   "
   class:cursor-grab={dragDisabled}
   class:cursor-grabbing={!dragDisabled}
+  tabindex="-1"
   on:mousedown={handleStartDrag}
   on:touchstart={handleStartDrag}
-  on:keydown={handleDragKeyDown}
   use:clickOutside={() => (dragDisabled = true)}
 >
   <Bars3SvgIcon className="w-6 h-6" />
