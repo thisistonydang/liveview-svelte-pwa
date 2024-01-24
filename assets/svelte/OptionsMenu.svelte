@@ -1,9 +1,7 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
 
-  import { focusTrap } from "@skeletonlabs/skeleton";
-
-  import { onEscape } from "lib/actions/onEscape";
+  import { focusTrap } from "lib/actions/focusTrap";
   import ArrowRightStartOnRectangleSvgIcon from "lib/svg-icons/ArrowRightStartOnRectangleSvgIcon.svelte";
   import EllipsisHorizontalCircleSvgIcon from "lib/svg-icons/EllipsisHorizontalCircleSvgIcon.svelte";
   import PencilSvgIcon from "lib/svg-icons/PencilSvgIcon.svelte";
@@ -20,10 +18,10 @@
   export let moveTodoMenuId = undefined;
   export let confirmDeletionModalId = undefined;
 
-  let trapFocus = false;
+  let focusFirstElement = false;
 
   $: if ($openedMenuId !== item.id) {
-    trapFocus = false;
+    focusFirstElement = false;
   }
 </script>
 
@@ -38,7 +36,7 @@
     on:click={() => ($openedMenuId = $openedMenuId === item.id ? "" : item.id)}
     on:keydown={(event) => {
       if (event.key === "Enter" || event.key === " ") {
-        trapFocus = true;
+        focusFirstElement = true;
       }
     }}
   >
@@ -53,11 +51,14 @@
     <ul
       class="absolute right-8 -bottom-1 menu bg-base-200 border border-neutral rounded-box"
       in:scale={{ duration: 100 }}
-      use:focusTrap={trapFocus}
-      use:onEscape={() => ($openedMenuId = "")}
+      use:focusTrap={{
+        focusFirstElement,
+        onEscape: () => ($openedMenuId = ""),
+      }}
     >
       <li>
         <button
+          data-focusindex="2"
           class="flex items-center gap-1 p-2 rounded-lg"
           on:click={(e) => {
             if (confirmDeletionModalId) {
@@ -68,7 +69,6 @@
               deleteItem(itemsStore, item.id);
             }
           }}
-          on:focus={() => (trapFocus = true)}
         >
           <TrashSvgIcon className="w-4 h-4" />
           Delete
@@ -78,6 +78,7 @@
       {#if moveTodoMenuId}
         <li>
           <button
+            data-focusindex="1"
             class="flex items-center gap-1 p-2 rounded-lg"
             on:click={(e) => {
               e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
