@@ -91,4 +91,13 @@ export function focusTrap(
 
   element.addEventListener("keydown", keydownHandler);
 
+  return {
+    update(newOptions: Options) {
+      focusFirstElement = newOptions.focusFirstElement;
+      onEscape = newOptions.onEscape;
+    },
+    destroy() {
+      element.removeEventListener("keydown", keydownHandler);
+    },
+  };
 }
