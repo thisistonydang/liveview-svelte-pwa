@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import { focusTrap } from "@skeletonlabs/skeleton";
+
   import { clickOutside } from "lib/actions/clickOutside";
   import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
 
