@@ -11,7 +11,14 @@
 </script>
 
 {#if href}
-  <a {href} aria-label={ariaLabel}>
+  <a
+    {href}
+    aria-label={ariaLabel}
+    class="
+      flex rounded-lg
+      focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+    "
+  >
     <ArrowLeftSvgIcon className="h-10 w-10" />
   </a>
 {:else}
