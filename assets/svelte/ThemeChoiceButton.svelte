@@ -23,12 +23,15 @@
 
   import { currentTheme } from "../stores/currentTheme";
 
+  /** @type {number} */
+  export let focusIndex;
+
   /** @type {"system" | "light" | "dark"} */
   export let theme;
 </script>
 
 <li>
-  <button on:click={() => setTheme(theme)}>
+  <button data-focusindex={focusIndex} on:click={() => setTheme(theme)}>
     <span class="first-letter:capitalize">{theme}</span>
 
     {#if theme === $currentTheme}
