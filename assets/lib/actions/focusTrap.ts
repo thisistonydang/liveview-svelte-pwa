@@ -89,4 +89,6 @@ export function focusTrap(
     }
   }
 
+  element.addEventListener("keydown", keydownHandler);
+
 }
