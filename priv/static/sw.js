@@ -4,7 +4,7 @@
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
 
 import config from "./sw.config.js";
-const { cacheName, debug, messageTypes } = config; 
+const { cacheName, debug, messageTypes } = config;
 
 // Install _________________________________________________________________________________________
 
@@ -19,20 +19,20 @@ function handleInstall() {
 
 /**
  * Delete cached assets.
- * 
+ *
  * @param {string[]} assets - Array of assets to delete from cache.
  */
 async function deleteCacheAssets(assets) {
   const cache = await caches.open(cacheName);
   assets.forEach(async (urlPath) => {
     await cache.delete(urlPath);
-  })
+  });
   debug && console.log("[Service Worker] Deleted cached assets.", assets);
 }
 
 /**
  * Cache assets.
- * 
+ *
  * @param {string[]} assets - Array of assets to cache.
  */
 async function cacheAssets(assets) {
@@ -67,7 +67,7 @@ async function deleteOldCaches() {
     if (key !== cacheName) {
       debug && console.log(`[Service Worker] Deleting Old Cache: VERSION ${key}`);
       await caches.delete(key);
-    } 
+    }
   }
 }
 
@@ -82,14 +82,14 @@ sw.addEventListener("fetch", handleFetch);
  */
 function handleFetch(event) {
   // Ignore non-GET requests.
-  if (event.request.method.toUpperCase() !== 'GET') return;
+  if (event.request.method.toUpperCase() !== "GET") return;
 
   // Ignore requests for chrome extensions.
-  if (event.request.url.startsWith('chrome-extension://')) return;
+  if (event.request.url.startsWith("chrome-extension://")) return;
 
   // Ignore LiveReloader. Only requested in dev.
   const url = new URL(event.request.url);
-  if (url.pathname === '/phoenix/live_reload/frame') return; 
+  if (url.pathname === "/phoenix/live_reload/frame") return;
 
   debug && console.log("[Service Worker] Handling fetch...");
   event.respondWith(respond(event.request));
@@ -97,9 +97,9 @@ function handleFetch(event) {
 
 /**
  * Respond to fetch request.
- * 
+ *
  * @param {Request} request
- * 
+ *
  * @returns {Promise<Response>}
  */
 async function respond(request) {
@@ -110,13 +110,13 @@ async function respond(request) {
   try {
     const response = await fetch(request, {
       // If /app is cached, timeout after 2s to avoid excessive wait time.
-      signal: await cache.match(new Request("/app")) ? AbortSignal.timeout(2000) : null, 
+      signal: (await cache.match(new Request("/app"))) ? AbortSignal.timeout(2000) : null,
     });
 
     // If offline, fetch can return a value that is not a Response instead of
     // throwing and the non-Response can't be passed to respondWith.
     if (!(response instanceof Response)) {
-      throw new Error('Invalid response from fetch.');
+      throw new Error("Invalid response from fetch.");
     }
 
     return response;
