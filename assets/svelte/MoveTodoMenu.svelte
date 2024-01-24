@@ -49,6 +49,7 @@
           <button
             title="Move to this list."
             class="flex items-center gap-3 rounded-lg"
+            style="word-break: break-word;"
             on:click={(e) => {
               e.stopPropagation(); // Prevent clicks from closing toast message.
 
