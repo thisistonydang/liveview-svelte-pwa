@@ -112,13 +112,6 @@
     // Reset error message.
     error = "";
   }
-
-  /**
-   * Svelte action to focus the input element.
-   */
-  function focus(element) {
-    element.focus();
-  }
 </script>
 
 <form
