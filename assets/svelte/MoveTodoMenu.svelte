@@ -1,8 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { focusTrap } from "@skeletonlabs/skeleton";
-
+  import { focusTrap } from "lib/actions/focusTrap";
   import { clickOutside } from "lib/actions/clickOutside";
   import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
 
@@ -31,10 +30,18 @@
     $itemToProcessId = "";
   }}
 >
-  <div class="text-lg" use:clickOutside={() => dialog.close()} use:focusTrap={true}>
+  <div
+    class="text-lg"
+    use:clickOutside={() => dialog.close()}
+    use:focusTrap={{
+      focusFirstElement: true,
+      onEscape: () => dialog.close(),
+    }}
+  >
     <p class="pl-4 pr-14 py-2 font-bold border-b border-neutral rounded-none mb-1.5">Select List</p>
 
     <button
+      data-focusindex="0"
       class="
         absolute top-3.5 right-3 rounded-lg
         focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
@@ -47,9 +54,10 @@
     </button>
 
     <ul>
-      {#each $todoLists as list (list.id)}
+      {#each $todoLists as list, index (list.id)}
         <li>
           <button
+            data-focusindex={index + 1}
             title="Move to this list."
             class="flex items-center gap-3 rounded-lg"
             style="word-break: break-word;"
