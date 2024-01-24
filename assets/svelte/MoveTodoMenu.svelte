@@ -35,7 +35,10 @@
     <p class="pl-4 pr-14 py-2 font-bold border-b border-neutral rounded-none mb-1.5">Select List</p>
 
     <button
-      class="absolute top-3.5 right-3"
+      class="
+        absolute top-3.5 right-3 rounded-lg
+        focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+      "
       aria-label="Close."
       title="Close."
       on:click={() => dialog.close()}
