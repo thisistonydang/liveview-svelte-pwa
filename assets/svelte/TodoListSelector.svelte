@@ -24,6 +24,10 @@
   export let confirmDeletionModalId: string;
 
   const hasTouchScreen = useHasTouchScreen();
+
+  function updateUi(newItems) {
+    $todoLists = newItems;
+  }
 </script>
 
 <ul
@@ -40,8 +44,8 @@
     dropTargetStyle: {},
     dropTargetClasses: ["border-2", "border-dashed", "rounded-lg", "border-accent"],
   }}
-  on:consider={(event) => handleConsider(event, todoLists)}
-  on:finalize={(event) => handleFinalize(event, todoLists)}
+  on:consider={(event) => handleConsider(event, updateUi)}
+  on:finalize={(event) => handleFinalize(event, updateUi)}
 >
   {#each $todoLists as list (list.id)}
     {@const listItems = $todoItems.filter((item) => item.list_id === list.id)}
