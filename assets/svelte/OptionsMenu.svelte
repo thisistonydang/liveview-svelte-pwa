@@ -59,7 +59,10 @@
       <li>
         <button
           data-focusindex="2"
-          class="flex items-center gap-1 p-2 rounded-lg"
+          class="
+            flex items-center gap-1 p-2 rounded-lg
+            focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+          "
           on:click={(e) => {
             if (confirmDeletionModalId) {
               e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
@@ -79,7 +82,10 @@
         <li>
           <button
             data-focusindex="1"
-            class="flex items-center gap-1 p-2 rounded-lg"
+            class="
+              flex items-center gap-1 p-2 rounded-lg
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
             on:click={(e) => {
               e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
               $itemToProcessId = item.id;
@@ -95,7 +101,10 @@
       <li>
         <button
           data-focusindex="0"
-          class="flex items-center gap-1 p-2 rounded-lg"
+          class="
+            flex items-center gap-1 p-2 rounded-lg
+            focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+          "
           on:click={(e) => {
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
             $openedMenuId = "edit-form-id";
