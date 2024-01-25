@@ -26,6 +26,15 @@
   export let moveTodoMenuId: string;
 
   const hasTouchScreen = useHasTouchScreen();
+
+  function updateUiOnConsider(newItems) {
+    items = newItems;
+  }
+
+  function updateUiOnFinalize(newItems) {
+    const itemsInOtherLists = $todoItems.filter((item) => !newItems.includes(item));
+    $todoItems = [...newItems, ...itemsInOtherLists];
+  }
 </script>
 
 <ul
@@ -42,8 +51,8 @@
     dropTargetStyle: {},
     dropTargetClasses: ["border-2", "border-dashed", "rounded-lg", "border-accent"],
   }}
-  on:consider={(event) => handleConsider(event, todoItems)}
-  on:finalize={(event) => handleFinalize(event, todoItems)}
+  on:consider={(event) => handleConsider(event, updateUiOnConsider)}
+  on:finalize={(event) => handleFinalize(event, updateUiOnFinalize)}
 >
   {#each items as item (item.id)}
     <li
