@@ -192,7 +192,7 @@
   $: selectedListName = setSelectedListName($selectedListId);
 
   $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
-  $: selectedListCompletedItems = selectedListTodoItems.filter((item) => item.completed);
+  $: selectedListUncompletedItems = selectedListTodoItems.filter((item) => !item.completed);
 
   // Get itemToMove when $itemToProcessId changes __________________________________________________
   $: itemToMove = $todoItems.find((item) => item.id === $itemToProcessId);
@@ -219,7 +219,7 @@
   <ItemsContainer
     title={selectedListName}
     totalCount={selectedListTodoItems.length}
-    completedCount={selectedListCompletedItems.length}
+    uncompletedCount={selectedListUncompletedItems.length}
     bind:isDropdownOpened={$isTodoOpened}
   >
     <TodoCheckList
