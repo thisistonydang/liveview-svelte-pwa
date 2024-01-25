@@ -115,7 +115,11 @@
     >
       <div class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">
         {currentUserEmail}
-        <div class="text-xs font-normal h-4" class:skeleton={!$serviceWorkerVersion}>
+        <div
+          title="Current service worker version."
+          class="text-xs font-normal h-4"
+          class:skeleton={!$serviceWorkerVersion}
+        >
           {$serviceWorkerVersion}
         </div>
       </div>
