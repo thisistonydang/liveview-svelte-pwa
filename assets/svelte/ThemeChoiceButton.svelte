@@ -31,7 +31,11 @@
 </script>
 
 <li>
-  <button data-focusindex={focusIndex} on:click={() => setTheme(theme)}>
+  <button
+    data-focusindex={focusIndex}
+    class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+    on:click={() => setTheme(theme)}
+  >
     <span class="first-letter:capitalize">{theme}</span>
 
     {#if theme === $currentTheme}
