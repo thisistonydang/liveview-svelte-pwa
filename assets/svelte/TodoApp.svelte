@@ -124,33 +124,33 @@
 
   // Drag and drop handlers ________________________________________________________________________
 
-  function handleConsider(event, itemsStore) {
+  function handleConsider(event, updateUi) {
+    // Update the items list in the UI.
     const newItems = filterDuplicates(event.detail.items);
-    const { source, trigger } = event.detail.info;
-
-    itemsStore.set(newItems);
+    updateUi(newItems);
 
     // Ensure dragging is stopped on drag finish via keyboard
+    const { source, trigger } = event.detail.info;
     if (source === SOURCES.KEYBOARD && trigger === TRIGGERS.DRAG_STOPPED) {
       dragDisabled = true;
     }
   }
 
-  function handleFinalize(event, itemsStore) {
-    const newItems = filterDuplicates(event.detail.items);
-    const { source } = event.detail.info;
-
+  function handleFinalize(event, updateUi) {
+    // Update the items list in the UI.
     // TODO: Is it necessary to check that the id is reset back from the
     // svelte-dnd-action placeholder id? If the id is not reset, then
     // it is possible to have duplicate ids which will crash the app.
-
-    itemsStore.set(newItems);
+    const newItems = filterDuplicates(event.detail.items);
+    updateUi(newItems);
 
     // Ensure dragging is stopped on drag finish via pointer (mouse, touch)
+    const { source } = event.detail.info;
     if (source === SOURCES.POINTER) {
       dragDisabled = true;
     }
 
+    // Save to server.
     syncClientToServer($todoItems, $todoLists, $liveView);
   }
 
