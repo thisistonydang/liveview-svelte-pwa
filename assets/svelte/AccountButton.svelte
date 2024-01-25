@@ -122,11 +122,19 @@
 
       <ul>
         <li>
-          <a data-focusindex="0" href="/app#about" on:click|preventDefault={showAbout}>About</a>
+          <a
+            data-focusindex="0"
+            class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            href="/app#about"
+            on:click|preventDefault={showAbout}
+          >
+            About
+          </a>
         </li>
         <li>
           <a
             data-focusindex="1"
+            class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
             href="/users/settings"
             on:click|preventDefault={showSettings}
             class:pointer-events-none={disabled}
@@ -136,7 +144,12 @@
           </a>
         </li>
         <li>
-          <button data-focusindex="2" on:click={logOutUser} {disabled}>
+          <button
+            data-focusindex="2"
+            class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            on:click={logOutUser}
+            {disabled}
+          >
             Log out
             <span class="loading loading-dots loading-xs" class:hidden={!isLogOutLoading}></span>
           </button>
