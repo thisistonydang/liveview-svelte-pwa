@@ -49,7 +49,7 @@
 >
   {#each $todoLists as list (list.id)}
     {@const listItems = $todoItems.filter((item) => item.list_id === list.id)}
-    {@const completedItems = listItems.filter((item) => item.completed)}
+    {@const uncompletedItems = listItems.filter((item) => !item.completed)}
     <li
       class="
         flex items-center justify-between rounded-lg
@@ -82,7 +82,7 @@
             {list.name}
 
             <span class="badge badge-xs transition-none p-2">
-              {completedItems.length} / {listItems.length}
+              {uncompletedItems.length} / {listItems.length}
             </span>
           </span>
 
