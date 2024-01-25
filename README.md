@@ -4,7 +4,7 @@ This is a demo of an installable [Phoenix](https://www.phoenixframework.org/) PW
 ([Progressive Web App](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)) that
 can sync real-time across multiple devices while also being able to fallback to working offline.
 
-## It utilizes the following technologies
+## Technologies used
 
 - Phoenix [LiveView](https://github.com/phoenixframework/phoenix_live_view),
   [PubSub](https://hexdocs.pm/phoenix/channels.html#pubsub), and
