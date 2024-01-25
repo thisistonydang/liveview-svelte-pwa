@@ -16,7 +16,7 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     |> validate_required([:state, :user_id])
     |> validate_state_map_structure()
     |> validate_state_map_timestamp()
-    # |> validate_state_map_value()
+    |> validate_state_map_value()
     |> foreign_key_constraint(:user_id)
     |> unique_constraint(:user_id)
   end
@@ -54,134 +54,134 @@ defmodule LiveViewSvelteOfflineDemo.UserStates.UserState do
     end
   end
 
-  # defp validate_state_map_value(changeset) do
-  #   state = changeset |> get_change(:state)
-  #   lists = state |> Map.get("value") |> Map.get("lists")
-  #   todos = state |> Map.get("value") |> Map.get("todos")
+  defp validate_state_map_value(changeset) do
+    state = changeset |> get_change(:state)
+    lists = state |> Map.get("value") |> Map.get("lists")
+    todos = state |> Map.get("value") |> Map.get("todos")
 
-  #   case {lists, todos} do
-  #     {lists, todos} when not is_list(lists) or not is_list(todos) ->
-  #       changeset |> add_error(:state, "'lists' and 'todos' keys must be lists")
+    case {lists, todos} do
+      {lists, todos} when not is_list(lists) or not is_list(todos) ->
+        changeset |> add_error(:state, "'lists' and 'todos' keys must be lists")
 
-  #     {lists, todos} ->
-  #       %{clean_lists: clean_lists, clean_todos: clean_todos} =
-  #         lists
-  #         |> validate_lists()
-  #         |> validate_todos(todos)
+      {lists, todos} ->
+        %{clean_lists: clean_lists, clean_todos: clean_todos} =
+          lists
+          |> validate_lists()
+          |> validate_todos(todos)
 
-  #       changeset
-  #       |> put_change(
-  #         :state,
-  #         Map.merge(state, %{"value" => %{"lists" => clean_lists, "todos" => clean_todos}})
-  #       )
-  #   end
-  # end
+        changeset
+        |> put_change(
+          :state,
+          Map.merge(state, %{"value" => %{"lists" => clean_lists, "todos" => clean_todos}})
+        )
+    end
+  end
 
-  # defp validate_lists(lists) do
-  #   lists
-  #   # Filter out lists that don't have the correct structure.
-  #   |> Enum.filter(fn list ->
-  #     case list do
-  #       %{"id" => _, "name" => _, "isEditing" => true} ->
-  #         is_valid_id_and_name?(list) && is_valid_new_name?(list)
+  defp validate_lists(lists) do
+    lists
+    # Filter out lists that don't have the correct structure.
+    |> Enum.filter(fn list ->
+      case list do
+        %{"id" => _, "name" => _, "isEditing" => true} ->
+          is_valid_id_and_name?(list) && is_valid_new_name?(list)
 
-  #       %{"id" => _, "name" => _} ->
-  #         is_valid_id_and_name?(list)
+        %{"id" => _, "name" => _} ->
+          is_valid_id_and_name?(list)
 
-  #       _ ->
-  #         false
-  #     end
-  #   end)
-  #   # Remove lists with duplicate ids.
-  #   |> Enum.uniq_by(& &1["id"])
-  #   # Remove extra keys from list maps.
-  #   |> Enum.map(fn list ->
-  #     case list do
-  #       %{"id" => id, "name" => name, "isEditing" => true, "newName" => new_name} ->
-  #         %{"id" => id, "name" => name, "isEditing" => true, "newName" => new_name}
+        _ ->
+          false
+      end
+    end)
+    # Remove lists with duplicate ids.
+    |> Enum.uniq_by(& &1["id"])
+    # Remove extra keys from list maps.
+    |> Enum.map(fn list ->
+      case list do
+        %{"id" => id, "name" => name, "isEditing" => true, "newName" => new_name} ->
+          %{"id" => id, "name" => name, "isEditing" => true, "newName" => new_name}
 
-  #       %{"id" => id, "name" => name} ->
-  #         %{"id" => id, "name" => name}
-  #     end
-  #   end)
-  # end
+        %{"id" => id, "name" => name} ->
+          %{"id" => id, "name" => name}
+      end
+    end)
+  end
 
-  # defp validate_todos(clean_lists, todos) do
-  #   clean_todos =
-  #     todos
-  #     # Filter out todos that don't have the correct structure.
-  #     |> Enum.filter(fn todo ->
-  #       case todo do
-  #         %{"id" => _, "name" => _, "completed" => _, "list_id" => _, "isEditing" => true} ->
-  #           is_valid_id_and_name?(todo) &&
-  #             is_valid_completed_and_list_id?(clean_lists, todo) &&
-  #             is_valid_new_name?(todo)
+  defp validate_todos(clean_lists, todos) do
+    clean_todos =
+      todos
+      # Filter out todos that don't have the correct structure.
+      |> Enum.filter(fn todo ->
+        case todo do
+          %{"id" => _, "name" => _, "completed" => _, "list_id" => _, "isEditing" => true} ->
+            is_valid_id_and_name?(todo) &&
+              is_valid_completed_and_list_id?(clean_lists, todo) &&
+              is_valid_new_name?(todo)
 
-  #         %{"id" => _, "name" => _, "completed" => _, "list_id" => _} ->
-  #           is_valid_id_and_name?(todo) &&
-  #             is_valid_completed_and_list_id?(clean_lists, todo)
+          %{"id" => _, "name" => _, "completed" => _, "list_id" => _} ->
+            is_valid_id_and_name?(todo) &&
+              is_valid_completed_and_list_id?(clean_lists, todo)
 
-  #         _ ->
-  #           false
-  #       end
-  #     end)
-  #     # Remove todos with duplicate ids.
-  #     |> Enum.uniq_by(& &1["id"])
-  #     # Remove extra keys from todo maps.
-  #     |> Enum.map(fn todo ->
-  #       case todo do
-  #         %{
-  #           "id" => id,
-  #           "name" => name,
-  #           "completed" => completed,
-  #           "list_id" => list_id,
-  #           "isEditing" => true,
-  #           "newName" => new_name
-  #         } ->
-  #           %{
-  #             "id" => id,
-  #             "name" => name,
-  #             "completed" => completed,
-  #             "list_id" => list_id,
-  #             "isEditing" => true,
-  #             "newName" => new_name
-  #           }
+          _ ->
+            false
+        end
+      end)
+      # Remove todos with duplicate ids.
+      |> Enum.uniq_by(& &1["id"])
+      # Remove extra keys from todo maps.
+      |> Enum.map(fn todo ->
+        case todo do
+          %{
+            "id" => id,
+            "name" => name,
+            "completed" => completed,
+            "list_id" => list_id,
+            "isEditing" => true,
+            "newName" => new_name
+          } ->
+            %{
+              "id" => id,
+              "name" => name,
+              "completed" => completed,
+              "list_id" => list_id,
+              "isEditing" => true,
+              "newName" => new_name
+            }
 
-  #         %{"id" => id, "name" => name, "completed" => completed, "list_id" => list_id} ->
-  #           %{"id" => id, "name" => name, "completed" => completed, "list_id" => list_id}
-  #       end
-  #     end)
+          %{"id" => id, "name" => name, "completed" => completed, "list_id" => list_id} ->
+            %{"id" => id, "name" => name, "completed" => completed, "list_id" => list_id}
+        end
+      end)
 
-  #   %{clean_lists: clean_lists, clean_todos: clean_todos}
-  # end
+    %{clean_lists: clean_lists, clean_todos: clean_todos}
+  end
 
-  # defp is_valid_id_and_name?(item) do
-  #   is_valid_uuid?(item["id"]) && is_valid_name?(item["name"])
-  # end
+  defp is_valid_id_and_name?(item) do
+    is_valid_uuid?(item["id"]) && is_valid_name?(item["name"])
+  end
 
-  # defp is_valid_new_name?(item) do
-  #   Map.has_key?(item, "newName") && is_valid_name?(item["newName"])
-  # end
+  defp is_valid_new_name?(item) do
+    Map.has_key?(item, "newName") && is_valid_name?(item["newName"])
+  end
 
-  # defp is_valid_completed_and_list_id?(clean_lists, todo) do
-  #   is_boolean(todo["completed"]) && is_valid_list_id?(clean_lists, todo["list_id"])
-  # end
+  defp is_valid_completed_and_list_id?(clean_lists, todo) do
+    is_boolean(todo["completed"]) && is_valid_list_id?(clean_lists, todo["list_id"])
+  end
 
-  # defp is_valid_name?(name) do
-  #   is_binary(name) && String.length(name) <= 1000
-  # end
+  defp is_valid_name?(name) do
+    is_binary(name) && String.length(name) <= 1000
+  end
 
-  # defp is_valid_uuid?(uuid) do
-  #   case Ecto.UUID.dump(uuid) do
-  #     {:ok, _} -> true
-  #     _ -> false
-  #   end
-  # end
+  defp is_valid_uuid?(uuid) do
+    case Ecto.UUID.dump(uuid) do
+      {:ok, _} -> true
+      _ -> false
+    end
+  end
 
-  # defp is_valid_list_id?(clean_lists, list_id) do
-  #   case Enum.find(clean_lists, &(&1["id"] == list_id)) do
-  #     nil -> false
-  #     _ -> true
-  #   end
-  # end
+  defp is_valid_list_id?(clean_lists, list_id) do
+    case Enum.find(clean_lists, &(&1["id"] == list_id)) do
+      nil -> false
+      _ -> true
+    end
+  end
 end
