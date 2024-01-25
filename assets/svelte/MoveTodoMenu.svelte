@@ -59,7 +59,10 @@
           <button
             data-focusindex={index + 1}
             title="Move to this list."
-            class="flex items-center gap-3 rounded-lg"
+            class="
+              flex items-center gap-3 rounded-lg
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
             style="word-break: break-word;"
             on:click={(e) => {
               e.stopPropagation(); // Prevent clicks from closing toast message.
