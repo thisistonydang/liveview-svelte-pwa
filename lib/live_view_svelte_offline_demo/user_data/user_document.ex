@@ -4,6 +4,7 @@ defmodule LiveViewSvelteOfflineDemo.UserData.UserDocument do
 
   schema "user_documents" do
     field :document, :string
+    belongs_to :user, LiveViewSvelteOfflineDemo.Accounts.User
 
     timestamps(type: :utc_datetime)
   end
@@ -11,7 +12,9 @@ defmodule LiveViewSvelteOfflineDemo.UserData.UserDocument do
   @doc false
   def changeset(user_document, attrs) do
     user_document
-    |> cast(attrs, [:document])
-    |> validate_required([:document])
+    |> cast(attrs, [:document, :user_id])
+    |> validate_required([:document, :user_id])
+    |> foreign_key_constraint(:user_id)
+    |> unique_constraint(:user_id)
   end
 end
