@@ -8,6 +8,11 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
 
   alias LiveViewSvelteOfflineDemo.UserData.UserDocument
 
+  # PubSub _________________________________________________________________________________________
+
+
+  # CRUD ___________________________________________________________________________________________
+
   @doc """
   Returns the list of user_documents.
 
