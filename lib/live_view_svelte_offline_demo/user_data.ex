@@ -10,6 +10,13 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
 
   # PubSub _________________________________________________________________________________________
 
+  @doc """
+  Subscribe to user_document updates for a given user_id.
+  """
+  def subscribe(user_id) do
+    Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, "user_document:#{user_id}")
+  end
+
 
   # CRUD ___________________________________________________________________________________________
 
