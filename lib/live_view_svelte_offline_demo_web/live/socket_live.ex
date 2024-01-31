@@ -50,6 +50,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
   # Event Handlers _________________________________________________________________________________
 
+  # Only allow the client to request the server document after socket is connected to
+  # avoid caching user data in service worker cache.
   @doc """
   Only allow the client to request the server state after socket is connected to
   avoid caching user data in service worker cache.
