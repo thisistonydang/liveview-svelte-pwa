@@ -108,6 +108,15 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   end
 
   @doc """
+  Same as `create_user_document/1`, but raises if the changeset is invalid.
+  """
+  def create_user_document!(attrs \\ %{}) do
+    %UserDocument{}
+    |> UserDocument.changeset(attrs)
+    |> Repo.insert!()
+  end
+
+  @doc """
   Updates a user_document and broadcasts the update to subscribers.
 
   ## Examples
