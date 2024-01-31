@@ -9,6 +9,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
   on_mount {LiveViewSvelteOfflineDemoWeb.UserAuth, :ensure_authenticated}
 
+  @impl true
   def mount(_params, _session, socket) do
     %{id: user_id} = socket.assigns.current_user
 
@@ -33,6 +34,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
   # Render Component _______________________________________________________________________________
 
+  @impl true
   def render(assigns) do
     ~H"""
     <.LiveViewSocket
@@ -88,6 +90,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
   # Message Handlers _______________________________________________________________________________
 
+  @impl true
   def handle_info({:user_state_updated, user_state}, socket) do
     %{state: state} = user_state
     latest_state = add_synced_timestamp(state)
@@ -107,6 +110,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
   # Clean Up _______________________________________________________________________________________
 
+  @impl true
   def terminate(_reason, socket) do
     Presence.untrack_user_presence(socket)
   end
