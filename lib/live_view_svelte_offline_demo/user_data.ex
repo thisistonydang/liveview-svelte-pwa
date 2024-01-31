@@ -10,11 +10,13 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
 
   # PubSub _________________________________________________________________________________________
 
+  @topic "user_document"
+
   @doc """
   Subscribe to user_document updates for a given user_id.
   """
   def subscribe(user_id) do
-    Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, "user_document:#{user_id}")
+    Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, "#{@topic}:#{user_id}")
   end
 
   @doc """
@@ -24,7 +26,7 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   def broadcast({:ok, user_document}, tag) do
     Phoenix.PubSub.broadcast(
       LiveViewSvelteOfflineDemo.PubSub,
-      "user_document:#{user_document.user_id}",
+      "#{@topic}:#{user_document.user_id}",
       {tag, user_document}
     )
 
