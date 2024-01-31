@@ -17,6 +17,21 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
     Phoenix.PubSub.subscribe(LiveViewSvelteOfflineDemo.PubSub, "user_document:#{user_id}")
   end
 
+  @doc """
+  Broadcast to subscribers of a user_document.
+  If an error is passed to broadcast/2, the error is returned.
+  """
+  def broadcast({:ok, user_document}, tag) do
+    Phoenix.PubSub.broadcast(
+      LiveViewSvelteOfflineDemo.PubSub,
+      "user_document:#{user_document.user_id}",
+      {tag, user_document}
+    )
+
+    {:ok, user_document}
+  end
+
+  def broadcast({:error, changeset}, _tag), do: {:error, changeset}
 
   # CRUD ___________________________________________________________________________________________
 
