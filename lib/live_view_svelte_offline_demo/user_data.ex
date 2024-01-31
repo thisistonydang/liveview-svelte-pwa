@@ -97,7 +97,7 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
       iex> create_user_document(%{document: value, user_id: 1})
       {:ok, %UserDocument{}}
 
-      iex> create_user_document(%{field: bad_value})
+      iex> create_user_document(%{document: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
