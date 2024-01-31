@@ -63,6 +63,13 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
+  def handle_event("create_server_document" = event, %{"document" => document}, socket) do
+    UserData.create_user_document!(%{document: document, user_id: socket.assigns.current_user.id})
+    socket = socket |> assign(server_document: %{"event" => event, "document" => document})
+
+    {:noreply, socket}
+  end
+
   @doc """
   Only allow the client to request the server state after socket is connected to
   avoid caching user data in service worker cache.
