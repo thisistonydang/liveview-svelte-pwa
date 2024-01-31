@@ -76,6 +76,20 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   end
 
   @doc """
+  Get base64 document for the current user in a socket.
+
+  Returns nil if no document exists.
+  """
+  def get_document(socket) do
+    user_id = socket.assigns.current_user.id
+
+    case Repo.get_by(UserDocument, user_id: user_id) do
+      nil -> nil
+      %{document: document} -> document
+    end
+  end
+
+  @doc """
   Creates a user_document. A user_id is required.
 
   ## Examples
