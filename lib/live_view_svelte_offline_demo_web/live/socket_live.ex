@@ -70,6 +70,18 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
+  def handle_event("client_document_updated", %{"document" => document}, socket) do
+    # TODO: Get latest document state by merging Yjs updates.
+    latest_document = document
+
+    # Save the latest document to the db and broadcast to all clients.
+    # TODO: Handle errors.
+    old_user_document = UserData.get_user_document_by_user_id(socket.assigns.current_user.id)
+    UserData.update_user_document(old_user_document, %{document: latest_document})
+
+    {:noreply, socket}
+  end
+
   @doc """
   Only allow the client to request the server state after socket is connected to
   avoid caching user data in service worker cache.
