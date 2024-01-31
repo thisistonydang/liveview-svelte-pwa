@@ -38,6 +38,15 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   def get_user_document!(id), do: Repo.get!(UserDocument, id)
 
   @doc """
+  Gets a single user_document by user_id.
+
+  If a user_document does not exist, return nil.
+  """
+  def get_user_document_by_user_id(user_id) do
+    Repo.get_by(UserDocument, user_id: user_id)
+  end
+
+  @doc """
   Creates a user_document.
 
   ## Examples
