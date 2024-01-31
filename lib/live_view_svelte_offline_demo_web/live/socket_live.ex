@@ -14,6 +14,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     %{id: user_id} = socket.assigns.current_user
 
     if connected?(socket) do
+      # Subscribe to user document updates.
+      UserData.subscribe(user_id)
+
       # Subscribe to user state updates.
       UserStates.subscribe(user_id)
 
