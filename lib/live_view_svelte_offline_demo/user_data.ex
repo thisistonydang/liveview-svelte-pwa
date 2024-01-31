@@ -47,11 +47,11 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   end
 
   @doc """
-  Creates a user_document.
+  Creates a user_document. A user_id is required.
 
   ## Examples
 
-      iex> create_user_document(%{field: value})
+      iex> create_user_document(%{document: value, user_id: 1})
       {:ok, %UserDocument{}}
 
       iex> create_user_document(%{field: bad_value})
