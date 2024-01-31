@@ -94,14 +94,14 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   end
 
   @doc """
-  Updates a user_document.
+  Updates a user_document and broadcasts the update to subscribers.
 
   ## Examples
 
-      iex> update_user_document(user_document, %{field: new_value})
+      iex> update_user_document(user_document, %{document: new_value})
       {:ok, %UserDocument{}}
 
-      iex> update_user_document(user_document, %{field: bad_value})
+      iex> update_user_document(user_document, %{document: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
@@ -109,6 +109,7 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
     user_document
     |> UserDocument.changeset(attrs)
     |> Repo.update()
+    |> broadcast(:user_document_updated)
   end
 
   @doc """
