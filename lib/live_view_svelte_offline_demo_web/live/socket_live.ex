@@ -94,6 +94,16 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   # Message Handlers _______________________________________________________________________________
 
   @impl true
+  def handle_info({:user_document_updated, user_document}, socket) do
+    %{document: document} = user_document
+
+    socket =
+      socket
+      |> assign(server_document: %{"event" => "user_document_updated", "document" => document})
+
+    {:noreply, socket}
+  end
+
   def handle_info({:user_state_updated, user_state}, socket) do
     %{state: state} = user_state
     latest_state = add_synced_timestamp(state)
