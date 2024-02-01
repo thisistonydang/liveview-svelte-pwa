@@ -71,14 +71,14 @@
    * @param {string} itemId
    */
   function toggleCompleted(itemId) {
-    $todoItems = $todoItems.map((item) => {
-      if (item.id === itemId) {
-        return { ...item, completed: !item.completed };
+    // TODO: test if findIndex is faster than for loop.
+    for (yMap of $yTodoItems) {
+      if (yMap.get("id") === itemId) {
+        yMap.set("completed", !yMap.get("completed"));
+        syncDocumentToServer($liveView);
+        return;
       }
-      return item;
-    });
-
-    syncClientToServer($todoItems, $todoLists, $liveView);
+    }
   }
 
   /**
