@@ -41,9 +41,14 @@
   // Todo lists handlers ___________________________________________________________________________
 
   function addList() {
-    $todoLists = [{ id: crypto.randomUUID(), name: $newList }, ...$todoLists];
+    const list = new Y.Map();
+    list.set("id", crypto.randomUUID());
+    list.set("name", $newList);
+    $yTodoLists.unshift([list]);
+
     $newList = "";
-    syncClientToServer($todoItems, $todoLists, $liveView);
+
+    syncDocumentToServer($liveView);
   }
 
   // Todo items handlers ___________________________________________________________________________
