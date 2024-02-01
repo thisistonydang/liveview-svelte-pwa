@@ -25,7 +25,11 @@
 
   const hasTouchScreen = useHasTouchScreen();
 
-  function updateUi(newItems) {
+  function updateUiOnConsider(newItems) {
+    $todoLists = newItems;
+  }
+
+  function updateUiOnFinalize(newItems) {
     $todoLists = newItems;
   }
 </script>
@@ -44,8 +48,8 @@
     dropTargetStyle: {},
     dropTargetClasses: ["border-2", "border-dashed", "rounded-lg", "border-accent"],
   }}
-  on:consider={(event) => handleConsider(event, updateUi)}
-  on:finalize={(event) => handleFinalize(event, updateUi)}
+  on:consider={(event) => handleConsider(event, updateUiOnConsider)}
+  on:finalize={(event) => handleFinalize(event, updateUiOnFinalize)}
 >
   {#each $todoLists as list (list.id)}
     {@const listItems = $todoItems.filter((item) => item.list_id === list.id)}
