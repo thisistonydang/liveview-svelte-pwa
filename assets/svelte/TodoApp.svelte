@@ -102,10 +102,19 @@
     }
 
     // Move itemToMove to the top of the new list.
-    const newTodoItems = $todoItems.filter((item) => item.id !== itemToMove.id);
-    $todoItems = [{ ...itemToMove, list_id: newListId }, ...newTodoItems];
+    const index = $yTodoItems.toArray().findIndex((yMap) => yMap.get("id") === itemToMove.id);
+    const todo = new Y.Map();
+    todo.set("id", itemToMove.id);
+    todo.set("name", itemToMove.name);
+    todo.set("completed", itemToMove.completed);
+    todo.set("list_id", newListId);
 
-    syncClientToServer($todoItems, $todoLists, $liveView);
+    $yTodoItems.doc.transact(() => {
+      $yTodoItems.delete(index);
+      $yTodoItems.unshift([todo]);
+    });
+
+    syncDocumentToServer($liveView);
 
     return "ok";
   }
