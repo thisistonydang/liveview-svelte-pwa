@@ -71,7 +71,7 @@
    * @param {string} itemId
    */
   function toggleCompleted(itemId) {
-    // TODO: test if findIndex is faster than for loop.
+    // TODO: test if toArray + findIndex is faster than for loop.
     for (yMap of $yTodoItems) {
       if (yMap.get("id") === itemId) {
         yMap.set("completed", !yMap.get("completed"));
