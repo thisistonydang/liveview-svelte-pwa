@@ -54,12 +54,16 @@
   // Todo items handlers ___________________________________________________________________________
 
   function addTodo() {
-    $todoItems = [
-      { id: crypto.randomUUID(), name: $newTodo, completed: false, list_id: $selectedListId },
-      ...$todoItems,
-    ];
+    const todo = new Y.Map();
+    todo.set("id", crypto.randomUUID());
+    todo.set("name", $newTodo);
+    todo.set("completed", false);
+    todo.set("list_id", $selectedListId);
+    $yTodoItems.unshift([todo]);
+
     $newTodo = "";
-    syncClientToServer($todoItems, $todoLists, $liveView);
+
+    syncDocumentToServer($liveView);
   }
 
   /**
