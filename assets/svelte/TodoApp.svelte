@@ -167,10 +167,10 @@
 
   // Drag and drop handlers ________________________________________________________________________
 
-  function handleConsider(event, updateUi) {
+  function handleConsider(event, updateUiOnConsider) {
     // Update the items list in the UI.
     const newItems = filterDuplicates(event.detail.items);
-    updateUi(newItems);
+    updateUiOnConsider(newItems);
 
     // Ensure dragging is stopped on drag finish via keyboard
     const { source, trigger } = event.detail.info;
@@ -179,13 +179,13 @@
     }
   }
 
-  function handleFinalize(event, updateUi) {
+  function handleFinalize(event, updateUiOnFinalize) {
     // Update the items list in the UI.
     // TODO: Is it necessary to check that the id is reset back from the
     // svelte-dnd-action placeholder id? If the id is not reset, then
     // it is possible to have duplicate ids which will crash the app.
     const newItems = filterDuplicates(event.detail.items);
-    updateUi(newItems);
+    updateUiOnFinalize(newItems);
 
     // Ensure dragging is stopped on drag finish via pointer (mouse, touch)
     const { source } = event.detail.info;
