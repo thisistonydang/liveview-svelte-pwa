@@ -219,11 +219,15 @@
    * Handle keydown events for drag and drop.
    *
    * @param {KeyboardEvent} event
+   * @param {string} itemId
    */
-  function handleDragKeyDown(event) {
+  function handleDragKeyDown(event, itemId) {
     // Allow Enter and Space keys to start drag and drop.
     if ((event.key === "Enter" || event.key === " ") && dragDisabled) {
       dragDisabled = false;
+
+      // Track which item is being dragged.
+      $itemToProcessId = itemId;
     }
   }
 
