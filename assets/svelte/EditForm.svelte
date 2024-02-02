@@ -9,6 +9,7 @@
 
   export let item;
   export let itemsStore;
+  export let yItemsStore;
   export let updateItem;
   export let menuClass;
 
@@ -20,7 +21,7 @@
    * Commit edits made to the item and close the edit form.
    */
   function commitEdits() {
-    updateItem(itemsStore, {
+    updateItem(yItemsStore, {
       id: item.id,
       name: newName,
       completed: item.completed,
@@ -34,7 +35,7 @@
    * Discard edits made to the item and close the edit form.
    */
   function discardEdits() {
-    updateItem(itemsStore, {
+    updateItem(yItemsStore, {
       id: item.id,
       name: item.name,
       completed: item.completed,
@@ -104,7 +105,7 @@
 
   function handleInput() {
     // Track the newName so that page refreshes don't reset the input value.
-    updateItem(itemsStore, { ...item, newName });
+    updateItem(yItemsStore, { ...item, newName });
 
     // Reset error message.
     error = "";
