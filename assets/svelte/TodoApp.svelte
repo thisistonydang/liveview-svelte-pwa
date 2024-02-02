@@ -156,6 +156,25 @@
 
     for (yMap of yArray) {
       if (yMap.get("id") === itemId) {
+        // If a list is being deleted, clean up orphaned todos.
+        if (yMap.get("list_id") === undefined) {
+          const listId = yMap.get("id");
+          const oldTodoListIds = $todoLists.map((list) => list.id);
+          const newTodoListIds = oldTodoListIds.filter((id) => id !== listId);
+
+          // NOTE: The index is tracked manually here because the delete
+          // operation changes the array length.
+          let index = 0;
+          $yTodoItems.forEach((yItem) => {
+            if (!newTodoListIds.includes(yItem.get("list_id"))) {
+              $yTodoItems.delete(index);
+              return;
+            }
+
+            // Only increment index if the item is not deleted.
+            index++;
+          });
+        }
 
         // Delete the item from the array.
         yArray.delete(index);
