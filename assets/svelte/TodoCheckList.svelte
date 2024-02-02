@@ -45,6 +45,8 @@
     $yTodoItems.doc.transact(() => {
       $yTodoItems.delete(oldIndex);
 
+      // Move the item to the new position.
+
       const indexInNewItems = newItems.findIndex((list) => list.id === $itemToProcessId);
       const prevItemId = indexInNewItems === 0 ? null : newItems[indexInNewItems - 1].id;
 

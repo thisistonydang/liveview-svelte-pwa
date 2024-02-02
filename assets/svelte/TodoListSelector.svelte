@@ -46,6 +46,7 @@
     $yTodoLists.doc.transact(() => {
       $yTodoLists.delete(oldIndex);
 
+      // Move the list to the new position.
       const index = newItems.findIndex((list) => list.id === $itemToProcessId);
       $yTodoLists.insert(index, [newList]);
     });
