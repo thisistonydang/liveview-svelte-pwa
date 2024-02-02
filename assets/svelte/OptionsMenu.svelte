@@ -69,7 +69,7 @@
               $itemToProcessId = item.id;
               $openedMenuId = confirmDeletionModalId;
             } else {
-              deleteItem(itemsStore, item.id);
+              deleteItem(yItemsStore, item.id);
             }
           }}
         >
