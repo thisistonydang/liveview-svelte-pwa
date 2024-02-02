@@ -3,11 +3,10 @@
   import SuccessSvgIcon from "lib/svg-icons/SuccessSvgIcon.svelte";
   import WarningSvgIcon from "lib/svg-icons/WarningSvgIcon.svelte";
 
-  import { todoItems, todoLists } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
-  import { syncClientToServer } from "./StateManagement.svelte";
+  import { syncDocumentToServer } from "./Yjs.svelte";
 
   async function checkIfSynced() {
     if ($syncState === "Synced") {
@@ -15,7 +14,7 @@
       $syncState = "Syncing";
       setTimeout(() => ($syncState = "Synced"), 250);
     } else {
-      syncClientToServer($todoItems, $todoLists, $liveView);
+      syncDocumentToServer($liveView);
     }
   }
 </script>
