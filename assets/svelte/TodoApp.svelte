@@ -150,11 +150,19 @@
     syncDocumentToServer($liveView);
   }
 
-  function deleteItem(itemsStore, itemId) {
-    const newItems = get(itemsStore).filter((item) => item.id !== itemId);
-    itemsStore.set(newItems);
+  function deleteItem(yItemsStore, itemId) {
+    const yArray = get(yItemsStore);
+    let index = 0;
 
-    syncClientToServer($todoItems, $todoLists, $liveView);
+    for (yMap of yArray) {
+      if (yMap.get("id") === itemId) {
+        yArray.delete(index);
+        syncDocumentToServer($liveView);
+        return;
+      }
+
+      index++;
+    }
   }
 
   // Drag and drop handlers ________________________________________________________________________
