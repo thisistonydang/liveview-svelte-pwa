@@ -16,7 +16,7 @@
   export let deleteItem;
   export let handleConsider;
   export let handleFinalize;
-  export let handleDragKeyDown: (event: KeyboardEvent) => void;
+  export let handleDragKeyDown: (event: KeyboardEvent, itemId: string) => void;
   export let dragDisabled: boolean;
   export let flipDurationMs: number;
   export let menuClass: string;
@@ -60,7 +60,7 @@
       "
       aria-label={list.name}
       animate:flip={{ duration: flipDurationMs }}
-      use:onKeydown={handleDragKeyDown}
+      use:onKeydown={(event) => handleDragKeyDown(event, list.id)}
     >
       {#if list.isEditing}
         <EditForm
