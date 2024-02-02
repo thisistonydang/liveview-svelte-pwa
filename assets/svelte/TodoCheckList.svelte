@@ -6,7 +6,7 @@
   import { onKeydown } from "lib/actions/onKeydown";
   import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
 
-  import { todoItems } from "../stores/crdtState";
+  import { todoItems, yTodoItems } from "../stores/crdtState";
   import { openedMenuId } from "../stores/clientOnlyState";
   import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
@@ -65,7 +65,7 @@
       use:onKeydown={handleDragKeyDown}
     >
       {#if item.isEditing}
-        <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />
+        <EditForm {item} itemsStore={todoItems} yItemsStore={yTodoItems} {updateItem} {menuClass} />
       {:else}
         <label
           title="Click to toggle completed."
@@ -99,7 +99,7 @@
         <div class="flex gap-1">
           <OptionsMenu
             {item}
-            itemsStore={todoItems}
+            yItemsStore={yTodoItems}
             {updateItem}
             {deleteItem}
             {menuClass}
