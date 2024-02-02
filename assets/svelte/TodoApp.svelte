@@ -181,8 +181,8 @@
     // NOTE: The index is tracked manually here because the delete
     // operation changes the array length.
     let index = 0;
-    $yTodoItems.forEach((yItem) => {
-      if (!newTodoListIds.includes(yItem.get("list_id"))) {
+    $yTodoItems.forEach((yMap) => {
+      if (!newTodoListIds.includes(yMap.get("list_id"))) {
         $yTodoItems.delete(index);
         return;
       }
