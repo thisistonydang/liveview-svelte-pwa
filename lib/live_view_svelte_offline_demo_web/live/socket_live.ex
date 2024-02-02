@@ -123,7 +123,18 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
     socket =
       socket
-      |> assign(server_document: %{"event" => "user_document_updated", "document" => document})
+      |> assign(
+        server_document: %{
+          # A timestamp is included here in order to always trigger a re-render.
+          # This is required because the server_document is a prop and the
+          # LiveView will not re-render if the prop is the same. This is
+          # necessary for the case where the user presses the sync button but
+          # the document has not changed.
+          "timestamp" => System.os_time(:millisecond),
+          "event" => "user_document_updated",
+          "document" => document
+        }
+      )
 
     {:noreply, socket}
   end
