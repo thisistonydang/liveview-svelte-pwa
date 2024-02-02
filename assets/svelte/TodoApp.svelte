@@ -156,8 +156,13 @@
 
     for (yMap of yArray) {
       if (yMap.get("id") === itemId) {
+
+        // Delete the item from the array.
         yArray.delete(index);
+
+        // Save to server.
         syncDocumentToServer($liveView);
+
         return;
       }
 
