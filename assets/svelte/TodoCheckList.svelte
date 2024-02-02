@@ -2,12 +2,13 @@
   import { flip } from "svelte/animate";
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
+  import * as Y from "yjs";
 
   import { onKeydown } from "lib/actions/onKeydown";
   import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
 
   import { todoItems, yTodoItems } from "../stores/crdtState";
-  import { openedMenuId } from "../stores/clientOnlyState";
+  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
   import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
@@ -32,8 +33,29 @@
   }
 
   function updateUiOnFinalize(newItems) {
-    const itemsInOtherLists = $todoItems.filter((item) => !newItems.includes(item));
-    $todoItems = [...newItems, ...itemsInOtherLists];
+    const oldIndex = $yTodoItems.toArray().findIndex((yMap) => yMap.get("id") === $itemToProcessId);
+
+    const oldItem = $yTodoItems.get(oldIndex);
+    const newItem = new Y.Map();
+    newItem.set("id", oldItem.get("id"));
+    newItem.set("name", oldItem.get("name"));
+    newItem.set("completed", oldItem.get("completed"));
+    newItem.set("list_id", oldItem.get("list_id"));
+
+    $yTodoItems.doc.transact(() => {
+      $yTodoItems.delete(oldIndex);
+
+      const indexInNewItems = newItems.findIndex((list) => list.id === $itemToProcessId);
+      const prevItemId = indexInNewItems === 0 ? null : newItems[indexInNewItems - 1].id;
+
+      if (!prevItemId) {
+        $yTodoItems.unshift([newItem]);
+        return;
+      }
+
+      const index = $yTodoItems.toArray().findIndex((yMap) => yMap.get("id") === prevItemId) + 1;
+      $yTodoItems.insert(index, [newItem]);
+    });
   }
 </script>
 
