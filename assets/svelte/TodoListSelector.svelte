@@ -37,7 +37,6 @@
 
   function updateUiOnFinalize(newItems) {
     const oldIndex = $yTodoLists.toArray().findIndex((yMap) => yMap.get("id") === $itemToProcessId);
-    const newIndex = newItems.findIndex((list) => list.id === $itemToProcessId);
 
     const oldList = $yTodoLists.get(oldIndex);
     const newList = new Y.Map();
@@ -46,7 +45,9 @@
 
     $yTodoLists.doc.transact(() => {
       $yTodoLists.delete(oldIndex);
-      $yTodoLists.insert(newIndex, [newList]);
+
+      const index = newItems.findIndex((list) => list.id === $itemToProcessId);
+      $yTodoLists.insert(index, [newList]);
     });
   }
 </script>
