@@ -18,8 +18,8 @@
 </script>
 
 <button
-  title="Drag to sort."
-  aria-label="Drag to sort."
+  title="Drag to reorder."
+  aria-label="Drag to reorder."
   class="
     rounded-lg
     focus:outline-none focus-visible:ring ring-accent
