@@ -174,31 +174,22 @@
     }
   }
 
-          // NOTE: The index is tracked manually here because the delete
-          // operation changes the array length.
-          let index = 0;
-          $yTodoItems.forEach((yItem) => {
-            if (!newTodoListIds.includes(yItem.get("list_id"))) {
-              $yTodoItems.delete(index);
-              return;
-            }
+  function cleanOrphanedTodos(listId) {
+    const oldTodoListIds = $todoLists.map((list) => list.id);
+    const newTodoListIds = oldTodoListIds.filter((id) => id !== listId);
 
-            // Only increment index if the item is not deleted.
-            index++;
-          });
-        }
-
-        // Delete the item from the array.
-        yArray.delete(index);
-
-        // Save to server.
-        syncDocumentToServer($liveView);
-
+    // NOTE: The index is tracked manually here because the delete
+    // operation changes the array length.
+    let index = 0;
+    $yTodoItems.forEach((yItem) => {
+      if (!newTodoListIds.includes(yItem.get("list_id"))) {
+        $yTodoItems.delete(index);
         return;
       }
 
+      // Only increment index if the item is not deleted.
       index++;
-    }
+    });
   }
 
   // Drag and drop handlers ________________________________________________________________________
