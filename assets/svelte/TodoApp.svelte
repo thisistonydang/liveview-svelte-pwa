@@ -121,16 +121,35 @@
 
   // Shared handlers for both todo lists and todo items ____________________________________________
 
-  function updateItem(itemsStore, newItem) {
-    const newItems = get(itemsStore).map((item) => {
-      if (item.id === newItem.id) {
-        return newItem;
+  function updateItem(yItemStore, newItem) {
+    console.log("newItem:", newItem);
+    get(yItemStore).forEach((yMap) => {
+      if (yMap.get("id") === newItem.id) {
+        yMap.set("name", newItem.name);
+
+        newItem.completed === undefined
+          ? yMap.delete("completed")
+          : yMap.set("completed", newItem.completed);
+
+        newItem.list_id === undefined
+          ? yMap.delete("list_id")
+          : yMap.set("list_id", newItem.list_id);
+
+        newItem.newName === undefined
+          ? yMap.delete("newName")
+          : yMap.set("newName", newItem.newName);
+
+        newItem.isEditing === undefined
+          ? yMap.delete("isEditing")
+          : yMap.set("isEditing", newItem.isEditing);
+      } else {
+        yMap.delete("newName");
+        yMap.delete("isEditing");
       }
-      return { id: item.id, name: item.name, completed: item.completed, list_id: item.list_id };
+      console.log("yMap.toJSON():", yMap.toJSON());
     });
 
-    itemsStore.set(newItems);
-    syncClientToServer($todoItems, $todoLists, $liveView);
+    syncDocumentToServer($liveView);
   }
 
   function deleteItem(itemsStore, itemId) {
