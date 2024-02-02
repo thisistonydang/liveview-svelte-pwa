@@ -2,13 +2,14 @@
   import { scale } from "svelte/transition";
 
   import { focusTrap } from "lib/actions/focusTrap.js";
-  import { isConnected, requestAssetDeletion, serviceWorkerVersion } from "lib/offline-svelte";
+  import { isConnected, serviceWorkerVersion } from "lib/offline-svelte";
   import UserSvgIcon from "lib/svg-icons/UserSvgIcon.svelte";
   import { showTopBar, hideTopBar } from "lib/topbar";
 
-  import config from "../../priv/static/sw.config.js";
   import { openedMenuId, urlHash } from "../stores/clientOnlyState";
   import { toast } from "../stores/toast";
+
+  import { clearUserData } from "./DataClearer.svelte";
 
   export let currentUserEmail: string;
   export let isClientStateRestored: boolean;
@@ -69,8 +70,7 @@
     // This shows the skeleton screen and also stops client state from being saved to localStorage.
     isClientStateRestored = false;
 
-    localStorage.clear(); // Clear client state.
-    requestAssetDeletion(config.privateAssets); // Clear cached assets.
+    clearUserData();
 
     const logOutLink = document.getElementById("log-out-link");
     try {
