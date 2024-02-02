@@ -119,7 +119,7 @@
     return "ok";
   }
 
-  // Handlers for both todo lists and todo items ___________________________________________________
+  // Shared handlers for both todo lists and todo items ____________________________________________
 
   function updateItem(itemsStore, newItem) {
     const newItems = get(itemsStore).map((item) => {
