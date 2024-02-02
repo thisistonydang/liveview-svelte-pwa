@@ -106,7 +106,7 @@
             {moveTodoMenuId}
           />
 
-          <DragHandle bind:dragDisabled />
+          <DragHandle bind:dragDisabled itemId={item.id} />
         </div>
       {/if}
     </li>

@@ -108,7 +108,7 @@
             {confirmDeletionModalId}
           />
 
-          <DragHandle bind:dragDisabled />
+          <DragHandle bind:dragDisabled itemId={list.id} />
         </div>
       {/if}
     </li>

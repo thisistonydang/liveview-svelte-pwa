@@ -2,14 +2,16 @@
   import { clickOutside } from "lib/actions/clickOutside";
   import Bars3SvgIcon from "lib/svg-icons/Bars3SvgIcon.svelte";
 
-  import { openedMenuId } from "../stores/clientOnlyState";
+  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
 
   export let dragDisabled: boolean;
+  export let itemId: string;
 
   function handleStartDrag(event: MouseEvent | TouchEvent) {
     // Preventing default to prevent lag on touch devices (because of the
     // browser checking for screen scrolling).
     event.preventDefault();
+    $itemToProcessId = itemId;
     dragDisabled = false;
     $openedMenuId = "";
   }
