@@ -5,7 +5,7 @@
   import { clickOutside } from "lib/actions/clickOutside";
 
   import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
-  import { todoLists } from "../stores/crdtState";
+  import { yTodoLists } from "../stores/crdtState";
 
   export let listId: string;
   export let menuClass: string;
@@ -54,7 +54,7 @@
         data-focusindex="1"
         class="btn btn-error border border-neutral"
         on:click={() => {
-          deleteItem(todoLists, listId);
+          deleteItem(yTodoLists, listId);
           dialog.close();
         }}
       >
