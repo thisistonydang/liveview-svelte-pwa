@@ -2,11 +2,18 @@
   import { flip } from "svelte/animate";
   import { fade } from "svelte/transition";
   import { dndzone } from "svelte-dnd-action";
+  import * as Y from "yjs";
 
   import { onKeydown } from "lib/actions/onKeydown";
   import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
+  import {
+    itemToProcessId,
+    openedMenuId,
+    selectedListId,
+    urlHash,
+  } from "../stores/clientOnlyState";
   import { todoLists, todoItems, yTodoLists } from "../stores/crdtState";
   import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
@@ -29,7 +36,18 @@
   }
 
   function updateUiOnFinalize(newItems) {
-    $todoLists = newItems;
+    const oldIndex = $yTodoLists.toArray().findIndex((yMap) => yMap.get("id") === $itemToProcessId);
+    const newIndex = newItems.findIndex((list) => list.id === $itemToProcessId);
+
+    const oldList = $yTodoLists.get(oldIndex);
+    const newList = new Y.Map();
+    newList.set("id", oldList.get("id"));
+    newList.set("name", oldList.get("name"));
+
+    $yTodoLists.doc.transact(() => {
+      $yTodoLists.delete(oldIndex);
+      $yTodoLists.insert(newIndex, [newList]);
+    });
   }
 </script>
 
