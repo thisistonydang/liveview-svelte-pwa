@@ -95,7 +95,6 @@
         <div class="flex gap-1">
           <OptionsMenu
             item={list}
-            itemsStore={todoLists}
             yItemsStore={yTodoLists}
             {updateItem}
             {deleteItem}

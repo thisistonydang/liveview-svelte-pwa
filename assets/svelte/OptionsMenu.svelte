@@ -11,7 +11,6 @@
   import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
 
   export let item;
-  export let itemsStore;
   export let yItemsStore;
   export let updateItem;
   export let deleteItem;
