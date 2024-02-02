@@ -5,13 +5,13 @@
   export const indexedDBName = "ToDo";
 
   export function clearUserData() {
-    // Clear client state.
+    // Clear client state in localStorage.
     localStorage.clear();
 
-    // Clear cached assets.
+    // Clear private assets cached by service worker.
     requestAssetDeletion(config.privateAssets);
 
-    // Clear indexedDB.
+    // Clear Yjs state stored in indexedDB.
     const DBDeleteRequest = window.indexedDB.deleteDatabase(indexedDBName);
     DBDeleteRequest.onerror = () => {
       console.error("Error deleting database.");
