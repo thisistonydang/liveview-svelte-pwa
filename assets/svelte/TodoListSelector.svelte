@@ -7,8 +7,7 @@
   import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
   import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
 
-  import { openedMenuId, selectedListId, urlHash } from "../stores/clientOnlyState";
-  import { todoLists, todoItems } from "../stores/crdtState";
+  import { todoLists, todoItems, yTodoLists } from "../stores/crdtState";
   import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
@@ -97,6 +96,7 @@
           <OptionsMenu
             item={list}
             itemsStore={todoLists}
+            yItemsStore={yTodoLists}
             {updateItem}
             {deleteItem}
             {menuClass}

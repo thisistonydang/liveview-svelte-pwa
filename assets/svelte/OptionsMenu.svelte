@@ -12,6 +12,7 @@
 
   export let item;
   export let itemsStore;
+  export let yItemsStore;
   export let updateItem;
   export let deleteItem;
   export let menuClass: string;
@@ -109,7 +110,7 @@
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
             $openedMenuId = "edit-form-id";
 
-            updateItem(itemsStore, {
+            updateItem(yItemsStore, {
               ...item,
               newName: item.name,
               isEditing: true,
