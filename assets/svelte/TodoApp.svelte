@@ -194,7 +194,7 @@
     }
 
     // Save to server.
-    syncClientToServer($todoItems, $todoLists, $liveView);
+    syncDocumentToServer($liveView);
   }
 
   /**
