@@ -122,7 +122,6 @@
   // Shared handlers for both todo lists and todo items ____________________________________________
 
   function updateItem(yItemStore, newItem) {
-    console.log("newItem:", newItem);
     get(yItemStore).forEach((yMap) => {
       if (yMap.get("id") === newItem.id) {
         yMap.set("name", newItem.name);
@@ -146,7 +145,6 @@
         yMap.delete("newName");
         yMap.delete("isEditing");
       }
-      console.log("yMap.toJSON():", yMap.toJSON());
     });
 
     syncDocumentToServer($liveView);
