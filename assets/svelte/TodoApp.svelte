@@ -172,7 +172,7 @@
     const newItems = filterDuplicates(event.detail.items);
     updateUiOnConsider(newItems);
 
-    // Ensure dragging is stopped on drag finish via keyboard
+    // Ensure dragging is stopped on drag finish via keyboard.
     const { source, trigger } = event.detail.info;
     if (source === SOURCES.KEYBOARD && trigger === TRIGGERS.DRAG_STOPPED) {
       dragDisabled = true;
