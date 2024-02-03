@@ -4,8 +4,9 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   """
 
   import Ecto.Query, warn: false
-  alias LiveViewSvelteOfflineDemo.Repo
 
+  alias LiveViewSvelteOfflineDemo.Jwt
+  alias LiveViewSvelteOfflineDemo.Repo
   alias LiveViewSvelteOfflineDemo.UserData.UserDocument
 
   # PubSub _________________________________________________________________________________________
