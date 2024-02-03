@@ -164,4 +164,29 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
   def change_user_document(%UserDocument{} = user_document, attrs \\ %{}) do
     UserDocument.changeset(user_document, attrs)
   end
+
+  # Yjs ____________________________________________________________________________________________
+
+  @doc """
+  Get the latest document state by merging the Yjs document saved in the server
+  database with the document from the client.
+
+  The merge is handled by via a Cloudflare Worker in order to use Yjs on server side.
+  """
+  def get_latest_document(socket, client_document) do
+    extra_claims = %{
+      # TODO: Handle case where no document exists?
+      "serverDocument" => get_document(socket),
+      "clientDocument" => client_document
+    }
+
+    # Create JWT token.
+    {:ok, token, _} = Jwt.generate_and_sign(extra_claims)
+
+    # Send request for merge to JS backend.
+    # TODO: Handle errors.
+    Req.post!("#{System.get_env("JS_BACKEND_URL")}/microservices/yjs/merge?jwt=#{token}").body[
+      "document"
+    ]
+  end
 end
