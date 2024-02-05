@@ -10,9 +10,9 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    %{id: user_id} = socket.assigns.current_user
-
     if connected?(socket) do
+      %{id: user_id} = socket.assigns.current_user
+
       # Subscribe to user document updates.
       UserData.subscribe(user_id)
 
