@@ -51,6 +51,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   # Event Handlers _________________________________________________________________________________
 
   @impl true
+  # Only allow the client to request the document state after socket is
+  # connected to avoid caching user data in service worker cache.
   def handle_event("request_server_document" = event, _params, socket) do
     document = UserData.get_document(socket)
     socket = socket |> assign(server_document: %{"event" => event, "document" => document})
