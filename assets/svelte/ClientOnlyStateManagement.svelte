@@ -17,13 +17,11 @@
   /**
    * Get parsed value from localStorage.
    *
-   * @param {string} key - Key to get from localStorage.
-   * @param {string} type - Type of value.
-   * @param {string | boolean} defaultValue - Default value to return if value is not found in localStorage.
-   *
-   * @returns {string | boolean} - Parsed value from localStorage or default value.
+   * @param key - Key to get from localStorage.
+   * @param type - Type of value.
+   * @param defaultValue - Default value to return if value is not found in localStorage.
    */
-  function getParsedValue(key, type, defaultValue) {
+  function getParsedValue<T>(key: string, type: string, defaultValue: T): T {
     const value = localStorage.getItem(key);
 
     if (!value) return defaultValue;
