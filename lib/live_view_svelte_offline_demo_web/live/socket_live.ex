@@ -1,7 +1,6 @@
 defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   use LiveViewSvelteOfflineDemoWeb, :live_view
 
-  alias LiveViewSvelteOfflineDemo.UserStates
   alias LiveViewSvelteOfflineDemo.UserData
   alias LiveViewSvelteOfflineDemoWeb.Presence
 
@@ -16,9 +15,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     if connected?(socket) do
       # Subscribe to user document updates.
       UserData.subscribe(user_id)
-
-      # Subscribe to user state updates.
-      UserStates.subscribe(user_id)
 
       # Subscribe to presence updates for the user.
       Presence.subscribe(user_id)
@@ -79,16 +75,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
-  def handle_event("client_state_updated", %{"clientState" => client_state}, socket) do
-    # Get latest data from db and perform state merge.
-    latest_state =
-      get_server_state(socket) |> merge_state(client_state) |> confirm_synced(socket)
-
-    socket = socket |> assign(server_state: latest_state)
-
-    {:noreply, socket}
-  end
-
   def handle_event(
         "visibility_change",
         %{"sessionId" => session_id, "visibilityState" => visibility_state},
@@ -115,14 +101,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
-  def handle_info({:user_state_updated, user_state}, socket) do
-    %{state: state} = user_state
-    latest_state = add_synced_timestamp(state)
-    socket = socket |> assign(server_state: latest_state)
-
-    {:noreply, socket}
-  end
-
   @doc """
   Get and assign the latest session count to the socket whenever a 'presence diff' event is broadcasted.
   """
@@ -137,41 +115,5 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   @impl true
   def terminate(_reason, socket) do
     Presence.untrack_user_presence(socket)
-  end
-
-  # State Syncing Helpers __________________________________________________________________________
-
-  defp add_synced_timestamp(state) do
-    Map.put(
-      state,
-      "meta",
-      %{"synced" => true, "timestamp" => System.os_time(:millisecond)}
-    )
-  end
-
-  defp get_server_state(socket) do
-    %{state: state} = UserStates.get_user_state(socket.assigns.current_user.id)
-    add_synced_timestamp(state)
-  end
-
-  defp merge_state(server_state, client_state) do
-    if client_state["timestamp"] > server_state["timestamp"], do: client_state, else: server_state
-  end
-
-  defp confirm_synced(state, socket) do
-    if state["meta"]["synced"] != true, do: sync_to_db(state, socket)
-
-    add_synced_timestamp(state)
-  end
-
-  defp sync_to_db(state, socket) do
-    new_state = Map.delete(state, "meta")
-    old_user_state = UserStates.get_user_state(socket.assigns.current_user.id)
-
-    case UserStates.update_user_state(old_user_state, %{state: new_state}) do
-      {:ok, _} -> :ok
-      # TODO: Handle this error.
-      error -> error
-    end
   end
 end
