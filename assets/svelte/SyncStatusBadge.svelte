@@ -6,7 +6,7 @@
   import { liveView } from "../stores/liveViewSocket";
   import { syncState } from "../stores/syncState";
 
-  import { syncDocumentToServer } from "./Yjs.svelte";
+  import { syncDocumentToServer } from "./StateManagement.svelte";
 
   async function checkIfSynced() {
     if ($syncState === "Synced") {
