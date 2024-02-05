@@ -41,7 +41,7 @@
 </script>
 
 <div
-  class="collapse border border-neutral mt-2 mb-10 overflow-visible"
+  class="collapse border border-neutral mt-2 mb-20 overflow-visible"
   class:collapse-open={isDropdownOpened}
 >
   <!-- Collapse title. -->
