@@ -29,7 +29,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
       |> assign(svelte_opts: %{ssr: false})
       # TODO: Maybe check for existing document in db and assign it here for faster load times?
       |> assign(server_document: %{"event" => "mount", "document" => nil})
-      |> assign(server_state: UserStates.initial_server_state())
       |> assign(session_count: Presence.get_session_count(socket))
 
     {:ok, socket, layout: false}
@@ -40,11 +39,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.LiveViewSocket
-      server_document={@server_document}
-      server_state={@server_state}
-      session_count={@session_count}
-    />
+    <.LiveViewSocket server_document={@server_document} session_count={@session_count} />
     <!-- Toggle visibility of the sessions badge when the socket is connected/disconnected. -->
     <div
       phx-connected={JS.remove_class("hidden", to: "#sessions-badge")}
