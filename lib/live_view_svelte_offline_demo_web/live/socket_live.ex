@@ -79,16 +79,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
-  @doc """
-  Only allow the client to request the server state after socket is connected to
-  avoid caching user data in service worker cache.
-  """
-  def handle_event("request_server_state", _params, socket) do
-    socket = socket |> assign(server_state: get_server_state(socket))
-
-    {:noreply, socket}
-  end
-
   def handle_event("client_state_updated", %{"clientState" => client_state}, socket) do
     # Get latest data from db and perform state merge.
     latest_state =
