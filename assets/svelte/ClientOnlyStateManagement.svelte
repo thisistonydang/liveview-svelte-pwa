@@ -8,7 +8,6 @@
     newList,
     newTodo,
     openedMenuId,
-    selectedListId,
   } from "../stores/clientOnlyState";
 
   export let isClientStateRestored: boolean;
@@ -42,7 +41,6 @@
     $newList = getParsedValue("newList", "string", $newList);
     $newTodo = getParsedValue("newTodo", "string", $newTodo);
     $openedMenuId = getParsedValue("openedMenuId", "string", $openedMenuId);
-    // $selectedListId is not set here because it is set in StateManagement
 
     // Let offline-svelte know that the client state has been restored in order
     // to restore scroll position.
@@ -57,6 +55,5 @@
     sessionStorage.setItem("newList", JSON.stringify($newList));
     sessionStorage.setItem("newTodo", JSON.stringify($newTodo));
     sessionStorage.setItem("openedMenuId", JSON.stringify($openedMenuId));
-    sessionStorage.setItem("selectedListId", JSON.stringify($selectedListId));
   }
 </script>

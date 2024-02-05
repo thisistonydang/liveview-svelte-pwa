@@ -6,6 +6,6 @@ export const itemToProcessId = writable("");
 export const newList = writable("");
 export const newTodo = writable("");
 export const openedMenuId = writable("");
-export const selectedListId = writable("");
 
+export const selectedListId = writable("");
 export const urlHash = writable<"" | "about" | "listId">("");
