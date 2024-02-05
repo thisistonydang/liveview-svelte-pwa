@@ -15,10 +15,6 @@
   // Assign socket assigns to reactive stores.
   $: $serverDocument = server_document;
   $: $sessionCount = session_count;
-
-  onMount(() => {
-    live.pushEvent("request_server_state");
-  });
 </script>
 
 <VisibilityChangeTracker {live} />
