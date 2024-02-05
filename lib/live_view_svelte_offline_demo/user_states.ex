@@ -161,13 +161,6 @@ defmodule LiveViewSvelteOfflineDemo.UserStates do
 
   # Public Helpers _________________________________________________________________________________
 
-  @doc """
-  Returns a default server state for the initial server render.
-  """
-  def initial_server_state() do
-    default_state() |> Map.merge(%{"meta" => %{"synced" => true}})
-  end
-
   # Default user_state map value if user_state does not exist yet.
   defp default_state do
     %{
