@@ -9,7 +9,6 @@
 
   import config from "../../priv/static/sw.config.js";
   import { openedMenuId, urlHash } from "../stores/clientOnlyState";
-  import { serverState } from "../stores/liveViewSocket";
 
   import AppInfo from "./AppInfo.svelte";
   import AppSkeleton from "./AppSkeleton.svelte";
@@ -28,16 +27,9 @@
   live;
 
   export let currentUserEmail: string;
-  export let server_state;
 
   const menuClass = "menu-class";
   let isClientStateRestored = false;
-
-  // Setting $serverState here is required so that an initial state is available
-  // when offline. This allows the initial syncServerToClient call to set the
-  // initial app state ($todoItems, $todoLists, and $syncState stores) even when
-  // offline.
-  $serverState = server_state;
 
   onMount(() => {
     isConnected({ timeout: 10000 }).then((connected) => {
