@@ -10,7 +10,6 @@
     openedMenuId,
     selectedListId,
   } from "../stores/clientOnlyState";
-  import { todoItems, todoLists } from "../stores/crdtState";
   import { syncState } from "../stores/syncState";
 
   export let isClientStateRestored: boolean;
@@ -100,12 +99,6 @@
 
       case "syncState":
         $syncState = JSON.parse(newValue);
-        break;
-
-      case "clientState":
-        const clientState = JSON.parse(newValue);
-        $todoItems = clientState.value.todos;
-        $todoLists = clientState.value.lists;
         break;
     }
   }}
