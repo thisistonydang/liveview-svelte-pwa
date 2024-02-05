@@ -10,7 +10,6 @@
     openedMenuId,
     selectedListId,
   } from "../stores/clientOnlyState";
-  import { syncState } from "../stores/syncState";
 
   export let isClientStateRestored: boolean;
 
@@ -43,7 +42,6 @@
     $newTodo = getParsedValue("newTodo", "string", $newTodo);
     $openedMenuId = getParsedValue("openedMenuId", "string", $openedMenuId);
     // $selectedListId is not set here because it is set in StateManagement
-    // $syncState is not set here because it is set in StateManagement
 
     // Let offline-svelte know that the client state has been restored in order
     // to restore scroll position.
@@ -59,45 +57,5 @@
     sessionStorage.setItem("newTodo", JSON.stringify($newTodo));
     sessionStorage.setItem("openedMenuId", JSON.stringify($openedMenuId));
     sessionStorage.setItem("selectedListId", JSON.stringify($selectedListId));
-    sessionStorage.setItem("syncState", JSON.stringify($syncState));
   }
 </script>
-
-<!-- Keep client state synced across different windows and tabs of the same browser. -->
-<svelte:window
-  on:storage={({ key, newValue }) => {
-    switch (key) {
-      case "isListsOpened":
-        $isListsOpened = JSON.parse(newValue);
-        break;
-
-      case "isTodoOpened":
-        $isTodoOpened = JSON.parse(newValue);
-        break;
-
-      case "itemToProcessId":
-        $itemToProcessId = JSON.parse(newValue);
-        break;
-
-      case "newList":
-        $newList = JSON.parse(newValue);
-        break;
-
-      case "newTodo":
-        $newTodo = JSON.parse(newValue);
-        break;
-
-      case "openedMenuId":
-        $openedMenuId = JSON.parse(newValue);
-        break;
-
-      case "selectedListId":
-        $selectedListId = JSON.parse(newValue);
-        break;
-
-      case "syncState":
-        $syncState = JSON.parse(newValue);
-        break;
-    }
-  }}
-/>
