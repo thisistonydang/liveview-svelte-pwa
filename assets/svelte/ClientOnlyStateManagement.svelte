@@ -15,14 +15,14 @@
   export let isClientStateRestored: boolean;
 
   /**
-   * Get parsed value from localStorage.
+   * Get parsed value from sessionStorage.
    *
-   * @param key - Key to get from localStorage.
+   * @param key - Key to get from sessionStorage.
    * @param type - Type of value.
-   * @param defaultValue - Default value to return if value is not found in localStorage.
+   * @param defaultValue - Default value to return if value is not found in sessionStorage.
    */
   function getParsedValue<T>(key: string, type: string, defaultValue: T): T {
-    const value = localStorage.getItem(key);
+    const value = sessionStorage.getItem(key);
 
     if (!value) return defaultValue;
 
@@ -35,7 +35,7 @@
   }
 
   onMount(() => {
-    // Sync client state stores with localStorage on startup.
+    // Sync client state stores with sessionStorage on startup.
     $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
     $itemToProcessId = getParsedValue("itemToProcessId", "string", $itemToProcessId);
@@ -50,16 +50,16 @@
     isClientStateRestored = true;
   });
 
-  // Keep localStorage in sync with client state stores.
+  // Keep sessionStorage in sync with client state stores.
   $: if (isClientStateRestored) {
-    localStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
-    localStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
-    localStorage.setItem("itemToProcessId", JSON.stringify($itemToProcessId));
-    localStorage.setItem("newList", JSON.stringify($newList));
-    localStorage.setItem("newTodo", JSON.stringify($newTodo));
-    localStorage.setItem("openedMenuId", JSON.stringify($openedMenuId));
-    localStorage.setItem("selectedListId", JSON.stringify($selectedListId));
-    localStorage.setItem("syncState", JSON.stringify($syncState));
+    sessionStorage.setItem("isListsOpened", JSON.stringify($isListsOpened));
+    sessionStorage.setItem("isTodoOpened", JSON.stringify($isTodoOpened));
+    sessionStorage.setItem("itemToProcessId", JSON.stringify($itemToProcessId));
+    sessionStorage.setItem("newList", JSON.stringify($newList));
+    sessionStorage.setItem("newTodo", JSON.stringify($newTodo));
+    sessionStorage.setItem("openedMenuId", JSON.stringify($openedMenuId));
+    sessionStorage.setItem("selectedListId", JSON.stringify($selectedListId));
+    sessionStorage.setItem("syncState", JSON.stringify($syncState));
   }
 </script>
 
