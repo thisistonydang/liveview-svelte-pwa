@@ -4,5 +4,5 @@ import { writable } from "svelte/store";
 export let liveView = writable();
 
 // Socket assigns from LiveView
-export let serverDocument = writable<string>();
+export let serverDocument = writable<{ event: string; document: string | null }>();
 export let sessionCount = writable<number>();
