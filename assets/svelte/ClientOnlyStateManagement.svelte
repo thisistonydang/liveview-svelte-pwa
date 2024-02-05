@@ -34,7 +34,8 @@
   }
 
   onMount(() => {
-    // Sync client state stores with sessionStorage on startup.
+    // Sync client state stores with sessionStorage on startup. This is mainly
+    // to restore UI if the browser unexpectedly refreshes.
     $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
     $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
     $itemToProcessId = getParsedValue("itemToProcessId", "string", $itemToProcessId);
