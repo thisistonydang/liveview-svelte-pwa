@@ -9,7 +9,7 @@
   $liveView = live;
 
   // Receive socket assigns from LiveView.
-  export let server_document: string;
+  export let server_document: { event: string; document: string | null };
   export let session_count: number;
 
   // Assign socket assigns to reactive stores.
