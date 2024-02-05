@@ -5,7 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "$lib": ["svelte"],
-      "$lib/*": ["svelte/*"]
+      "$lib/*": ["svelte/*"],
+      "$stores/*": ["stores/*"]
     }
   }
 }
