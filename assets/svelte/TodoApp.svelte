@@ -263,7 +263,7 @@
   }
   $: selectedListName = setSelectedListName($selectedListId);
 
-  $: selectedListTodoItems = $todoItems.filter((item) => item.list_id === $selectedListId);
+  $: selectedListTodoItems = $todoItems.filter((item) => item.listId === $selectedListId);
   $: selectedListUncompletedItems = selectedListTodoItems.filter((item) => !item.completed);
 
   // Get itemToMove when $itemToProcessId changes __________________________________________________
