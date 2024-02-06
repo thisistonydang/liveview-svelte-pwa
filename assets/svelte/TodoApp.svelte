@@ -156,7 +156,7 @@
     for (const yMap of yArray) {
       if (yMap.get("id") === itemId) {
         // If a list is being deleted, clean up orphaned todos.
-        if (yMap.get("list_id") === undefined) {
+        if (yMap.get("listId") === undefined) {
           let listId = yMap.get("id");
           listId = typeof listId === "string" ? listId : "";
           cleanOrphanedTodos(listId);
