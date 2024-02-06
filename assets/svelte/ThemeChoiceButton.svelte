@@ -1,10 +1,5 @@
-<script context="module">
-  /**
-   * Set theme.
-   *
-   * @param {"system" | "light" | "dark"} theme
-   */
-  export function setTheme(theme) {
+<script lang="ts" context="module">
+  export function setTheme(theme: "system" | "light" | "dark") {
     currentTheme.set(theme);
 
     if (theme === "system") {
@@ -18,16 +13,12 @@
   }
 </script>
 
-<script>
-  import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
+<script lang="ts">
+  import CheckSvgIconMicro from "$lib/svg-icons/CheckSvgIconMicro.svelte";
+  import { currentTheme } from "$stores/currentTheme";
 
-  import { currentTheme } from "../stores/currentTheme";
-
-  /** @type {number} */
-  export let focusIndex;
-
-  /** @type {"system" | "light" | "dark"} */
-  export let theme;
+  export let focusIndex: number;
+  export let theme: "system" | "light" | "dark";
 </script>
 
 <li>
