@@ -58,13 +58,9 @@
     syncDocumentToServer($liveView);
   }
 
-  /**
-   * Toggle the completed status of a todo item.
-   * @param {string} itemId
-   */
-  function toggleCompleted(itemId) {
-    // TODO: test if toArray + findIndex is faster than for loop.
-    for (yMap of $yTodoItems) {
+  function toggleCompleted(itemId: string) {
+    // TODO: Test if toArray + findIndex is faster than for loop.
+    for (const yMap of $yTodoItems) {
       if (yMap.get("id") === itemId) {
         yMap.set("completed", !yMap.get("completed"));
         syncDocumentToServer($liveView);
