@@ -1,6 +1,6 @@
 const DEBUG = false;
 
-export function registerServiceWorker(serviceWorkerPath: string) {
+export function useRegisterServiceWorker(serviceWorkerPath: string) {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", async () => {
       try {
