@@ -32,7 +32,7 @@
 
   const hasTouchScreen = useHasTouchScreen();
 
-  function updateUiOnConsider(newItems) {
+  function updateUiOnConsider(newItems: TodoItem[]) {
     items = newItems;
   }
 
