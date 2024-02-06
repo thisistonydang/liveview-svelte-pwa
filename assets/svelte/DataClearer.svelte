@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import config from "../../priv/static/sw.config.js";
 
-  import { requestAssetDeletion } from "$lib/offline-svelte";
+  import { requestAssetDeletion } from "./ServiceWorkerMessageHandler.svelte";
 
   export const indexedDBName = "ToDo";
 
