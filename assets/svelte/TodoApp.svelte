@@ -57,7 +57,7 @@
     todo.set("id", crypto.randomUUID());
     todo.set("name", $newTodo);
     todo.set("completed", false);
-    todo.set("list_id", $selectedListId);
+    todo.set("listId", $selectedListId);
     $yTodoItems.unshift([todo]);
 
     $newTodo = "";
