@@ -12,7 +12,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
   def root_html(assigns) do
     ~H"""
     <!DOCTYPE html>
-    <html lang="en" class="[scrollbar-gutter:stable]">
+    <html lang="en" class="[scrollbar-gutter:stable] overflow-y-scroll">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
