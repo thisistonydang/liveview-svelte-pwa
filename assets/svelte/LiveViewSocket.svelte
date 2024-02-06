@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { liveView, serverDocument, sessionCount } from "../stores/liveViewSocket";
+  import { liveView, serverDocument, sessionCount } from "$stores/liveViewSocket";
   import VisibilityChangeTracker from "./VisibilityChangeTracker.svelte";
 
   import type { Live } from "live_svelte";
 
   // Store 'live' object from live_svelte in a Svelte store.
-  export let live: Live | undefined;
+  export let live: Live;
   $liveView = live;
 
   // Receive socket assigns from LiveView.
