@@ -183,7 +183,7 @@
     // operation changes the array length.
     let index = 0;
     $yTodoItems.forEach((yMap) => {
-      let yMapListId = yMap.get("list_id");
+      let yMapListId = yMap.get("listId");
       yMapListId = typeof yMapListId === "string" ? yMapListId : "";
 
       if (!newTodoListIds.includes(yMapListId)) {
