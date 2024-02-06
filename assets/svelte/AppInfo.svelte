@@ -1,5 +1,5 @@
 <script lang="ts">
-  import GitHubSvgIcon from "lib/svg-icons/GitHubSvgIcon.svelte";
+  import GitHubSvgIcon from "$lib/svg-icons/GitHubSvgIcon.svelte";
   import Link from "./Link.svelte";
 
   import { Live } from "live_svelte";
