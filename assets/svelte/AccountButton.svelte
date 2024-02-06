@@ -2,7 +2,7 @@
   import { scale } from "svelte/transition";
 
   import { focusTrap } from "$lib/actions/focusTrap.js";
-  import { isConnected, serviceWorkerVersion } from "$lib/offline-svelte";
+  import { useIsConnected } from "$lib/hooks/useIsConnected";
   import UserSvgIcon from "$lib/svg-icons/UserSvgIcon.svelte";
   import { showTopBar, hideTopBar } from "$lib/topbar";
 
@@ -32,7 +32,8 @@
     isSettingsLoading = true;
     showTopBar();
 
-    if (!(await isConnected({}))) {
+    const isConnected = await useIsConnected({});
+    if (!isConnected) {
       $toast = {
         show: true,
         kind: "error",
@@ -54,7 +55,8 @@
     isLogOutLoading = true;
     showTopBar();
 
-    if (!(await isConnected({}))) {
+    const isConnected = await useIsConnected({});
+    if (!isConnected) {
       $toast = {
         show: true,
         kind: "error",
