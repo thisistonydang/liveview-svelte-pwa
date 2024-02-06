@@ -11,7 +11,7 @@
   function dismissToast() {
     $toast = {
       show: false,
-      kind: "",
+      kind: "info",
       title: "",
       msg: "",
     };
