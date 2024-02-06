@@ -253,7 +253,7 @@
 
   // Keep selected list name and items in sync with selected list id _______________________________
 
-  function setSelectedListName(listId) {
+  function setSelectedListName(listId: string) {
     return $todoLists.find((list) => list.id === listId)?.name ?? "";
   }
   $: selectedListName = setSelectedListName($selectedListId);
