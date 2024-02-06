@@ -28,9 +28,9 @@
     newTodo,
     openedMenuId,
     selectedListId,
-  } from "../stores/clientOnlyState";
-  import { todoLists, todoItems, yTodoLists, yTodoItems, isTodoItem } from "../stores/crdtState";
-  import { liveView } from "../stores/liveViewSocket";
+  } from "$stores/clientOnlyState";
+  import { todoLists, todoItems, yTodoLists, yTodoItems, isTodoItem } from "$stores/crdtState";
+  import { liveView } from "$stores/liveViewSocket";
 
   import { syncDocumentToServer } from "./StateManagement.svelte";
   import ConfirmDeletionModal from "./ConfirmDeletionModal.svelte";
