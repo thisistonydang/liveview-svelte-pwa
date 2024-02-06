@@ -289,7 +289,7 @@
 
 {#if $selectedListId}
   <NewItemForm
-    store={todoItems}
+    itemsStore={todoItems}
     addItemCallback={addTodo}
     bind:value={$newTodo}
     placeholder="Enter new item name"
@@ -320,7 +320,7 @@
   </ItemsContainer>
 {:else}
   <NewItemForm
-    store={todoLists}
+    itemsStore={todoLists}
     addItemCallback={addList}
     bind:value={$newList}
     placeholder="Enter new list name"

@@ -1,8 +1,14 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-  import { selectedListId } from "../stores/clientOnlyState";
 
-  export let store;
+  import { selectedListId } from "$stores/clientOnlyState";
+  import { isTodoItem } from "$stores/crdtState";
+
+  import type { Writable } from "svelte/store";
+
+  import type { TodoItem, TodoList } from "$stores/crdtState";
+
+  export let itemsStore: Writable<TodoList[] | TodoItem[]>;
   export let addItemCallback: () => void;
   export let value: string;
   export let placeholder: string;
