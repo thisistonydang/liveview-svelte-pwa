@@ -19,7 +19,7 @@
     openedMenuId,
     selectedListId,
   } from "../stores/clientOnlyState";
-  import { todoLists, todoItems, yTodoLists, yTodoItems } from "../stores/crdtState";
+  import { todoLists, todoItems, yTodoLists, yTodoItems, isTodoItem } from "../stores/crdtState";
   import { liveView } from "../stores/liveViewSocket";
 
   import { syncDocumentToServer } from "./StateManagement.svelte";
