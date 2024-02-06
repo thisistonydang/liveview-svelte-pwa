@@ -30,7 +30,8 @@
   import { onMount } from "svelte";
 
   import { useIsConnected } from "$lib/hooks/useIsConnected";
-  import { serviceWorkerVersion } from "$stores/serviceWorkerVersion";
+
+  export let serviceWorkerVersion = "";
 
   onMount(() => {
     navigator.serviceWorker?.addEventListener("message", (event) => {
@@ -40,7 +41,7 @@
           break;
 
         case "request_service_worker_version":
-          $serviceWorkerVersion = event.data.payload.serviceWorkerVersion;
+          serviceWorkerVersion = event.data.payload.serviceWorkerVersion;
           break;
 
         default:
