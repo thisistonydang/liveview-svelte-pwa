@@ -1,10 +1,16 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { fly } from "svelte/transition";
 
+  import config from "../../priv/static/sw.config.js";
   import { useIsConnected } from "$lib/hooks/useIsConnected";
   import InfoSvgIcon from "$lib/svg-icons/InfoSvgIcon.svelte";
 
+  let newSW: ServiceWorker;
   let showAlert = false;
+  let isSWUpdateAvailable = false;
+  let isSWUpdateConfirmed = false;
+  let width: number;
 
   let width: number;
 
