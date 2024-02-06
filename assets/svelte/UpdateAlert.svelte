@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
 
-  import { isConnected, isSWUpdateAvailable, isSWUpdateConfirmed } from "$lib/offline-svelte";
+  import { useIsConnected } from "$lib/hooks/useIsConnected";
   import InfoSvgIcon from "$lib/svg-icons/InfoSvgIcon.svelte";
 
   let showAlert = false;
@@ -9,8 +9,8 @@
   let width: number;
 
   $: if ($isSWUpdateAvailable) {
-    isConnected({ timeout: 10000 }).then((connected) => {
-      if (connected) {
+    useIsConnected({ timeout: 10000 }).then((isConnected) => {
+      if (isConnected) {
         showAlert = true;
       }
     });
