@@ -2,11 +2,11 @@
   import { onMount } from "svelte";
   import { scale } from "svelte/transition";
 
-  import { focusTrap } from "lib/actions/focusTrap";
-  import SwatchSvgIcon from "lib/svg-icons/SwatchSvgIcon.svelte";
+  import { focusTrap } from "$lib/actions/focusTrap";
+  import SwatchSvgIcon from "$lib/svg-icons/SwatchSvgIcon.svelte";
 
-  import { openedMenuId } from "../stores/clientOnlyState";
-  import { currentTheme } from "../stores/currentTheme";
+  import { openedMenuId } from "$stores/clientOnlyState";
+  import { currentTheme } from "$stores/currentTheme";
   import ThemeChoiceButton from "./ThemeChoiceButton.svelte";
 
   export let menuClass: string;
