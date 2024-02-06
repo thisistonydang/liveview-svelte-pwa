@@ -1,7 +1,9 @@
 <script lang="ts">
   import { setTheme } from "./ThemeChoiceButton.svelte";
 
-  export let live = undefined;
+  import type { Live } from "live_svelte";
+
+  export let live: Live = undefined;
   live;
 </script>
 
