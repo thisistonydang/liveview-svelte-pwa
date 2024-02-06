@@ -38,7 +38,7 @@
     detectSWUpdate();
   });
 
-  $: if ($isSWUpdateAvailable) {
+  $: if (isSWUpdateAvailable) {
     useIsConnected({ timeout: 10000 }).then((isConnected) => {
       if (isConnected) {
         showAlert = true;
