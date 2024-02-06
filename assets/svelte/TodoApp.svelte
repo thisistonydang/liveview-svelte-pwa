@@ -46,7 +46,7 @@
   // Todo items handlers ___________________________________________________________________________
 
   function addTodo() {
-    const todo = new Y.Map();
+    const todo = new Y.Map<string | boolean>();
     todo.set("id", crypto.randomUUID());
     todo.set("name", $newTodo);
     todo.set("completed", false);
