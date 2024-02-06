@@ -1,4 +1,3 @@
-export { registerServiceWorker } from "./lib/registerServiceWorker";
 export { serviceWorkerVersion } from "./lib/serviceWorkerVersion";
 export {
   requestAssetCaching,
