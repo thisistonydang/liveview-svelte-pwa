@@ -1,12 +1,12 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
 
-  import { clickOutside } from "lib/actions/clickOutside";
-  import InfoSvgIcon from "lib/svg-icons/InfoSvgIcon.svelte";
-  import WarningSvgIcon from "lib/svg-icons/WarningSvgIcon.svelte";
-  import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
+  import { clickOutside } from "$lib/actions/clickOutside";
+  import InfoSvgIcon from "$lib/svg-icons/InfoSvgIcon.svelte";
+  import WarningSvgIcon from "$lib/svg-icons/WarningSvgIcon.svelte";
+  import XMarkSvgIcon from "$lib/svg-icons/XMarkSvgIcon.svelte";
 
-  import { toast } from "../stores/toast";
+  import { toast } from "$stores/toast";
 
   function dismissToast() {
     $toast = {
