@@ -34,13 +34,24 @@
     $todoLists = newItems;
   }
 
-  function updateUiOnFinalize(newItems) {
+  function updateUiOnFinalize(newItems: TodoList[]) {
     const oldIndex = $yTodoLists.toArray().findIndex((yMap) => yMap.get("id") === $itemToProcessId);
 
     const oldList = $yTodoLists.get(oldIndex);
-    const newList = new Y.Map();
-    newList.set("id", oldList.get("id"));
-    newList.set("name", oldList.get("name"));
+    const newList = new Y.Map<string>();
+
+    let oldListId = oldList.get("id");
+    if (typeof oldListId !== "string") {
+      throw new Error("The list ID must be a string.");
+    }
+
+    let oldListName = oldList.get("name");
+    if (typeof oldListName !== "string") {
+      throw new Error("The list name must be a string.");
+    }
+
+    newList.set("id", oldListId);
+    newList.set("name", oldListName);
 
     $yTodoLists.doc.transact(() => {
       $yTodoLists.delete(oldIndex);
