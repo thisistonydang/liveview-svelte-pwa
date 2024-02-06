@@ -4,14 +4,18 @@
   import { dndzone } from "svelte-dnd-action";
   import * as Y from "yjs";
 
-  import { onKeydown } from "lib/actions/onKeydown";
-  import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
+  import { onKeydown } from "$lib/actions/onKeydown";
+  import { useHasTouchScreen } from "$lib/hooks/useHasTouchScreen";
 
-  import { todoItems, yTodoItems } from "../stores/crdtState";
-  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
+  import { todoItems, yTodoItems } from "$stores/crdtState";
+  import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
+
   import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
+
+  import type { TodoItem } from "$stores/crdtState";
+  import type { DeleteItem, DndHandler, UpdateItem } from "./TodoApp.svelte";
 
   export let title: string;
   export let items;
