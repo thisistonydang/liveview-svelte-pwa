@@ -36,15 +36,15 @@
     items = newItems;
   }
 
-  function updateUiOnFinalize(newItems) {
+  function updateUiOnFinalize(newItems: TodoItem[]) {
     const oldIndex = $yTodoItems.toArray().findIndex((yMap) => yMap.get("id") === $itemToProcessId);
 
     const oldItem = $yTodoItems.get(oldIndex);
-    const newItem = new Y.Map();
+    const newItem = new Y.Map<string | boolean>();
     newItem.set("id", oldItem.get("id"));
     newItem.set("name", oldItem.get("name"));
     newItem.set("completed", oldItem.get("completed"));
-    newItem.set("list_id", oldItem.get("list_id"));
+    newItem.set("listId", oldItem.get("listId"));
 
     $yTodoItems.doc.transact(() => {
       $yTodoItems.delete(oldIndex);
