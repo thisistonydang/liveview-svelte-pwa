@@ -2,7 +2,9 @@
   import GitHubSvgIcon from "lib/svg-icons/GitHubSvgIcon.svelte";
   import Link from "./Link.svelte";
 
-  export let live = undefined;
+  import { Live } from "live_svelte";
+
+  export let live: Live = undefined;
   live;
 
   export let showAuthLinks = false;
