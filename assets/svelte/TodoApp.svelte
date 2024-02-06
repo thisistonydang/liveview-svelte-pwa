@@ -163,7 +163,7 @@
     }
   }
 
-  function cleanOrphanedTodos(listId) {
+  function cleanOrphanedTodos(listId: string) {
     const oldTodoListIds = $todoLists.map((list) => list.id);
     const newTodoListIds = oldTodoListIds.filter((id) => id !== listId);
 
@@ -171,7 +171,10 @@
     // operation changes the array length.
     let index = 0;
     $yTodoItems.forEach((yMap) => {
-      if (!newTodoListIds.includes(yMap.get("list_id"))) {
+      let yMapListId = yMap.get("list_id");
+      yMapListId = typeof yMapListId === "string" ? yMapListId : "";
+
+      if (!newTodoListIds.includes(yMapListId)) {
         $yTodoItems.delete(index);
         return;
       }
