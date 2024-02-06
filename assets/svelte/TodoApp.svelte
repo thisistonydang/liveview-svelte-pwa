@@ -1,4 +1,9 @@
 <script lang="ts" context="module">
+  export type DeleteItem = (
+    yItemsStore: Writable<YArray<YMap<string | boolean>>>,
+    itemId: string,
+  ) => void;
+
   export type DndHandler = (
     event: CustomEvent,
     updateUi: (newItems: TodoList[] | TodoItem[]) => void,
@@ -144,7 +149,7 @@
     syncDocumentToServer($liveView);
   }
 
-  function deleteItem(yItemsStore: Writable<YArray<YMap<string | boolean>>>, itemId: string) {
+  const deleteItem: DeleteItem = (yItemsStore, itemId) => {
     const yArray = get(yItemsStore);
     let index = 0;
 
@@ -168,7 +173,7 @@
 
       index++;
     }
-  }
+  };
 
   function cleanOrphanedTodos(listId: string) {
     const oldTodoListIds = $todoLists.map((list) => list.id);
