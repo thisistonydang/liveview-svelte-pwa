@@ -1,9 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let live;
+  import type { Live } from "live_svelte";
 
-  function pushVisibilityChangeEvent(live) {
+  export let live: Live;
+
+  function pushVisibilityChangeEvent(live: Live) {
     const sessionIdKey = "sessionId";
     let sessionId = sessionStorage.getItem(sessionIdKey);
 
