@@ -1,11 +1,6 @@
 import config from "../../../../priv/static/sw.config.js";
 
-/**
- * Request service worker to cache assets.
- *
- * @param {string[]} assets
- */
-export function requestAssetCaching(assets) {
+export function requestAssetCaching(assets: string[]) {
   navigator.serviceWorker?.controller?.postMessage({
     type: config.messageTypes.REQUEST_ASSET_CACHING,
     payload: {
@@ -14,12 +9,7 @@ export function requestAssetCaching(assets) {
   });
 }
 
-/**
- * Request service worker to delete cache assets.
- *
- * @param {string[]} assets
- */
-export function requestAssetDeletion(assets) {
+export function requestAssetDeletion(assets: string[]) {
   navigator.serviceWorker?.controller?.postMessage({
     type: config.messageTypes.REQUEST_ASSET_DELETION,
     payload: {
@@ -28,9 +18,6 @@ export function requestAssetDeletion(assets) {
   });
 }
 
-/**
- * Request service worker version.
- */
 export function requestServiceWorkerVersion() {
   navigator.serviceWorker?.controller?.postMessage({
     type: config.messageTypes.REQUEST_SERVICE_WORKER_VERSION,
