@@ -1,5 +1,9 @@
-export function clickOutside(element, callbackFunction) {
-  function clickOutsideHandler(event) {
+type CallBackFunction = (event: PointerEvent) => void;
+
+export function clickOutside(element: HTMLElement, callbackFunction: CallBackFunction) {
+  function clickOutsideHandler(event: PointerEvent) {
+    if (!(event.target instanceof Node)) return;
+
     if (!element.contains(event.target)) {
       callbackFunction(event);
     }
@@ -10,7 +14,7 @@ export function clickOutside(element, callbackFunction) {
   }, 0);
 
   return {
-    update(newCallbackFunction) {
+    update(newCallbackFunction: CallBackFunction) {
       callbackFunction = newCallbackFunction;
     },
     destroy() {
