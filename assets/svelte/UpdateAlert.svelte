@@ -12,7 +12,31 @@
   let isSWUpdateConfirmed = false;
   let width: number;
 
-  let width: number;
+  async function detectSWUpdate() {
+    // Get current active SW.
+    const registration = await navigator.serviceWorker.ready;
+
+    // Check if there is a new SW already installed and waiting.
+    newSW = registration.waiting;
+    if (newSW) {
+      isSWUpdateAvailable = true;
+      return;
+    }
+
+    // If no waiting SW, listen for new SW install.
+    registration.addEventListener("updatefound", () => {
+      newSW = registration.installing;
+      newSW?.addEventListener("statechange", () => {
+        if (newSW.state === "installed") {
+          isSWUpdateAvailable = true;
+        }
+      });
+    });
+  }
+
+  onMount(() => {
+    detectSWUpdate();
+  });
 
   $: if ($isSWUpdateAvailable) {
     useIsConnected({ timeout: 10000 }).then((isConnected) => {
