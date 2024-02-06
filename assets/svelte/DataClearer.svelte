@@ -1,6 +1,7 @@
-<script context="module">
-  import { requestAssetDeletion } from "../lib/offline-svelte";
+<script lang="ts" context="module">
   import config from "../../priv/static/sw.config.js";
+
+  import { requestAssetDeletion } from "$lib/offline-svelte";
 
   export const indexedDBName = "ToDo";
 
@@ -22,7 +23,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  export let live = undefined;
+  import type { Live } from "live_svelte";
+
+  export let live: Live = undefined;
   live;
 
   onMount(() => {
