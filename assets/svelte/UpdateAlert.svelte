@@ -80,7 +80,7 @@
       <button
         class="btn btn-sm btn-accent border border-neutral"
         on:click={() => {
-          $isSWUpdateConfirmed = true;
+          isSWUpdateConfirmed = true;
           showAlert = false;
         }}
       >
