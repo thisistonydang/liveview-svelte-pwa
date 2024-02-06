@@ -1,14 +1,20 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
 
-  import { focusTrap } from "lib/actions/focusTrap";
-  import ArrowRightStartOnRectangleSvgIcon from "lib/svg-icons/ArrowRightStartOnRectangleSvgIcon.svelte";
-  import EllipsisHorizontalCircleSvgIcon from "lib/svg-icons/EllipsisHorizontalCircleSvgIcon.svelte";
-  import PencilSvgIcon from "lib/svg-icons/PencilSvgIcon.svelte";
-  import TrashSvgIcon from "lib/svg-icons/TrashSvgIcon.svelte";
-  import XCircleSvgIcon from "lib/svg-icons/XCircleSvgIcon.svelte";
+  import { focusTrap } from "$lib/actions/focusTrap";
+  import ArrowRightStartOnRectangleSvgIcon from "$lib/svg-icons/ArrowRightStartOnRectangleSvgIcon.svelte";
+  import EllipsisHorizontalCircleSvgIcon from "$lib/svg-icons/EllipsisHorizontalCircleSvgIcon.svelte";
+  import PencilSvgIcon from "$lib/svg-icons/PencilSvgIcon.svelte";
+  import TrashSvgIcon from "$lib/svg-icons/TrashSvgIcon.svelte";
+  import XCircleSvgIcon from "$lib/svg-icons/XCircleSvgIcon.svelte";
 
-  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
+  import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
+
+  import type { Writable } from "svelte/store";
+  import type { Array as YArray, Map as YMap } from "yjs";
+
+  import type { TodoList, TodoItem } from "$stores/crdtState";
+  import type { UpdateItem, DeleteItem } from "./TodoApp.svelte";
 
   export let item;
   export let yItemsStore;
