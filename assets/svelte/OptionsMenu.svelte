@@ -16,10 +16,10 @@
   import type { TodoList, TodoItem } from "$stores/crdtState";
   import type { UpdateItem, DeleteItem } from "./TodoApp.svelte";
 
-  export let item;
-  export let yItemsStore;
-  export let updateItem;
-  export let deleteItem;
+  export let item: TodoList | TodoItem;
+  export let yItemsStore: Writable<YArray<YMap<string | boolean>>>;
+  export let updateItem: UpdateItem;
+  export let deleteItem: DeleteItem;
   export let menuClass: string;
   export let moveTodoMenuId = undefined;
   export let confirmDeletionModalId = undefined;
