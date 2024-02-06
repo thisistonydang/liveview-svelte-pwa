@@ -33,7 +33,7 @@
   // Todo lists handlers ___________________________________________________________________________
 
   function addList() {
-    const list = new Y.Map();
+    const list = new Y.Map<string>();
     list.set("id", crypto.randomUUID());
     list.set("name", $newList);
     $yTodoLists.unshift([list]);
