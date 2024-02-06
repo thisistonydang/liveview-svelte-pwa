@@ -14,6 +14,12 @@
   import type { TodoList, TodoItem } from "$stores/crdtState";
   import type { UpdateItem } from "./TodoApp.svelte";
 
+  export let item: TodoList | TodoItem;
+  export let itemsStore: Writable<TodoList[] | TodoItem[]>;
+  export let yItemsStore: Writable<YArray<YMap<string | boolean>>>;
+  export let updateItem: UpdateItem;
+  export let menuClass: string;
+
   let newName = item.newName;
   let error = "";
 
