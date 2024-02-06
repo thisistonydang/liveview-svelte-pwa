@@ -36,8 +36,8 @@
   let isClientStateRestored = false;
 
   onMount(() => {
-    useIsConnected({ timeout: 10000 }).then((connected) => {
-      if (connected) {
+    useIsConnected({ timeout: 10000 }).then((isConnected) => {
+      if (isConnected) {
         const appJsScript: HTMLScriptElement = document.querySelector("script[phx-track-static]");
         const appJsUrl = new URL(appJsScript.src);
         const appJs = `${appJsUrl.pathname}${appJsUrl.search}`;
