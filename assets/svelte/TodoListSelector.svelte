@@ -30,7 +30,7 @@
 
   const hasTouchScreen = useHasTouchScreen();
 
-  function updateUiOnConsider(newItems) {
+  function updateUiOnConsider(newItems: TodoList[]) {
     $todoLists = newItems;
   }
 
