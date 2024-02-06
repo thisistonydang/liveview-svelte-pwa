@@ -45,6 +45,10 @@
       }
     });
   }
+
+  $: if (isSWUpdateConfirmed) {
+    newSW.postMessage({ type: config.messageTypes.REQUEST_SKIP_WAITING });
+  }
 </script>
 
 {#if showAlert}
