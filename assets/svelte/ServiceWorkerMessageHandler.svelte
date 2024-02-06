@@ -19,7 +19,7 @@
     });
   }
 
-  export function requestServiceWorkerVersion() {
+  function requestServiceWorkerVersion() {
     navigator.serviceWorker?.controller?.postMessage({
       type: config.messageTypes.REQUEST_SERVICE_WORKER_VERSION,
     });
@@ -65,4 +65,7 @@
     });
   });
 
+  onMount(() => {
+    requestServiceWorkerVersion();
+  });
 </script>
