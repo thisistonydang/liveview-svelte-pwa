@@ -1,17 +1,19 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { focusTrap } from "lib/actions/focusTrap";
-  import { clickOutside } from "lib/actions/clickOutside";
-  import XMarkSvgIcon from "lib/svg-icons/XMarkSvgIcon.svelte";
+  import { focusTrap } from "$lib/actions/focusTrap";
+  import { clickOutside } from "$lib/actions/clickOutside";
+  import XMarkSvgIcon from "$lib/svg-icons/XMarkSvgIcon.svelte";
 
-  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
-  import { todoLists } from "../stores/crdtState";
-  import { toast } from "../stores/toast";
+  import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
+  import { todoLists } from "$stores/crdtState";
+  import { toast } from "$stores/toast";
 
-  export let itemToMove;
+  import type { TodoItem } from "$stores/crdtState";
+
+  export let itemToMove: TodoItem;
   export let menuClass: string;
-  export let moveTodo;
+  export let moveTodo: (itemToMove: TodoItem, newListId: string) => "ok" | "error";
 
   let dialog: HTMLDialogElement;
 
