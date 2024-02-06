@@ -24,8 +24,10 @@
   export let currentUserEmail: string;
 
   const menuClass = "menu-class";
-  let serviceWorkerVersion = "";
   let isClientStateRestored = false;
+  let isSyncedToIndexedDb = false;
+  let serviceWorkerVersion = "";
+  let undoManager: UndoManager;
 </script>
 
 <StateManagement />
