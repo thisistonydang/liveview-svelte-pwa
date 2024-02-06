@@ -137,15 +137,17 @@
     syncDocumentToServer($liveView);
   }
 
-  function deleteItem(yItemsStore, itemId) {
+  function deleteItem(yItemsStore: Writable<YArray<YMap<string | boolean>>>, itemId: string) {
     const yArray = get(yItemsStore);
     let index = 0;
 
-    for (yMap of yArray) {
+    for (const yMap of yArray) {
       if (yMap.get("id") === itemId) {
         // If a list is being deleted, clean up orphaned todos.
         if (yMap.get("list_id") === undefined) {
-          cleanOrphanedTodos(yMap.get("id"));
+          let listId = yMap.get("id");
+          listId = typeof listId === "string" ? listId : "";
+          cleanOrphanedTodos(listId);
         }
 
         // Delete the item from the array.
