@@ -94,8 +94,8 @@
               tabindex="-1"
               type="radio"
               class="radio bg-transparent"
-              class:radio-accent={list.id === itemToMove.list_id}
-              checked={list.id === itemToMove.list_id}
+              class:radio-accent={list.id === itemToMove.listId}
+              checked={list.id === itemToMove.listId}
             />
 
             {list.name}
