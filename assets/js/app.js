@@ -17,16 +17,20 @@
 
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html";
+
 // Establish Phoenix Socket and LiveView configuration.
 import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
+
+// Live Svelte integration.
 import { getHooks } from "live_svelte";
 // @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
-import { registerServiceWorker } from "../lib/offline-svelte";
+
+import { useRegisterServiceWorker } from "../lib/hooks/useRegisterServiceWorker";
 import { initTopBar } from "../lib/topbar/initTopBar";
 
-registerServiceWorker("/sw.js");
+useRegisterServiceWorker("/sw.js");
 initTopBar();
 
 let csrfToken = document.querySelector("meta[name='csrf-token']")?.getAttribute("content");
