@@ -5,8 +5,8 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "$lib": ["svelte"],
-      "$lib/*": ["svelte/*"],
+      "$components/*": ["svelte/*"],
+      "$lib/*": ["lib/*"],
       "$stores/*": ["stores/*"]
     }
   }
