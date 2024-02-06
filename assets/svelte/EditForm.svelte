@@ -1,19 +1,19 @@
-<script>
+<script lang="ts">
   import { fly } from "svelte/transition";
 
-  import { focusTrap } from "lib/actions/focusTrap";
-  import { clickOutside } from "lib/actions/clickOutside";
-  import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
+  import { focusTrap } from "$lib/actions/focusTrap";
+  import { clickOutside } from "$lib/actions/clickOutside";
+  import CheckSvgIconMicro from "$lib/svg-icons/CheckSvgIconMicro.svelte";
 
-  import { openedMenuId, selectedListId } from "../stores/clientOnlyState";
+  import { openedMenuId, selectedListId } from "$stores/clientOnlyState";
+  import { isTodoItem } from "$stores/crdtState";
 
-  export let item;
-  export let itemsStore;
-  export let yItemsStore;
-  export let updateItem;
-  export let menuClass;
+  import type { Writable } from "svelte/store";
+  import type { Array as YArray, Map as YMap } from "yjs";
 
-  /** @type {string} */
+  import type { TodoList, TodoItem } from "$stores/crdtState";
+  import type { UpdateItem } from "./TodoApp.svelte";
+
   let newName = item.newName;
   let error = "";
 
