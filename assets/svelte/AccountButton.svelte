@@ -12,6 +12,7 @@
   import { clearUserData } from "./DataClearer.svelte";
 
   export let currentUserEmail: string;
+  export let serviceWorkerVersion: string;
   export let isClientStateRestored: boolean;
   export let menuClass: string;
 
@@ -120,9 +121,9 @@
         <div
           title="Current service worker version."
           class="text-xs font-normal h-4"
-          class:skeleton={!$serviceWorkerVersion}
+          class:skeleton={!serviceWorkerVersion}
         >
-          {$serviceWorkerVersion}
+          {serviceWorkerVersion}
         </div>
       </div>
 
