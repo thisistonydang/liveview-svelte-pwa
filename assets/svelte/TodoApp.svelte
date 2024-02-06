@@ -8,6 +8,11 @@
     event: CustomEvent,
     updateUi: (newItems: TodoList[] | TodoItem[]) => void,
   ) => void;
+
+  export type UpdateItem = (
+    yItemStore: Writable<YArray<YMap<string | boolean>>>,
+    newItem: TodoList | TodoItem,
+  ) => void;
 </script>
 
 <script lang="ts">
@@ -120,7 +125,7 @@
 
   // Shared handlers for both todo lists and todo items ____________________________________________
 
-  function updateItem(yItemStore, newItem) {
+  const updateItem: UpdateItem = (yItemStore, newItem) => {
     get(yItemStore).forEach((yMap) => {
       if (yMap.get("id") === newItem.id) {
         yMap.set("name", newItem.name);
@@ -147,7 +152,7 @@
     });
 
     syncDocumentToServer($liveView);
-  }
+  };
 
   const deleteItem: DeleteItem = (yItemsStore, itemId) => {
     const yArray = get(yItemsStore);
