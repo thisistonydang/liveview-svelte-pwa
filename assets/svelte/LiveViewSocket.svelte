@@ -5,7 +5,7 @@
   import type { Live } from "live_svelte";
 
   // Store 'live' object from live_svelte in a Svelte store.
-  export let live: Live;
+  export let live: Live | undefined;
   $liveView = live;
 
   // Receive socket assigns from LiveView.
