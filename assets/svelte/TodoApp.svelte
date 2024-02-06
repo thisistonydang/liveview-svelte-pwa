@@ -1,4 +1,4 @@
-<script context="module">
+<script lang="ts" context="module">
   export type DndHandler = (
     event: CustomEvent,
     updateUi: (newItems: TodoList[] | TodoItem[]) => void,
