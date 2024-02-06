@@ -81,7 +81,7 @@
   on:finalize={(event) => handleFinalize(event, updateUiOnFinalize)}
 >
   {#each $todoLists as list (list.id)}
-    {@const listItems = $todoItems.filter((item) => item.list_id === list.id)}
+    {@const listItems = $todoItems.filter((item) => item.listId === list.id)}
     {@const uncompletedItems = listItems.filter((item) => !item.completed)}
     <li
       class="
