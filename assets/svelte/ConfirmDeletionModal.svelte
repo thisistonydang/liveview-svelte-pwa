@@ -1,15 +1,17 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { focusTrap } from "lib/actions/focusTrap";
-  import { clickOutside } from "lib/actions/clickOutside";
+  import { focusTrap } from "$lib/actions/focusTrap";
+  import { clickOutside } from "$lib/actions/clickOutside";
 
-  import { itemToProcessId, openedMenuId } from "../stores/clientOnlyState";
-  import { yTodoLists } from "../stores/crdtState";
+  import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
+  import { yTodoLists } from "$stores/crdtState";
+
+  import type { DeleteItem } from "./TodoApp.svelte";
 
   export let listId: string;
   export let menuClass: string;
-  export let deleteItem;
+  export let deleteItem: DeleteItem;
 
   let dialog: HTMLDialogElement;
 
