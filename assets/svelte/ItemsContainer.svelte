@@ -2,8 +2,8 @@
   import { sineIn } from "svelte/easing";
   import { fade } from "svelte/transition";
 
-  import ChevronDownSvgIcon from "lib/svg-icons/ChevronDownSvgIcon.svelte";
-  import ChevronUpSvgIcon from "lib/svg-icons/ChevronUpSvgIcon.svelte";
+  import ChevronDownSvgIcon from "$lib/svg-icons/ChevronDownSvgIcon.svelte";
+  import ChevronUpSvgIcon from "$lib/svg-icons/ChevronUpSvgIcon.svelte";
 
   export let title: string;
   export let totalCount: number;
