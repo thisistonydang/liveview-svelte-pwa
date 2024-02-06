@@ -1,14 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import {
-    isConnected,
-    requestAssetCaching,
-    requestServiceWorkerVersion,
-  } from "../lib/offline-svelte";
-  import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
-
-  import config from "../../priv/static/sw.config.js";
-  import { useIsConnected } from "$lib/hooks/useIsConnected";
   import { openedMenuId, urlHash } from "$stores/clientOnlyState";
 
   import AppInfo from "./AppInfo.svelte";
