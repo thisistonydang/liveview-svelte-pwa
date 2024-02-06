@@ -1,8 +1,10 @@
 <script lang="ts">
-  import ArrowLeftSvgIcon from "lib/svg-icons/ArrowLeftSvgIcon.svelte";
-  import { showTopBar } from "lib/topbar";
+  import ArrowLeftSvgIcon from "$lib/svg-icons/ArrowLeftSvgIcon.svelte";
+  import { showTopBar } from "$lib/topbar";
 
-  export let live = undefined;
+  import type { Live } from "live_svelte";
+
+  export let live: Live = undefined;
   live;
 
   export let href: string = undefined;
