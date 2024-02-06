@@ -48,7 +48,6 @@
 
 <StateManagement />
 <ClientOnlyStateManagement bind:isClientStateRestored />
-<OfflineSvelte />
 <ScrollPositionRestorer {isClientStateRestored} />
 <ServiceWorkerMessageHandler bind:serviceWorkerVersion />
 <ThemeSyncManager />
