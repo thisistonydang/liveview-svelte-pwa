@@ -31,8 +31,7 @@
    * @property {string} list_id
    */
 
-  /** @type {string} */
-  export let menuClass;
+  export let menuClass: string;
 
   const confirmDeletionModalId = "confirm-deletion-modal-id";
   const moveTodoMenuId = "move-todo-menu-id";
