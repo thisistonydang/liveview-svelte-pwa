@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { serviceWorkerVersion } from "../lib/serviceWorkerVersion";
+  import { serviceWorkerVersion } from "$stores/serviceWorkerVersion";
 
   onMount(() => {
     navigator.serviceWorker?.addEventListener("message", (event) => {
