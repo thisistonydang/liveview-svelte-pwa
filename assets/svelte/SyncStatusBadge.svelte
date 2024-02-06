@@ -1,10 +1,10 @@
 <script lang="ts">
-  import RefreshingSvgIcon from "lib/svg-icons/RefreshingSvgIcon.svelte";
-  import SuccessSvgIcon from "lib/svg-icons/SuccessSvgIcon.svelte";
-  import WarningSvgIcon from "lib/svg-icons/WarningSvgIcon.svelte";
+  import RefreshingSvgIcon from "$lib/svg-icons/RefreshingSvgIcon.svelte";
+  import SuccessSvgIcon from "$lib/svg-icons/SuccessSvgIcon.svelte";
+  import WarningSvgIcon from "$lib/svg-icons/WarningSvgIcon.svelte";
 
-  import { liveView } from "../stores/liveViewSocket";
-  import { syncState } from "../stores/syncState";
+  import { liveView } from "$stores/liveViewSocket";
+  import { syncState } from "$stores/syncState";
 
   import { syncDocumentToServer } from "./StateManagement.svelte";
 
