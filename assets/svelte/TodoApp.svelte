@@ -83,12 +83,12 @@
    */
   function moveTodo(itemToMove: TodoItem, newListId: string): "ok" | "error" {
     // Return "ok" if the itemToMove is already in the new list.
-    if (itemToMove.list_id === newListId) {
+    if (itemToMove.listId === newListId) {
       return "ok";
     }
 
     // Return "error" if the itemToMove name already exists in the new list.
-    const itemsInNewList = $todoItems.filter((item) => item.list_id === newListId);
+    const itemsInNewList = $todoItems.filter((item) => item.listId === newListId);
     for (const item of itemsInNewList) {
       if (item.name.toLowerCase() === itemToMove.name.toLowerCase()) {
         return "error";
@@ -101,7 +101,7 @@
     todo.set("id", itemToMove.id);
     todo.set("name", itemToMove.name);
     todo.set("completed", itemToMove.completed);
-    todo.set("list_id", newListId);
+    todo.set("listId", newListId);
 
     $yTodoItems.doc.transact(() => {
       $yTodoItems.delete(index);
