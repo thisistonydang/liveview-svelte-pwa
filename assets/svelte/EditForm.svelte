@@ -134,7 +134,7 @@
 
 <form
   class="{menuClass} w-full"
-  on:submit|preventDefault={handleSubmit}
+  on:submit|preventDefault={() => handleSubmit()}
   use:clickOutside={() => handleSubmit({ isClickedOutside: true })}
   use:focusTrap={{
     focusFirstElement: true,
