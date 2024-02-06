@@ -31,7 +31,7 @@
   let undoManager: UndoManager;
 </script>
 
-<StateManagement />
+<StateManagement bind:isSyncedToIndexedDb bind:undoManager />
 <ClientOnlyStateManagement bind:isClientStateRestored />
 <ScrollPositionRestorer {isClientStateRestored} />
 <ServiceWorkerMessageHandler bind:serviceWorkerVersion />
@@ -39,7 +39,7 @@
 
 <ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
 
-{#if isClientStateRestored}
+{#if isSyncedToIndexedDb && isClientStateRestored}
   <Toast />
   <UpdateAlert />
 
