@@ -59,6 +59,7 @@
 <ClientOnlyStateManagement bind:isClientStateRestored />
 <OfflineSvelte />
 <ScrollPositionRestorer {isClientStateRestored} />
+<ServiceWorkerMessageHandler bind:serviceWorkerVersion />
 <ThemeSyncManager />
 
 <ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
