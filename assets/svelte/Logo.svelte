@@ -1,7 +1,9 @@
 <script lang="ts">
   import CheckSvgIconMicro from "lib/svg-icons/CheckSvgIconMicro.svelte";
 
-  export let live = undefined;
+  import type { Live } from "live_svelte";
+
+  export let live: Live = undefined;
   live;
 </script>
 
