@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-import type { Live } from "node_modules/live_svelte/assets/js/live_svelte/types";
+import type { Live } from "live_svelte";
 
 // Store containing 'live' object from live_svelte.
 export let liveView = writable<Live>();

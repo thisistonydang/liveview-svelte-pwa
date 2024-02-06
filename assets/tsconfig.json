@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "target": "ESNext",
     "types": ["node"],
     "baseUrl": ".",
