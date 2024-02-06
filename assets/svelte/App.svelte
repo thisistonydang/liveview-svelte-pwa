@@ -18,7 +18,7 @@
   import type { Live } from "live_svelte";
   import type { UndoManager } from "yjs";
 
-  export let live: Live | undefined;
+  export let live: Live;
   live;
 
   export let currentUserEmail: string;
