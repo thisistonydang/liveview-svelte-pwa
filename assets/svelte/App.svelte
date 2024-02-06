@@ -8,7 +8,8 @@
   import OfflineSvelte from "../lib/offline-svelte/OfflineSvelte.svelte";
 
   import config from "../../priv/static/sw.config.js";
-  import { openedMenuId, urlHash } from "../stores/clientOnlyState";
+  import { useIsConnected } from "$lib/hooks/useIsConnected";
+  import { openedMenuId, urlHash } from "$stores/clientOnlyState";
 
   import AppInfo from "./AppInfo.svelte";
   import AppSkeleton from "./AppSkeleton.svelte";
@@ -35,7 +36,7 @@
   let isClientStateRestored = false;
 
   onMount(() => {
-    isConnected({ timeout: 10000 }).then((connected) => {
+    useIsConnected({ timeout: 10000 }).then((connected) => {
       if (connected) {
         const appJsScript: HTMLScriptElement = document.querySelector("script[phx-track-static]");
         const appJsUrl = new URL(appJsScript.src);
