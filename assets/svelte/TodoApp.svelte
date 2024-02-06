@@ -1,3 +1,10 @@
+<script context="module">
+  export type DndHandler = (
+    event: CustomEvent,
+    updateUi: (newItems: TodoList[] | TodoItem[]) => void,
+  ) => void;
+</script>
+
 <script lang="ts">
   import { get } from "svelte/store";
   import { SOURCES, TRIGGERS } from "svelte-dnd-action";
@@ -186,7 +193,7 @@
 
   // Drag and drop handlers ________________________________________________________________________
 
-  function handleConsider(event, updateUiOnConsider) {
+  const handleConsider: DndHandler = (event, updateUiOnConsider) => {
     // Update the items list in the UI.
     const newItems = filterDuplicates(event.detail.items);
     updateUiOnConsider(newItems);
@@ -196,9 +203,9 @@
     if (source === SOURCES.KEYBOARD && trigger === TRIGGERS.DRAG_STOPPED) {
       dragDisabled = true;
     }
-  }
+  };
 
-  function handleFinalize(event, updateUiOnFinalize) {
+  const handleFinalize: DndHandler = (event, updateUiOnFinalize) => {
     // Update the items list in the UI.
     // TODO: Is it necessary to check that the id is reset back from the
     // svelte-dnd-action placeholder id? If the id is not reset, then
@@ -214,7 +221,7 @@
 
     // Save to server.
     syncDocumentToServer($liveView);
-  }
+  };
 
   /**
    * Helper function to remove any items with duplicate ids from the items array.
