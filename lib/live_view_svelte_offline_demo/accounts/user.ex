@@ -8,7 +8,6 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
 
-    has_one :user_state, LiveViewSvelteOfflineDemo.UserStates.UserState
     has_one :user_document, LiveViewSvelteOfflineDemo.UserData.UserDocument
 
     timestamps(type: :utc_datetime)
