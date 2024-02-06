@@ -1,11 +1,6 @@
 const DEBUG = false;
 
-/**
- * Register app service worker
- *
- * @param {string} serviceWorkerPath
- */
-export function registerServiceWorker(serviceWorkerPath) {
+export function registerServiceWorker(serviceWorkerPath: string) {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", async () => {
       try {
