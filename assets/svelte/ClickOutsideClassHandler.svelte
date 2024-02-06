@@ -2,14 +2,12 @@
   import { onMount } from "svelte";
 
   export let className: string;
-  export let callbackFunction;
+  export let callbackFunction: (event: PointerEvent) => void;
 
-  /**
-   * @param {PointerEvent} event
-   */
-  function clickOutsideClassHandler(event) {
+  function clickOutsideClassHandler(event: PointerEvent) {
+    if (!(event.target instanceof Node)) return;
+
     const elementsToIgnore = document.getElementsByClassName(className);
-
     for (const element of elementsToIgnore) {
       if (element.contains(event.target)) {
         return;
