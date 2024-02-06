@@ -4,25 +4,20 @@
   import { dndzone } from "svelte-dnd-action";
   import * as Y from "yjs";
 
-  import { onKeydown } from "lib/actions/onKeydown";
-  import { useHasTouchScreen } from "lib/hooks/useHasTouchScreen";
-  import ChevronRightSvgIcon from "lib/svg-icons/ChevronRightSvgIcon.svelte";
+  import { onKeydown } from "$lib/actions/onKeydown";
+  import { useHasTouchScreen } from "$lib/hooks/useHasTouchScreen";
+  import ChevronRightSvgIcon from "$lib/svg-icons/ChevronRightSvgIcon.svelte";
 
-  import {
-    itemToProcessId,
-    openedMenuId,
-    selectedListId,
-    urlHash,
-  } from "../stores/clientOnlyState";
-  import { todoLists, todoItems, yTodoLists } from "../stores/crdtState";
+  import { itemToProcessId, openedMenuId, selectedListId, urlHash } from "$stores/clientOnlyState";
+  import { todoLists, todoItems, yTodoLists } from "$stores/crdtState";
+
   import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
   import OptionsMenu from "./OptionsMenu.svelte";
 
-  export let updateItem;
-  export let deleteItem;
-  export let handleConsider;
-  export let handleFinalize;
+  import type { TodoList } from "$stores/crdtState";
+  import type { DeleteItem, DndHandler, UpdateItem } from "./TodoApp.svelte";
+
   export let handleDragKeyDown: (event: KeyboardEvent, itemId: string) => void;
   export let dragDisabled: boolean;
   export let flipDurationMs: number;
