@@ -225,12 +225,9 @@
 
   /**
    * Helper function to remove any items with duplicate ids from the items array.
-   *
-   * @param {{id: string;}[]} items
    */
-  function filterDuplicates(items) {
-    /** @type {string[]} */
-    const ids = [];
+  function filterDuplicates(items: TodoList[] | TodoItem[]) {
+    const ids: string[] = [];
 
     return items.filter((item) => {
       if (!ids.includes(item.id)) {
