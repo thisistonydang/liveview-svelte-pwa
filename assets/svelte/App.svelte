@@ -33,6 +33,7 @@
   export let currentUserEmail: string;
 
   const menuClass = "menu-class";
+  let serviceWorkerVersion = "";
   let isClientStateRestored = false;
 
   onMount(() => {
@@ -67,7 +68,7 @@
   <UpdateAlert />
 
   {#if $urlHash === ""}
-    <Header {currentUserEmail} bind:isClientStateRestored {menuClass} />
+    <Header {currentUserEmail} {serviceWorkerVersion} bind:isClientStateRestored {menuClass} />
   {:else}
     <StickyHeader />
   {/if}
