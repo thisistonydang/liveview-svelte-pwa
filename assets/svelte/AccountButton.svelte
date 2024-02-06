@@ -1,13 +1,13 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
 
-  import { focusTrap } from "lib/actions/focusTrap.js";
-  import { isConnected, serviceWorkerVersion } from "lib/offline-svelte";
-  import UserSvgIcon from "lib/svg-icons/UserSvgIcon.svelte";
-  import { showTopBar, hideTopBar } from "lib/topbar";
+  import { focusTrap } from "$lib/actions/focusTrap.js";
+  import { isConnected, serviceWorkerVersion } from "$lib/offline-svelte";
+  import UserSvgIcon from "$lib/svg-icons/UserSvgIcon.svelte";
+  import { showTopBar, hideTopBar } from "$lib/topbar";
 
-  import { openedMenuId, urlHash } from "../stores/clientOnlyState";
-  import { toast } from "../stores/toast";
+  import { openedMenuId, urlHash } from "$stores/clientOnlyState";
+  import { toast } from "$stores/toast";
 
   import { clearUserData } from "./DataClearer.svelte";
 
