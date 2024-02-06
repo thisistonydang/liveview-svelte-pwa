@@ -130,13 +130,13 @@
       if (yMap.get("id") === newItem.id) {
         yMap.set("name", newItem.name);
 
-        newItem.completed === undefined
-          ? yMap.delete("completed")
-          : yMap.set("completed", newItem.completed);
+        if (isTodoItem(newItem)) {
+          yMap.set("completed", newItem.completed);
+        }
 
-        newItem.list_id === undefined
-          ? yMap.delete("list_id")
-          : yMap.set("list_id", newItem.list_id);
+        if (isTodoItem(newItem)) {
+          yMap.set("listId", newItem.listId);
+        }
 
         newItem.newName === undefined
           ? yMap.delete("newName")
