@@ -28,9 +28,9 @@
     }
 
     // Check if item already exists in the list it's being added to.
-    for (const item of $store) {
-      if (item.list_id) {
-        if (item.list_id === $selectedListId && item.name.toLowerCase() === value.toLowerCase()) {
+    for (const item of $itemsStore) {
+      if (isTodoItem(item)) {
+        if (item.listId === $selectedListId && item.name.toLowerCase() === value.toLowerCase()) {
           error = `"${value}" already exists in the list!`;
           return;
         }
