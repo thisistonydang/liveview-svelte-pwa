@@ -8,7 +8,7 @@
     newList,
     newTodo,
     openedMenuId,
-  } from "../stores/clientOnlyState";
+  } from "$stores/clientOnlyState";
 
   export let isClientStateRestored: boolean;
 
