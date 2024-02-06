@@ -23,14 +23,6 @@
   import TodoCheckList from "./TodoCheckList.svelte";
   import TodoListSelector from "./TodoListSelector.svelte";
 
-  /**
-   * @typedef {Object} TodoItem
-   * @property {string} id
-   * @property {string} name
-   * @property {boolean} completed
-   * @property {string} list_id
-   */
-
   export let menuClass: string;
 
   const confirmDeletionModalId = "confirm-deletion-modal-id";
