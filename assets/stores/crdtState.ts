@@ -1,7 +1,26 @@
 import { writable } from "svelte/store";
 
-export const todoLists = writable([]);
-export const todoItems = writable([]);
+import type { Array as YArray, Map as YMap } from "yjs";
 
-export const yTodoLists = writable();
-export const yTodoItems = writable();
+export interface TodoList {
+  id: string;
+  name: string;
+  newName?: string;
+  isEditing?: boolean;
+}
+
+export interface TodoItem {
+  id: string;
+  name: string;
+  completed: boolean;
+  list_id: string;
+  newName?: string;
+  isEditing?: boolean;
+}
+
+// TODO: Should default be an empty array or undefined?
+export const todoLists = writable<TodoList[]>([]);
+export const todoItems = writable<TodoItem[]>([]);
+
+export const yTodoLists = writable<YArray<YMap<string | boolean>>>();
+export const yTodoItems = writable<YArray<YMap<string | boolean>>>();
