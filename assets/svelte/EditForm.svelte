@@ -27,12 +27,19 @@
    * Commit edits made to the item and close the edit form.
    */
   function commitEdits() {
-    updateItem(yItemsStore, {
-      id: item.id,
-      name: newName,
-      completed: item.completed,
-      list_id: item.list_id,
-    });
+    if (isTodoItem(item)) {
+      updateItem(yItemsStore, {
+        id: item.id,
+        name: newName,
+        completed: item.completed,
+        listId: item.listId,
+      });
+    } else {
+      updateItem(yItemsStore, {
+        id: item.id,
+        name: newName,
+      });
+    }
 
     $openedMenuId = "";
   }
@@ -41,12 +48,19 @@
    * Discard edits made to the item and close the edit form.
    */
   function discardEdits() {
-    updateItem(yItemsStore, {
-      id: item.id,
-      name: item.name,
-      completed: item.completed,
-      list_id: item.list_id,
-    });
+    if (isTodoItem(item)) {
+      updateItem(yItemsStore, {
+        id: item.id,
+        name: item.name,
+        completed: item.completed,
+        listId: item.listId,
+      });
+    } else {
+      updateItem(yItemsStore, {
+        id: item.id,
+        name: item.name,
+      });
+    }
 
     $openedMenuId = "";
   }
