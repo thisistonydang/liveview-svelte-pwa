@@ -40,6 +40,10 @@
   import TodoCheckList from "./TodoCheckList.svelte";
   import TodoListSelector from "./TodoListSelector.svelte";
 
+  import type { Writable } from "svelte/store";
+  import type { Array as YArray, Map as YMap } from "yjs";
+  import type { TodoList, TodoItem } from "$stores/crdtState";
+
   export let menuClass: string;
 
   const confirmDeletionModalId = "confirm-deletion-modal-id";
