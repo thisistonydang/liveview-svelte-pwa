@@ -18,12 +18,12 @@
   import type { DeleteItem, DndHandler, UpdateItem } from "./TodoApp.svelte";
 
   export let title: string;
-  export let items;
-  export let toggleCompleted;
-  export let updateItem;
-  export let deleteItem;
-  export let handleConsider;
-  export let handleFinalize;
+  export let items: TodoItem[];
+  export let toggleCompleted: (itemId: string) => void;
+  export let updateItem: UpdateItem;
+  export let deleteItem: DeleteItem;
+  export let handleConsider: DndHandler;
+  export let handleFinalize: DndHandler;
   export let handleDragKeyDown: (event: KeyboardEvent, itemId: string) => void;
   export let dragDisabled: boolean;
   export let flipDurationMs: number;
