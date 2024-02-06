@@ -13,7 +13,7 @@ export interface TodoItem {
   id: string;
   name: string;
   completed: boolean;
-  list_id: string;
+  listId: string;
   newName?: string;
   isEditing?: boolean;
 }
