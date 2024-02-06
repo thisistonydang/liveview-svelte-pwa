@@ -13,6 +13,7 @@
   import ThemeSyncManager from "./ThemeSyncManager.svelte";
   import Toast from "./Toast.svelte";
   import TodoApp from "./TodoApp.svelte";
+  import UndoButtons from "./UndoButtons.svelte";
   import UpdateAlert from "./UpdateAlert.svelte";
 
   import type { Live } from "live_svelte";
@@ -54,6 +55,8 @@
     <div class="max-w-2xl mx-auto px-2 md:p-0">
       <TodoApp {menuClass} />
     </div>
+
+    <UndoButtons {undoManager} />
   {/if}
 {:else}
   <AppSkeleton />
