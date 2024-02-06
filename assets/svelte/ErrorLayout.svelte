@@ -1,8 +1,10 @@
 <script lang="ts">
-  import FrownSvgIcon from "lib/svg-icons/FrownSvgIcon.svelte";
-  import { showTopBar } from "lib/topbar";
+  import FrownSvgIcon from "$lib/svg-icons/FrownSvgIcon.svelte";
+  import { showTopBar } from "$lib/topbar";
 
-  export let live = undefined;
+  import type { Live } from "live_svelte";
+
+  export let live: Live = undefined;
   live;
 
   export let title: string;
