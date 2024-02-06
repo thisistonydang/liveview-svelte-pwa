@@ -4,7 +4,7 @@
  * @param options.pathname - URL path to try to send fetch request. Default: "/"
  * @param options.timeout - Default: 5000 milliseconds
  */
-export async function isConnected({
+export async function useIsConnected({
   pathname = "/",
   timeout = 5000,
 }: {
