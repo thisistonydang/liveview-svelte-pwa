@@ -71,11 +71,10 @@
 
   /**
    * Move a todo item to a new list.
-   * @param {TodoItem} itemToMove
-   * @param {string} newListId
-   * @returns {"ok" | "error"} Return "ok" if the item was moved successfully, otherwise return "error".
+   *
+   * Returns "ok" if the item was moved successfully, otherwise returns "error".
    */
-  function moveTodo(itemToMove, newListId) {
+  function moveTodo(itemToMove: TodoItem, newListId: string): "ok" | "error" {
     // Return "ok" if the itemToMove is already in the new list.
     if (itemToMove.list_id === newListId) {
       return "ok";
@@ -91,7 +90,7 @@
 
     // Move itemToMove to the top of the new list.
     const index = $yTodoItems.toArray().findIndex((yMap) => yMap.get("id") === itemToMove.id);
-    const todo = new Y.Map();
+    const todo = new Y.Map<string | boolean>();
     todo.set("id", itemToMove.id);
     todo.set("name", itemToMove.name);
     todo.set("completed", itemToMove.completed);
