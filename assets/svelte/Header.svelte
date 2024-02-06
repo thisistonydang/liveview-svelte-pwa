@@ -5,6 +5,7 @@
   import ThemeButton from "./ThemeButton.svelte";
 
   export let currentUserEmail: string;
+  export let serviceWorkerVersion: string;
   export let isClientStateRestored: boolean;
   export let menuClass: string;
 
@@ -25,7 +26,12 @@
 
     <div class="flex items-center gap-3">
       <ThemeButton {menuClass} />
-      <AccountButton {currentUserEmail} bind:isClientStateRestored {menuClass} />
+      <AccountButton
+        {currentUserEmail}
+        {serviceWorkerVersion}
+        bind:isClientStateRestored
+        {menuClass}
+      />
     </div>
   </div>
 </div>
