@@ -83,8 +83,8 @@
 
     // Check if new item name already exists.
     for (const item of $itemsStore) {
-      if (item.list_id) {
-        if (item.list_id === $selectedListId && item.name.toLowerCase() === newName.toLowerCase()) {
+      if (isTodoItem(item)) {
+        if (item.listId === $selectedListId && item.name.toLowerCase() === newName.toLowerCase()) {
           if (isClickedOutside) {
             discardEdits();
             return;
