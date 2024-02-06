@@ -1,5 +1,5 @@
 export default {
-  cacheName: "v2024.01.14.1",
+  cacheName: "v2024.02.06.4",
   debug: false,
   messageTypes: {
     REQUEST_ASSET_CACHING: "request_asset_caching",
