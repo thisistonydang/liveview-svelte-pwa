@@ -19,4 +19,6 @@
 
   import { indexedDBName } from "./DataClearer.svelte";
 
+  export let isSyncedToIndexedDb: boolean;
+
 </script>
