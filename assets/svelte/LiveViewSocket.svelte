@@ -1,15 +1,9 @@
-<script lang="ts" context="module">
-  export interface ServerDocument {
-    event: string;
-    document: string | null;
-  }
-</script>
-
 <script lang="ts">
   import { liveView, serverDocument, sessionCount } from "$stores/liveViewSocket";
   import VisibilityChangeTracker from "./VisibilityChangeTracker.svelte";
 
   import type { Live } from "live_svelte";
+  import type { ServerDocument } from "$stores/liveViewSocket";
 
   // Store 'live' object from live_svelte in a Svelte store.
   export let live: Live;

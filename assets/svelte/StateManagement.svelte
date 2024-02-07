@@ -58,7 +58,7 @@
 
   import { indexedDBName } from "./DataClearer.svelte";
 
-  import type { ServerDocument } from "./LiveViewSocket.svelte";
+  import type { ServerDocument } from "$stores/liveViewSocket";
 
   export let isSyncedToIndexedDb: boolean;
 
