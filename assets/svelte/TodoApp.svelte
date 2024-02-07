@@ -184,7 +184,6 @@
           });
 
           syncDocumentToServer($liveView);
-          console.log("$todoItems", $todoItems);
           return;
         }
         index++;
