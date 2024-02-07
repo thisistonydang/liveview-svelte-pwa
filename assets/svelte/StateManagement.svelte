@@ -121,6 +121,9 @@
       syncDocumentToServer($liveView);
     }
 
+    // Update url if needed. This is for the case where an update deletes a
+    // list that is currently being viewed.
+    syncAppStateWithUrl();
   }
 
   onMount(() => {
