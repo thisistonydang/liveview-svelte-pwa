@@ -1,8 +1,22 @@
 <script lang="ts" context="module">
   import { get } from "svelte/store";
+  import { fromUint8Array } from "js-base64";
   import type { Live } from "live_svelte";
 
 </script>
 
 <script lang="ts">
+  import { onMount } from "svelte";
+
+  import { toUint8Array } from "js-base64";
+  import { IndexeddbPersistence } from "y-indexeddb";
+  import * as Y from "yjs";
+
+  import { selectedListId, urlHash } from "$stores/clientOnlyState";
+  import { todoLists, todoItems, yTodoLists, yTodoItems } from "$stores/crdtState";
+  import { liveView, serverDocument } from "$stores/liveViewSocket";
+  import { syncState } from "$stores/syncState";
+
+  import { indexedDBName } from "./DataClearer.svelte";
+
 </script>
