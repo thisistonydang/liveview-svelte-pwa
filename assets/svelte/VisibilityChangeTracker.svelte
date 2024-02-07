@@ -5,7 +5,7 @@
 
   export let live: Live;
 
-  function pushVisibilityChangeEvent(live: Live) {
+  function pushVisibilityChangeEvent() {
     const sessionIdKey = "sessionId";
     let sessionId = sessionStorage.getItem(sessionIdKey);
 
@@ -14,16 +14,16 @@
       sessionStorage.setItem(sessionIdKey, sessionId);
     }
 
-    live.pushEvent("visibility_change", { sessionId, visibilityState: document.visibilityState });
+    live?.pushEvent("visibility_change", { sessionId, visibilityState: document.visibilityState });
   }
 
   onMount(() => {
-    pushVisibilityChangeEvent(live);
+    pushVisibilityChangeEvent();
   });
 </script>
 
 <svelte:window
   on:visibilitychange={() => {
-    pushVisibilityChangeEvent(live);
+    pushVisibilityChangeEvent();
   }}
 />
