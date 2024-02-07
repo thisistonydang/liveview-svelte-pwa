@@ -4,7 +4,7 @@ import type { Live } from "live_svelte";
 
 export interface ServerDocument {
   event: string;
-  document?: string;
+  document: string | null;
 }
 
 // Store containing 'live' object from live_svelte.
