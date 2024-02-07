@@ -81,9 +81,9 @@
 
   function toggleCompleted(itemId: string) {
     // TODO: Test if toArray + findIndex is faster than for loop.
-    for (const yMap of $yTodoItems) {
-      if (yMap.get("id") === itemId) {
-        yMap.set("completed", !yMap.get("completed"));
+    for (const yTodo of $yTodoItems) {
+      if (yTodo.get("id") === itemId) {
+        yTodo.set("completed", !yTodo.get("completed"));
         syncDocumentToServer($liveView);
         return;
       }
