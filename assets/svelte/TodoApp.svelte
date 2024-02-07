@@ -80,7 +80,6 @@
   }
 
   function toggleCompleted(itemId: string) {
-    // TODO: Test if toArray + findIndex is faster than for loop.
     for (const yTodo of $yTodoItems) {
       if (yTodo.get("id") === itemId) {
         yTodo.set("completed", !yTodo.get("completed"));
