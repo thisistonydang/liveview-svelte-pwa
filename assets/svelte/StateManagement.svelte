@@ -99,4 +99,7 @@
   // so that $todoLists is populated.
   $: if (isSyncedToIndexedDb) syncAppStateWithUrl();
 
+  // Set scroll restoration so page nav via back/forward buttons works as expected.
+  $: if (isSyncedToIndexedDb) history.scrollRestoration = "auto";
+
 </script>
