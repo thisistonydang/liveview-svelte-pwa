@@ -25,4 +25,7 @@
   export let isSyncedToIndexedDb: boolean;
 
   const stateMap = doc.getMap<Y.Array<Y.Map<string | boolean>>>();
+  let indexedDbProvider: IndexeddbPersistence;
+  let mounted = false;
+
 </script>
