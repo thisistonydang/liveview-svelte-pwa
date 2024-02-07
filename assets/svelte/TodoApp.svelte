@@ -166,29 +166,28 @@
     }
   };
 
-  const deleteItem: DeleteItem = (yItemsStore, itemId) => {
-    const yArray = get(yItemsStore);
+  const deleteItem: DeleteItem = (item) => {
     let index = 0;
 
-    for (const yMap of yArray) {
-      if (yMap.get("id") === itemId) {
-        // If a list is being deleted, clean up orphaned todos.
-        if (yMap.get("listId") === undefined) {
-          let listId = yMap.get("id");
-          listId = typeof listId === "string" ? listId : "";
-          cleanOrphanedTodos(listId);
+    if (isTodoItem(item)) {
+      for (const yTodo of $yTodoItems) {
+        if (yTodo.get("id") === item.id) {
+          $yTodoItems.delete(index);
+          syncDocumentToServer($liveView);
+          return;
         }
-
-        // Delete the item from the array.
-        yArray.delete(index);
-
-        // Save to server.
-        syncDocumentToServer($liveView);
-
-        return;
+        index++;
       }
-
-      index++;
+    } else {
+      for (const yList of $yTodoLists) {
+        if (yList.get("id") === item.id) {
+          $yTodoLists.delete(index);
+          cleanOrphanedTodos(item.id);
+          syncDocumentToServer($liveView);
+          return;
+        }
+        index++;
+      }
     }
   };
 
