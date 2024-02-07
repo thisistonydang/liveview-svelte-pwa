@@ -46,4 +46,10 @@
       isSyncedToIndexedDb = true;
     });
   }
+
+
+  onMount(() => {
+    syncWithIndexedDb();
+  });
+
 </script>
