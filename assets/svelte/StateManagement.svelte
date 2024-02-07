@@ -108,3 +108,7 @@
     localStorage.setItem("syncState", JSON.stringify($syncState));
   }
 </script>
+
+<svelte:window
+  on:popstate={syncAppStateWithUrl}
+/>
