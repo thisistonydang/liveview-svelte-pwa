@@ -62,4 +62,36 @@
     syncServerToClient($serverDocument);
   }
 
+  /**
+   * Keep $urlHash and $selectedListId in sync with the url.
+   */
+  function syncAppStateWithUrl() {
+    const url = new URL(window.location.href);
+    const hash = url.hash;
+
+    switch (hash) {
+      case "#about":
+        $urlHash = "about";
+        $selectedListId = "";
+        history.replaceState({}, "", "/app");
+        history.pushState({}, "", "/app#about");
+        break;
+
+      default:
+        const listId = hash.replace("#", "");
+        const list = $todoLists.find((list) => list.id === listId);
+        if (list) {
+          $urlHash = "listId";
+          $selectedListId = listId;
+          history.replaceState({}, "", "/app");
+          history.pushState({}, "", `/app#${listId}`);
+        } else {
+          $urlHash = "";
+          $selectedListId = "";
+          history.replaceState({}, "", "/app");
+        }
+        break;
+    }
+  }
+
 </script>
