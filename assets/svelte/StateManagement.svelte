@@ -79,6 +79,8 @@
     });
   }
 
+  function syncServerToClient({ event, document }: ServerDocument) {
+  }
 
   onMount(() => {
     syncWithIndexedDb();
