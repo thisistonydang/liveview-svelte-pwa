@@ -28,6 +28,20 @@
     }, 1000);
   }
 
+  export function syncDocumentToServer(live: Live) {
+    // Set the todoLists and todoItems stores so that the UI is updated.
+    todoLists.set(get(yTodoLists).toJSON());
+    todoItems.set(get(yTodoItems).toJSON());
+
+    notifyUserSyncingIsInProgress();
+
+    // Update clientDocumentUpdatedKey to to notify other tabs that the document has been updated.
+    // This is used to sync the document state across different tabs when offline.
+    localStorage.setItem(clientDocumentUpdatedKey, JSON.stringify(Date.now()));
+
+    // Send new client document to server.
+    live?.pushEvent("client_document_updated", { document: getBase64Document() });
+  }
 </script>
 
 <script lang="ts">
