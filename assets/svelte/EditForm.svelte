@@ -9,14 +9,12 @@
   import { isTodoItem } from "$stores/crdtState";
 
   import type { Writable } from "svelte/store";
-  import type { Array as YArray, Map as YMap } from "yjs";
 
   import type { TodoList, TodoItem } from "$stores/crdtState";
   import type { UpdateItem } from "./TodoApp.svelte";
 
   export let item: TodoList | TodoItem;
   export let itemsStore: Writable<TodoList[] | TodoItem[]>;
-  export let yItemsStore: Writable<YArray<YMap<string | boolean>>>;
   export let updateItem: UpdateItem;
   export let menuClass: string;
 
@@ -28,14 +26,14 @@
    */
   function commitEdits() {
     if (isTodoItem(item)) {
-      updateItem(yItemsStore, {
+      updateItem({
         id: item.id,
         name: newName,
         completed: item.completed,
         listId: item.listId,
       });
     } else {
-      updateItem(yItemsStore, {
+      updateItem({
         id: item.id,
         name: newName,
       });
@@ -49,14 +47,14 @@
    */
   function discardEdits() {
     if (isTodoItem(item)) {
-      updateItem(yItemsStore, {
+      updateItem({
         id: item.id,
         name: item.name,
         completed: item.completed,
         listId: item.listId,
       });
     } else {
-      updateItem(yItemsStore, {
+      updateItem({
         id: item.id,
         name: item.name,
       });
@@ -125,7 +123,7 @@
 
   function handleInput() {
     // Track the newName so that page refreshes don't reset the input value.
-    updateItem(yItemsStore, { ...item, newName });
+    updateItem({ ...item, newName });
 
     // Reset error message.
     error = "";
