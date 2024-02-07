@@ -125,14 +125,7 @@
         </label>
 
         <div class="flex gap-1">
-          <OptionsMenu
-            {item}
-            yItemsStore={yTodoItems}
-            {updateItem}
-            {deleteItem}
-            {menuClass}
-            {moveTodoMenuId}
-          />
+          <OptionsMenu {item} {updateItem} {deleteItem} {menuClass} {moveTodoMenuId} />
 
           <DragHandle bind:dragDisabled itemId={item.id} />
         </div>

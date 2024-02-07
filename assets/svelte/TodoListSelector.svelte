@@ -123,14 +123,7 @@
         </button>
 
         <div class="flex gap-1">
-          <OptionsMenu
-            item={list}
-            yItemsStore={yTodoLists}
-            {updateItem}
-            {deleteItem}
-            {menuClass}
-            {confirmDeletionModalId}
-          />
+          <OptionsMenu item={list} {updateItem} {deleteItem} {menuClass} {confirmDeletionModalId} />
 
           <DragHandle bind:dragDisabled itemId={list.id} />
         </div>
