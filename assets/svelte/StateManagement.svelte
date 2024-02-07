@@ -109,6 +109,13 @@
       return;
     }
 
+    // If document state exists on server, merge it with client state.
+    Y.applyUpdate(doc, toUint8Array(document));
+    $yTodoLists = stateMap.get("lists");
+    $yTodoItems = stateMap.get("todos");
+    $todoLists = $yTodoLists.toJSON();
+    $todoItems = $yTodoItems.toJSON();
+
   }
 
   onMount(() => {
