@@ -38,6 +38,13 @@
   function syncWithIndexedDb() {
     indexedDbProvider = new IndexeddbPersistence(indexedDBName, doc);
     indexedDbProvider.on("synced", () => {
+      // Sync stores with IndexedDB state.
+      $yTodoLists = stateMap.get("lists");
+      $yTodoItems = stateMap.get("todos");
+      $todoLists = $yTodoLists ? $yTodoLists.toJSON() : [];
+      $todoItems = $yTodoItems ? $yTodoItems.toJSON() : [];
+
+      isSyncedToIndexedDb = true;
     });
   }
 </script>

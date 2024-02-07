@@ -22,9 +22,8 @@ export function isTodoItem(item: TodoList | TodoItem): item is TodoItem {
   return "listId" in item && typeof item.listId === "string";
 }
 
-// TODO: Should default be an empty array or undefined?
-export const todoLists = writable<TodoList[]>([]);
-export const todoItems = writable<TodoItem[]>([]);
+export const todoLists = writable<TodoList[]>();
+export const todoItems = writable<TodoItem[]>();
 
 export const yTodoLists = writable<YArray<YMap<string | boolean>>>();
 export const yTodoItems = writable<YArray<YMap<string | boolean>>>();
