@@ -8,7 +8,7 @@ defmodule LiveViewSvelteOfflineDemo.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      {NodeJS.Supervisor, [path: LiveSvelte.SSR.NodeJS.server_path(), pool_size: 4]},
+      # {NodeJS.Supervisor, [path: LiveSvelte.SSR.NodeJS.server_path(), pool_size: 4]},
       LiveViewSvelteOfflineDemoWeb.Telemetry,
       LiveViewSvelteOfflineDemo.Repo,
       {DNSCluster,
