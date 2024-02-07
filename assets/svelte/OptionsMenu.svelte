@@ -115,7 +115,7 @@
             e.stopPropagation(); // Prevent event from bubbling up to ClickOutsideClassHandler.
             $openedMenuId = "edit-form-id";
 
-            updateItem(yItemsStore, {
+            updateItem({
               ...item,
               newName: item.name,
               isEditing: true,
