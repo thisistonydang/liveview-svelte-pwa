@@ -10,14 +10,10 @@
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
 
-  import type { Writable } from "svelte/store";
-  import type { Array as YArray, Map as YMap } from "yjs";
-
   import type { TodoList, TodoItem } from "$stores/crdtState";
   import type { UpdateItem, DeleteItem } from "./TodoApp.svelte";
 
   export let item: TodoList | TodoItem;
-  export let yItemsStore: Writable<YArray<YMap<string | boolean>>>;
   export let updateItem: UpdateItem;
   export let deleteItem: DeleteItem;
   export let menuClass: string;
@@ -75,7 +71,7 @@
               $itemToProcessId = item.id;
               $openedMenuId = confirmDeletionModalId;
             } else {
-              deleteItem(yItemsStore, item.id);
+              deleteItem(item);
             }
           }}
         >
