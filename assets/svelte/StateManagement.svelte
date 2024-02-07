@@ -112,4 +112,8 @@
 
 <svelte:window
   on:popstate={syncAppStateWithUrl}
+  on:storage={async ({ key, newValue }) => {
+    switch (key) {
+    }
+  }}
 />
