@@ -32,6 +32,7 @@
   export let isSyncedToIndexedDb: boolean;
 
   const stateMap = doc.getMap<Y.Array<Y.Map<string | boolean>>>();
+  const syncStateKey = "syncState";
   let indexedDbProvider: IndexeddbPersistence;
 
   function syncWithIndexedDb() {
@@ -105,7 +106,7 @@
   // Keep syncState store in sync with localStorage to allow for the sync badge
   // to be synced across tabs when offline.
   $: if (isSyncedToIndexedDb) {
-    localStorage.setItem("syncState", JSON.stringify($syncState));
+    localStorage.setItem(syncStateKey, JSON.stringify($syncState));
   }
 </script>
 
