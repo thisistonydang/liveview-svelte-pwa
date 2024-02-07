@@ -1,3 +1,10 @@
+<script lang="ts" context="module">
+  export interface ServerDocument {
+    event: string;
+    document: string | null;
+  }
+</script>
+
 <script lang="ts">
   import { liveView, serverDocument, sessionCount } from "$stores/liveViewSocket";
   import VisibilityChangeTracker from "./VisibilityChangeTracker.svelte";

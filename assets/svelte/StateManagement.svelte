@@ -58,6 +58,7 @@
 
   import { indexedDBName } from "./DataClearer.svelte";
 
+  import type { ServerDocument } from "./LiveViewSocket.svelte";
   export let isSyncedToIndexedDb: boolean;
 
   const stateMap = doc.getMap<Y.Array<Y.Map<string | boolean>>>();
