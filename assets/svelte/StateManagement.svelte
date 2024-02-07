@@ -13,6 +13,21 @@
     return base64Document;
   }
 
+  /**
+   * Let the user know that sync to server is in progress by showing the status
+   * in the SyncStatusBadge. If the sync takes longer than 1 second, timeout and
+   * set sync state to "Not Synced".
+   */
+  function notifyUserSyncingIsInProgress() {
+    syncState.set("Syncing");
+
+    setTimeout(() => {
+      if (get(syncState) !== "Synced") {
+        syncState.set("Not Synced");
+      }
+    }, 1000);
+  }
+
 </script>
 
 <script lang="ts">
