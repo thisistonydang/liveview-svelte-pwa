@@ -9,10 +9,7 @@
     updateUi: (newItems: TodoList[] | TodoItem[]) => void,
   ) => void;
 
-  export type UpdateItem = (
-    yItemStore: Writable<YArray<YMap<string | boolean>>>,
-    newItem: TodoList | TodoItem,
-  ) => void;
+  export type UpdateItem = (newItem: TodoList | TodoItem) => void;
 </script>
 
 <script lang="ts">
