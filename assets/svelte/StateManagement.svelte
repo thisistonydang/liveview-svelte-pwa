@@ -37,5 +37,7 @@
 
   function syncWithIndexedDb() {
     indexedDbProvider = new IndexeddbPersistence(indexedDBName, doc);
+    indexedDbProvider.on("synced", () => {
+    });
   }
 </script>
