@@ -91,6 +91,24 @@
     // necessarily mean that the state is synced for this particular client.
     $syncState = "Synced";
 
+    // If no document state exists on server, create a new document from client
+    // state and save it to the server.
+    if (!document) {
+      // Create new Yjs arrays for lists and todos if they don't exist.
+      if (!$yTodoLists && !$yTodoItems) {
+        $yTodoLists = new Y.Array();
+        stateMap.set("lists", $yTodoLists);
+
+        $yTodoItems = new Y.Array();
+        stateMap.set("todos", $yTodoItems);
+      }
+
+      // Send request to server to create new document from client state.
+      $liveView.pushEvent("create_server_document", { document: getBase64Document() });
+
+      return;
+    }
+
   }
 
   onMount(() => {
