@@ -94,4 +94,9 @@
     }
   }
 
+  // Sync urlHash and selectedListId with url on app start.
+  // Note: This needs to happen after syncing to indexedDb
+  // so that $todoLists is populated.
+  $: if (isSyncedToIndexedDb) syncAppStateWithUrl();
+
 </script>
