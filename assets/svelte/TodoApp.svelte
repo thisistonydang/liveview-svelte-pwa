@@ -1,8 +1,5 @@
 <script lang="ts" context="module">
-  export type DeleteItem = (
-    yItemsStore: Writable<YArray<YMap<string | boolean>>>,
-    itemId: string,
-  ) => void;
+  export type DeleteItem = (item: TodoList | TodoItem) => void;
 
   export type DndHandler = (
     event: CustomEvent,
