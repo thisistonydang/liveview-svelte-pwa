@@ -114,6 +114,10 @@
   on:popstate={syncAppStateWithUrl}
   on:storage={async ({ key, newValue }) => {
     switch (key) {
+
+      case syncStateKey:
+        $syncState = JSON.parse(newValue);
+        break;
     }
   }}
 />
