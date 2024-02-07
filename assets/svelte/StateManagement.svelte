@@ -85,6 +85,12 @@
       return;
     }
 
+    // All events that are not "mount" means that the document state came from
+    // the server so the sync state can be set to "Synced".
+    // TODO: Handle case where state comes from another client which will not
+    // necessarily mean that the state is synced for this particular client.
+    $syncState = "Synced";
+
   }
 
   onMount(() => {
