@@ -178,9 +178,13 @@
     } else {
       for (const yList of $yTodoLists) {
         if (yList.get("id") === item.id) {
-          $yTodoLists.delete(index);
-          cleanOrphanedTodos(item.id);
+          $yTodoLists.doc.transact(() => {
+            $yTodoLists.delete(index);
+            cleanOrphanedTodos(item.id);
+          });
+
           syncDocumentToServer($liveView);
+          console.log("$todoItems", $todoItems);
           return;
         }
         index++;
