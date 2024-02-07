@@ -6,8 +6,9 @@
   export const indexedDBName = "ToDo";
 
   export function clearUserData() {
-    // Clear client state in localStorage.
+    // Clear client storage.
     localStorage.clear();
+    sessionStorage.clear();
 
     // Clear private assets cached by service worker.
     requestAssetDeletion(config.privateAssets);
