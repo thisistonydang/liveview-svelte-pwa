@@ -30,7 +30,7 @@
 
 <StateManagement bind:isSyncedToIndexedDb />
 <ClientOnlyStateManagement bind:isClientStateRestored />
-<ScrollPositionRestorer {isClientStateRestored} />
+<ScrollPositionRestorer {isSyncedToIndexedDb} {isClientStateRestored} />
 <ServiceWorkerMessageHandler bind:serviceWorkerVersion />
 <ThemeSyncManager />
 
