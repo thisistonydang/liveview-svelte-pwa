@@ -80,6 +80,11 @@
   }
 
   function syncServerToClient({ event, document }: ServerDocument) {
+    if (event === "mount") {
+      notifyUserSyncingIsInProgress();
+      return;
+    }
+
   }
 
   onMount(() => {
