@@ -125,33 +125,48 @@
 
   // Shared handlers for both todo lists and todo items ____________________________________________
 
-  const updateItem: UpdateItem = (yItemStore, newItem) => {
-    get(yItemStore).forEach((yMap) => {
-      if (yMap.get("id") === newItem.id) {
-        yMap.set("name", newItem.name);
+  const updateItem: UpdateItem = (newItem) => {
+    if (isTodoItem(newItem)) {
+      $yTodoItems.doc.transact(() => {
+        for (const yTodo of $yTodoItems) {
+          if (yTodo.get("id") === newItem.id) {
+            yTodo.set("name", newItem.name);
+            yTodo.set("completed", newItem.completed);
+            yTodo.set("listId", newItem.listId);
 
-        if (isTodoItem(newItem)) {
-          yMap.set("completed", newItem.completed);
+            newItem.newName === undefined
+              ? yTodo.delete("newName")
+              : yTodo.set("newName", newItem.newName);
+
+            newItem.isEditing === undefined
+              ? yTodo.delete("isEditing")
+              : yTodo.set("isEditing", newItem.isEditing);
+
+            syncDocumentToServer($liveView);
+            return;
+          }
         }
+      });
+    } else {
+      $yTodoLists.doc.transact(() => {
+        for (const yList of $yTodoLists) {
+          if (yList.get("id") === newItem.id) {
+            yList.set("name", newItem.name);
 
-        if (isTodoItem(newItem)) {
-          yMap.set("listId", newItem.listId);
+            newItem.newName === undefined
+              ? yList.delete("newName")
+              : yList.set("newName", newItem.newName);
+
+            newItem.isEditing === undefined
+              ? yList.delete("isEditing")
+              : yList.set("isEditing", newItem.isEditing);
+
+            syncDocumentToServer($liveView);
+            return;
+          }
         }
-
-        newItem.newName === undefined
-          ? yMap.delete("newName")
-          : yMap.set("newName", newItem.newName);
-
-        newItem.isEditing === undefined
-          ? yMap.delete("isEditing")
-          : yMap.set("isEditing", newItem.isEditing);
-      } else {
-        yMap.delete("newName");
-        yMap.delete("isEditing");
-      }
-    });
-
-    syncDocumentToServer($liveView);
+      });
+    }
   };
 
   const deleteItem: DeleteItem = (yItemsStore, itemId) => {
