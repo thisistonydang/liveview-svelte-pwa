@@ -35,4 +35,6 @@
   let indexedDbProvider: IndexeddbPersistence;
   let mounted = false;
 
+  function syncWithIndexedDb() {
+  }
 </script>
