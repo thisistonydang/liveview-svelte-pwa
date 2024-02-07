@@ -102,4 +102,9 @@
   // Set scroll restoration so page nav via back/forward buttons works as expected.
   $: if (isSyncedToIndexedDb) history.scrollRestoration = "auto";
 
+  // Keep syncState store in sync with localStorage to allow for the sync badge
+  // to be synced across tabs when offline.
+  $: if (isSyncedToIndexedDb) {
+    localStorage.setItem("syncState", JSON.stringify($syncState));
+  }
 </script>
