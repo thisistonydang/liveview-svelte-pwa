@@ -52,4 +52,9 @@
     syncWithIndexedDb();
   });
 
+  // Request server document after syncing with IndexedDB and ws connection is established.
+  $: if (isSyncedToIndexedDb && $liveView) {
+    $liveView.pushEvent("request_server_document");
+  }
+
 </script>
