@@ -113,7 +113,15 @@
 <svelte:window
   on:popstate={syncAppStateWithUrl}
   on:storage={async ({ key, newValue }) => {
+    // These storage events are used to sync state across tabs when offline.
     switch (key) {
+      case clientDocumentUpdatedKey:
+        // Disconnect and reconnect to indexedDbProvider to force re-syncing
+        // IndexedDB state with app stores.
+        // TODO: There is probably a better way to do this.
+        await indexedDbProvider.destroy();
+        syncWithIndexedDb();
+        break;
 
       case syncStateKey:
         $syncState = JSON.parse(newValue);
