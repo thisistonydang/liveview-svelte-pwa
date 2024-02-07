@@ -110,7 +110,7 @@
     }
 
     // Move itemToMove to the top of the new list.
-    const index = $yTodoItems.toArray().findIndex((yMap) => yMap.get("id") === itemToMove.id);
+    const index = $yTodoItems.toArray().findIndex((yTodo) => yTodo.get("id") === itemToMove.id);
     const todo = new Y.Map<string | boolean>();
     todo.set("id", itemToMove.id);
     todo.set("name", itemToMove.name);
