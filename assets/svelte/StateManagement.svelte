@@ -6,6 +6,13 @@
   const doc = new Y.Doc();
   const clientDocumentUpdatedKey = "clientDocumentUpdated";
 
+  function getBase64Document() {
+    const binaryDocument = Y.encodeStateAsUpdate(doc);
+    const base64Document = fromUint8Array(binaryDocument);
+
+    return base64Document;
+  }
+
 </script>
 
 <script lang="ts">
