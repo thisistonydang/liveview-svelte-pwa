@@ -121,9 +121,9 @@
 
   const updateItem: UpdateItem = (newItem) => {
     if (isTodoItem(newItem)) {
-      $yTodoItems.doc.transact(() => {
-        for (const yTodo of $yTodoItems) {
-          if (yTodo.get("id") === newItem.id) {
+      for (const yTodo of $yTodoItems) {
+        if (yTodo.get("id") === newItem.id) {
+          $yTodoItems.doc.transact(() => {
             yTodo.set("name", newItem.name);
             yTodo.set("completed", newItem.completed);
             yTodo.set("listId", newItem.listId);
@@ -135,16 +135,16 @@
             newItem.isEditing === undefined
               ? yTodo.delete("isEditing")
               : yTodo.set("isEditing", newItem.isEditing);
+          });
 
-            syncDocumentToServer($liveView);
-            return;
-          }
+          syncDocumentToServer($liveView);
+          return;
         }
-      });
+      }
     } else {
-      $yTodoLists.doc.transact(() => {
-        for (const yList of $yTodoLists) {
-          if (yList.get("id") === newItem.id) {
+      for (const yList of $yTodoLists) {
+        if (yList.get("id") === newItem.id) {
+          $yTodoLists.doc.transact(() => {
             yList.set("name", newItem.name);
 
             newItem.newName === undefined
@@ -154,12 +154,12 @@
             newItem.isEditing === undefined
               ? yList.delete("isEditing")
               : yList.set("isEditing", newItem.isEditing);
+          });
 
-            syncDocumentToServer($liveView);
-            return;
-          }
+          syncDocumentToServer($liveView);
+          return;
         }
-      });
+      }
     }
   };
 
