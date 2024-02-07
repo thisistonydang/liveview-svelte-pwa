@@ -4,6 +4,8 @@
   import type { Live } from "live_svelte";
 
   const doc = new Y.Doc();
+  const clientDocumentUpdatedKey = "clientDocumentUpdated";
+
 </script>
 
 <script lang="ts">
