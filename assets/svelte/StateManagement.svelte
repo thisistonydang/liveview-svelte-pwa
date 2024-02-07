@@ -57,7 +57,7 @@
     $liveView.pushEvent("request_server_document");
   }
 
-  // Server state to client whenever a new serverDocument is received.
+  // Sync server state to client whenever a new serverDocument is received.
   $: if (isSyncedToIndexedDb && $liveView) {
     syncServerToClient($serverDocument);
   }
