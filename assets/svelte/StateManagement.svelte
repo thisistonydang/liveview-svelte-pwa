@@ -3,6 +3,7 @@
   import { fromUint8Array } from "js-base64";
   import type { Live } from "live_svelte";
 
+  const doc = new Y.Doc();
 </script>
 
 <script lang="ts">
@@ -21,4 +22,5 @@
 
   export let isSyncedToIndexedDb: boolean;
 
+  const stateMap = doc.getMap<Y.Array<Y.Map<string | boolean>>>();
 </script>
