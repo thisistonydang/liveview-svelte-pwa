@@ -23,7 +23,6 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     socket =
       socket
       |> assign(svelte_opts: %{ssr: false})
-      # TODO: Maybe check for existing document in db and assign it here for faster load times?
       |> assign(server_document: %{"event" => "mount", "document" => nil})
       |> assign(session_count: Presence.get_session_count(socket))
 
