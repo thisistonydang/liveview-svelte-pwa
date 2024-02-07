@@ -33,7 +33,6 @@
 
   const stateMap = doc.getMap<Y.Array<Y.Map<string | boolean>>>();
   let indexedDbProvider: IndexeddbPersistence;
-  let mounted = false;
 
   function syncWithIndexedDb() {
     indexedDbProvider = new IndexeddbPersistence(indexedDBName, doc);
