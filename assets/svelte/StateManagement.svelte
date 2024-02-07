@@ -116,6 +116,11 @@
     $todoLists = $yTodoLists.toJSON();
     $todoItems = $yTodoItems.toJSON();
 
+    // When coming back online, send state to server so it can be broadcasted.
+    if (event === "request_server_document") {
+      syncDocumentToServer($liveView);
+    }
+
   }
 
   onMount(() => {
