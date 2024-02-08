@@ -11,14 +11,14 @@
 </script>
 
 <div class="max-w-md mx-auto px-4 md:p-0">
-  <h1 class="text-5xl font-black my-5">Offline-Enabled LiveView Svelte Demo</h1>
+  <h1 class="text-5xl font-black my-5">Local-First LiveView Svelte Demo</h1>
 
   <p>
     This is a demo of an installable
     <Link href="https://www.phoenixframework.org/" external>Phoenix</Link>
     PWA (<Link href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" external>
       Progressive Web App</Link
-    >) that can sync real-time across multiple devices while also being able to fallback to working
+    >) that can sync real-time across multiple devices while also being able to work locally
     offline.
   </p>
 
@@ -40,17 +40,27 @@
 
       <li>
         <Link href="https://svelte.dev/" external>Svelte</Link>
-        (via <Link href="https://github.com/woutdp/live_svelte" external>live_svelte</Link>),
-        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" external
-          >Service Workers</Link
-        >, and
-        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" external>
-          localStorage
-        </Link> for offline support.
+        (via <Link href="https://github.com/woutdp/live_svelte" external>live_svelte</Link>) for the
+        frontend UI and state management.
       </li>
 
       <li>
-        <Link href="https://crdt.tech/" external>CRDTs</Link>
+        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" external
+          >Service Workers</Link
+        >,
+        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" external>
+          Web Storage</Link
+        >, and
+        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API" external>
+          IndexedDB
+        </Link> via
+        <Link href="https://github.com/yjs/y-indexeddb" external>y-indexeddb</Link>
+        for offline support.
+      </li>
+
+      <li>
+        <Link href="https://crdt.tech/" external>CRDTs</Link> via
+        <Link href="https://github.com/yjs/yjs" external>Yjs</Link>
         to resolve conflicts between distributed app states.
       </li>
     </ul>

@@ -1,8 +1,8 @@
-# Offline-Enabled LiveView Svelte Demo
+# Local-First LiveView Svelte Demo
 
 This is a demo of an installable [Phoenix](https://www.phoenixframework.org/) PWA 
-([Progressive Web App](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)) that
-can sync real-time across multiple devices while also being able to fallback to working offline.
+([Progressive Web App](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)) that can 
+sync real-time across multiple devices while also being able to work locally offline.
 
 ## Technologies used
 
@@ -10,11 +10,14 @@ can sync real-time across multiple devices while also being able to fallback to 
   [PubSub](https://hexdocs.pm/phoenix/channels.html#pubsub), and
   [Ecto](https://github.com/elixir-ecto/ecto/tree/v3.11.1)/[PostgreSQL](https://www.postgresql.org/)
   for real-time syncing and data persistence.
-- [Svelte](https://svelte.dev/) (via [live_svelte](https://github.com/woutdp/live_svelte)),
-  [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API), 
-  and [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 
-  for offline support.
-- [CRDTs](https://crdt.tech/) to resolve conflicts between distributed app states.
+- [Svelte](https://svelte.dev/) (via [live_svelte](https://github.com/woutdp/live_svelte))
+  for the frontend UI and state management.
+- [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API), 
+  [Web Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API), and
+  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) via
+  [y-indexeddb](https://github.com/yjs/y-indexeddb) for offline support.
+- [CRDTs](https://crdt.tech/) via [Yjs](https://github.com/yjs/yjs) to resolve conflicts between 
+  distributed app states.
 
 ## Demo
 
