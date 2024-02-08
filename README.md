@@ -1,6 +1,6 @@
-# Local-First LiveView Svelte Demo
+# Local-First LiveView Svelte ToDo App
 
-This is a demo of an installable [Phoenix](https://www.phoenixframework.org/) PWA 
+This to-do app is a demo of an installable [Phoenix](https://www.phoenixframework.org/) PWA 
 ([Progressive Web App](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)) that can 
 sync real-time across multiple devices while also being able to work locally offline.
 
