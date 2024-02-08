@@ -25,7 +25,7 @@
   const menuClass = "menu-class";
   let isClientStateRestored = false;
   let isSyncedToIndexedDb = false;
-  let serviceWorkerVersion = "";
+  let serviceWorkerVersion: string;
 </script>
 
 <StateManagement bind:isSyncedToIndexedDb />

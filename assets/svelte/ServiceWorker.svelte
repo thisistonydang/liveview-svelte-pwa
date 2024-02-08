@@ -43,7 +43,7 @@
 
   import { useIsConnected } from "$lib/hooks/useIsConnected";
 
-  export let serviceWorkerVersion = "";
+  export let serviceWorkerVersion: string;
 
   onMount(() => {
     navigator.serviceWorker?.addEventListener("message", (event) => {
