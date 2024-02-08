@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import config from "../../priv/static/sw.config.js";
 
-  import { requestAssetDeletion } from "./ServiceWorkerMessageHandler.svelte";
+  import { getAppJsAndCss, requestAssetDeletion } from "./ServiceWorkerMessageHandler.svelte";
 
   export const indexedDBName = "ToDo";
 
@@ -11,7 +11,8 @@
     sessionStorage.clear();
 
     // Clear private assets cached by service worker.
-    requestAssetDeletion(config.privateAssets);
+    const { appJs } = getAppJsAndCss();
+    requestAssetDeletion([...config.privateAssets, appJs]);
 
     // Clear Yjs state stored in indexedDB.
     const DBDeleteRequest = window.indexedDB.deleteDatabase(indexedDBName);
