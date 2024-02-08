@@ -57,6 +57,7 @@ defmodule LiveViewSvelteOfflineDemo.MixProject do
       {:req, "~> 0.4.0"},
       {:joken, "~> 2.6"},
       {:faker, "~> 0.17", only: [:test, :dev]},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
