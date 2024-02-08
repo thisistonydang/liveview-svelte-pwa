@@ -108,11 +108,4 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
 
     {:noreply, socket}
   end
-
-  # Clean Up _______________________________________________________________________________________
-
-  @impl true
-  def terminate(_reason, socket) do
-    Presence.untrack_user_presence(socket)
-  end
 end
