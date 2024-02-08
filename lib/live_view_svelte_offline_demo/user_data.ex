@@ -185,7 +185,7 @@ defmodule LiveViewSvelteOfflineDemo.UserData do
 
     # Send request for merge to JS backend.
     # TODO: Handle errors.
-    Req.post!("#{System.get_env("JS_BACKEND_URL")}/microservices/yjs/merge?jwt=#{token}").body[
+    Req.post!("#{System.get_env("JS_BACKEND_URL")}/microservices/yjs/merge", json: %{jwt: token}).body[
       "document"
     ]
   end
