@@ -16,8 +16,11 @@
   <p>
     This to-do app is a demo of an installable
     <Link href="https://www.phoenixframework.org/" external>Phoenix</Link>
-    PWA (<Link href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" external>
-      Progressive Web App</Link
+    Progressive Web App (<Link
+      href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+      external
+    >
+      PWA</Link
     >) that can sync real-time across multiple devices while also being able to work locally
     offline.
   </p>
