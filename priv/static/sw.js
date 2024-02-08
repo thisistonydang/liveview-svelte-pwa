@@ -104,8 +104,15 @@ function handleFetch(event) {
  */
 async function respond(request) {
   const cache = await caches.open(cacheName);
+  
+  // Try serving from cache first for faster load times.
+  const cachedResponse = await cache.match(request);
+  if (cachedResponse) {
+    debug && console.log("[Service Worker] Found cached response.", cachedResponse);
+    return cachedResponse;
+  }
 
-  // Try to fetch from network first. If successful, return response. Else, return a
+  // Try to fetch from network. If successful, return response. Else, return a
   // cached or fallback response.
   try {
     const response = await fetch(request, {
