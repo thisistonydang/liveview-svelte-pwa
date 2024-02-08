@@ -45,7 +45,7 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
     # Send email request to JS backend.
     # TODO: Send this in the background to reduce user wait time?
     # TODO: Handle errors.
-    Req.post("#{System.get_env("JS_BACKEND_URL")}/microservices/mailer/send?jwt=#{token}")
+    Req.post("#{System.get_env("JS_BACKEND_URL")}/microservices/mailer/send", json: %{jwt: token})
   end
 
   @doc """
