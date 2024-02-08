@@ -7,7 +7,7 @@
   import ClientOnlyStateManagement from "./ClientOnlyStateManagement.svelte";
   import Header from "./Header.svelte";
   import ScrollPositionRestorer from "./ScrollPositionRestorer.svelte";
-  import ServiceWorkerMessageHandler from "./ServiceWorkerMessageHandler.svelte";
+  import ServiceWorker from "./ServiceWorker.svelte";
   import StateManagement from "./StateManagement.svelte";
   import StickyHeader from "./StickyHeader.svelte";
   import ThemeSyncManager from "./ThemeSyncManager.svelte";
@@ -31,7 +31,7 @@
 <StateManagement bind:isSyncedToIndexedDb />
 <ClientOnlyStateManagement bind:isClientStateRestored />
 <ScrollPositionRestorer {isSyncedToIndexedDb} {isClientStateRestored} />
-<ServiceWorkerMessageHandler bind:serviceWorkerVersion />
+<ServiceWorker bind:serviceWorkerVersion />
 <ThemeSyncManager />
 
 <ClickOutsideClassHandler className={menuClass} callbackFunction={() => ($openedMenuId = "")} />
