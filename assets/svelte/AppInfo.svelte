@@ -53,15 +53,15 @@
         >, and
         <Link href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API" external>
           IndexedDB
-        </Link> via
-        <Link href="https://github.com/yjs/y-indexeddb" external>y-indexeddb</Link>
-        for offline support.
+        </Link>
+        (via <Link href="https://github.com/yjs/y-indexeddb" external>y-indexeddb</Link>) for
+        offline support.
       </li>
 
       <li>
-        <Link href="https://crdt.tech/" external>CRDTs</Link> via
-        <Link href="https://github.com/yjs/yjs" external>Yjs</Link>
-        to resolve conflicts between distributed app states.
+        <Link href="https://crdt.tech/" external>CRDTs</Link>
+        (via <Link href="https://github.com/yjs/yjs" external>Yjs</Link>) to resolve conflicts
+        between distributed app states.
       </li>
     </ul>
   </div>

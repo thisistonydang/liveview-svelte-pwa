@@ -14,9 +14,9 @@ sync real-time across multiple devices while also being able to work locally off
   for the frontend UI and state management.
 - [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API), 
   [Web Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API), and
-  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) via
-  [y-indexeddb](https://github.com/yjs/y-indexeddb) for offline support.
-- [CRDTs](https://crdt.tech/) via [Yjs](https://github.com/yjs/yjs) to resolve conflicts between 
+  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) 
+  (via [y-indexeddb](https://github.com/yjs/y-indexeddb)) for offline support.
+- [CRDTs](https://crdt.tech/) (via [Yjs](https://github.com/yjs/yjs)) to resolve conflicts between 
   distributed app states.
 
 ## Demo
