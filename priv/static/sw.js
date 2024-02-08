@@ -4,7 +4,7 @@
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
 
 import config from "./sw.config.js";
-const { cacheName, debug, messageTypes } = config;
+const { cacheName, debug, disableCache, messageTypes } = config;
 
 // Install _________________________________________________________________________________________
 
@@ -106,10 +106,12 @@ async function respond(request) {
   const cache = await caches.open(cacheName);
   
   // Try serving from cache first for faster load times.
-  const cachedResponse = await cache.match(request);
-  if (cachedResponse) {
-    debug && console.log("[Service Worker] Found cached response.", cachedResponse);
-    return cachedResponse;
+  if (!disableCache) {
+    const cachedResponse = await cache.match(request);
+    if (cachedResponse) {
+      debug && console.log("[Service Worker] Found cached response.", cachedResponse);
+      return cachedResponse;
+    }
   }
 
   // Try to fetch from network. If successful, return response. Else, return a

@@ -1,6 +1,7 @@
 export default {
   cacheName: "v2024.02.08.1",
   debug: false,
+  disableCache: false,
   messageTypes: {
     REQUEST_ASSET_CACHING: "request_asset_caching",
     REQUEST_ASSET_DELETION: "request_asset_deletion",
