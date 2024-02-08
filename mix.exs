@@ -56,7 +56,8 @@ defmodule LiveViewSvelteOfflineDemo.MixProject do
       {:live_svelte, "~> 0.13.0"},
       {:req, "~> 0.4.0"},
       {:joken, "~> 2.6"},
-      {:faker, "~> 0.17", only: [:test, :dev]}
+      {:faker, "~> 0.17", only: [:test, :dev]},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
