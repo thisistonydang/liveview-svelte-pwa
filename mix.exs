@@ -53,12 +53,14 @@ defmodule LiveViewSvelteOfflineDemo.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
       # App specific deps
+      {:joken, "~> 2.6"},
       {:live_svelte, "~> 0.13.0"},
       {:req, "~> 0.4.0"},
-      {:joken, "~> 2.6"},
+      # Dev only
       {:faker, "~> 0.17", only: [:test, :dev]},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false}
     ]
   end
 
