@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import config from "../../priv/static/sw.config.js";
 
-  export function getAppJsAndCss() {
+  function getAppJsAndCss() {
     const appJsScript: HTMLScriptElement = document.querySelector("script[phx-track-static]");
     const appJsUrl = new URL(appJsScript.src);
     const appJs = `${appJsUrl.pathname}${appJsUrl.search}`;
