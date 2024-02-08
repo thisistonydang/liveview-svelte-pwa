@@ -100,9 +100,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     {:noreply, socket}
   end
 
-  @doc """
-  Get and assign the latest session count to the socket whenever a 'presence diff' event is broadcasted.
-  """
+  # Get and assign the latest session count to the socket whenever a
+  # 'presence diff' event is broadcasted.
   def handle_info(%{event: "presence_diff"}, socket) do
     socket = socket |> assign(session_count: Presence.get_session_count(socket))
 
