@@ -1,7 +1,7 @@
 {
   "name": "ToDo",
   "short_name": "ToDo",
-  "description": "A simple to-do app.",
+  "description": "A local-first to-do app.",
   "id": "/",
   "scope": "/",
   "start_url": "/",
