@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { clickOutside } from "$lib/actions/clickOutside";
   import Bars3SvgIcon from "$lib/svg-icons/Bars3SvgIcon.svelte";
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
@@ -29,7 +28,7 @@
   tabindex="-1"
   on:mousedown={handleStartDrag}
   on:touchstart={handleStartDrag}
-  use:clickOutside={() => (dragDisabled = true)}
+  on:click={() => (dragDisabled = true)}
 >
   <Bars3SvgIcon className="w-6 h-6" />
 </button>
