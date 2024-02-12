@@ -76,7 +76,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     old_user_document = UserData.get_user_document_by_user_id(socket.assigns.current_user.id)
     UserData.update_user_document(old_user_document, %{document: latest_document})
 
-    {:noreply, socket}
+    {:reply, %{ok: true}, socket}
   end
 
   def handle_event(
