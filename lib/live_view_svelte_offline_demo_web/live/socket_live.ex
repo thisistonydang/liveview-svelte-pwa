@@ -1,4 +1,9 @@
 defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
+  @moduledoc """
+  This LiveView is embedded inside the AppHTML DeadView and acts as the web
+  socket for the Todo application.
+  """
+
   use LiveViewSvelteOfflineDemoWeb, :live_view
 
   alias LiveViewSvelteOfflineDemo.UserData
