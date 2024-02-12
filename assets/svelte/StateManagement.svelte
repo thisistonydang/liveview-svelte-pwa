@@ -131,6 +131,11 @@
     syncAppStateWithUrl();
   }
 
+  // Get previous syncState from localStorage on app reloads.
+  onMount(() => {
+    $syncState = getParsedValueFromLocalStorage(syncStateKey, "string", $syncState);
+  });
+
   onMount(() => {
     syncWithIndexedDb();
   });
