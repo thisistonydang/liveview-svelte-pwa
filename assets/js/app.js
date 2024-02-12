@@ -53,7 +53,7 @@ window.liveSocket = liveSocket;
 // to being logged out). This is necessary because the service worker will
 // always serve from the cache so the standard Phoenix redirect will not occur.
 liveSocket.getSocket().onOpen(() => {
-  fetch(window.location.href, { method: "HEAD" })
+  fetch(window.location.href, { method: "HEAD" }) // HEAD request to bypass service worker.
     .then((response) => {
       if (response.redirected) {
         window.location.replace(response.url);
