@@ -1,3 +1,25 @@
+<script lang="ts" context="module">
+  /**
+   * Get parsed value from sessionStorage.
+   *
+   * @param key - Key to get from sessionStorage.
+   * @param type - Type of value.
+   * @param defaultValue - Default value to return if value is not found in sessionStorage.
+   */
+  export function getParsedValue<T>(key: string, type: string, defaultValue: T): T {
+    const value = sessionStorage.getItem(key);
+
+    if (!value) return defaultValue;
+
+    try {
+      const parsedValue = JSON.parse(value);
+      return typeof parsedValue === type ? parsedValue : defaultValue;
+    } catch {
+      return defaultValue;
+    }
+  }
+</script>
+
 <script lang="ts">
   import { onMount } from "svelte";
 
@@ -11,26 +33,6 @@
   } from "$stores/clientOnlyState";
 
   export let isClientStateRestored: boolean;
-
-  /**
-   * Get parsed value from sessionStorage.
-   *
-   * @param key - Key to get from sessionStorage.
-   * @param type - Type of value.
-   * @param defaultValue - Default value to return if value is not found in sessionStorage.
-   */
-  function getParsedValue<T>(key: string, type: string, defaultValue: T): T {
-    const value = sessionStorage.getItem(key);
-
-    if (!value) return defaultValue;
-
-    try {
-      const parsedValue = JSON.parse(value);
-      return typeof parsedValue === type ? parsedValue : defaultValue;
-    } catch {
-      return defaultValue;
-    }
-  }
 
   onMount(() => {
     // Sync client state stores with sessionStorage on startup. This is mainly
