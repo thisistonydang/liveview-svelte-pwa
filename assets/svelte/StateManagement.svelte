@@ -60,6 +60,7 @@
   import { liveView, serverDocument } from "$stores/liveViewSocket";
   import { syncState } from "$stores/syncState";
 
+  import { getParsedValueFromLocalStorage } from "./ClientOnlyStateManagement.svelte";
   import { indexedDBName } from "./DataClearer.svelte";
 
   import type { ServerDocument } from "$stores/liveViewSocket";
