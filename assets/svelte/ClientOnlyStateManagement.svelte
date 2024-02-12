@@ -1,19 +1,34 @@
 <script lang="ts" context="module">
-  /**
-   * Get parsed value from sessionStorage.
-   *
-   * @param key - Key to get from sessionStorage.
-   * @param type - Type of value.
-   * @param defaultValue - Default value to return if value is not found in sessionStorage.
-   */
-  export function getParsedValue<T>(key: string, type: string, defaultValue: T): T {
-    const value = sessionStorage.getItem(key);
+  export function getParsedValueFromLocalStorage<T>(
+    key: string,
+    expectedType: string,
+    defaultValue: T,
+  ): T {
+    const jsonString = localStorage.getItem(key);
 
-    if (!value) return defaultValue;
+    return getParsedValueFromJsonString(jsonString, expectedType, defaultValue);
+  }
+
+  export function getParsedValueFromSessionStorage<T>(
+    key: string,
+    expectedType: string,
+    defaultValue: T,
+  ): T {
+    const jsonString = sessionStorage.getItem(key);
+
+    return getParsedValueFromJsonString(jsonString, expectedType, defaultValue);
+  }
+
+  function getParsedValueFromJsonString<T>(
+    jsonString: string | null,
+    expectedType: string,
+    defaultValue: T,
+  ): T {
+    if (!jsonString) return defaultValue;
 
     try {
-      const parsedValue = JSON.parse(value);
-      return typeof parsedValue === type ? parsedValue : defaultValue;
+      const parsedValue = JSON.parse(jsonString);
+      return typeof parsedValue === expectedType ? parsedValue : defaultValue;
     } catch {
       return defaultValue;
     }
@@ -37,12 +52,16 @@
   onMount(() => {
     // Sync client state stores with sessionStorage on startup. This is mainly
     // to restore UI if the browser unexpectedly refreshes.
-    $isListsOpened = getParsedValue("isListsOpened", "boolean", $isListsOpened);
-    $isTodoOpened = getParsedValue("isTodoOpened", "boolean", $isTodoOpened);
-    $itemToProcessId = getParsedValue("itemToProcessId", "string", $itemToProcessId);
-    $newList = getParsedValue("newList", "string", $newList);
-    $newTodo = getParsedValue("newTodo", "string", $newTodo);
-    $openedMenuId = getParsedValue("openedMenuId", "string", $openedMenuId);
+    $isListsOpened = getParsedValueFromSessionStorage("isListsOpened", "boolean", $isListsOpened);
+    $isTodoOpened = getParsedValueFromSessionStorage("isTodoOpened", "boolean", $isTodoOpened);
+    $itemToProcessId = getParsedValueFromSessionStorage(
+      "itemToProcessId",
+      "string",
+      $itemToProcessId,
+    );
+    $newList = getParsedValueFromSessionStorage("newList", "string", $newList);
+    $newTodo = getParsedValueFromSessionStorage("newTodo", "string", $newTodo);
+    $openedMenuId = getParsedValueFromSessionStorage("openedMenuId", "string", $openedMenuId);
 
     // Let offline-svelte know that the client state has been restored in order
     // to restore scroll position.
