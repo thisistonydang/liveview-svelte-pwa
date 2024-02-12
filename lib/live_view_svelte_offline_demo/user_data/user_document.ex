@@ -1,4 +1,9 @@
 defmodule LiveViewSvelteOfflineDemo.UserData.UserDocument do
+  @moduledoc """
+  Schema for user_documents table. Stores Yjs documents for each user encoded as
+  base64 strings.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

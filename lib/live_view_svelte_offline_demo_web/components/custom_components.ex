@@ -1,4 +1,8 @@
 defmodule LiveViewSvelteOfflineDemoWeb.CustomComponents do
+  @moduledoc """
+  Custom function components.
+  """
+
   use Phoenix.Component
 
   # Allow use of sigil_p/2
