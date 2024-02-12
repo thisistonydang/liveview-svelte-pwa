@@ -40,7 +40,11 @@
     localStorage.setItem(clientDocumentUpdatedKey, JSON.stringify(Date.now()));
 
     // Send new client document to server.
-    live?.pushEvent("client_document_updated", { document: getBase64Document() });
+    live?.pushEvent("client_document_updated", { document: getBase64Document() }, (response) => {
+      if (response.ok) {
+        syncState.set("Synced");
+      }
+    });
   }
 </script>
 
