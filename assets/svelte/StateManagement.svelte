@@ -28,6 +28,12 @@
     }, 1000);
   }
 
+  function confirmSynced(response: { ok: boolean }) {
+    if (response.ok) {
+      syncState.set("Synced");
+    }
+  }
+
   export function syncDocumentToServer(live: Live) {
     // Set the todoLists and todoItems stores so that the UI is updated.
     todoLists.set(get(yTodoLists).toJSON());
@@ -40,11 +46,7 @@
     localStorage.setItem(clientDocumentUpdatedKey, JSON.stringify(Date.now()));
 
     // Send new client document to server.
-    live?.pushEvent("client_document_updated", { document: getBase64Document() }, (response) => {
-      if (response.ok) {
-        syncState.set("Synced");
-      }
-    });
+    live?.pushEvent("client_document_updated", { document: getBase64Document() }, confirmSynced);
   }
 </script>
 
@@ -100,7 +102,11 @@
       }
 
       // Send request to server to create new document from client state.
-      $liveView.pushEvent("create_server_document", { document: getBase64Document() });
+      $liveView.pushEvent(
+        "create_server_document",
+        { document: getBase64Document() },
+        confirmSynced,
+      );
 
       return;
     }

@@ -64,7 +64,7 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
     UserData.create_user_document!(%{document: document, user_id: socket.assigns.current_user.id})
     socket = socket |> assign(server_document: %{"event" => event, "document" => document})
 
-    {:noreply, socket}
+    {:reply, %{ok: true}, socket}
   end
 
   def handle_event("client_document_updated", %{"document" => document}, socket) do
