@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/phoenix_live_view": "^0.18.4",
     "daisyui": "^4.4.17",
     "esbuild": "^0.16.17",
     "esbuild-plugin-import-glob": "^0.1.1",
