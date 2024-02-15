@@ -46,7 +46,6 @@ liveSocket.connect();
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
-// @ts-expect-error; adding liveSocket to window is accepted pattern.
 window.liveSocket = liveSocket;
 
 // When the websocket connects, check if the user should be redirected (i.e. due
