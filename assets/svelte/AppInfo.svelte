@@ -25,6 +25,30 @@
     offline.
   </p>
 
+  <h2 class="text-3xl font-bold my-3">Video Walkthrough</h2>
+
+  <iframe
+    class="w-full aspect-video my-6"
+    src="https://www.youtube.com/embed/PX9-lq0LL9Q?si=xdd3inTC72OvVV0G"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+
+  {#if showAuthLinks}
+    <h2 class="text-3xl font-bold my-3">Try it out</h2>
+
+    <ul class="flex gap-2">
+      <li>
+        <a href={"/users/register"} class="btn btn-accent border border-neutral">Register</a>
+      </li>
+      <li>
+        <a href={"/users/log_in"} class="btn btn-accent border border-neutral">Log in</a>
+      </li>
+    </ul>
+  {/if}
+
   <div class="my-6">
     <h2 class="text-3xl font-bold my-3">Technologies used</h2>
 
@@ -68,19 +92,6 @@
       </li>
     </ul>
   </div>
-
-  {#if showAuthLinks}
-    <h2 class="text-3xl font-bold my-3">Try it out</h2>
-
-    <ul class="flex gap-2">
-      <li>
-        <a href={"/users/register"} class="btn btn-accent border border-neutral">Register</a>
-      </li>
-      <li>
-        <a href={"/users/log_in"} class="btn btn-accent border border-neutral">Log in</a>
-      </li>
-    </ul>
-  {/if}
 
   <div class="my-6">
     <h2 class="text-3xl font-bold my-3">Inspired by</h2>

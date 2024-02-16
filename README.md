@@ -4,6 +4,14 @@ This to-do app is a demo of an installable [Phoenix](https://www.phoenixframewor
 Progressive Web App ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)) 
 that can sync real-time across multiple devices while also being able to work locally offline.
 
+## Video Walkthrough
+
+[![Working in Elevators: How to build an offline-enabled, real-time todo app w/ LiveView, Svelte, & Yjs](https://img.youtube.com/vi/PX9-lq0LL9Q/maxresdefault.jpg)](https://www.youtube.com/watch?v=PX9-lq0LL9Q)
+
+## Demo
+
+A live demo of the app can be found [here](https://liveview-svelte-pwa.fly.dev/app).
+
 ## Technologies used
 
 - Phoenix [LiveView](https://github.com/phoenixframework/phoenix_live_view),
@@ -18,10 +26,6 @@ that can sync real-time across multiple devices while also being able to work lo
   (via [y-indexeddb](https://github.com/yjs/y-indexeddb)) for offline support.
 - [CRDTs](https://crdt.tech/) (via [Yjs](https://github.com/yjs/yjs)) to resolve conflicts between 
   distributed app states.
-
-## Demo
-
-A live demo can be found [here](https://liveview-svelte-pwa.fly.dev/app).
 
 ## Inspired by
 
