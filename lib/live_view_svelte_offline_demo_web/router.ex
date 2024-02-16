@@ -23,6 +23,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.Router do
     # This route is just for creating the logo image in development.
     # get "/logo", LogoController, :index
 
+    # This route is for demonstrating the use of LiveSvelte + LiveView in the
+    # Working in Elevators presentation.
+    # live "/live_svelte", ExampleLive
+
     get "/offline", OfflineController, :index
   end
 
