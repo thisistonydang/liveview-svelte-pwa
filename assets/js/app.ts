@@ -27,8 +27,8 @@ import { getHooks } from "live_svelte";
 // @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
 
-import { useRegisterServiceWorker } from "../lib/hooks/useRegisterServiceWorker";
-import { initTopBar } from "../lib/topbar/initTopBar";
+import { useRegisterServiceWorker } from "$lib/hooks/useRegisterServiceWorker";
+import { initTopBar } from "$lib/topbar/initTopBar";
 
 declare global {
   interface Window {
