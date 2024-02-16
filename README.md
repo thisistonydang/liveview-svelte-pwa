@@ -10,7 +10,7 @@ that can sync real-time across multiple devices while also being able to work lo
 
 ## Demo
 
-A live demo of the app can be found [here](https://liveview-svelte-pwa.fly.dev/app).
+A live demo of the app can be found [here](https://liveview-svelte-pwa.fly.dev/).
 
 ## Technologies used
 
