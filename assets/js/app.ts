@@ -30,6 +30,12 @@ import * as Components from "../svelte/**/*.svelte";
 import { useRegisterServiceWorker } from "../lib/hooks/useRegisterServiceWorker";
 import { initTopBar } from "../lib/topbar/initTopBar";
 
+declare global {
+  interface Window {
+    liveSocket: LiveSocket;
+  }
+}
+
 useRegisterServiceWorker("/sw.js");
 initTopBar();
 
