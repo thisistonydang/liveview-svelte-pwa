@@ -5,16 +5,13 @@
   import { clickOutside } from "$lib/actions/clickOutside";
   import CheckSvgIconMicro from "$lib/svg-icons/CheckSvgIconMicro.svelte";
 
-  import { openedMenuId, selectedListId } from "$stores/clientOnlyState";
+  import { openedMenuId } from "$stores/clientOnlyState";
   import { isTodoItem } from "$stores/crdtState";
-
-  import type { Writable } from "svelte/store";
 
   import type { TodoList, TodoItem } from "$stores/crdtState";
   import type { UpdateItem } from "./TodoApp.svelte";
 
   export let item: TodoList | TodoItem;
-  export let itemsStore: Writable<TodoList[] | TodoItem[]>;
   export let updateItem: UpdateItem;
   export let menuClass: string;
 
@@ -63,7 +60,7 @@
     $openedMenuId = "";
   }
 
-  function handleSubmit({ isClickedOutside } = { isClickedOutside: false }) {
+  function handleSubmit() {
     // Trim whitespace.
     newName = newName.replace(/\s+/g, " ").trim();
 
@@ -77,31 +74,6 @@
     if (item.name.toLowerCase() === newName.toLowerCase()) {
       commitEdits();
       return;
-    }
-
-    // Check if new item name already exists.
-    for (const item of $itemsStore) {
-      if (isTodoItem(item)) {
-        if (item.listId === $selectedListId && item.name.toLowerCase() === newName.toLowerCase()) {
-          if (isClickedOutside) {
-            discardEdits();
-            return;
-          }
-
-          error = `"${newName}" already exists in the list!`;
-          return;
-        }
-      } else {
-        if (item.name.toLowerCase() === newName.toLowerCase()) {
-          if (isClickedOutside) {
-            discardEdits();
-            return;
-          }
-
-          error = `A list named "${newName}" already exists!`;
-          return;
-        }
-      }
     }
 
     // Check if string is too long.
@@ -132,8 +104,8 @@
 
 <form
   class="{menuClass} w-full"
-  on:submit|preventDefault={() => handleSubmit()}
-  use:clickOutside={() => handleSubmit({ isClickedOutside: true })}
+  on:submit|preventDefault={handleSubmit}
+  use:clickOutside={handleSubmit}
   use:focusTrap={{
     focusFirstElement: true,
     onEscape: handleEscape,

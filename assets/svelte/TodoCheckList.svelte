@@ -93,7 +93,7 @@
       use:onKeydown={(event) => handleDragKeyDown(event, item.id)}
     >
       {#if item.isEditing}
-        <EditForm {item} itemsStore={todoItems} {updateItem} {menuClass} />
+        <EditForm {item} {updateItem} {menuClass} />
       {:else}
         <label
           title="Click to toggle completed."

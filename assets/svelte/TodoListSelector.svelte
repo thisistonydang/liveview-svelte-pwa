@@ -93,7 +93,7 @@
       use:onKeydown={(event) => handleDragKeyDown(event, list.id)}
     >
       {#if list.isEditing}
-        <EditForm item={list} itemsStore={todoLists} {updateItem} {menuClass} />
+        <EditForm item={list} {updateItem} {menuClass} />
       {:else}
         <button
           title="Click to view list."
