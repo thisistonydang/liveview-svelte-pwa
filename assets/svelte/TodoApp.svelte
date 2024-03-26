@@ -82,21 +82,11 @@
 
   /**
    * Move a todo item to a new list.
-   *
-   * Returns "ok" if the item was moved successfully, otherwise returns "error".
    */
-  function moveTodo(itemToMove: TodoItem, newListId: string): "ok" | "error" {
-    // Return "ok" if the itemToMove is already in the new list.
+  function moveTodo(itemToMove: TodoItem, newListId: string) {
+    // Return if the itemToMove is already in the new list.
     if (itemToMove.listId === newListId) {
-      return "ok";
-    }
-
-    // Return "error" if the itemToMove name already exists in the new list.
-    const itemsInNewList = $todoItems.filter((item) => item.listId === newListId);
-    for (const item of itemsInNewList) {
-      if (item.name.toLowerCase() === itemToMove.name.toLowerCase()) {
-        return "error";
-      }
+      return;
     }
 
     // Move itemToMove to the top of the new list.
@@ -113,8 +103,6 @@
     });
 
     syncDocumentToServer($liveView);
-
-    return "ok";
   }
 
   // Shared handlers for both todo lists and todo items ____________________________________________

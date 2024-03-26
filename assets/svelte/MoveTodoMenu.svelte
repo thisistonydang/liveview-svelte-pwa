@@ -7,13 +7,12 @@
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
   import { todoLists } from "$stores/crdtState";
-  import { toast } from "$stores/toast";
 
   import type { TodoItem } from "$stores/crdtState";
 
   export let itemToMove: TodoItem;
   export let menuClass: string;
-  export let moveTodo: (itemToMove: TodoItem, newListId: string) => "ok" | "error";
+  export let moveTodo: (itemToMove: TodoItem, newListId: string) => void;
 
   let dialog: HTMLDialogElement;
 
@@ -66,27 +65,9 @@
               focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
             "
             style="word-break: break-word;"
-            on:click={(e) => {
-              e.stopPropagation(); // Prevent clicks from closing toast message.
-
-              // Try to move the todo item to the selected list.
-              const response = moveTodo(itemToMove, list.id);
-              if (response === "error") {
-                $toast = {
-                  show: true,
-                  kind: "info",
-                  title: "Whoops, can't move item...",
-                  msg: `'${itemToMove.name}' already exists in the '${list.name}' list.`,
-                };
-              } else {
-                dialog.close();
-                $toast = {
-                  show: false,
-                  kind: "info",
-                  title: "",
-                  msg: "",
-                };
-              }
+            on:click={() => {
+              moveTodo(itemToMove, list.id);
+              dialog.close();
             }}
           >
             <input
