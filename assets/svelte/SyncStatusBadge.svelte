@@ -13,7 +13,7 @@
     } else {
       // Force websocket reconnection by refreshing the page.
       $syncState = "Syncing";
-      window.location.reload();
+      setTimeout(() => window.location.reload(), 250);
     }
   }
 </script>
