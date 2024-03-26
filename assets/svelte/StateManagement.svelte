@@ -130,7 +130,8 @@
 
   // Get previous syncState from localStorage on app reloads.
   onMount(() => {
-    $syncState = getParsedValueFromLocalStorage(syncStateKey, "string", $syncState);
+    const previousSyncState = getParsedValueFromLocalStorage(syncStateKey, "string", $syncState);
+    $syncState = previousSyncState === "Syncing" ? "Not Synced" : previousSyncState;
   });
 
   onMount(() => {

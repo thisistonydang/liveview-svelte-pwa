@@ -3,10 +3,7 @@
   import SuccessSvgIcon from "$lib/svg-icons/SuccessSvgIcon.svelte";
   import WarningSvgIcon from "$lib/svg-icons/WarningSvgIcon.svelte";
 
-  import { liveView } from "$stores/liveViewSocket";
   import { syncState } from "$stores/syncState";
-
-  import { syncDocumentToServer } from "./StateManagement.svelte";
 
   async function checkIfSynced() {
     if ($syncState === "Synced") {
@@ -14,7 +11,9 @@
       $syncState = "Syncing";
       setTimeout(() => ($syncState = "Synced"), 250);
     } else {
-      syncDocumentToServer($liveView);
+      // Force websocket reconnection by refreshing the page.
+      $syncState = "Syncing";
+      window.location.reload();
     }
   }
 </script>
