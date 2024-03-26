@@ -1,14 +1,6 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
 
-  import { selectedListId } from "$stores/clientOnlyState";
-  import { isTodoItem } from "$stores/crdtState";
-
-  import type { Writable } from "svelte/store";
-
-  import type { TodoItem, TodoList } from "$stores/crdtState";
-
-  export let itemsStore: Writable<TodoList[] | TodoItem[]>;
   export let addItemCallback: () => void;
   export let value: string;
   export let placeholder: string;
@@ -25,21 +17,6 @@
     if (value === "") {
       error = "Cannot be blank!";
       return;
-    }
-
-    // Check if item already exists in the list it's being added to.
-    for (const item of $itemsStore) {
-      if (isTodoItem(item)) {
-        if (item.listId === $selectedListId && item.name.toLowerCase() === value.toLowerCase()) {
-          error = `"${value}" already exists in the list!`;
-          return;
-        }
-      } else {
-        if (item.name.toLowerCase() === value.toLowerCase()) {
-          error = `A list named "${value}" already exists!`;
-          return;
-        }
-      }
     }
 
     // Check if string is too long.
