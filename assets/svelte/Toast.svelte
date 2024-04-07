@@ -1,9 +1,8 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-  import { Info } from "lucide-svelte";
+  import { Info, TriangleAlert } from "lucide-svelte";
 
   import { clickOutside } from "$lib/actions/clickOutside";
-  import WarningSvgIcon from "$lib/svg-icons/WarningSvgIcon.svelte";
   import XMarkSvgIcon from "$lib/svg-icons/XMarkSvgIcon.svelte";
 
   import { toast } from "$stores/toast";
@@ -33,7 +32,7 @@
       {#if $toast.kind === "info"}
         <Info class="h-4 w-4" />
       {:else if $toast.kind === "error"}
-        <WarningSvgIcon className="h-4 w-4" />
+        <TriangleAlert class="h-4 w-4" />
       {/if}
 
       {$toast.title}
