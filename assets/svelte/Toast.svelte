@@ -1,8 +1,8 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
+  import { Info } from "lucide-svelte";
 
   import { clickOutside } from "$lib/actions/clickOutside";
-  import InfoSvgIcon from "$lib/svg-icons/InfoSvgIcon.svelte";
   import WarningSvgIcon from "$lib/svg-icons/WarningSvgIcon.svelte";
   import XMarkSvgIcon from "$lib/svg-icons/XMarkSvgIcon.svelte";
 
@@ -31,7 +31,7 @@
   >
     <p class="flex items-center gap-1.5 text-sm font-semibold leading-6">
       {#if $toast.kind === "info"}
-        <InfoSvgIcon className="h-4 w-4" />
+        <Info class="h-4 w-4" />
       {:else if $toast.kind === "error"}
         <WarningSvgIcon className="h-4 w-4" />
       {/if}
