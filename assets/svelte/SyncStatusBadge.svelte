@@ -1,7 +1,5 @@
 <script lang="ts">
-  import RefreshingSvgIcon from "$lib/svg-icons/RefreshingSvgIcon.svelte";
-  import SuccessSvgIcon from "$lib/svg-icons/SuccessSvgIcon.svelte";
-  import WarningSvgIcon from "$lib/svg-icons/WarningSvgIcon.svelte";
+  import { CircleAlert, CircleCheckBig, RefreshCw } from "lucide-svelte";
 
   import { syncState } from "$stores/syncState";
 
@@ -33,11 +31,11 @@
 >
   <div class="flex gap-1 items-center">
     {#if $syncState === "Synced"}
-      <SuccessSvgIcon className="w-3 h-3" />
+      <CircleCheckBig class="w-3 h-3" />
     {:else if $syncState === "Syncing"}
-      <RefreshingSvgIcon className="w-3 h-3 animate-spin" />
+      <RefreshCw class="w-3 h-3 animate-spin" />
     {:else}
-      <WarningSvgIcon className="w-3 h-3" />
+      <CircleAlert class="w-3 h-3" />
     {/if}
 
     {$syncState}
