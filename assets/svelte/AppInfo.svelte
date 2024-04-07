@@ -1,5 +1,7 @@
 <script lang="ts">
-  import GitHubSvgIcon from "$lib/svg-icons/GitHubSvgIcon.svelte";
+  import { faGithub } from "@fortawesome/free-brands-svg-icons";
+  import Fa from "svelte-fa";
+
   import Link from "./Link.svelte";
 
   import { Live } from "live_svelte";
@@ -141,7 +143,7 @@
         focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
       "
     >
-      <GitHubSvgIcon className="h-10 w-10" />
+      <Fa icon={faGithub} size="3x" />
     </a>
   </div>
 </div>
