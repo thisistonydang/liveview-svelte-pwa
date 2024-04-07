@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { scale } from "svelte/transition";
+  import { SwatchBook } from "lucide-svelte";
 
   import { focusTrap } from "$lib/actions/focusTrap";
-  import SwatchSvgIcon from "$lib/svg-icons/SwatchSvgIcon.svelte";
 
   import { openedMenuId } from "$stores/clientOnlyState";
   import { currentTheme } from "$stores/currentTheme";
@@ -44,7 +44,7 @@
       }
     }}
   >
-    <SwatchSvgIcon className="h-6 w-6" />
+    <SwatchBook />
   </button>
 
   {#if $openedMenuId === themeMenuId}
