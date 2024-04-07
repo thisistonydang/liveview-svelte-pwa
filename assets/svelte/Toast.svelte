@@ -1,9 +1,8 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-  import { Info, TriangleAlert } from "lucide-svelte";
+  import { Info, TriangleAlert, X } from "lucide-svelte";
 
   import { clickOutside } from "$lib/actions/clickOutside";
-  import XMarkSvgIcon from "$lib/svg-icons/XMarkSvgIcon.svelte";
 
   import { toast } from "$stores/toast";
 
@@ -41,7 +40,7 @@
     <p class="mt-2 text-sm leading-5">{$toast.msg}</p>
 
     <button class="group absolute top-1 right-1 p-2" aria-label="close" on:click={dismissToast}>
-      <XMarkSvgIcon className="w-5 h-5" />
+      <X class="w-5 h-5" />
     </button>
   </div>
 {/if}
