@@ -1,9 +1,9 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
+  import { Check } from "lucide-svelte";
 
   import { focusTrap } from "$lib/actions/focusTrap";
   import { clickOutside } from "$lib/actions/clickOutside";
-  import CheckSvgIconMicro from "$lib/svg-icons/CheckSvgIconMicro.svelte";
 
   import { openedMenuId } from "$stores/clientOnlyState";
   import { isTodoItem } from "$stores/crdtState";
@@ -128,7 +128,7 @@
       class="btn btn-accent join-item border border-neutral"
       aria-label="Update item."
     >
-      <CheckSvgIconMicro className="w-5 h-5" />
+      <Check class="w-5 h-5" />
     </button>
   </div>
 
