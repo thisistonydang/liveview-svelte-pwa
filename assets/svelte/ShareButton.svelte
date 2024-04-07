@@ -1,6 +1,5 @@
 <script lang="ts">
-  import CheckSvgIconMicro from "$lib/svg-icons/CheckSvgIconMicro.svelte";
-  import ShareSvgIcon from "$lib/svg-icons/ShareSvgIcon.svelte";
+  import { Check, Share2 } from "lucide-svelte";
 
   let message: "App link copied!" | "Copy to clipboard failed." | "";
 
@@ -39,8 +38,8 @@
   >
     <div class="swap swap-rotate">
       <input type="checkbox" class="hidden" checked={Boolean(message)} />
-      <ShareSvgIcon className="swap-off h-6 w-6" />
-      <CheckSvgIconMicro className="swap-on h-6 w-6" />
+      <Share2 class="swap-off" />
+      <Check class="swap-on" />
     </div>
   </div>
 </button>
