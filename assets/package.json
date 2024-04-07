@@ -12,6 +12,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "js-base64": "^3.7.6",
     "live_svelte": "file:../deps/live_svelte",
     "lucide-svelte": "^0.365.0",
@@ -19,6 +20,7 @@
     "phoenix_html": "file:../deps/phoenix_html",
     "phoenix_live_view": "file:../deps/phoenix_live_view",
     "svelte-dnd-action": "^0.9.42",
+    "svelte-fa": "^4.0.2",
     "y-indexeddb": "^9.0.12",
     "yjs": "^13.6.11"
   }
