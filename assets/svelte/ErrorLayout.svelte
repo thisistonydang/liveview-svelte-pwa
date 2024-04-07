@@ -1,5 +1,4 @@
 <script lang="ts">
-  import FrownSvgIcon from "$lib/svg-icons/FrownSvgIcon.svelte";
   import { showTopBar } from "$lib/topbar";
 
   import type { Live } from "live_svelte";
@@ -16,7 +15,7 @@
 <div class="hero min-h-screen">
   <div class="hero-content text-center">
     <div class="max-w-md">
-      <FrownSvgIcon className="mx-auto h-40 w-40" />
+      <div class="mx-auto text-8xl mb-10">(◑_◑)</div>
       <h1 class="text-xl font-bold my-3">{title}</h1>
 
       {#if subtitle}
