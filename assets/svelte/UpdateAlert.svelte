@@ -1,10 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { fly } from "svelte/transition";
+  import { Info } from "lucide-svelte";
 
   import config from "../../priv/static/sw.config.js";
   import { useIsConnected } from "$lib/hooks/useIsConnected";
-  import InfoSvgIcon from "$lib/svg-icons/InfoSvgIcon.svelte";
 
   let newSW: ServiceWorker;
   let showAlert = false;
@@ -62,7 +62,7 @@
       alert shadow-lg border border-neutral m-2
     "
   >
-    <InfoSvgIcon className="h-6 w-6" />
+    <Info />
 
     <div>
       <h3 class="font-bold">Update Available</h3>
