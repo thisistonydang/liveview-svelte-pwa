@@ -1,8 +1,8 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
+  import { MoveRight } from "lucide-svelte";
 
   import { focusTrap } from "$lib/actions/focusTrap";
-  import ArrowRightStartOnRectangleSvgIcon from "$lib/svg-icons/ArrowRightStartOnRectangleSvgIcon.svelte";
   import EllipsisHorizontalCircleSvgIcon from "$lib/svg-icons/EllipsisHorizontalCircleSvgIcon.svelte";
   import PencilSvgIcon from "$lib/svg-icons/PencilSvgIcon.svelte";
   import TrashSvgIcon from "$lib/svg-icons/TrashSvgIcon.svelte";
@@ -94,7 +94,7 @@
               $openedMenuId = moveTodoMenuId;
             }}
           >
-            <ArrowRightStartOnRectangleSvgIcon className="w-4 h-4" />
+            <MoveRight class="w-4 h-4" />
             Move
           </button>
         </li>
