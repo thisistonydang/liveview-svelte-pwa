@@ -1,6 +1,5 @@
 <script lang="ts">
-  import ArrowUTurnLeft from "$lib/svg-icons/ArrowUTurnLeft.svelte";
-  import ArrowUTurnRight from "$lib/svg-icons/ArrowUTurnRight.svelte";
+  import { Redo2, Undo2 } from "lucide-svelte";
 
   import { liveView } from "$stores/liveViewSocket";
   import { syncDocumentToServer } from "./StateManagement.svelte";
@@ -51,7 +50,7 @@
         syncDocumentToServer($liveView);
       }}
     >
-      <ArrowUTurnLeft className="w-6 h-6" />
+      <Undo2 className="w-6 h-6" />
     </button>
   </div>
 
@@ -73,7 +72,7 @@
         syncDocumentToServer($liveView);
       }}
     >
-      <ArrowUTurnRight className="w-6 h-6" />
+      <Redo2 className="w-6 h-6" />
     </button>
   </div>
 </div>
