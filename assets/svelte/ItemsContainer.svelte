@@ -2,8 +2,7 @@
   import { sineIn } from "svelte/easing";
   import { fade } from "svelte/transition";
 
-  import ChevronDownSvgIcon from "$lib/svg-icons/ChevronDownSvgIcon.svelte";
-  import ChevronUpSvgIcon from "$lib/svg-icons/ChevronUpSvgIcon.svelte";
+  import { ChevronDown, ChevronUp } from "lucide-svelte";
 
   export let title: string;
   export let totalCount: number;
@@ -70,8 +69,8 @@
       class:swap-active={isDropdownOpened}
       on:click={() => (isDropdownOpened = !isDropdownOpened)}
     >
-      <ChevronDownSvgIcon className="swap-off w-6 h-6" />
-      <ChevronUpSvgIcon className="swap-on w-6 h-6" />
+      <ChevronDown class="swap-off" />
+      <ChevronUp class="swap-on" />
     </button>
   </div>
 
