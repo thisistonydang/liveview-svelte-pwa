@@ -1,5 +1,6 @@
 <script lang="ts">
-  import ArrowLeftSvgIcon from "$lib/svg-icons/ArrowLeftSvgIcon.svelte";
+  import { ArrowLeft } from "lucide-svelte";
+
   import { showTopBar } from "$lib/topbar";
 
   import type { Live } from "live_svelte";
@@ -21,7 +22,7 @@
       focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
     "
   >
-    <ArrowLeftSvgIcon className="h-10 w-10" />
+    <ArrowLeft class="h-10 w-10" strokeWidth={1.75} />
   </a>
 {:else}
   <button
@@ -43,6 +44,6 @@
       }
     }}
   >
-    <ArrowLeftSvgIcon className="h-10 w-10" />
+    <ArrowLeft class="h-10 w-10" strokeWidth={1.75} />
   </button>
 {/if}
