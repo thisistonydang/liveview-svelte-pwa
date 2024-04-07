@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Bars3SvgIcon from "$lib/svg-icons/Bars3SvgIcon.svelte";
+  import { GripVertical } from "lucide-svelte";
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
 
@@ -30,5 +30,5 @@
   on:touchstart={handleStartDrag}
   on:click={() => (dragDisabled = true)}
 >
-  <Bars3SvgIcon className="w-6 h-6" />
+  <GripVertical class="w-6 h-6" />
 </button>
