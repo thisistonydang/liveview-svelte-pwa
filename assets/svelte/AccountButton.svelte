@@ -1,9 +1,9 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
+  import { UserRound } from "lucide-svelte";
 
   import { focusTrap } from "$lib/actions/focusTrap.js";
   import { useIsConnected } from "$lib/hooks/useIsConnected";
-  import UserSvgIcon from "$lib/svg-icons/UserSvgIcon.svelte";
   import { showTopBar, hideTopBar } from "$lib/topbar";
 
   import { openedMenuId, urlHash } from "$stores/clientOnlyState";
@@ -104,7 +104,7 @@
       }
     }}
   >
-    <UserSvgIcon className="h-6 w-6" />
+    <UserRound />
   </button>
 
   {#if $openedMenuId === accountMenuId}
