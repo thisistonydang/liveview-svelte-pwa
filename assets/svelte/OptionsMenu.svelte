@@ -1,12 +1,8 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
-  import { MoveRight } from "lucide-svelte";
+  import { CircleEllipsis, CircleX, MoveRight, Pencil, Trash2 } from "lucide-svelte";
 
   import { focusTrap } from "$lib/actions/focusTrap";
-  import EllipsisHorizontalCircleSvgIcon from "$lib/svg-icons/EllipsisHorizontalCircleSvgIcon.svelte";
-  import PencilSvgIcon from "$lib/svg-icons/PencilSvgIcon.svelte";
-  import TrashSvgIcon from "$lib/svg-icons/TrashSvgIcon.svelte";
-  import XCircleSvgIcon from "$lib/svg-icons/XCircleSvgIcon.svelte";
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
 
@@ -44,8 +40,8 @@
   >
     <div class="swap swap-rotate">
       <input type="checkbox" class="hidden" checked={$openedMenuId === item.id} />
-      <EllipsisHorizontalCircleSvgIcon className="swap-off w-6 h-6" />
-      <XCircleSvgIcon className="swap-on w-6 h-6" />
+      <CircleEllipsis class="swap-off" />
+      <CircleX class="swap-on" />
     </div>
   </button>
 
@@ -62,7 +58,7 @@
         <button
           data-focusindex="2"
           class="
-            flex items-center gap-1 p-2 rounded-lg
+            flex items-center gap-1.5 p-2 rounded-lg
             focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
           "
           on:click={(e) => {
@@ -75,7 +71,7 @@
             }
           }}
         >
-          <TrashSvgIcon className="w-4 h-4" />
+          <Trash2 class="w-4 h-4" />
           Delete
         </button>
       </li>
@@ -85,7 +81,7 @@
           <button
             data-focusindex="1"
             class="
-              flex items-center gap-1 p-2 rounded-lg
+              flex items-center gap-1.5 p-2 rounded-lg
               focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
             "
             on:click={(e) => {
@@ -104,7 +100,7 @@
         <button
           data-focusindex="0"
           class="
-            flex items-center gap-1 p-2 rounded-lg
+            flex items-center gap-1.5 p-2 rounded-lg
             focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
           "
           on:click={(e) => {
@@ -118,7 +114,7 @@
             });
           }}
         >
-          <PencilSvgIcon className="w-4 h-4" />
+          <Pencil class="w-4 h-4" />
           Edit
         </button>
       </li>
