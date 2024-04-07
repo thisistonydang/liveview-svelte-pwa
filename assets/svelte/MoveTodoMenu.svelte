@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { X } from "lucide-svelte";
 
   import { focusTrap } from "$lib/actions/focusTrap";
   import { clickOutside } from "$lib/actions/clickOutside";
-  import XMarkSvgIcon from "$lib/svg-icons/XMarkSvgIcon.svelte";
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
   import { todoLists } from "$stores/crdtState";
@@ -51,7 +51,7 @@
       title="Close."
       on:click={() => dialog.close()}
     >
-      <XMarkSvgIcon className="w-5 h-5" />
+      <X class="w-5 h-5" />
     </button>
 
     <ul>
