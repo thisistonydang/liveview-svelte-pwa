@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-  import CheckSvgIconMicro from "$lib/svg-icons/CheckSvgIconMicro.svelte";
+  import { Check } from "lucide-svelte";
   import { currentTheme } from "$stores/currentTheme";
 
   export let focusIndex: number;
@@ -30,7 +30,7 @@
     <span class="first-letter:capitalize">{theme}</span>
 
     {#if theme === $currentTheme}
-      <CheckSvgIconMicro className="h-4 w-4" />
+      <Check class="h-4 w-4" />
     {/if}
   </button>
 </li>
