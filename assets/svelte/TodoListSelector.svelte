@@ -1,12 +1,12 @@
 <script lang="ts">
   import { flip } from "svelte/animate";
   import { fade } from "svelte/transition";
+  import { ChevronRight } from "lucide-svelte";
   import { dndzone } from "svelte-dnd-action";
   import * as Y from "yjs";
 
   import { onKeydown } from "$lib/actions/onKeydown";
   import { useHasTouchScreen } from "$lib/hooks/useHasTouchScreen";
-  import ChevronRightSvgIcon from "$lib/svg-icons/ChevronRightSvgIcon.svelte";
 
   import { itemToProcessId, openedMenuId, selectedListId, urlHash } from "$stores/clientOnlyState";
   import { todoLists, todoItems, yTodoLists } from "$stores/crdtState";
@@ -119,7 +119,7 @@
             </span>
           </span>
 
-          <ChevronRightSvgIcon className="shrink-0 w-4 h-4" />
+          <ChevronRight class="shrink-0 w-4 h-4" />
         </button>
 
         <div class="flex gap-1">
