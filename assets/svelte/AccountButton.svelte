@@ -1,6 +1,6 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
-  import { UserRound } from "lucide-svelte";
+  import { Info, LogOut, Settings, UserRound } from "lucide-svelte";
 
   import { focusTrap } from "$lib/actions/focusTrap.js";
   import { useIsConnected } from "$lib/hooks/useIsConnected";
@@ -131,32 +131,46 @@
         <li>
           <a
             data-focusindex="0"
-            class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            class="
+              flex gap-2
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
             href="/app#about"
             on:click|preventDefault={showAbout}
           >
+            <Info class="h-4 w-4" />
             About
           </a>
         </li>
+
         <li>
           <a
             data-focusindex="1"
-            class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            class="
+              flex gap-2
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
             href="/users/settings"
             on:click|preventDefault={showSettings}
             class:pointer-events-none={disabled}
           >
+            <Settings class="h-4 w-4" />
             Settings
             <span class="loading loading-dots loading-xs" class:hidden={!isSettingsLoading}></span>
           </a>
         </li>
+
         <li>
           <button
             data-focusindex="2"
-            class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            class="
+              flex gap-2
+              focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
+            "
             on:click={logOutUser}
             {disabled}
           >
+            <LogOut class="h-4 w-4" />
             Log out
             <span class="loading loading-dots loading-xs" class:hidden={!isLogOutLoading}></span>
           </button>
