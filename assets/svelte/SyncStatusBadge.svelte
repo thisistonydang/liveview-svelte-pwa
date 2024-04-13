@@ -20,7 +20,7 @@
   aria-label="Sync Status."
   title="Click to force sync."
   class="
-    badge w-28 border border-neutral
+    badge w-[113px] border border-neutral
     focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
   "
   class:badge-accent={$syncState === "Synced"}
@@ -29,7 +29,7 @@
   disabled={$syncState === "Syncing"}
   on:click={checkIfSynced}
 >
-  <div class="flex gap-1 items-center">
+  <div class="flex gap-[5px] items-center">
     {#if $syncState === "Synced"}
       <CircleCheckBig class="w-3 h-3" />
     {:else if $syncState === "Syncing"}
