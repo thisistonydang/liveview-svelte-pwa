@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { GripVertical } from "lucide-svelte";
+  import { GripHorizontal } from "lucide-svelte";
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
 
@@ -30,5 +30,5 @@
   on:touchstart={handleStartDrag}
   on:click={() => (dragDisabled = true)}
 >
-  <GripVertical class="w-6 h-6" />
+  <GripHorizontal class="w-6 h-6" />
 </button>
