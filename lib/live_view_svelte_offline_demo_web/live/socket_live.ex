@@ -68,13 +68,10 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
   end
 
   def handle_event("client_document_updated", %{"document" => document}, socket) do
-    # Get latest document state by merging Yjs updates.
-    latest_document = UserData.get_latest_document(socket, document)
-
     # Save the latest document to the db and broadcast to all clients.
     # TODO: Handle errors.
     old_user_document = UserData.get_user_document_by_user_id(socket.assigns.current_user.id)
-    UserData.update_user_document(old_user_document, %{document: latest_document})
+    UserData.update_user_document(old_user_document, %{document: document})
 
     {:reply, %{ok: true}, socket}
   end
