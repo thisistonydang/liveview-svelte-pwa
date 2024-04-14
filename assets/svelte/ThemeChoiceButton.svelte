@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-  import { Check } from "lucide-svelte";
+  import { Check, Laptop, Moon, Sun } from "lucide-svelte";
   import { currentTheme } from "$stores/currentTheme";
 
   export let focusIndex: number;
@@ -27,6 +27,14 @@
     class="focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
     on:click={() => setTheme(theme)}
   >
+    {#if theme === "system"}
+      <Laptop class="h-4 w-4" />
+    {:else if theme === "light"}
+      <Sun class="h-4 w-4" />
+    {:else if theme === "dark"}
+      <Moon class="h-4 w-4" />
+    {/if}
+
     <span class="first-letter:capitalize">{theme}</span>
 
     {#if theme === $currentTheme}

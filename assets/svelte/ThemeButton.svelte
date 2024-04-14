@@ -58,7 +58,7 @@
     >
       <p class="px-4 py-2 font-bold border-b border-neutral rounded-none mb-1.5">Theme</p>
 
-      <ul class="w-28">
+      <ul class="w-32">
         <ThemeChoiceButton focusIndex={0} theme="system" />
         <ThemeChoiceButton focusIndex={1} theme="light" />
         <ThemeChoiceButton focusIndex={2} theme="dark" />
