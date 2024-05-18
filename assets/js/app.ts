@@ -61,16 +61,16 @@ window.liveSocket = liveSocket;
 // When the websocket connects, check if the user should be redirected (i.e. due
 // to being logged out). This is necessary because the service worker will
 // always serve from the cache so the standard Phoenix redirect will not occur.
-liveSocket.getSocket().onOpen(() => {
-  fetch(window.location.href, { method: "HEAD" }) // HEAD request to bypass service worker.
-    .then((response) => {
-      if (response.redirected) {
-        window.location.replace(response.url);
-      }
-    })
-    .catch((error) => {
-      console.error("error:", error);
-    });
+liveSocket.getSocket().onOpen(async () => {
+  try {
+    // Use HEAD request to bypass service worker.
+    const response = await fetch(window.location.href, { method: "HEAD" });
+    if (response.redirected) {
+      window.location.replace(response.url);
+    }
+  } catch (error) {
+    console.error("Error while checking for redirection on LiveView socket connection.", error);
+  }
 });
 
 // Check for when the page becomes visible and reconnect the socket if it has
