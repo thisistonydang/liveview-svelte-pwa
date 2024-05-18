@@ -30,9 +30,13 @@ import * as Components from "../svelte/**/*.svelte";
 import { useRegisterServiceWorker } from "$lib/hooks/useRegisterServiceWorker";
 import { initTopBar } from "$lib/topbar/initTopBar";
 
+interface LiveViewSocket extends LiveSocket {
+  isConnected: () => boolean;
+}
+
 declare global {
   interface Window {
-    liveSocket: LiveSocket;
+    liveSocket: LiveViewSocket;
   }
 }
 
@@ -43,7 +47,7 @@ let csrfToken = document.querySelector("meta[name='csrf-token']")?.getAttribute(
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: getHooks(Components),
   params: { _csrf_token: csrfToken },
-});
+}) as LiveViewSocket;
 
 // connect if there are any LiveViews on the page
 liveSocket.connect();
@@ -67,4 +71,10 @@ liveSocket.getSocket().onOpen(() => {
     .catch((error) => {
       console.error("error:", error);
     });
+});
+
+window.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && !liveSocket.isConnected()) {
+    liveSocket.connect();
+  }
 });

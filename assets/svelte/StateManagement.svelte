@@ -18,7 +18,7 @@
    * in the SyncStatusBadge. If the sync takes longer than 1 second, timeout and
    * set sync state to "Not Synced".
    */
-  function notifyUserSyncingIsInProgress() {
+  export function notifyUserSyncingIsInProgress() {
     syncState.set("Syncing");
 
     setTimeout(() => {
