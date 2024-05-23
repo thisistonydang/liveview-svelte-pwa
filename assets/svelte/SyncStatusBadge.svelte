@@ -14,6 +14,12 @@
       notifyUserSyncingIsInProgress();
       if (!window.liveSocket.isConnected()) {
         window.liveSocket.connect();
+
+        setTimeout(() => {
+          if (!window.liveSocket.isConnected()) {
+            window.location.reload();
+          }
+        }, 2000);
       }
     }
   }

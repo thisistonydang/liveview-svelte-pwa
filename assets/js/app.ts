@@ -80,5 +80,11 @@ liveSocket.getSocket().onOpen(async () => {
 window.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && !liveSocket.isConnected()) {
     liveSocket.connect();
+
+    setTimeout(() => {
+      if (!liveSocket.isConnected()) {
+        window.location.reload();
+      }
+    }, 2000);
   }
 });
