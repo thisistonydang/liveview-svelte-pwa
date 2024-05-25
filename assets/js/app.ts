@@ -73,18 +73,12 @@ liveSocket.getSocket().onOpen(async () => {
   }
 });
 
-// Check for when the page becomes visible and reconnect the socket if it has
-// been disconnected. This is mainly for the case where a user switches away
-// from the app window and returns after an extended period where the socket may
-// have been disconnected.
+// Check for when the page becomes visible and refresh to reconnect the socket
+// if it has been disconnected. This is mainly for the case where a user
+// switches away from the app window and returns after an extended period where
+// the socket may have been disconnected.
 window.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && !liveSocket.isConnected()) {
-    liveSocket.connect();
-
-    setTimeout(() => {
-      if (!liveSocket.isConnected()) {
-        window.location.reload();
-      }
-    }, 2000);
+    window.location.reload();
   }
 });

@@ -2,7 +2,6 @@
   import { CircleAlert, CircleCheckBig, RefreshCw } from "lucide-svelte";
 
   import { syncState } from "$stores/syncState";
-  import { notifyUserSyncingIsInProgress } from "./StateManagement.svelte";
 
   async function checkIfSynced() {
     if ($syncState === "Synced") {
@@ -10,17 +9,9 @@
       $syncState = "Syncing";
       setTimeout(() => ($syncState = "Synced"), 250);
     } else {
-      // Attempt syncing by reconnecting the live view socket.
-      notifyUserSyncingIsInProgress();
-      if (!window.liveSocket.isConnected()) {
-        window.liveSocket.connect();
-
-        setTimeout(() => {
-          if (!window.liveSocket.isConnected()) {
-            window.location.reload();
-          }
-        }, 2000);
-      }
+      // Force websocket reconnection by refreshing the page.
+      $syncState = "Syncing";
+      setTimeout(() => window.location.reload(), 250);
     }
   }
 </script>
