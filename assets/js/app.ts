@@ -27,6 +27,7 @@ import { getHooks } from "live_svelte";
 // @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
 
+import { useIsConnected } from "$lib/hooks/useIsConnected";
 import { useRegisterServiceWorker } from "$lib/hooks/useRegisterServiceWorker";
 import { initTopBar } from "$lib/topbar/initTopBar";
 
@@ -78,7 +79,18 @@ liveSocket.getSocket().onOpen(async () => {
 // switches away from the app window and returns after an extended period where
 // the socket may have been disconnected.
 window.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible" && !liveSocket.isConnected()) {
-    window.location.reload();
+  if (document.visibilityState === "visible") {
+    reloadIfSocketDisconnected();
   }
 });
+
+/**
+ * Check if the socket is disconnected and reload the page if a connection to
+ * the server is available.
+ */
+export async function reloadIfSocketDisconnected() {
+  const connected = await useIsConnected({});
+  if (connected && !liveSocket.isConnected()) {
+    window.location.reload();
+  }
+}

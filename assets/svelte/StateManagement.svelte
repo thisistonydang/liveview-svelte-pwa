@@ -1,6 +1,8 @@
 <script lang="ts" context="module">
   import { get } from "svelte/store";
   import { fromUint8Array } from "js-base64";
+  import { reloadIfSocketDisconnected } from "js/app";
+
   import type { Live } from "live_svelte";
 
   const doc = new Y.Doc();
@@ -44,6 +46,10 @@
     // Update clientDocumentUpdatedKey to to notify other tabs that the document has been updated.
     // This is used to sync the document state across different tabs when offline.
     localStorage.setItem(clientDocumentUpdatedKey, JSON.stringify(Date.now()));
+
+    // Reload if the socket is disconnected, but a connection to the server is available. This
+    // will force reconnection of the websocket and syncing of the document state.
+    reloadIfSocketDisconnected();
 
     // Send new client document to server.
     live?.pushEvent("client_document_updated", { document: getBase64Document() }, confirmSynced);

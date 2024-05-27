@@ -1,17 +1,18 @@
 <script lang="ts">
   import { CircleAlert, CircleCheckBig, RefreshCw } from "lucide-svelte";
 
+  import { reloadIfSocketDisconnected } from "js/app";
   import { syncState } from "$stores/syncState";
 
-  async function checkIfSynced() {
+  function checkIfSynced() {
     if ($syncState === "Synced") {
       // This does nothing. It just lets the user know that the click was registered.
       $syncState = "Syncing";
       setTimeout(() => ($syncState = "Synced"), 250);
     } else {
-      // Force websocket reconnection by refreshing the page.
       $syncState = "Syncing";
-      setTimeout(() => window.location.reload(), 250);
+      reloadIfSocketDisconnected();
+      setTimeout(() => ($syncState = "Not Synced"), 250);
     }
   }
 </script>
