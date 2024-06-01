@@ -8,7 +8,7 @@
   import { useHasTouchScreen } from "$lib/hooks/useHasTouchScreen";
 
   import { itemToProcessId, openedMenuId } from "$stores/clientOnlyState";
-  import { todoItems, yTodoItems } from "$stores/crdtState";
+  import { yTodoItems } from "$stores/crdtState";
 
   import DragHandle from "./DragHandle.svelte";
   import EditForm from "./EditForm.svelte";
