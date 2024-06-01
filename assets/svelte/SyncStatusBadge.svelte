@@ -1,7 +1,6 @@
 <script lang="ts">
   import { CircleAlert, CircleCheckBig, RefreshCw } from "lucide-svelte";
 
-  import { reloadIfSocketDisconnected } from "js/app";
   import { syncState } from "$stores/syncState";
 
   function checkIfSynced() {
@@ -11,8 +10,8 @@
       setTimeout(() => ($syncState = "Synced"), 250);
     } else {
       $syncState = "Syncing";
-      reloadIfSocketDisconnected();
-      setTimeout(() => ($syncState = "Not Synced"), 250);
+      // Force socket reconnection by reloading the page.
+      window.location.reload();
     }
   }
 </script>

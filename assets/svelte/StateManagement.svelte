@@ -1,7 +1,8 @@
 <script lang="ts" context="module">
   import { get } from "svelte/store";
   import { fromUint8Array } from "js-base64";
-  import { reloadIfSocketDisconnected } from "js/app";
+
+  import { useIsConnected } from "$lib/hooks/useIsConnected";
 
   import type { Live } from "live_svelte";
 
@@ -36,7 +37,7 @@
     }
   }
 
-  export function syncDocumentToServer(live: Live) {
+  export async function syncDocumentToServer(live: Live) {
     // Set the todoLists and todoItems stores so that the UI is updated.
     todoLists.set(get(yTodoLists).toJSON());
     todoItems.set(get(yTodoItems).toJSON());
@@ -49,7 +50,10 @@
 
     // Reload if the socket is disconnected, but a connection to the server is available. This
     // will force reconnection of the websocket and syncing of the document state.
-    reloadIfSocketDisconnected();
+    const connected = await useIsConnected({});
+    if (connected && !window.liveSocket.isConnected()) {
+      window.location.reload();
+    }
 
     // Send new client document to server.
     live?.pushEvent("client_document_updated", { document: getBase64Document() }, confirmSynced);
