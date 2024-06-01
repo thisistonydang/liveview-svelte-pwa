@@ -8,6 +8,7 @@
   export let totalCount: number;
   export let uncompletedCount: number | undefined = undefined;
   export let isDropdownOpened: boolean;
+  export let isScrollPositionRestored: boolean;
 
   const emoticons = [
     "(◕‿◕)",
@@ -42,6 +43,7 @@
 <div
   class="collapse border border-neutral mt-2 mb-20 overflow-visible"
   class:collapse-open={isDropdownOpened}
+  style:visibility={isScrollPositionRestored ? "visible" : "hidden"}
 >
   <!-- Collapse title. -->
   <div class="collapse-title relative" style="cursor: default;">

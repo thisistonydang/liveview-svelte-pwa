@@ -36,6 +36,7 @@
   import type { TodoList, TodoItem } from "$stores/crdtState";
 
   export let menuClass: string;
+  export let isScrollPositionRestored: boolean;
 
   const confirmDeletionModalId = "confirm-deletion-modal-id";
   const moveTodoMenuId = "move-todo-menu-id";
@@ -289,6 +290,7 @@
     placeholder="Enter new item name"
     submitButtonText="Add"
     submitButtonTitle="Add item to list."
+    {isScrollPositionRestored}
   />
 
   <ItemsContainer
@@ -296,6 +298,7 @@
     totalCount={selectedListTodoItems.length}
     uncompletedCount={selectedListUncompletedItems.length}
     bind:isDropdownOpened={$isTodoOpened}
+    {isScrollPositionRestored}
   >
     <TodoCheckList
       title={selectedListName}
@@ -310,6 +313,7 @@
       {flipDurationMs}
       {menuClass}
       {moveTodoMenuId}
+      {isScrollPositionRestored}
     />
   </ItemsContainer>
 {:else}
@@ -319,12 +323,14 @@
     placeholder="Enter new list name"
     submitButtonText="Create"
     submitButtonTitle="Create new list."
+    {isScrollPositionRestored}
   />
 
   <ItemsContainer
     title="Lists"
     totalCount={$todoLists.length}
     bind:isDropdownOpened={$isListsOpened}
+    {isScrollPositionRestored}
   >
     <TodoListSelector
       {updateItem}
@@ -336,6 +342,7 @@
       {flipDurationMs}
       {menuClass}
       {confirmDeletionModalId}
+      {isScrollPositionRestored}
     />
   </ItemsContainer>
 {/if}

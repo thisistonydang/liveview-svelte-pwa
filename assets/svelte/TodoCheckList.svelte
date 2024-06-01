@@ -29,6 +29,7 @@
   export let flipDurationMs: number;
   export let menuClass: string;
   export let moveTodoMenuId: string;
+  export let isScrollPositionRestored: boolean;
 
   const hasTouchScreen = useHasTouchScreen();
 
@@ -70,6 +71,7 @@
     min-h-[40px] rounded-lg
     focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100
   "
+  style:visibility={isScrollPositionRestored ? "visible" : "hidden"}
   aria-label={title}
   use:dndzone={{
     items,

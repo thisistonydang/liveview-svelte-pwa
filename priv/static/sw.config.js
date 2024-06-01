@@ -1,5 +1,5 @@
 export default {
-  cacheName: "v2024.05.31.1",
+  cacheName: "v2024.06.01.1",
   debug: false,
   disableCache: false, // Set to true during dev to disable caching.
   messageTypes: {

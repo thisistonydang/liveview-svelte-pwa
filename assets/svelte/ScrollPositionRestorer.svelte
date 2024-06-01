@@ -1,10 +1,10 @@
 <script lang="ts">
   export let isSyncedToIndexedDb: boolean;
   export let isClientStateRestored: boolean;
+  export let isScrollPositionRestored: boolean;
 
   const scrollPositionKey = "scrollPosition";
 
-  let scrollPositionRestored = false;
   let scrollX: number;
   let scrollY: number;
 
@@ -26,12 +26,12 @@
   $: if (isSyncedToIndexedDb && isClientStateRestored) {
     setTimeout(() => {
       restoreScrollPosition();
-      scrollPositionRestored = true;
+      isScrollPositionRestored = true;
     }, 0);
   }
 
   // Keep scroll position stored in sessionStorage AFTER restoring scroll position.
-  $: if (scrollPositionRestored) {
+  $: if (isScrollPositionRestored) {
     sessionStorage.setItem(scrollPositionKey, JSON.stringify({ x: scrollX, y: scrollY }));
   }
 </script>

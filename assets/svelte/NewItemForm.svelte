@@ -6,6 +6,7 @@
   export let placeholder: string;
   export let submitButtonText: string;
   export let submitButtonTitle: string;
+  export let isScrollPositionRestored: boolean;
 
   let error = "";
 
@@ -29,7 +30,11 @@
   }
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="join my-1 w-full">
+<form
+  on:submit|preventDefault={handleSubmit}
+  class="join my-1 w-full"
+  style:visibility={isScrollPositionRestored ? "visible" : "hidden"}
+>
   <input
     type="text"
     {placeholder}

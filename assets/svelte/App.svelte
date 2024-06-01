@@ -25,12 +25,17 @@
   const menuClass = "menu-class";
   let isClientStateRestored = false;
   let isSyncedToIndexedDb = false;
+  let isScrollPositionRestored = false;
   let serviceWorkerVersion: string;
 </script>
 
 <StateManagement bind:isSyncedToIndexedDb />
 <ClientOnlyStateManagement bind:isClientStateRestored />
-<ScrollPositionRestorer {isSyncedToIndexedDb} {isClientStateRestored} />
+<ScrollPositionRestorer
+  {isSyncedToIndexedDb}
+  {isClientStateRestored}
+  bind:isScrollPositionRestored
+/>
 <ServiceWorker bind:serviceWorkerVersion />
 <ThemeSyncManager />
 
@@ -50,7 +55,7 @@
     <AppInfo />
   {:else}
     <div class="max-w-2xl mx-auto px-2 md:p-0">
-      <TodoApp {menuClass} />
+      <TodoApp {menuClass} {isScrollPositionRestored} />
     </div>
   {/if}
 {:else}
