@@ -27,7 +27,6 @@ import { getHooks } from "live_svelte";
 // @ts-expect-error; loading all Svelte components for live_svelte.
 import * as Components from "../svelte/**/*.svelte";
 
-import { useIsConnected } from "$lib/hooks/useIsConnected";
 import { useRegisterServiceWorker } from "$lib/hooks/useRegisterServiceWorker";
 import { initTopBar } from "$lib/topbar/initTopBar";
 
