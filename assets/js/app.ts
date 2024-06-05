@@ -30,6 +30,8 @@ import * as Components from "../svelte/**/*.svelte";
 import { useRegisterServiceWorker } from "$lib/hooks/useRegisterServiceWorker";
 import { initTopBar } from "$lib/topbar/initTopBar";
 
+import { reconnectLiveViewIfDisconnected } from "$components/StateManagement.svelte";
+
 interface LiveViewSocket extends LiveSocket {
   isConnected: () => boolean;
 }
@@ -79,6 +81,6 @@ liveSocket.getSocket().onOpen(async () => {
 // been disconnected.
 window.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
-    window.location.reload();
+    reconnectLiveViewIfDisconnected();
   }
 });
