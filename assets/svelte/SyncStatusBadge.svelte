@@ -1,19 +1,9 @@
 <script lang="ts">
   import { CircleAlert, CircleCheckBig, RefreshCw } from "lucide-svelte";
 
+  import { liveView } from "$stores/liveViewSocket";
   import { syncState } from "$stores/syncState";
-
-  function checkIfSynced() {
-    if ($syncState === "Synced") {
-      // This does nothing. It just lets the user know that the click was registered.
-      $syncState = "Syncing";
-      setTimeout(() => ($syncState = "Synced"), 250);
-    } else {
-      $syncState = "Syncing";
-      // Force socket reconnection by reloading the page.
-      window.location.reload();
-    }
-  }
+  import { syncDocumentToServer } from "./StateManagement.svelte";
 </script>
 
 <button
@@ -27,7 +17,7 @@
   class:badge-primary={$syncState === "Syncing"}
   class:badge-secondary={$syncState === "Not Synced"}
   disabled={$syncState === "Syncing"}
-  on:click={checkIfSynced}
+  on:click={() => syncDocumentToServer($liveView)}
 >
   <div class="flex gap-[5px] items-center">
     {#if $syncState === "Synced"}
