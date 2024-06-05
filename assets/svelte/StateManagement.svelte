@@ -31,6 +31,24 @@
     }, 1000);
   }
 
+  /**
+   * Check if LiveView is disconnected and attempt reconnection if a connection
+   * to the server is available.
+   */
+  export async function reconnectLiveViewIfDisconnected() {
+    const connected = await useIsConnected({});
+
+    if (!connected) {
+      syncState.set("Not Synced");
+      return;
+    }
+
+    const live = get(liveView);
+    if (!live || live.__isDisconnected) {
+      window.location.reload();
+    }
+  }
+
   function confirmSynced(response: { ok: boolean }) {
     if (response.ok) {
       syncState.set("Synced");
