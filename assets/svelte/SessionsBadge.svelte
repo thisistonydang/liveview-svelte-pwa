@@ -1,8 +1,9 @@
 <script lang="ts">
   import { sessionCount } from "$stores/liveViewSocket";
+  import { syncState } from "$stores/syncState";
 </script>
 
-{#if $sessionCount}
+{#if $sessionCount && $syncState === "Synced"}
   <div
     id="sessions-badge"
     title="Number of active sessions."
