@@ -45,6 +45,8 @@ defmodule LiveViewSvelteOfflineDemoWeb.SocketLive do
       phx-connected={JS.remove_class("hidden", to: "#sessions-badge")}
       phx-disconnected={JS.add_class("hidden", to: "#sessions-badge")}
     />
+    <%!-- Dispatch 'phx-disconnected' event to be handled in syncState store. --%>
+    <div phx-disconnected={JS.dispatch("phx-disconnected")} />
     """
   end
 
