@@ -84,3 +84,19 @@ window.addEventListener("visibilitychange", () => {
     reconnectLiveViewIfDisconnected();
   }
 });
+
+// Patch console.log to detect when channel connection fails due to stale CSRF
+// token and handle the failed connection by reloading the page after a fresh
+// CSRF token is fetched by the service worker.
+// TODO: This is kind of a hacky solution. There may be a better way to do this...
+const originalConsoleLog = console.log;
+console.log = function (message) {
+  // Call the original console.log method to still log the message to the console.
+  originalConsoleLog.apply(console, arguments);
+
+  if (message.includes("Falling back to page request")) {
+    // NOTE: The delay is to allow the new HTML with a fresh CSRF token to be
+    // cached by service worker before reloading.
+    setTimeout(() => window.location.reload(), 2000);
+  }
+};
