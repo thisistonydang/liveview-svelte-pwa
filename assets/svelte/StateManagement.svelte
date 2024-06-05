@@ -66,15 +66,13 @@
     // This is used to sync the document state across different tabs when offline.
     localStorage.setItem(clientDocumentUpdatedKey, JSON.stringify(Date.now()));
 
-    // Reload if the socket is disconnected, but a connection to the server is available. This
-    // will force reconnection of the websocket and syncing of the document state.
-    const connected = await useIsConnected({});
-    if (connected && !window.liveSocket.isConnected()) {
-      window.location.reload();
-    }
-
     // Send new client document to server.
     live?.pushEvent("client_document_updated", { document: getBase64Document() }, confirmSynced);
+
+    // In case the LiveView is disconnected and a connection to the server is
+    // available, attempt reconnection of the LiveView in order to sync the
+    // document state.
+    reconnectLiveViewIfDisconnected();
   }
 </script>
 
