@@ -1,6 +1,4 @@
 <script lang="ts" context="module">
-  import config from "../../priv/static/sw.config.js";
-
   function getAppJsAndCss() {
     const appJsScript: HTMLScriptElement = document.querySelector("script[phx-track-static]");
     const appJsUrl = new URL(appJsScript.src);
@@ -15,7 +13,7 @@
 
   function requestAssetCaching(assets: string[]) {
     navigator.serviceWorker?.controller?.postMessage({
-      type: config.messageTypes.REQUEST_ASSET_CACHING,
+      type: "request_asset_caching",
       payload: {
         assets,
       },
@@ -24,7 +22,7 @@
 
   export function requestAssetDeletion(assets: string[]) {
     navigator.serviceWorker?.controller?.postMessage({
-      type: config.messageTypes.REQUEST_ASSET_DELETION,
+      type: "request_asset_deletion",
       payload: {
         assets,
       },
@@ -33,7 +31,7 @@
 
   function requestServiceWorkerVersion() {
     navigator.serviceWorker?.controller?.postMessage({
-      type: config.messageTypes.REQUEST_SERVICE_WORKER_VERSION,
+      type: "request_service_worker_version",
     });
   }
 </script>
@@ -66,7 +64,30 @@
     useIsConnected({ timeout: 10000 }).then((isConnected) => {
       if (isConnected) {
         const { appJs, appCss } = getAppJsAndCss();
-        requestAssetCaching([...config.privateAssets, ...config.publicAssets, appJs, appCss]);
+        requestAssetCaching([
+          // privateAssets
+          "/app",
+          // publicAssets
+          "/favicon.ico",
+          "/android-chrome-192x192.png",
+          "/android-chrome-512x512.png",
+          "/apple-touch-icon.png",
+          "/browserconfig.xml",
+          "/favicon-16x16.png",
+          "/favicon-32x32.png",
+          "/mstile-150x150.png",
+          "/og.png",
+          "/safari-pinned-tab.svg",
+          "/screenshot-narrow-light.png",
+          "/screenshot-narrow-dark.png",
+          "/screenshot-wide-light.png",
+          "/screenshot-wide-dark.png",
+          "/site.webmanifest",
+          "/offline",
+          // hashed app js and css
+          appJs,
+          appCss,
+        ]);
       }
     });
   });
