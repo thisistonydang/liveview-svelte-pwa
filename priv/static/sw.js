@@ -90,6 +90,9 @@ function handleFetch(event) {
   // Ignore LiveReloader. Only requested in dev.
   const url = new URL(event.request.url);
   if (url.pathname === "/phoenix/live_reload/frame") return;
+  
+  // Allow bypassing service worker.
+  if (url.searchParams.has("bypass_service_worker")) return;
 
   debug && console.log("[Service Worker] Handling fetch...");
   event.respondWith(respond(event.request));
