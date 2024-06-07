@@ -65,8 +65,10 @@ window.liveSocket = liveSocket;
 // always serve from the cache so the standard Phoenix redirect will not occur.
 liveSocket.getSocket().onOpen(async () => {
   try {
-    // Use HEAD request to bypass service worker.
-    const response = await fetch(window.location.href, { method: "HEAD" });
+    const url = new URL(window.location.href);
+    url.searchParams.set("bypass_service_worker", Date.now().toString());
+
+    const response = await fetch(url);
     if (response.redirected) {
       window.location.replace(response.url);
     }
