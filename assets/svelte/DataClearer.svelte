@@ -1,6 +1,4 @@
 <script lang="ts" context="module">
-  import config from "../../priv/static/sw.config.js";
-
   import { requestAssetDeletion } from "./ServiceWorker.svelte";
 
   export const indexedDBName = "ToDo";
@@ -11,7 +9,9 @@
     sessionStorage.clear();
 
     // Clear private assets cached by service worker.
-    requestAssetDeletion([...config.privateAssets]);
+    // TODO: Private assets currently hardcoded due to Firefox not supporting ES
+    // modules in service workers so the values can't be imported :(
+    requestAssetDeletion(["/app"]);
 
     // Clear Yjs state stored in indexedDB.
     const DBDeleteRequest = window.indexedDB.deleteDatabase(indexedDBName);
