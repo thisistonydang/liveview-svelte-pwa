@@ -15,12 +15,12 @@ export async function useIsConnected({
     // Avoid CORS errors with request to own origin.
     const url = new URL(`${window.location.origin}${pathname}`);
 
-    // Add random query parameter to prevent cached responses.
-    url.searchParams.set("rand", Date.now().toString());
+    // Note: Timestamp is to prevent cached responses.
+    url.searchParams.set("bypass_service_worker", Date.now().toString());
 
     const response = await fetch(url, {
-      method: "HEAD", // HEAD request to speed up response and avoid interception by service worker.
-      signal: AbortSignal.timeout(timeout), // Timeout to prevent excessive wait time.
+      // Timeout to prevent excessive wait time.
+      signal: AbortSignal.timeout(timeout),
     });
 
     return response.ok;
