@@ -3,7 +3,6 @@
   import { fly } from "svelte/transition";
   import { Info } from "lucide-svelte";
 
-  import config from "../../priv/static/sw.config.js";
   import { useIsConnected } from "$lib/hooks/useIsConnected";
 
   let newSW: ServiceWorker;
@@ -47,7 +46,9 @@
   }
 
   $: if (isSWUpdateConfirmed) {
-    newSW.postMessage({ type: config.messageTypes.REQUEST_SKIP_WAITING });
+    // TODO: Message type is currently hardcoded due to Firefox not supporting
+    // ES modules in service workers so the values can't be imported :(
+    newSW.postMessage({ type: "request_skip_waiting" });
   }
 </script>
 
