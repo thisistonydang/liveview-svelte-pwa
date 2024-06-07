@@ -4,7 +4,7 @@
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self));
 
 const config = {
-  cacheName: "v2024.06.07.2",
+  cacheName: "v2024.06.07.3",
   debug: false,
   disableCache: false, // Set to true during dev to disable caching.
   messageTypes: {
