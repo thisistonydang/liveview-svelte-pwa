@@ -40,6 +40,7 @@
   import { onMount } from "svelte";
 
   import { useIsConnected } from "$lib/hooks/useIsConnected";
+  import { privateAssets, publicAssets } from "$lib/assets";
 
   export let serviceWorkerVersion: string;
 
@@ -64,30 +65,7 @@
     useIsConnected({ timeout: 10000 }).then((isConnected) => {
       if (isConnected) {
         const { appJs, appCss } = getAppJsAndCss();
-        requestAssetCaching([
-          // privateAssets
-          "/app",
-          // publicAssets
-          "/favicon.ico",
-          "/android-chrome-192x192.png",
-          "/android-chrome-512x512.png",
-          "/apple-touch-icon.png",
-          "/browserconfig.xml",
-          "/favicon-16x16.png",
-          "/favicon-32x32.png",
-          "/mstile-150x150.png",
-          "/og.png",
-          "/safari-pinned-tab.svg",
-          "/screenshot-narrow-light.png",
-          "/screenshot-narrow-dark.png",
-          "/screenshot-wide-light.png",
-          "/screenshot-wide-dark.png",
-          "/site.webmanifest",
-          "/offline",
-          // hashed app js and css
-          appJs,
-          appCss,
-        ]);
+        requestAssetCaching([...privateAssets, ...publicAssets, appJs, appCss]);
       }
     });
   });
