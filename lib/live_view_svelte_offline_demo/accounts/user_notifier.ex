@@ -45,17 +45,17 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
       """
     }
 
-    # Create JWT token.
-    {:ok, token, _} = Jwt.generate_and_sign(extra_claims)
-
     # Send email request to JS backend.
+    # TODO: Send this in the background to reduce user wait time?
+    # TODO: Handle errors.
     with url when not is_nil(url) <- System.get_env("JS_BACKEND_URL"),
          key when not is_nil(key) <- System.get_env("JWT_PRIVATE_KEY") do
-      # TODO: Send this in the background to reduce user wait time?
-      # TODO: Handle errors.
+      {:ok, token, _} = Jwt.generate_and_sign(extra_claims)
       Req.post("#{url}/microservices/mailer/send", json: %{jwt: token})
     else
-      _ -> Logger.warning("Environment variable JS_BACKEND_URL or JWT_PRIVATE_KEY is missing.")
+      _ ->
+        Logger.warning("Environment variable JS_BACKEND_URL or JWT_PRIVATE_KEY is missing.")
+        {:ok, nil}
     end
   end
 
