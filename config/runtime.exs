@@ -1,4 +1,5 @@
 import Config
+require Logger
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
@@ -21,17 +22,15 @@ if System.get_env("PHX_SERVER") do
 end
 
 # Set up default Signer for creating JWTs with Joken.
-key_pem =
-  System.get_env("JWT_PRIVATE_KEY") ||
-    raise """
-    environment variable JWT_PRIVATE_KEY is missing.
-    """
-
-config :joken,
-  default_signer: [
-    signer_alg: "EdDSA",
-    key_pem: key_pem |> String.replace(~r/\\n/, "\n")
-  ]
+if key_pem = System.get_env("JWT_PRIVATE_KEY") do
+  config :joken,
+    default_signer: [
+      signer_alg: "EdDSA",
+      key_pem: String.replace(key_pem, ~r/\\n/, "\n")
+    ]
+else
+  Logger.warning("Environment variable JWT_PRIVATE_KEY is missing.")
+end
 
 if config_env() == :prod do
   database_url =
