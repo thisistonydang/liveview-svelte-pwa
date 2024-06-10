@@ -20,7 +20,7 @@ You can run this app locally by following the steps below after cloning the repo
 
 ```sh
 
-$ mix deps.get
+mix deps.get
 ```
 
 2. Install the Node.js dependencies. The `--prefix assets` is required when running
@@ -28,19 +28,19 @@ the command from the root directory in order to install the dependencies in the
 `assets` directory.
 
 ```sh
-$ npm install --prefix assets
+npm install --prefix assets
 ```
 
 3. Create the database.
 
 ```sh
-$ mix ecto.create
+mix ecto.create
 ```
 
 4. Start the Phoenix server.
 
 ```sh
-$ mix phx.server
+mix phx.server
 ```
 
 ## Deploying the Project
@@ -52,7 +52,7 @@ To deploy this app to [Fly.io](https://fly.io/), run the following commands.
 1. Remove the `fly.toml` file. A new one will be created when you run `fly launch`. 
 
 ```sh
-$ rm fly.toml
+rm fly.toml
 ```
 
 2. Initialize and deploy the project. Fly will automatically detect the app type
@@ -61,7 +61,7 @@ the defaults, but make sure that a Postgres database is included in the
 configuration settings.
 
 ```sh
-$ fly launch
+fly launch
 ```
 
 ## Technologies Used
