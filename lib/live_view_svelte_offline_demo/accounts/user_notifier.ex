@@ -28,10 +28,12 @@ defmodule LiveViewSvelteOfflineDemo.Accounts.UserNotifier do
   defp deliver(email, subject, html) do
     extra_claims = %{
       "app" => "ToDo",
-      "email" => email,
-      "name" => "",
+      "sender" => "Tony Dang <tony@tonydang.blog>",
+      "recipient" => "Tony Dang <tony@tonydang.blog>",
+      "replyTo" => "Tony Dang <tony@tonydang.blog>",
       "subject" => "[ToDo App] #{subject}",
-      "html" => """
+      "textBody" => "",
+      "htmlBody" => """
       Hi #{email},<br><br>
 
       #{html}<br><br>
