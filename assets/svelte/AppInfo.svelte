@@ -126,15 +126,15 @@
     <h2 class="text-3xl font-bold my-3">Contact</h2>
 
     Created by
-    <Link href="https://tonydang.blog" external>Tony Dang</Link>. Please feel free send any
-    questions or feedback to
-    <Link href="mailto:tony@tonydang.blog" external>tony@tonydang.blog</Link>.
+    <Link href="https://tonydang.com" external>Tony Dang</Link>. Please feel free send any questions
+    or feedback to
+    <Link href="mailto:tony@tonydang.com" external>tony@tonydang.com</Link>.
   </div>
 
   <div class="my-6">
     <h2 class="text-3xl font-bold my-3">Source Code</h2>
     <a
-      href="https://github.com/tonydangblog/liveview-svelte-pwa"
+      href="https://github.com/thisistonydang/liveview-svelte-pwa"
       aria-label="Github"
       target="_blank"
       rel="noopener noreferrer"
