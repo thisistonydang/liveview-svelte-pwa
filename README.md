@@ -89,5 +89,5 @@ fly launch
 
 ## Contact
 
-Created by [Tony Dang](https://tonydang.blog). Please feel free send any questions or feedback to
-[tony@tonydang.blog](mailto:tony@tonydang.blog).
+Created by [Tony Dang](https://tonydang.com). Please feel free send any questions or feedback to
+[tony@tonydang.com](mailto:tony@tonydang.com).
