@@ -1,5 +1,9 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
 #
-# To ban all spiders from the entire site uncomment the next two lines:
-# User-agent: *
-# Disallow: /
+# The landing page stays indexable so the demo is discoverable. Everything
+# behind it is either auth-gated or useless to a crawler, and every crawl of
+# those paths wakes a Fly machine we get billed for, so keep them out.
+User-agent: *
+Disallow: /users/
+Disallow: /app
+Disallow: /offline
