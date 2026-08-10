@@ -1,9 +1,6 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
 #
-# The landing page stays indexable so the demo is discoverable. Everything
-# behind it is either auth-gated or useless to a crawler, and every crawl of
-# those paths wakes a Fly machine we get billed for, so keep them out.
+# Nothing here should be indexed. Every crawl also wakes a Fly machine we
+# get billed for, so keep crawlers off the site entirely.
 User-agent: *
-Disallow: /users/
-Disallow: /app
-Disallow: /offline
+Disallow: /
